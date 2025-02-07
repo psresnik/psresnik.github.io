@@ -84,9 +84,29 @@ This site is undergoing changes and some links may not work.
   
 
 <P>
-<!-- News flashes included as an iframe -->
-<iframe src="flashes.html" width="100%" scrolling="yes">
-</iframe>
+<!-- News flashes -->
+<!-- old iframe solution
+  <iframe src="flashes.html" width="100%" scrolling="yes">
+  </iframe>
+-->
+<div id="news-container" style="max-height: 400px; overflow-y: auto; border: 1px solid #ccc; padding: 10px;">
+    Loading news...
+</div>
+<script>
+    fetch('flashes.html')
+        .then(response => response.text())
+        .then(html => {
+            document.getElementById('news-container').innerHTML = html;
+
+            // Ensure all links open in a new tab
+            document.querySelectorAll("#news-container a").forEach(link => {
+                link.setAttribute("target", "_blank");
+                link.setAttribute("rel", "noopener noreferrer");
+            });
+        })
+        .catch(error => console.error("Error loading news:", error));
+</script>
+
 
 <A NAME="research">
 <H2>Research Interests</H2>
