@@ -1,0 +1,361 @@
+<h1 id="janemail">JaneMail</h1>
+<ul>
+<li><a href="#why-janemail-was-needed">Why JaneMail was needed</a></li>
+<li><a href="#what-janemail-does-an-overview">What JaneMail does: an overview</a></li>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#running-janemail">Running JaneMail</a></li>
+<li><a href="#using-janemails-labels-in-gmail">Using JaneMail’s labels in Gmail</a></li>
+<li><a href="#pro-tips">Pro tips</a></li>
+<li><a href="#troubleshooting">Troubleshooting</a></li>
+<li><a href="#who-is-jane">Who is Jane?</a></li>
+</ul>
+<h2 id="why-janemail-was-needed">Why JaneMail was needed</h2>
+<p>Many years ago when I worked at Sun Microsystems Labs, a very smart software engineer named Gary Adams taught me a truly valuable thing about organizing information that I came to call the Rule of Orders of Magnitude. When you’re organizing on the order of tens of things, then <em>linear search</em> works fine. Shopping lists, a shelf of recipe books, the individual subroutines in a smallish program. When you get up into the order of magnitude of hundreds of things, though, you need <em>hierarchy</em>. Folders that contain subfolders than contain documents, software packages that import other packages that contain files that contain subroutines. And once you get above that, to the order of magnitude of a thousand or more, that’s when it’s time for <em>search</em>.</p>
+<p>I’m pretty sure that’s why, back at the dawn of the Web, Altavista’s crawler-based technology (and eventually Google’s) ate Yahoo’s lunch. The ‘h’ in Yahoo stood for “hierarchical”, since it originated as a human-curated hierarchy – and that just couldn’t scale up (e.g. see <a href="https://arstechnica.com/information-technology/2014/09/yahoo-killing-off-yahoo-after-20-years-of-hierarchical-organization/">here</a>).</p>
+<p>The problem with Gmail as it exists today is that it’s not good at that middle order of magnitude. With the exception of some light, hard-wired hierarchy (e.g. you can separate Promotions from Forums, etc.), you’re pretty much stuck with dealing with your inbox in a linear way – or you can use search. If you’re very sophisticated you can do a lot of manual labeling to get something more like hierarchy, or you can use advanced searches using the <code>after:yyyy-mm-dd</code> keyword to find things in your recent mail that match some pattern. Either way it’s a pain in the neck. What’s missing is some way to automatically get your mail into some <em>custom</em> hierarchy that’s organized the way <em>you</em> want it to be organized.</p>
+<h2 id="what-janemail-does-an-overview">What JaneMail does: an overview</h2>
+<p>JaneMail goes to your Gmail account to get messages. A large language model (LLM) running on your machine follows your instructions to decide on a label for each message, and the label is then assigned to the message in your Gmail. If you want it to, JaneMail can also use the LLM to see if you’ve provided a good canned response for this message, and if so it will create a draft for you containing that reply.</p>
+<p>That’s it. Everything else you do takes advantage of the capabilities that already exist in Gmail. You’re making the choices, not an LLM.</p>
+<p>Here are a few important things to note about JaneMail.</p>
+<ul>
+<li><p><strong>JaneMail doeesn’t do anything you can’t easily reverse.</strong> It does not delete mail. It does not send out replies for you. It will not archive mail before you’ve had a chance to read it. The fundamental principle behind JaneMail is this: <em>LLMs can be useful, but you should not trust them for anything that really matters</em>.</p></li>
+<li><p><strong>JaneMail runs a large language model <em>on your machine</em>.</strong> It does not communicate with any LLM vendors, e.g. connecting with ChatGPT at OpenAI. I don’t know about you, but I don’t want my mail being consumed by companies that might use it as fodder for their commercial models, and I also don’t want my mail going more places on the internet than it absolutely has to.</p></li>
+<li><p><strong>JaneMail can be used with multiple Gmail accounts.</strong> For example, I use it with a personal account and a work account. The program doesn’t need to be tied to one account or the other, and your labeling instructions can be different for different accounts, too. Also, it works for accounts that are part of Google Workspace, e.g. if you’ve got university Gmail with a .edu email address.</p></li>
+<li><p><strong>JaneMail isn’t perfect, but you can easily keep improving how well it does on your own mail.</strong> In this repository I provide an example of JaneMail instructions to get you started. However, I find it useful to continually tweak the instructions as I learn more about what the LLM-based labeling is doing well and what it’s not.</p></li>
+</ul>
+<p>Just as a quick shout-out, JaneMail uses the <a href="https://github.com/jeremyephron/simplegmail">simplegmail</a> package by <a href="https://cs.stanford.edu/~jeremye/">Jeremy Ephron Barenholtz</a> as its interface to Google’s Gmail API. I don’t know Jeremy personally, but in addition to his having written this lovely and useful package, from his <a href="https://cs.stanford.edu/~jeremye/inspiration/">personal page</a> I have discovered that he and I have a variety of things in common: he lists <a href="https://www.youtube.com/c/3blue1brown">Grant Sanderson of 3Blue1Brown</a> as one of his top inspiring people, he lists Don Quixote and Ursula LeGuin’s <a href="https://files.libcom.org/files/ursula-k-le-guin-the-ones-who-walk-away-from-omelas.pdf"><em>The Ones Who Walk Away from Omelas</em></a> as being among the most inspiring things he’s read, and his list of papers he’s found inspiration in bears no small resemblance to Harry Lewis’s edited collection <a href="https://direct.mit.edu/books/edited-volume/5003/Ideas-That-Created-the-FutureClassic-Papers-of">Ideas That Created the Future: Classic Papers of Computer Science</a>, which I strongly recommend reading (and not just because Harry was my first advisor as an undergrad). So, a big thank you to Jeremy. You sound cool.</p>
+<h2 id="installation">Installation</h2>
+<h3 id="system-requirements">System requirements</h3>
+<p>Other than Python 3 and the various python packages that JaneMail depends on, the main thing that JaneMail needs is the ability to run a decent large language model on your machine. I developed and use JaneMail on an M1 Mac with 32G of memory, which works just fine when using <a href="https://www.ollama.com/library/gemma2:9b-instruct-q4_0">gemma2:9b-instruct-q4_0</a> (ollama ID ff02c3702f32) as the model; see discussion of ollama below.</p>
+<p>I can’t promise JaneMail will work with another system setup, but I’m hoping to learn more as more people test it. If you discover you can use JaneMail successfully with a smaller model, a lower-memory Mac, a Windows machine, etc. please let me know and I’ll update this discussion of requirements.</p>
+<h3 id="install-conda">1. Install conda</h3>
+<p>If you don’t have it already, <a href="https://docs.conda.io/projects/conda/en/latest/user-guide/install/">install conda</a>. (It’s simplest just to install the whole anaconda distribution, but if you try just using miniconda and it succeeds, let me know and I’ll update these instructions with that as an option.) Then create a <code>janemail</code> conda environment with the required packages and activate it.</p>
+<pre><code>conda create -n janemail python=3.13 -f environment.yml
+
+conda activate janemail</code></pre>
+<h3 id="get-janemail-from-github">2. Get JaneMail from github</h3>
+<p>Go to the directory where you want this package to be installed on your machine. Then create your copy of the JaneMail code there. The fastest and most typical way to do this is:</p>
+<pre><code>git clone https://github.com/psresnik/janemail.git</code></pre>
+<h3 id="authorize-janemail-to-access-your-gmail-accounts">3. Authorize JaneMail to access your Gmail account(s)</h3>
+<p>There are a lot of steps here, but they should be pretty straightforward. What you’re doing here is going through the process of creating a desktop application that can access Gmail, just as if you were a software developer. Except that you’re going to use the code here as the application, and you’re only going to use it to access your own Gmail account(s).</p>
+<h4 id="a.-set-up-authentication-so-you-can-access-gmail-accounts">a. Set up authentication so you can access Gmail accounts</h4>
+<ul>
+<li><p>These steps are adapted from the simplegmail <a href="https://github.com/jeremyephron/simplegmail/tree/master?tab=readme-ov-file#getting-started">Getting Started</a> instructions for getting OAuth2 set up when you’re using the simplegmail API. (Again, note that you’re going through the same kinds of steps that a developer would in order to make an app available to other people, but JaneMail is only intended for your own personal use.)</p>
+<ul>
+<li>Go to your <a href="https://console.cloud.google.com/projectselector2/apis/dashboard?supportedpurview=project&amp;authuser=0">Google Cloud projects page</a></li>
+<li>At upper right, click <em>Create Project</em>.</li>
+<li>For Project Name use <code>janemail</code>. You can leave Location alone. Click <em>Create</em>.</li>
+<li>Near top middle, click <em>+ Enable APIs and Services</em></li>
+<li>In the search box, type <em>gmail api</em> and enter</li>
+<li>When you get the search results, select <em>Gmail API</em></li>
+<li>On the page it brings you to, click <em>Enable</em></li>
+<li>At upper right on the next page it brings you to, select <em>Create Credentials</em></li>
+<li>Under “1. Credential type”, choose <em>User data</em>. Then click <em>Next</em>.</li>
+<li>Under “2. App information”, for “App name” enter <em>JaneMail</em></li>
+<li>Still under 2, put your own email address for the user support email, ignore the app logo, and put your own address again for developer contact information.</li>
+<li>Click <em>Save and Continue</em></li>
+<li>Under “3. Scopes” just click <em>Save and continue</em></li>
+<li>Under “4. OAuth Client ID” select <em>Desktop App</em> as the application type. Give it the name <em>JaneMail desktop client</em></li>
+<li>Click <em>Create</em></li>
+<li>When it’s done, you will see it’s given you a <em>Client ID</em>. Click the <em>Download</em> button to download it.</li>
+<li>That downloaded file will have a big long name beginning with <code>client_secret_...</code>. Rename it just <code>client_secret.json</code>. In step c you’re going to put a copy of that same file in the credentials subdirectory for every Gmail accountname you’re going to be using JaneMail with .</li>
+</ul></li>
+</ul>
+<h4 id="b.-create-a-directory-to-hold-your-google-credentials">b. Create a directory to hold your Google credentials</h4>
+<p>JaneMail is going to look for a subdirectory called <code>creds</code> in the top JaneMail directory (the one that contains this README.md file), which is where you should be to execute the program. Create it:</p>
+<pre><code>mkdir creds</code></pre>
+<p>Having this default to a home directory instead of the install directory, or be user-modifiable rather than hard-wired, is on my to-do list.</p>
+<h4 id="c.-create-credentials-subdirectories-for-your-gmail-accounts">c. Create credentials subdirectories for your Gmail account(s)</h4>
+<p>The simplegmail API doesn’t have it’s own clean way of handling multiple Gmail accounts, so I built that on top of it. It works by having a separate subdirectory for each account you’re going to use. (Even you’re using just one account.)</p>
+<p>For each email address you want to use JaneMail with, pick a readable <em>accountname</em> that can be whatever name you want to use to refer to that email account. For example, for the mail account <code>johnsmithpersonal@gmail.com</code> you could use <em>personal</em> as the accountname, and for <code>johnsmithwork@mycompany.com</code>, you could use <em>work</em>. (Notice that the email addresses don’t have to have <em>gmail.com</em> as the domain. For example, many businesses and universities use Google Workspace at the enterprise level.)</p>
+<p>In the credentials directory you just created, create a subdirectory for each accountname. For example:</p>
+<pre><code>    mkdir creds/personal</code></pre>
+<p>Remember that<code>client_secret.json</code> from step a, above? Put a copy of that same file in the credentials subdirectory for every Gmail accountname.</p>
+<p>(You can repeat steps b through e any time you want to add a new accountname.)</p>
+<h4 id="d.-add-your-email-addresses-as-test-users-for-janemail">d. Add your email addresses as “test users” for JaneMail</h4>
+<p>Google has <a href="https://support.google.com/cloud/answer/13461325?hl=en">quality control</a> for apps it allows to go into production using their APIs. However, you will be using your own private copy of JaneMail for your own accounts, not putting an app into production. Therefore, you can instead add any email accounts you want to be using it with as test users for your copy of the application. To do this:</p>
+<ul>
+<li>Go to your <a href="https://console.cloud.google.com/projectselector2/apis/dashboard?supportedpurview=project&amp;authuser=0">Google Cloud projects page</a>.</li>
+<li>Select your JaneMail project</li>
+<li>On the left, select <em>Oauth consent screen</em></li>
+<li>Scroll down to “Test Users” and click <em>+ Add users</em></li>
+<li>Type the email addresses you want to use JaneMail with, separated by spaces</li>
+<li>Click <em>Save</em></li>
+</ul>
+<p>Those accounts will now be able to use your copy of JaneMail.</p>
+<h4 id="e.-verify-that-you-can-access-your-gmail">e. Verify that you can access your Gmail</h4>
+<p>In the directory where you installed JaneMail, run JaneMail in test mode:</p>
+<pre><code>python janemail.py --test --accountname &lt;accountname&gt;</code></pre>
+<ul>
+<li><p>The first time you do this, Google will bring up a browser window and ask you to select the email address to log in with. Pick the email address you’re associating with this accountname and log in.</p></li>
+<li><p>You will get a “Google hasn’t verified this app” warning. Click <em>Continue</em>.</p></li>
+<li><p>When it asks you what JaneMail should be able to access, pick <em>Select all</em> and then click <em>Continue</em>.</p></li>
+<li><p>You will get a browser screen saying the authentication for this email account has completed. You can close that browser window/tab.</p></li>
+<li><p>Back where you were running the Python code, you might see the warning that JaneMail couldn’t access a file called <code>gmail_token.json</code>, followed by a heads up that your browser was opened up to visit a URL that looks like <code>https://accounts.google.com/...etc</code>. You can ignore all that: that’s for the stuff you just did in the browser to log in and give JaneMail access to your account.</p></li>
+<li><p>Depending on how your email account is set up, this might be the last time you have to do that, or you might have to do it again every now and then. For example, my university apparently has its enterprise Google Workspace set up so that the authentication expires after some period of time. If that happens then when you run JaneMail you might have to do the bullets in this section over again.</p></li>
+<li><p>Once you’ve done the above to authenticate access to the Gmail account, JaneMail’s test mode will attempt to download all the messages in that email account’s inbox for the last day. This is an example of what a successful test looks like:</p></li>
+</ul>
+<pre><code>    Testing whether JaneMail to Gmail can retrieve inbox messages from account &lt;accountname&gt;
+    Total retrieval time for 4 messages was 1.0 seconds.
+    Average retrieval time: 0.3 seconds per message, which is 14099.3 messages per hour</code></pre>
+<p>If the test fails you’ll get a python error after a few automatic retries.</p>
+<p>If it succeeds, congratulations, you now are able to access your Gmail using a python program!</p>
+<p><font color=blue>This is a probably a good time to remind you that you use JaneMail entirely at your own risk. Oh, you didn’t read the <a href="./LICENSE">LICENSE</a> file? Tsk, tsk. Please pay attention to the all-caps sections 15 (Disclaimer of Warranty) and 16 (Limitation of Liability).</font></p>
+<h3 id="download-an-llm">4. Download an LLM</h3>
+<ul>
+<li><p>JaneMail uses the <a href="https://ollama.com/">ollama</a> package to work with large language models. (This should have been installed when you created the environment, but if not you can go to the <a href="https://ollama.com/download">ollama download page</a>, download it, and install it. Note that if you’re installing ollama you either need root access on your machine, or you need to download the correct binary; see under “Assets” <a href="https://github.com/ollama/ollama/releases">here</a>. The <code>arch</code> command will show you what your architecture is; for <code>x86_64</code>, you want binaries for AMD.)</p>
+<p>In principle, JaneMail should work with any model that ollama supports; you can find the list <a href="https://ollama.com/library?sort=popular">here</a>. It was developed using the Google Gemma 2 model with 9B parameters, hence <a href="https://ollama.com/library/gemma2"><code>gemma2:9b</code></a> is JaneMail’s default. (Note that this model is the same as <a href="https://www.ollama.com/library/gemma2:9b-instruct-q4_0">gemma2:9b-instruct-q4_0</a>, ollama ID ff02c3702f32, i.e. 9B parameters with instruction tuning and 4-bit quantization.)</p></li>
+<li><p>To download that model to your local machine once ollama is installed, simply execute:</p></li>
+</ul>
+<pre><code>    ollama pull gemma2:9b</code></pre>
+<p>Note that although this is a relatively small model, it is still 5.4 GB and might take a few minutes to download.</p>
+<ul>
+<li>To verify that the model has downloaded successfully andn ollama is working, execute this:</li>
+</ul>
+<pre><code>    echo &quot;What&#39;s the answer to life, the universe, and everything?&quot; | ollama run gemma2</code></pre>
+<h3 id="tell-janemail-how-to-label-your-mail">5. Tell JaneMail how to label your mail</h3>
+<ul>
+<li>Copy the <code>instructions_example.txt</code> file to <code>instructions.txt</code></li>
+</ul>
+    cp instructions_example.txt instructions.txt
+<ul>
+<li><p>Open the file in a text editor and personalize the instructions to have JaneMail label your mail the way you want it to be labeled. Note that you can update these instructions as often as you want!</p></li>
+<li><p>Also note that you can different instructions files for different accountnames. Just use the <code>--instructions &lt;filename&gt;</code> argument when you run JaneMail to point it to the instructions file you want to use on any particular run.</p></li>
+</ul>
+<h3 id="optionally-tell-janemail-how-to-create-drafts-with-canned-replies">6. Optionally, tell JaneMail how to create drafts with canned replies</h3>
+<p>I’m honestly not sure how useful this will be, but JaneMail permits you to define a set of canned responses and will use the LLM to see if messages it’s processing should get one. Two files provide details on how to instruct JaneMail about canned responses. The first one, <code>instructions_canned_responses.txt</code>, has entries with canned-response instructions. For each entry, you’ve got a set of one or more comma-separated <em>labels</em> to which this canned response can apply, which should be in your labeling instructions. You’ve got a <em>reply ID</em>, which should be an integer. And finally the <em>description</em> contains LLM instructions about when this canned response is appropriate. Here’s an exmample:</p>
+<pre><code>Labels: Deadline reminder, Reply nudge
+Reply ID: 002
+Name: late_reply
+Description: Include this reply if the message comes from a government institution or a university (not a company), and the sender is telling me that I am
+ overdue on providing them with a review or report or a reply to their message.</code></pre>
+<p>The second file, <code>canned_responses.txt</code>, contains the responses themselves. Responses begin with <code>Response &lt;response_id&gt;</code> and are followed by one or more lines of text for your canned response, which can include blank lines. For example:</p>
+<pre><code>Response 002
+I&#39;m sorry for the delay. 
+I&#39;ll get back to you on this as quickly as I am able to.</code></pre>
+<p>If more than one canned response can be applied to a message, the one with the lower response ID is chosen.</p>
+<p>In addition to appearing in your drafts folder, any drafts created by JaneMail will get the label <code>@jane/@Drafts</code> so that it’s easy to look at just them without any other drafts you may have created the usual way.</p>
+<p>It is <em>very</em> strongly recommended that you carefully review any drafts before sending them, no matter how well JaneMail might be working. The better a system works, the easier it is to get lulled into a lack of caution, and therefore the more danger there is of unintended outcomes.</p>
+<h2 id="running-janemail">Running JaneMail</h2>
+<p>JaneMail’s defaults are set up so that you actually won’t need the vast majority of its optional arguments. In fact, if you want to process mail from the default time period (the past 7 days, and it will skip messages it’s already processed), you need only to run:</p>
+<pre><code>python janemail.py --account accountname</code></pre>
+<p>Some other useful variations…</p>
+<ul>
+<li>If you are running with a different instructions file than the default <code>instructions.txt</code> (for example, if you have multiple accounts with different instruction files), add <code>--instructions</code>:</li>
+</ul>
+<pre><code>python janemail.py --account accountname --instructions myinstructionfile.txt</code></pre>
+<ul>
+<li><p>If you want to change the default time period that JaneMail goes back for mail, add <code>--newer_than '(NUM, INTERVAL)'</code>. The INTERVAL can be “day”, “month”, or “year”, e.g. <code>--newer_than '(3, "day")'</code>. Make sure to remember the single quotes and parentheses.</p></li>
+<li><p>If instead of handling new messages you just want to show a report on your terminal of labeled email messages that you can skim through by category, use <code>--skim</code>, e.g.:</p></li>
+<li></li>
+</ul>
+<pre><code>python janemail.py --account accountname --skim --newer_than &#39;(1,&quot;month&quot;)&#39;</code></pre>
+<p>It could also be useful to add the <code>--unread</code> option to report on mail that’s been labeled by JaneMail in the last however long but is still unread.</p>
+<ul>
+<li><p>If you want to use canned responses, you’ll need to include <code>--email_addr &lt;your_account_email_address&gt;</code>, <code>--draft_instructions instructions_canned_responses.txt</code> (or whatever filename you choose), and <code>--canned_responses canned_responses.txt</code> (or whatever filename you choose).</p></li>
+<li><p>To see other options and their defaults, run</p></li>
+</ul>
+<pre><code>python janemail.py -h</code></pre>
+<p>When you run JaneMail, you will see output something like the following. Note in particular how JaneMail does <em>not</em> reprocess mail it’s already processed. (Though it would if you gave it the <code>--reprocess</code> flag.) That means it’s possible to run it regularly to stay up to date and only process new mail no matter how far back the <code>--newer_than</code> parameter says to go.</p>
+<pre><code>Account name is myaccountname
+Will retrieve mail with label &#39;INBOX&#39;
+Gmail-labeled promotions will receive label @jane/promotion
+Body of messages will be truncated at 1500 characters
+Messages processed in this run will also get batch label @jane/batches/2024-11-09-08:13am-INBOX
+Retrieving all messages labeled &#39;INBOX&#39; newer than 2024-11-02...
+Elapsed time: 0.0 seconds
+[Live progress meter]
+Average retrieval time: 0.0 seconds per message, which is 138553.0 messages per hour
+Retrieved 102 messages
+Filtering out any @jane messages since they are already processed.
+There are 7 to process.
+Processing 7 messages...
+[Live progress meter]
+Total time: 42.6sec. Average time: 6.1sec per message, which is 591.1 messages per hour
+-----
+Cleaning up.</code></pre>
+<h2 id="using-janemails-labels-in-gmail">Using JaneMail’s labels in Gmail</h2>
+<h3 id="the-gmail-label-hierarchy">The Gmail label hierarchy</h3>
+<p>JaneMail produces a hierarchy of labels, all under the top-level label <code>@jane</code>. Gmail encodes levels of hierarchy using the forward-slash character, which is the convention we’ll use here and also something you can use in your instructions. For example, the instructions could include categories <code>hobbies/gaming/boardgames</code> and <code>hobbies/gaming/videogames</code>. Note that JaneMail will correctly create all intermediate parent categories as needed (just like <code>mkdir -p</code> does for creating directories in *nix).</p>
+<h3 id="prioritizing-messages-by-category">Prioritizing messages by category</h3>
+<p>Time to take advantage of what JaneMail has done for you. Thanks to Gmail’s built-in label functionality, you can now easily see your JaneMail labels and, with them, how many messages in each category you haven’t looked at. No more slogging sequentially through a sea of messages!</p>
+<p>For example, on the left side of your Gmail (in a browser) you might see something like this:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td>▾ <span class="citation" data-cites="jane">@jane</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>  ▸ batches</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>  Bounced mail</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>  Deadline reminder</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td>  Meetings</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>  ▸ Other</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>  Spam</td>
+<td>12</td>
+</tr>
+</tbody>
+</table>
+<p>The numbers identify <em>unread</em>, <em>unarchived</em> messages. Once you have read a message or archived it (whether it’s read or not), it won’t show up. Conversely, if you mark it as unread, or if you move it back to the inbox, it will contribute again to the numbers.</p>
+<p>You might choose to look at things in the <em>Deadline reminder</em> category right away, and leave <em>Spam</em> for later when you have more time. And when you look at the spam category, you can be more efficient: now you can be reasonably confident that <em>everything</em> in there is actually ignorable. So you can just take a moment to very quickly skim through and look for any mistakes, click the box at upper left to select all the messages, and hit <em>Delete</em> to delete them in bulk.</p>
+<h3 id="looking-at-sub-labels">Looking at sub-labels</h3>
+<p>If you click the arrow next to a sub-label, it will expand to the next level down. E.g., if you expand <em>Other</em>, you might see:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td>▾ <span class="citation" data-cites="jane">@jane</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>    …</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>  ▾ Other</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>    Birthday Greeting</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>    Financial</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>    Personal</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td>        …</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="updating-your-instructions">Updating your instructions</h3>
+<p>Don’t forget, you can update your instructions file(s) at any time if you see errors. For example, suppose you have a Bank of America account, and a message from them saying “You’ve received a secure message at your Bank of America account” was miscategorized as <em>Spam</em>. You can modify your <em>Spam</em> category by adding: <em>Don’t include mail from Bank of America saying I’ve received a secure message from them</em>, and now it’s less likely that this miscategorization will happen in the future.</p>
+<p>Note that you’re basically writing rules, and any rule-based system can turn into a game of whack-a-mole when it’s confronted with real-world data. (Just try asking any natural language processing person who tried to write a useful, non-trivial grammar back in the day.) However, don’t let the perfect be the enemy of the good: as your categories get more and more consistent and coherent, the mistakes pop out more and more easily.</p>
+<h2 id="pro-tips">Pro tips</h2>
+<h4 id="refine-your-instructions-before-trying-janemail-on-a-large-scale">Refine your instructions before trying JaneMail on a large scale</h4>
+<ul>
+<li>Go into your Gmail, pick some messages, and assign them a test label. E.g.:
+<ul>
+<li>Search your mail for <code>in:inbox after:yyyy-mm-dd</code> to get all the messages after a particular date</li>
+<li>Click the square box at upper left (under <em>From</em>)</li>
+<li>On the same row where that box is, find the <em>Labels</em> pulldown</li>
+<li>If you have not already created a label called <em>test</em>
+<ul>
+<li>Click <em>Create new</em> at the bottom</li>
+<li>Enter <em>test</em> as the new label name</li>
+<li>Click <em>Create</em></li>
+</ul></li>
+<li>If you have already created that label
+<ul>
+<li>You can start typing <em>test</em></li>
+<li>When the label shows up, check the box and click <em>Apply</em></li>
+</ul></li>
+<li>Either way, you’ve just manually added the label <em>test</em> to those messages.</li>
+</ul></li>
+<li>Process those messages using your current <em>instructions.txt</em> file.</li>
+</ul>
+<pre><code>    python janemail.py --label test --account &lt;your accountname&gt; </code></pre>
+<ul>
+<li><p>Look at the results in Gmail’s <span class="citation" data-cites="jane">@jane</span> label hierarchy.</p></li>
+<li><p>Refine your instructions file.</p></li>
+<li><p>Delete the <span class="citation" data-cites="jane">@jane</span> label, which will rid this Gmail account of any evidence that you’ve used JaneMail. (But will not affect the <em>test</em> label.)</p></li>
+<li><p>Go back to the step where you run <code>janemail.py</code>, now with the updated instructions.</p></li>
+<li><p>Iterate until you’re reasonably happy. Or add more messages with the <em>test</em> label to test a broader sample.</p></li>
+</ul>
+<p>Note that if you have test messages you want to process that are more than 7 days old (the default), you can add <code>--newer_than '(N, "&lt;interval&gt;")'</code> where N is an integer and <code>interval</code> is one of <em>day</em>, <em>month</em>, <em>year</em>. For example,</p>
+<pre><code>python janemail.py --label test --account &lt;your accountname&gt; --newer_than &#39;(3, &quot;month&quot;)&#39;</code></pre>
+<p>Don’t forget the single quotes around the parentheses.</p>
+<h4 id="keep-refining-your-instructions">Keep refining your instructions</h4>
+<p>There are a number of typical situations that might lead you to make changes as you gain more experience with JaneMail.</p>
+<ul>
+<li><p><em>Discovering a category is too broad.</em> You might find that a category you’ve created is covering too diverse a range of things. A good solution is to break it up into smaller categories in your instructions. If they are all conceptually similar you might want to use sub-labels. For example, you might find that a category you’d called <em>Professional mailing lists</em> was getting too much diverse mail for one category, and choose to divide it up into departmental announcements, professional conference emails, visiting speaker announcements, etc.</p></li>
+<li><p><em>Having categories come and go.</em> Categories don’t need to be forever. For example, you might create a category for email related to a specific project, and then get rid of it once the project is completed.</p></li>
+<li><p><em>Avoiding a confusion between two categories.</em> Suppose you have a category for email containing receipts for purchases, and also a travel category. What happens if you see travel-related receipts in <em>Receipts</em> but you really want them under <em>Travel</em>? Easy. In your description of the more general <em>Receipts</em> category, you can try adding wording like “This should <em>not</em> include receipts for airfare, hotels, car rentals, or anything else related to travel. Those should go in the <em>Travel</em> category.”</p></li>
+<li><p><em>Identifying specific individuals.</em> There may be people who have special status and should have their own category. For example, I have a category called <em>Mom</em>. In the instructions I explicitly identify her name and her email address, and I say explicitly that any mail from her should go in this category regardless of what it’s about. (You might want to consider one for your partner or spouse while you’re at it…)</p></li>
+</ul>
+<h4 id="let-low-priority-categories-build-up-and-handle-all-at-once">Let low-priority categories build up and handle all at once</h4>
+<p>If you have a category that doesn’t require fast responses, it can be helpful to let it accumulate messages over some period of time and then deal with the whole category. The reason is that working within a single context is easier and more efficient than constantly context-switching.</p>
+<h4 id="use-labels-for-to-do-lists-also">Use labels for to-do lists also</h4>
+<p>There are people who are good at maintaining to-do lists, often using handy tools like <a href="">Todoist</a>. And then there are sad, sad people like me whose lives are driven by what’s in their email, occasionally supplemented by randomly located post-its. I’ve tried keeping real to-do lists. Honestly. Lots of times. It’s never worked.</p>
+<p>However, JaneMail is offering what might finally be a decent compromise solution. In my Gmail I’ve created a <span class="citation" data-cites="do">@do</span> label (just like <span class="citation" data-cites="jane">@jane</span>, the at-sign helps ensure the label will appear near the top if you already have lots of other labels). Nested under <span class="citation" data-cites="do">@do</span>, I have five labels, for levels of timing. While I am going through my JaneMail in an orderly way thanks to the labels that were assigned, if a message requires follow-up I just move it from its current label to the appropriate to-do label. For example, this is what my <span class="citation" data-cites="do">@do</span> labels look like right now:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td>▾ <span class="citation" data-cites="do">@do</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>  <code>1-today</code></td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td>  <code>2-this_week</code></td>
+<td>5</td>
+</tr>
+<tr class="even">
+<td>  <code>3-within_weeks</code></td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>  <code>4-keep_on_radar</code></td>
+<td>9</td>
+</tr>
+<tr class="even">
+<td>  <code>5-long_term_radar</code></td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p>Notice that the <span class="citation" data-cites="do">@do</span> label exists outside of JaneMail’s labels, so even if I got rid of all labels from <span class="citation" data-cites="jane">@jane</span> down I wouldn’t lose this to-do list organization.</p>
+<p>My day to day use of JaneMail now involves going through my labeled mail, and then for each message doing one of the following: (a) delete, (b) archive, (c) handle immediately, or (d) move to one of the to-do list categories (which, if you do this by <em>moving</em> the message while looking at a category, also removes that category label). And, if I’m feeling paranoid about missing emails, it’s really easy to make sure I’ve seen all the things that <em>have</em> been labeled, but which I have <em>not</em> yet looked at in order to take one of the above actions. I just put this in the search bar:</p>
+<p>Labeled by Jane and still in my inbox:</p>
+<pre><code>label:@jane in:inbox -label:@do/1-today -label:@do/2-this_week -label:@do/3-within_weeks -label:@do/4-keep-on_radar -5:@do/long_term_radar  </code></pre>
+<p>This won’t completely solve email overload, of course, but it shifts things away from just sitting in my inbox unhandled to at least having them sit within a category or, ideally, within a to-do list.</p>
+<p>(Yes, I know there are Gmail features plus probably three zillion different plug-ins that people use to connect between their email and tasks they need to do. I’m telling you, I’ve tried.)</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h4 id="what-if-i-need-to-stop-a-janemail-run-in-the-middle">What if I need to stop a JaneMail run in the middle?</h4>
+<p>No problem. Just use ctl-C like you would for any program. Run it again at your leisure and it will skip processing any messages it had already processed. (Unless you give it the <code>--reprocess</code> flag.)</p>
+<h4 id="im-seeing-messages-about-an-error-and-the-program-retrying-whats-that">I’m seeing messages about an error and the program retrying… what’s that?</h4>
+<p>The most likely cause of this is failure to connect to the Gmail API, which can happen intermittently, e.g. owing to network issues or because your authentication has expired. JaneMail is set up to detect when such errors occur, and try again a couple of times. Let it do that.</p>
+<p>Note that if the connection problem involved your authentication having expired, JaneMail might bring you back to the step from the installation instructions where a browser window comes up and you have to click a few times to confirm you’re allowing JaneMail access to your mail. Just follow those instructions over again.</p>
+<p>After a few retries, JaneMail will give up if it hasn’t succeeded and you’ll get a python error of some kind. Hopefully if you wait a little bit and run the program again it will work. If not, you’re probably encountering an actual bug or possibly something has changed in your environment.</p>
+<h4 id="im-seeing-a-warning-message-about-the-input-looking-like-a-filename">I’m seeing a warning message about the input looking like a filename</h4>
+<p>Occasionally you might get an error like this: <em>The input looks more like a filename than markup. You may want to open this file and pass the filehandle into Beautiful Soup.</em> This occasionally happens and can safely be ignored. If JaneMail can’t succeed in extracting the body of the email message, it will do the best it can with just the sender, recipient, and subject line.</p>
+<h4 id="whats-the-janemailunknown-label-about">What’s the <span class="citation" data-cites="janemail/unknown">@janemail/unknown</span> label about?</h4>
+<p>Little known (ok, widely known) secret: sometimes LLMs are crappy at following instructions, especially when it comes to the format of the output. If this label is assigned, it means that the LLM didn’t return its response in the format it was told to, so there was no way to figure out what category it assigned – and in fact it almost never has succeeded in assigning a category at all. In early development this used to happen a lot for long email messages, because by the time the LLM reached the end of the message it had “forgotten” the instructions for how to format the output. The quick (and, apparently, common) solution for this is to truncate the input (in this case the body of the email message). That’s why there’s a <code>--truncate</code> argument that defaults to 1500 characters, which is around 250 words for English. This seems to work well and I strongly recommend leaving that parameter alone.</p>
+<p>Another possibility, though less likely, is that the response came back from the LLM ok but some other kind of error occurred when attempting to create and/or apply the label. In those cases JaneMail catches the error and falls back on using <em>unknown</em>.</p>
+<h4 id="whats-with-all-the-sub-labels-under-batches">What’s with all the sub-labels under <em>batches</em>?</h4>
+<p>By default, every time JaneMail is run it assigns a specific batch label to the messages it’s processed, which includes a timestamp for the start of the run and the label that was used to retrieve messages (again, by default, but see the optional <code>--batch_label</code> argument). This enables you to use Gmail search with <code>label:@jane-batches-&lt;batch_label&gt;</code> to find any messages labeled on that run. If you’re annoyed with those piling up, at any time you can click on the vertical ellipsis (<strong>⋮</strong>) to the right of the <em>batches</em> sub-label, and select <em>Remove label</em>. All batch labels under there will be removed by Gmail from any messages where they have been applied and the <em>batches</em> sub-label and all its sub-sub-labels will be removed. The next time you run JaneMail it will start over again with the batch labels.</p>
+<h4 id="what-if-i-want-to-get-rid-of-a-label">What if I want to get rid of a label?</h4>
+<p>One way to do this is to follow the process in the previous question. Just click the vertical ellipsis to the right of the label (<strong>⋮</strong>) and remove the label. It will be taken off any emails it applied to and will cease to be a label for this account.</p>
+<h4 id="what-if-i-want-to-clean-up-a-whole-bunch-of-labels">What if I want to clean up a whole bunch of labels?</h4>
+<p>The most likely scenario for this will be a build-up of LLM-generated sub-labels under <em>Other</em>. If you’re annoyed with those piling up, at any time you can click on the vertical ellipsis (<strong>⋮</strong>) to the right of the <em>Other</em> sub-label, and select <em>Remove label</em>. <em>Other</em> and all labels under it will be removed by Gmail from any messages where they have been applied and labels removed. The next time you run JaneMail it will start over again.</p>
+<p>Otherwise, if you want to do some cleaning up and get rid of a bunch of labels, I recommend clicking on the gear symbol near the top right in your Gmail browser, then choose <em>See all settings</em>, and then choose <em>Labels</em> at the top. This will show you all your labels. Unfortunately there’s no way to bulk-remove labels, but you can get into an efficient groove (at least if you’re right handed) by clicking <em>Remove</em> with the mouse with your right hand and pressing <em>Return</em> with your left hand to confirm. Just make sure you’re aware that when you get rid of a label, that means that label is being taken off of any messages that it was previously assigned to. Once you’ve confirmed, there’s no way to undo that.</p>
+<h4 id="what-if-i-want-to-forget-about-janemail-altogether">What if I want to forget about JaneMail altogether?</h4>
+<p>If you remove the top-level <em><span class="citation" data-cites="jane">@jane</span></em> label from your account, that label and all the labels below it om the hierarchy are deleted and all those labels are also removed from any emails they were applied to. I view this reversibility – without danger of affecting anything else – as an important feature of JaneMail.</p>
+<p>As noted above, one particularly useful application of this is when you first start using JaneMail, to iterate a few times through some collection of test messages refining your instructions.</p>
+<p>If you have JaneMail to create drafts with canned replies, they’ll still be in your drafts folder even after you’ve gotten rid of the <em><span class="citation" data-cites="jane">@jane</span></em> labels, although you’ll no longer be able to distinguish them from other drafts using the <em><span class="citation" data-cites="jane">@jane</span>/<span class="citation" data-cites="Draft">@Draft</span></em> label.</p>
+<h4 id="what-if-the-llm-is-making-mistakes">What if the LLM is making mistakes?</h4>
+<p>In case you haven’t figured it out, I strongly believe that <em>you should never, ever trust an LLM for anything important</em>. That’s why JaneMail is so restricted in what it does – no automatic generation of replies, no automatic deletion of messages, none of that stuff. I won’t build that kind of behavior into code I write. Maybe someday, when the LLM can give me a reliable estimate of how confident I should be in what it’s generated for that specific case, so that I can, for example, set my required confidence for taking riskier actions on a category by category basis. (Delete spam? Sure. Auto-reply to mail from my wife? Um, no.)</p>
+<h2 id="who-is-jane">Who is Jane?</h2>
+<p>The name Jane was not chosen arbitrarily. If you know me, you’re welcome to offer some hypotheses and I’ll let you know if you’re right or not.</p>

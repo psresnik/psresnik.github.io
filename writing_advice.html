@@ -1,0 +1,47 @@
+<html>
+<h1>Some advice on writing well for NLP</h1>
+
+My former grad student Chris Dyer wrote to me recently to ask if I could remind him of some of the useful editorial advice I'd given him while he was writing his dissertation. Made me feel all warm and fuzzy to think it was valuable enough that he wants to pass it on to his own students.
+
+A lot of my process for helping students improve their writing happens in the moment, very much on a case by case basis.  But here are a few principles that I think are worth noting.
+
+<h2>Strong writing</h2>
+
+<ul>
+<li> <strong>Feeling/thinking verbs.</strong>  Avoid "we think", "we believe", etc.  If you're putting it in your paper, it's because you believe it or think it's true, and these do nothing but weaken or hedge.
+<P>
+
+<li> <strong>"Present" verbs.</strong>  If I <em>present</em> an algorithm to you, am I presenting someone else's work that existed before, or my own novel contribution?  Avoid wording that is ambiguous and aim for strong verbs that emphasize your particular contribution.  
+<P>
+
+<li> <strong>Using strong verbs.</strong>  For algorithms, models, etc., it's must stronger to <em>introduce</em> something new than simply to <em>propose</em> it, although <em>propose</em> is good early in the paper for a hypothesis that you then <em>support</em> with results, allowing you to claim that you have <em>validated</em>, <em>verified</em>, or <em>demonstrated</em>. In general for results, it's strong to <em>demonstrate</em> and <em>show</em>, although there are also appropriate places for, say, having <em>found</em> something to be true or, in the context of something more exploratory or inductive, having <em>seen</em> some behavior or pattern.   Unless it's an actual proof, avoid <em>prove</em>, and unless you're Columbus, avoid transitive <em>discover</em> <em>NP</em>, although with a sentential complement <em>discovered that [clause]</em> is similar to <em>having seen</em>.
+<P>
+
+<li> <strong>Passive voice.</strong>  There is nothing the least bit wrong with passive voice when it is used appropriately.  (For example, there is no reason whatsoever for me to modify the previous sentence to say "when one uses it appropriately".)   For chapter and verse on this, see Pullum, <A HREF="http://www.lel.ed.ac.uk/grammar/passives.html">"Confusion over avoiding the passive"</A>, http://www.lel.ed.ac.uk/grammar/passives.html; it's a must-read.
+<P>
+
+<li> <strong>Academic "we".</strong>  This is somewhere between a matter of taste and a religious issue, so your mileage may vary.  However, if you're doing a practice presentation or defense (or sometimes even the real thing) and a certain colleague of mine is in the audience, and you use "we", you can expect a question about which pieces of the contribution are yours and which should be attributed to your advisor.  Personally, I prefer "I" for dissertations and in single-authored papers I tend to avoid the issue when possible by using alternative phrasing, e.g. passive ("a corpus of 200M words was obtained by..."), non-animate subjects ("The results of Experiment 1 demonstrate..."), nominalizations ("After sentence-breaking and tokenization..."), etc.  That said, I do think it's fine to use an inclusive "we" to provide an informal tone that brings together author and audience, e.g. "When we take a look at the output of Algorithm 1, ...".  (Notice that if past tense <em>took</em> had been used instead of present tense <em>take</em>, this would have been an academic rather than inclusive "we".)
+<P>
+
+<li> <strong>The "story" in a paper should be organized logically, not chronologically.</strong>  Nobody needs to know that you actually executed Experiment 1 a month after Experiment 3.  The logic of the argument in the paper should dictate the structure.  There are exceptions, e.g. perhaps analysis of Experiment 2 led to some new or expanded ideas that were then tested in Experiment 3, but notice that in this case the logical progression and the chronological progression coincide.
+<P>
+
+<li> <strong>Nobody cares about debugging or implementation.</strong>  Implementation details belong in documentation or, if they're really salient for the paper, in an appendix.  Unless the paper is about data structures, programming language choice, etc., go with <A HREF="http://en.wikipedia.org/wiki/David_Marr_(neuroscientist)#Levels_of_analysis">Marr</A>'s computational or algorithmic levels in your description, not the physical/implementation level.
+<P>
+
+<li> <strong>Be generous in your citations.</strong>  People who have done related work might well be your reviewers.  Plus it's the right thing to do.  'Nuff said.
+<P>
+
+<li> <strong>Eschew obfuscation.</strong>  Yes, you can save a whole lot of space by condensing a ton in between \begin{algorithm} and \end{algorithm}.  But not everyone (read: not every reviewer) enjoys having to work through the line-by-line details of an algorithm.  Make sure the text has plenty of plain language and be generous with your prose explanation of what's going on.  And try to avoid any Greek letters that people might not know how to pronounce.
+<P>
+
+<li> <strong>Be explicit about having separated training and test data.</strong>  This is a pet peeve of mine.  Yes, everyone is supposed to remember this.  But make sure your description makes it clear that you did.
+<P>
+
+<li> <strong>Explain why you chose the parameters you chose.</strong>  You used 50 topics for LDA?  Why not 20 or 100?  Oh, and if the answer is not that you either decided a priori or tuned on held-out data, but rather that it gave you the best results on your test data, you'd better see the previous point: you are reporting a tainted experiment.  You can un-taint it somewhat by reporting the results for the other values you tried also -- but then you should be prepared for a reviewer to ask why we should believe 50 will be the best value on the next, previously unseen dataset.  (Better yet, do the next experiment fixing 50 in advance and show that the choice generalized to another case.)  If all else fails, appeal to previous literature and choose parameter values that can be described as typical in prior work.
+<P>
+</ul>
+
+At this point I realized I was veering into "grumpy old man" territory and decided to stop...
+
+</html>

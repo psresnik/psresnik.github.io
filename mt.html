@@ -1,0 +1,150 @@
+
+
+
+<HTML>
+<HEADER>
+<TITLE>Readings for the MT Initiate</TITLE>
+</HEADER>
+
+<BODY bgcolor="#ffffff">
+<H1>Readings for the MT Initiate</H1>
+
+I am asked more and more frequently by people, such as new graduate
+students potentially interested in machine translation, what they
+might read to get up to speed.  It's always difficult to find just the
+right balance between overview papers and technically dense material,
+but (with help from Adam Lopez) here is my current list of a short
+series of papers to read.
+<P>
+For a very good collection of background material, particularly about
+the history of machine translation, also see
+<A HREF="http://ourworld.compuserve.com/homepages/WJHutchins/">Johns
+Hutchins's publications on machine translation</A>.
+<P>
+For people in a big hurry to get current, read just the starred items.
+
+<H2>Pre-Statistical Machine Translation</H2>
+
+<UL>
+<P>
+<LI> Bonnie J. Dorr, Pamela W. Jordan and John W. Benoit,
+     <A HREF="http://citeseer.ist.psu.edu/555445.html">
+     A Survey of Current Paradigms in Machine Translation</A>. 1998.
+     Includes a historical overview, challenges in machine
+     translation, and a reasonably comprehensive overview of
+     architectures, paradigms, and evaluation prior to statistical MT.
+</UL>
+
+<H2>First Generation Statistical MT: The IBM Models</H2>
+
+<UL>
+<P>
+<LI> Kevin Knight, <A
+     HREF="http://www.isi.edu/natural-language/mt/aimag97.ps">
+     Automating Knowledge Acquisition for Machine
+     Translation</A>. 1997.  This is a very general overview of
+     statistical MT from AI Magazine in 1997.  I like the way it
+     introduces the ideas in a hands-on way.
+
+<P>
+<LI> *Kevin Knight, <A
+     HREF="http://www.isi.edu/natural-language/mt/wkbk.rtf">A
+     Statistical MT Tutorial</A> (unpublished).  This is a hands-on
+     walk through statistical MT, covering IBM Models 1-3.  It is more
+     comprehensive and detailed than the 1997 article, but still very
+     accessible.
+
+<!--
+<P>
+<LI> Kevin Knight and Daniel Marcu, <A
+     HREF="http://www.isi.edu/natural-language/mt/icassp05.pdf">Statistical
+     Machine Translation in the Year 2004</A>.  This is a 4-page paper
+     from earlier this year that gives a run-down of current
+     approaches.  Due to its length it doesn't have much technical
+     content and isn't really detailed enough to serve as a useful
+     survey; but I think it's a valuable overview for someone who has
+     the general concepts figured out and who needs a good
+     bibliography to work from.
+-->
+</UL>
+
+
+<H2>Second Generation Statistical MT: Phrase-Based Models</H2>
+
+These approaches currently still dominate the state of the art (as of
+late 2006), although syntax-based models, below, are the wave of the future.
+ 
+<UL>
+<LI> *Adam Lopez has written an excellent survey, submitted for
+     publication.  I can give it to people joining my group.  It's a
+     very good place to start; e-mail me to ask for it.
+<P>
+
+<LI> *Chris Callison-Burch and Philipp Koehn have good tutorial slides
+     for Introduction to Statistical Machine Translation, European
+     Summer School for Language and Logic (ESSLL) 2005, on <A
+     HREF="http://www.iccs.informatics.ed.ac.uk/~pkoehn/">Philipp's
+     publications page</A>.
+<P>
+</UL>
+
+The above are good introductory materials.  Here are some of the key
+references if you want to go into greater depth with original sources.
+<UL>
+<LI> For a detailed treatment of the most influential version of the framework: <A
+     HREF="http://acl.ldc.upenn.edu/J/J04/J04-4002.pdf">Franz Josef
+     Och, Hermann Ney. "The alignment template approach to statistical
+     machine translation."</A>
+<P>
+<LI> A concise introduction to the main ideas of decoding in phrase
+     based models is: Philipp Koehn, <A
+     HREF="http://www.iccs.inf.ed.ac.uk/~pkoehn/publications/pharaoh-amta2004.pdf">
+     Pharaoh: a Beam Search Decoder for Phrase-Based Statistical
+     Machine Translation Models</A> (AMTA 2004).
+<P>
+<LI> The tuning of top-level model parameters in many statistical MT
+     systems is done using minimum error rate training (MERT), introduced
+     by Franz Och, <A HREF="http://www.fjoch.com/acl03.pdf">"Minimum Error
+     Rate Training for Statistical Machine Translation"</A> (ACL 2003).
+     Note that the Och paper has some significant gaps, however.  I have
+     seminar notes that help fill in the gaps.
+<P>
+<LI> For a good example of the idea of using hypothesis reranking
+     (a.k.a. rescoring) to reorder an MT system's n-best hypotheses,
+     see Och et al. <A HREF=" http://www.fjoch.com/smorgasbord.pdf">"A
+     Smorgasbord of Features for Statistical Machine Translation"</A>
+     (HLT/NAACL 2004).
+<P>
+</UL>
+<P>
+
+
+<H2>Next Generation Statistical MT: Syntax-Based Models</H2>
+
+<UL>
+<P>
+<LI> See Adam Lopez's survey, above. 
+<P>
+<LI> *The approach we're taking at UMD, called Hiero, was introduced by
+     David Chiang, <A
+     HREF="http://www.umiacs.umd.edu/~dchiang/papers/chiang-acl05.pdf">A
+     hierarchical phrase-based model for statistical machine
+     translation</A>. Proc. ACL, 2005.  
+<P>
+<LI> For a brief introduction to the formal framework underlying
+     Hiero, see David Chiang, <A
+     HREF="http://www.isi.edu/~chiang/papers/synchtut.pdf">"An
+     introduction to synchronous grammars. Unpublished course
+     notes"</A>
+<P>
+<LI> People are exploring incorporating syntax into SMT models in a
+     variety of other ways.  I'd say the leading alternative to Hiero
+     is the ISI transduction approach.  A recent reference: M. Galley,
+     J. Graehl, K. Knight, D. Marcu, S. DeNeefe, W. Wang, and
+     I. Thayer, <A
+     HREF="http://www.isi.edu/natural-language/mt/scalable.pdf">
+     "Scalable Inference and Training of Context-Rich Syntactic
+     Models"</A>, (ACL-COLING, 2006) </UL> <HR>
+
+</BODY>
+</HTML>

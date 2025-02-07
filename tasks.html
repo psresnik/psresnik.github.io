@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title>What is an NLP "Task"?</title>
+</head>
+
+<body>
+<h1>What is an NLP "Task"?</h1>
+
+I've been spending a lot of time recently (where "recently" is measured in years), watching the way that NLP research gets done shift ever more firmly to the concept of "tasks", as opposed to "research questions" or "problems". A student has asked me how I'd define the idea of a "task" and rather than just replying on Slack I've decided to take the opportunity to use writing as a way of clarifying my own thoughts.
+<P>
+
+<h2>Research</h2>
+
+Before we get to tasks, let's go back to the basics: what is <em>research</em> in the first place?  The standard definition is that research involves systematic investigation designed to develop, or contribute to, <em>generalizable knowledge</em>. This might seem like it could be a challenging concept in disciplines like NLP that are oriented toward engineering, i.e. building computational artifacts that are intended to help solve real-world problems. But I don't actually think it's worrisome.  See <A HREF="https://users.umiacs.umd.edu/~resnik/mt_thoughts.html">why I stopped working on machine translation</A>, particularly the part about bridges under "Drive the technology, don't let the technology drive you", for discussion.   (As an aside, terminologically I view computational linguistics as the parent field, with natural language processing being its engineering sub-discipline, as distinct from the other currently nameless subdiscipline that is broadly concerned with increasing our scientific understanding of how human language works. Many NLP people agree with this characterization but not all.)  I guess maybe I should include that material here, re-tuned for the present conversation, but this is my first pass at writing this and for now I'm just going to include it by reference.
+<P>
+
+<h2>Research questions</h2>
+
+Ok, so that's research at a high level. A <em>research question</em> is a way of defining, as a goal, a specific piece of generalizable knowledge that you are aiming to produce. If you look at things said or written by great scientists like Richard Feynman or Daniel Kahneman, what you will find consistently is that their research questions are driven, absolutely fundamentally driven, by one thing: <em>curiosity</em>. <A HREF="https://xkcd.com/242/">XKCD number 242</A> does a perfectly lovely job capturing this in a single image:
+
+<P>
+<img src="https://imgs.xkcd.com/comics/the_difference.png" alt="XKCD 242, 'The Difference'" width=300>
+
+<P>
+Feynman talks about <A HREF="https://www.amazon.com/Pleasure-Finding-Things-Out-Richard/dp/0465023959">the pleasure of finding things out</A> -- to him, applications are nice and all, but the really interesting part of research is the transition from <em>not</em> knowing something to <em>knowing</em>. In line with Feynman's thinking, particularly about the crucial value of uncertainty, Stuart Firestein's excellent little book <A HREF="https://www.amazon.com/Ignorance-Drives-Science-Stuart-Firestein/dp/0199828075">Ignorance: How It Drives Science</A> is a must-read.  So is Herbert Simon's venerable book, <A HREF="https://www.academia.edu/42734698/The_Sciences_of_the_Artificial_Third_edition">The Sciences of the Artificial</A>, where in the first part he lays out quite clearly the difference between science and engineering, while still also making it clear that it's still coherent to talk about <em>scientific</em> research questions that involve human-made artifacts.
+
+
+<h2>Problems</h2>
+
+In science, answering a research question isn't necessarily going to help solve any problems in the real world. Sometimes the answer may lead to short-term applications, sometimes to applications much further in the future, and sometimes no applications at all. And for scientific questions that's fine; the definition of success has to do with <em>knowing</em> things, not <em>doing</em> things.
+
+<P>
+Engineering, though, is a different story: it <em>is</em>, fundamentally, about doing things.  Specifically, I would argue, engineering-oriented <em>research</em> is about <em>solving problems</em>.  If you do an amazing piece of engineering that's not connected to solving a real-world problem of some kind (or at least enabling progress toward solving a real-world problem), I have a hard time seeing that as a research contribution.  To say this another way, I believe the connection to some identifiable real-world problem is a necessary condition for a piece of engineering work to constitute research. Not sufficient, mind you, since for that you also need a contribution to generalizable knowledge; again see the bridge-related discussion I allude to above. (Consistent with that discussion, let me also emphasize that amazing pieces of engineering can serve important purposes without constituting research; for example, my friend <A HREF="https://www.ted.com/talks/janet_echelman_taking_imagination_seriously">Janet Echelman</A> has made a remarkable career of doing some remarkable engineering to produce wonderful art.) 
+
+<P>
+With that in mind, I will define the idea of a <em>problem</em>, in the context of engineering research, as a <em>category of unmet real-world needs</em>. Notice that I explicitly include the word "category" in order to distinguish that idea from specific instances of a real-world need. "How do we build a bridge over this part of the Potomac River" is a real-world need that gives rise to engineering questions and it's even a "problem" in general parlance, but I'm suggesting a more specific sense of the word "problem" for purposes of discussing <em>research</em> because without it we don't get the crucial idea of generalizability. A problem related to the Potomoac River bridge example, in the sense that I mean, might be "How do we build bridges for automobile traffic over rivers in an area with a <A HREF="https://www.ipsinternational.org/is-washington-dc-climate-zone-4a/">humid subtropical climate</A> that's in a <A HREF="https://www.nrc.gov/docs/ML1513/ML15131A128.pdf">seismic zone with less than 0.1g ground acceleration</A>?"
+
+<P>
+The definition of a problem as a category of needs gives rise to a variety of pieces of information you need in order to make it well specified. These include things like the boundaries of applicability, e.g. building a bridge over a creek in Alaska would be excluded as an instance of the problem I just described, as would building a bridge to enable bicycles but not cars to cross.  Another key piece of information includes how you define success; for example, maybe it's essential that the bridge be able to weather up to a Category 4 hurricane but not Category 5. 
+
+<P>
+Probably the most important thing to note is that problems, as I have defined them, are messy -- precisely because they involve the real world. There's no way in the world to precisely specify every single thing about the category of bridge-building problem I'm talking about here, because the real world includes lots of things that may or may not be relevant.  Should my definition of the bridge-building problem include controlling the number of insects encountered on the bridge?  Probably not. (Though if you've ever experienced the <A HREF="https://www.tripadvisor.com/ShowUserReviews-g57603-d106596-r406140751-Assateague_Island_National_Seashore-Assateague_Island_Maryland.html">insects</A> you can encounter on the way to Assateague Island, you might reconsider and include some criterion related to drivers not driving off the bridge because they're being attacked by flies and mosquitoes.) Should it include high wire fencing on the sides of the bridge? Might not have thought of that, but what if it's a high bridge in a setting that's attractive to people who are suicidal?  All this is to say that no problem definition is going to be perfect. (I'll also add that just because progress is made toward solving a problem effectively, that doesn't mean solutions will be <em>adopted</em>; questions related to adoption of solutions are the province of <A HREF="https://bmcpsychology.biomedcentral.com/articles/10.1186/s40359-015-0089-9">implementation science</A>.)
+
+
+<h2>Tasks</h2>
+
+Now, finally, we can get to the original question, "what is a task"?  I want to propose that <em>a task is an abstraction of a problem that enables us to compare potential solutions to that problem in order to assess progress</em>.  I would argue that specification of a task requires the following:
+
+<ul>
+
+<p><li> <strong>Identifying the problem that the task is an abstraction of.</strong>   I'm making a pretty strong claim here, which is that a task <em>has</em> to be connected with some problem, which by definition means connected with (a category of) real-world needs.  What this means is that you can't just make arbitrary tasks up in order to solve them. The connection to solving a problem is what makes a task worth doing. Conversely, I don't see the value in inventing a task and solving it, even if you're solving it really well, without it being connected to a problem that's worth solving.  
+
+  <ul>
+    <p><li> As one example, there's a category of real-world needs that involves trying to find <em>a piece</em> of relevant information, e.g. whether Bethesda, Maryland currently has indoor masking requirements, in a big document collection. 
+    <p><li> As another example, there's a different category of real-world needs that involves trying to find <em>all</em> the relevant items in response to a question, e.g. all the Bethesda, Maryland Chinese restaurants that have outdoor dining. 
+  </ul>
+
+<P>
+Crucially, note that these are two different problems.  The first one involves getting back a single piece of information -- if a system returns a single web page with the answer it doesn't matter whether or not it also identified all the other pages that also contain the information, you've still produced a perfect solution.  On the other hand, the second problem involves a need for all the relevant info; if you missed a page with a relevant restaurant, you've failed to solve it perfectly.
+
+
+<!--
+<P>
+As an example, I'm deeply skeptical of the value of much or even perhaps most engineering work on chatbots. Here I don't mean intelligent agents, where the technology helps human beings address a real-world need; rather, I mean the "pure" sense of chatbot where the goal is nothing more than to engage in "natural" conversation. Yes, it's possible to build these things, and to measure properties of what they do like repetitiveness or how long a human being is willing to continue talking to it.  But I am pretty much at a loss as to how improving those capabilities translates into progress on real-world problems of any kind, or what we would learn even if we built a chatbot that was an absolutely perfect conversationalist on criteria like those.
+-->
+
+<p><li> <strong>Identifying a scope of data to which the task applies, instantiated as a dataset (or a set of datasets)</strong>. This is part of the abstraction process. 
+
+  <ul>
+    <p><li>For example, maybe the real-world <em>problem</em> might be to automatically flag COVID-19 misinformation. But for a task associated with this problem you have to make choices about data.  Are we talking about misinformation on Twitter? In news articles? In Congressional floor speeches?  
+    <p><li>As another example, maybe the real-world problem is to improve web search output for people who are trying to figure out where to go on vacation. Again, choices need to be made about data.  Is the scope of the search a sample from a large web crawl with all kinds of documents?  Reviews from TripAdvisor and Yelp?  Reddit threads about vacation experiences?
+  </ul>
+
+
+<p><li> <strong>Identifying the input and output characteristics/requirements of the engineered artifacts that are going to be compared</strong>. This part is often what we mean when we use the term "task" loosely in NLP.  
+
+  <ul>
+    <p><li> As an example, a Chinese-English MT "task" might be translating a given dataset of Chinese sentences (input) into English sentences (output). This too is part of the abstraction process -- notice, for example, that this particular specification involves choices about the units of translation (typically individual sentences or sometimes "segments" as defined for a dataset), saying that no document-level context will be used, and defining the output as a single-best translation.
+    <p><li> Alternatively, a Chinese-English MT "task" motivated by the same problem might be translating a set of Chinese documents into English documents.
+
+    <p><li> For the web search example, the input might be a query and the output might be a binary relevance value for every document in the collection.
+
+    <p><li> Alternatively, the input could be a query but the output could be defined as a relevance <em>score</em> for each document in the collection.
+
+  </ul>
+
+<p><li> <strong>A way to measure how well a proposed method did.</strong>  To emphasize again, one can choose to define metrics using many different possible abstractions of the problem.  For example, suppose that: 
+
+  <ul> 
+    <p><li>The problem this task is intended to help us make progress on involves finding a piece of relevant information on the web, like a page describing Bethesda, Maryland's masking requirements.
+    <p><li>The dataset for this task is some clearly specified subset of documents in the April 2021 Common Crawl.
+    <p><li>The input for this task is a text query, and the output is a relevance score for each document in the collection.
+  </ul>
+
+<P>
+At this point, there are still lots of choices of metric, and the choice depends crucially on the real-world properties/scenarios that you are choosing to include or not as part of your abstraction.  If we needed all and only the pages containing an answer, we might threshold somehow on score and use precision, recall, and F-measure; but that's not a good fit for this real-world problem scenario -- there's no need for <em>all</em> the pages that contain the info we want. What about mean average precision?  That seems better, since it takes the scores/ranking of the documents into account.  But wait a second -- what if in the real world it's wildly unlikely that anyone is going to continue looking past the first 10 returned items?  Well, in that case, precision-at-10 or success-at-10 sound like good choices.  But wait again -- what if instead people don't have a fixed point of 10 documents where they stop reading, but instead a suitable abstraction is that they have some time budget they're willing to allocate?  Well, in that case time-biased gain would seem like a better way to go.
+<P>
+The point here is that the task metric (like the data, like the input/output definition) is part of an abstraction -- a kind of simulation, if you will -- of the relevant aspects of the real-world problem the task is associated with.  There is no one "right" way to do this abstraction, but some formulations (data, I/O, metrics) are a closer fit to the real-world problem than others.  I <A HREF="mt_thoughts.html">got out of MT</A> in large part because I felt like the dominant paradigm for <em>machine translation</em> research and evaluation had strayed too far from the actual problems/use cases in the real world.
+
+
+<p><li> <strong>A criterion for what constitutes "better"</strong>. Suppose we've got all of the above well specified, and we're generating numbers of some kind for the methods being used to approach a task.  How do we decide what constitutes a better solution?  
+<P>
+One important part of the answer to this question involves making reasonable choices for lower and upper bounds.  For upper bounds, often we default to thinking 100% is the right comparison, but for many problems there's sufficient variance in the data that 100% simply isn't attainable and the upper bound should be lower.  Human chance-corrected inter-annotator agreement is one very reasonable choice a lot of the time. But sometimes the upper bound is defined by the real-world problem motivating the task; for example, perhaps independent human subjects research has demonstrated that people will consider a web search system "good enough" if they get the answer within the top-10 hits at least 80% of the time.  In that case, success-at-10 of .8 could be viewed as the upper bound target.
+<P>
+For lower bounds, I think the key question is to find a method that's easy and available, and if you can't beat that you should go back to the drawing board and do some more work. To take an old example circa the early 1990s, in part of speech tagging for English, is 91% per-word accuracy good?  Seems pretty high, except that if you assign each word its most frequent tag you get 90%, so why would you care about investing all that extra work for that small gain?  
+<P>
+Closely related to lower bounds is the question of the prior work you compare to. One of the big problems with current deep learning papers is that they often don't even bother to compare against non-deep-learning methods on the same task. If you have prior results or literature showing that your neural baselines are better than traditional methods for a task, then that's fine --- noting that this may not continue to be true if the experimental conditions change. But the point is that the comparison should be made not to the best available neural method, but to the best available method, period.  et
+<P> 
+As one more issue related to the definition of "better": it's important to distinguish <em>statistically significant</em> from <em>meaningful</em>.  You can have results that are statistically significant with an absolutely meaningless effect size.  What's the basis for deciding what's "meaningful"?  Yep, that takes us right back to the fact that tasks need to be grounded in problems, which are about real-world needs.  Those needs are what should be guiding the decision about what constitutes a meaningful gain.
+<P>
+Finally, it's worth noting here that there's an emerging literature arguing that we need to get beyond algorithmic effectivenesss on tasks to consider other factors; that "better" really needs to be defined in a multivariate way that takes into account things like the quantity of resources required for training.
+The 2020 EMNLP <A HREF="htps://web.stanford.edu/~jurafsky/pubs/2020.emnlp-main.393.pdf">paper</A> by  Ethayarajh and Jurafsky is really important reading in that regard. 
+</ul>
+
+<h2>Take-aways</h2>
+
+So, that's my answer to the question. I would propose that a "task" is a 5-tuple:
+
+<ul>
+<p><li> the real-world problem you actually care about
+<p><li> the dataset that's going to be used
+<p><li> the definitions of input/output that methods will need to use 
+<p><li> the measurements that will be used to quantify performance
+<p><li> the criteria for what constitutes "better", i.e. progress
+</ul>
+
+<P>
+The implications of what I've written above, however, are bigger than that.  I would argue that the widely discussed hyperfocus on SOTA and leaderboards is a reflection of a much larger and worrisome issue: there are whole generations of smart Ph.D. students who are never learning how to think about problems -- who actually think that developing new methods to improve scores on tasks <em>is</em> what it means to do research. Personally, I place a lot of value on particular kinds of <A HREF="impact.html">impact</A>, but I'm not even talking about that.  The tragedy is not about the problems that people are choosing to work on, it's that they're <em>not working on problems in the first place</em>.  They're working on tasks, and they're being incentivized to not spend time thinking deeply about the problems the tasks might be connected to, or even to care whether tasks are connected to real-world problems in the first place.
+<P>
+I suppose ultimately what I've written here (or what I'm writing, since this is a work in progress) is a polemic. I think most people would agree that scientific research is not scientific research without curiosity; to say something is science is not coherent unless it's driven by the desire to understand something.  I'm arguing that engineering research (of which NLP is a species) is not engineering research without problems -- not <em>tasks</em>, dammit, <em>problems</em>! -- which by definition means a connection, at least in principle, to making progress on some kind of real-world need. 
+
+
+</body>
+</html>

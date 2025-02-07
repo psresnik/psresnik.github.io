@@ -1,0 +1,8 @@
+See ../Parking_Lot for material temporarily out of the repo for space reasons.
+
+To see size of what git would push to a repo:
+
+  git count-objects -vH
+
+
+

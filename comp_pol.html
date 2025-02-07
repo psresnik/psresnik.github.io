@@ -1,0 +1,201 @@
+<html>
+
+<body>
+<FONT FACE="Arial, Helvetica, Geneva" SIZE=-2>
+
+<!--
+    <div id="headerContainer">
+        <div class="header">
+            <A HREF="http://reactlabs.org"><img class="header-logo" src="logo.png" alt="Logo" /></A>
+            <h5>Don't just watch. React.</h5>
+        </div>
+        <div style="clear:both;"></div>
+    </div>
+    -->
+
+<h2>Philip Resnik's research in computational political science</h2>
+
+Computational political science is emerging as an incredibly
+interesting research area, one that shares the momentum that's
+building in <A
+ HREF="http://gking.harvard.edu/files/LazPenAda09.pdf">computational
+social science</A> more generally.  I've been finding myself involved
+in a number of <A HREF="#media">public conversations</A> about this
+topic, and in my work I've been focusing on three main things:
+    <ul>
+      <li>    <A HREF="#reactlabs">real-time polling</A>,
+      <li>    <A HREF="#influence">computational modeling of influence</A>,
+      <li>    <A HREF="#sentiment">sentiment analysis and framing</A>.
+    </ul
+<P>
+For more general information about me or my research, see my <A HREF="http://umiacs.umd.edu/~resnik">home page</A>.
+
+<hr> 
+<A NAME="reactlabs">
+<h3>React Labs: real-time polling</h3>
+
+One of the big challenges facing data-driven work in political science
+is gathering good data.  <A HREF="#sentiment">Analyzing Twitter</A>
+is all well and good, but it has significant disadvantages, too.  What
+you'd really like is something that combines the control you get in
+focus groups or polls (particularly the ability to focus on particular
+questions) with the large-scale, instantaneous reactions of social
+media populations.
+<P>
+I started the <A HREF="http://reactlabs.org">React Labs</A> project
+to create just that.
+<P>
+      In collaboration with political scientist <A
+ HREF="http://psfaculty.ucdavis.edu/boydstun/Boydstun/Home.html">Amber
+Boydston</A> (UC Davis) and user experience designer <A
+ HREF="http://jeffreykorn.com/">Jeffrey Korn</A>, I've been developing
+an app that lets people watch live events like political debates and
+speeches and react to them using their smartphones in real
+time. During the event, live charting is updated second by second to
+provide a dynamic picture of people's reactions.  The ambition is
+essentially to put a more sophisticated kind of
+<A HREF="http://blog.nielsen.com/nielsenwire/media_entertainment/dial-panel-weighs-in-on-palin-and-biden-debate/">Nielsen dial</A> in the
+hands of every smartphone user in the country.  It can also
+be used in more controlled settings -- for example, enabling the
+audience to provide real-time feedback to a speaker. (Yes, I plan
+to try this out during one of my own lectures very soon.)
+<P>
+<div style="width:1035px border:1px solid blue; padding:5px;">
+<img height=345 width=150 src="phase2_mockup.v1.jpg" alt="React Labs smartphone app" border:1px solid blue; float:left; />
+<img height=345 src="jan7_snapshot_with_caption.jpg" alt="January 7 debate example" border:1px solid blue; float:left; clear:left; />
+<img height=345 src="feb22_snapshot.png" alt="Feb 22 debate example" border:1px solid blue; float:left; clear:left; />
+</div>
+
+<HR>
+<A NAME="influence">
+<h3>Computational modeling of influence</h3>
+
+Who has control of the agenda in a political conversation, and what do
+they do with it?  Clearly if someone has the role of moderator, they
+exercise some control over what gets talked about.  But how strong is
+that control?  And can we detect and measure objectively when somebody
+takes control over the agenda in a conversation?
+
+Colleague <A HREF="http://umiacs.umd.edu/~jbg/">Jordan
+ Boyd-Graber</A>, grad student <A
+  HREF="http://www.cs.umd.edu/~vietan/">Viet-An Nguyen</A>, and I have
+ been developing computational models that analyze a conversation like
+ a political debate or an episode of <em>Crossfire</em>, and automatically identify both the
+ <em>topics</em> under discussion and the degree of <em>topic
+ control</em> that participants are exercising.
+<P>
+
+As an example, the automatic analysis of the Biden-Palin debate in
+2008 identifies that Gwen Ifill, the moderator, was the person controlling
+the topic most of the time (long gray bars in the "Shift" column), but
+it also automatically uncovers situations like turn 48 of in debate
+transcript, where Palin responded to a question about the mortgage crisis by
+talking about energy policy.
+<P>
+<div style="height:500px border:1px solid blue; padding:5px;">
+<img height=500 src="biden_palin.png" alt="Topic control example" border:1px solid blue; float:left; />
+</div>
+<P>
+Interestingly, if you look at the degree of topic control by all participants in the four 2008 presidential debates,
+you find that Palin had the strongest propensity among all the candidates to exert control over the topic being discussed,
+and you also find objective empirical support for the widespread perception that Ifill was a <A HREF="http://www.theatlantic.com/technology/archive/2008/10/your-vp-debate-wrapup-in-four-bullet-points/8887/">weak moderator</A>.  (Compare Biden and Palin to Ifill, below, then compare McCain and Obama to their moderators.)
+<P>
+<div style="height:200px border:1px solid blue; padding:5px;">
+<img height=200 src="topic_control_2008.png" alt="Topic control example" border:1px solid blue; float:left; />
+
+
+</div>
+<P>
+<HR>
+
+<A NAME="sentiment">
+<h3>Sentiment analysis and framing</h3>
+
+In their important 2008 <A
+         HREF="http://www.cs.cornell.edu/home/llee/omsa/omsa.pdf">book</A>
+        on the topic, Bo Pang and Lillian Lee pointed out that there
+        was a "land rush" starting in the area of sentiment analysis.
+        Today it's easy to find companies tracking sentiment about
+        brands and products in social media for business
+        purposes. (Outside of academia I'm lead scientist for one of
+        them, <A HREF="http://converseon.com">Converseon</A>.)  The
+        political world has caught on, as well, with lots of people <A
+         HREF="http://www.washingtonpost.com/mention-machine">tracking
+        mentions</A> of political candidates and some even <A
+         HREF="http://mashable.com/2012/01/03/washington-post-twitter-elections/">suggesting</A>
+        that automatic analysis of opinions on Twitter could be better
+        than traditional polling.  I have talked about the use of
+        sentiment analysis in political contexts, and some of the issues and hype
+        surrounding it, in some recent <A HREF="#media">public
+        discussions</A>.
+
+<P> In my current research, I'm less focused on straight
+positive-versus-negative sentiment analysis (though sentiment analysis
+for <A
+ HREF="http://umiacs.umd.edu/~resnik/www.umiacs.umd.edu/~jbg/docs/jbg-mlslda-2010.pdf">other
+languages</A> remains an active topic).  What's really got me excited
+is the idea of applying the same sorts of computational ideas to
+the related topic of <em>framing</em> -- that is, how the language we use can encourage
+taking a particular, often positive or negative, perspective on an
+issue.  (When this is done deliberately in political discourse,
+particularly by someone we disagree with, we often call it <A
+ HREF="http://en.wikipedia.org/wiki/Spin_(public_relations)">spin</A>.)
+<P>
+Framing is a subject that has received relatively little attention from a computational perspective.
+My student Stephan Greene did a nice <A HREF="http://www.umiacs.umd.edu/~sgreene/SGreeneDissertationFinalDist.pdf">dissertation</A> laying the foundations for a linguistically well founded approach to framing, focusing on the way that grammatical choices encourage particular interpretations, which we summarized in a 2009 <A HREF="http://umiacs.umd.edu/~resnik/pubs/greene_resnik_naacl2009.pdf">paper</A>.  (When my three-year-old says "Daddy, my toy broke" to de-emphasize his own role in what happened, he's exploiting the same linguistic strategy Ronald Reagan did when he famously said "Mistakes were made".)  In current work, colleagues and I are starting to develop computational models of this <em>syntactic framing</em> phenomenon, as well as <em>lexical framing</em> (e.g. the choice of whether to say <em>death tax</em> or <em>estate tax</em>), and models that treat framing as an <A HREF="http://en.wikipedia.org/wiki/Agenda-setting_theory#Framing_and_Second-level_Agenda_setting:_Similarities.2C_Differences.2C_and_Controversies">extension of agenda-setting</A>.
+<P>
+<HR>
+<A NAME="media">
+<h3>Public conversations about computational social science</h3>
+
+<ul>
+  <li> <strong>Upcoming.</strong>  I'll be giving a plenary lecture at the <A
+   HREF="http://aaal.org/displaycommon.cfm?an=1&subarticlenbr=64">2012
+  American Association for Applied Linguistics conference</A>,
+  entitled <A
+   HREF="http://aaal.org/displaycommon.cfm?an=1&subarticlenbr=67#Spin">The
+  Linguistics of Spin: A Computational Linguist's Forays into Social
+  Science</A>.
+<P>
+  <li> <strong>February 11, 2012.</strong>  I was really pleased to be included
+  among those quoted in discussions by the Wall Street Journal's
+  "Numbers Guy", Carl Bialik, about mining Twitter for public opinion,
+  including both the <A
+   HREF="http://online.wsj.com/article/SB10001424052970203646004577213242703490740.html">print
+  column</A> and the accompanying <A
+   HREF="http://blogs.wsj.com/numbersguy/mining-tweets-for-public-opinion-1118/">blog
+  post</A>.
+  <P>
+
+  <li> <strong>January 31, 2012.</strong> I had great fun guesting on <A
+  HREF="http://thekojonnamdishow.org/">the Kojo Nnamdi show</A> on
+ WAMU 88.5 in Washington DC, talking about <A
+  HREF="http://thekojonnamdishow.org/shows/2012-01-31/new-frontiers-political-polling-social-media-and-sentiment-analysis">New
+ Frontiers in Political Polling: Social Media and "Sentiment
+ Analysis"</A>.  We discussed computational analysis of social media
+ in the context of political campaigns, which was also the topic of the
+ post I did on <A
+  HREF="http://languagelog.ldc.upenn.edu/nll">Language Log</A> called
+ <A
+  HREF="http://languagelog.ldc.upenn.edu/nll/?p=3712">#CompuPolitics</A>;
+ we also briefly discussed the <A HREF="http://reactlabs.org">React
+ Labs</A> project, in which collaborators and I are developing a
+ smartphone app for large scale, real-time collection of people's
+ responses during live events like political debates.
+ <P>
+
+ <li> <strong>January 17, 2012.</strong> My <A
+  HREF="http://languagelog.ldc.upenn.edu/nll/?p=3712">#CompuPolitics</A> posting 
+  on the <A HREF="http://languagelog.ldc.upenn.edu/nll">Language Log</A> linguistics blog
+  offered a perspective on the hype surrounding social media analysis as the new way 
+  to do political polling.
+<P>
+  <li> <strong>November 6, 2011.</strong>  I gave the <A HREF="http://vimeo.com/32506363">keynote talk</A> at
+ the <A HREF="http://sentimentsymposium.com/">Sentiment Analysis
+ Symposium</A>, a regularly held technology/business event focused on sentiment
+ analysis in social media.
+</ul>
+<P>
+<HR>
+<P>
+</html>

@@ -1,0 +1,83 @@
+<HTML>
+<HEADER>
+<TITLE>UMD Reddit Suicidality Dataset</TITLE>
+</HEADER>
+
+<BODY bgcolor="#ffffff">
+
+<HR>
+<H1>The University of Maryland Reddit Suicidality Dataset</H1>
+<HR>
+<P>
+
+<h2>Overview</h2>
+
+The University of Maryland Reddit Suicidality Dataset has been constructed using data from <A HREF="http://reddit.com">Reddit</A>, an online site for anonymous discussion on a wide variety of topics, in order to facilitate research on suicidality and suicide prevention. The dataset was constructed from the <A HREF="https://www.reddit.com/r/datasets/comments/3mg812/full_reddit_submission_corpus_now_available_2006/">2015 Full Reddit Submission Corpus</A>, using postings in the <A HREF="https://www.reddit.com/r/SuicideWatch/">r/SuicideWatch</A> subreddit to identify (anonymous) users who might represent positive instances of suicidality. 
+<P>
+As we discuss in <A HREF="http://aclweb.org/anthology/W18-0603">Shing et al. (2018)</A>, annotation of users in this dataset for level of suicide risk (on a four-point scale of no risk, low, moderate, and severe risk) has yielded what is, to our knowledge, the first demonstration of reliability in risk assessment by clinicians based on social media postings. The paper also introduces and demonstrates the value of a new, detailed rubric for assessing suicide risk, compares crowdsourced with expert performance, and presents baseline predictive modeling experiments using the new dataset. 
+<blockquote>
+Han-Chin Shing, Suraj Nair, Ayah Zirikly, Meir Friedenberg, Hal Daumé III, and Philip Resnik, <A HREF="http://aclweb.org/anthology/W18-0603">"Expert, Crowdsourced, and Machine Assessment of Suicide Risk via Online Postings"</A>, 
+<em>Proceedings of the Fifth Workshop on Computational Linguistics and Clinical Psychology: From Keyboard to Clinic</em>, pages 25–36, New Orleans, Louisiana, June 5, 2018. 
+</blockquote>
+<P>
+The dataset is accompanied by documentation about its format. Briefly, it contains one subdirectory with data pertaining to 11,128 users who posted on SuicideWatch, and another for 11,129 users who did not. For each user, we have full longitudinal data from the 2015 Full Reddit Submission Corpus, including, for each post, the post ID, anonymized user ID, timestamp, subreddit, post title, and post body. In addition, we have two sets of human risk-level annotations for subsets of the users, including crowdsourced annotation (621 users who posted on SuicideWatch and 621 who did not) and expert annotations by four suicide assessment experts (245 users who posted on SuicideWatch, paired with 245 control users who did not). For the expert-annotated users, we also provide a consensus label using the Dawid-Skene (1979) model for discovering true item states/effects from multiple noisy measurements (Passoneau and Carpenter, 2014), which we view as expert-annotated ground truth for those users.
+<P>
+People using this dataset should make sure to read <A HREF="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0200162">Gaffney and Matias (2018)</A>. Published subsequent to Shing et al. (2018), this article provides caveats regarding the use of the 2015 Reddit Corpus related to missing data, which we are currently assessing.
+
+<h2>Dataset Availability</h2>
+
+People posting to Reddit are anonymous, but the dataset adds an additional layer of anonymization by replacing user names with unique identifiers (since, for example, a hypothetical user could still have chosen the username maryjanesmith1973.collegepark, identifying name, birth year, and location). The University of Maryland College Park’s Institutional Review Board has reviewed the use and sharing of this dataset and designated it as <A HREF="https://humansubjects.nih.gov/sites/hs/public_files/exemption_infographic_v4_hs_internet.pdf">Exempt Category 4</A>, i.e. research involving the collection or study of existing data if they are available or if information is recorded such that subjects cannot be identified.
+<P>
+Even with IRB approval for sharing, however, and even for an anonymous dataset, particular care needs to be taken with sensitive data of this kind (<A HREF="http://www.aclweb.org/anthology/W17-1612">Benton et al., 2017</A>). Therefore we have established a collaboration with the <A HREF="https://www.suicidology.org/">American Association of Suicidology</A> (AAS) to put in place a governance process for researcher access to the dataset, described below.
+
+
+<h2>Summary of governance plan</h2>
+
+A governance plan has been established involving a governance committee of five volunteers established by AAS, which includes Philip Resnik (lead investigator at University of Maryland) and four people affiliated with and/or designated by AAS. The AAS contact person regarding this dataset is Tony Wood, chair of the AAS Board of Directors.
+<P>
+Three of the five members of the governance committee, selected by the chair per availability, will review requests for access submitted in <A HREF="#requests">the format specified below</A>. Outcomes of the review include the following responses:
+<ul>
+<p><li> Approval. All three members approve, in which case the application is approved and Resnik will share the dataset with the researcher.
+<p><li> Questions. The governance committee has questions or requests for clarification.
+<p><li> Revise-and-resubmit. The governance committee has specific suggestions for a revision and resubmission of the application.
+<p><li> Reject. The governance committee declines to approve unanimously, in which case the dataset will not be shared.
+</ul>
+Note that the governance process has been established as part of a collaboration between Prof. Resnik and AAS. It may be changed at any time by mutual agreement, and Prof. Resnik or AAS can end this collaboration at any time.
+<P>
+The governance committee will attend to and encourage diversity and inclusion with respect to the set of reviewers and the community of researchers using the dataset.
+
+
+<h2>How to request access</h2>
+<A name="requests"></A>
+
+Although we have to be careful to make sure all appropriate steps are followed, we are very eager to share this resource with other researchers!  Please send requests for access to the dataset to <A HREF="http://umiacs.umd.edu/~resnik/">Philip Resnik </A> (<A HREF="mailto:resnik@umd.edu?Subject=Request%20for%20access%20to%20Reddit%20suicidality%20dataset" target="_top">resnik@umd.edu</A>). Requests should have the following two parts:
+
+<ul>
+
+<p><li>Part 1. A brief cover letter of <em>no more than two pages</em> (one page is even better!) that: 
+  <ul>
+  <p><li> (a) briefly describes the project, 
+  <p><li> (b) specifies its intended duration, 
+  <p><li> (c) affirms having read <A HREF="http://www.aclweb.org/anthology/W17-1612">Benton et al. (2017)</A>
+  and commits to its broad ethical principles;
+  <p><li> (d) commits to referring to the "University of Maryland Reddit Suicidality Dataset", including appropriate references, e.g. <A HREF="http://aclweb.org/anthology/W18-0603">Shing et al. (2018)</A>, in any publications using or discussing this dataset. Please also acknowledge the assistance of the American Association of Suicidology in making the dataset available.
+  <p><li> (e) includes a brief data management statement indicating the policy (who and how) for applicant’s project- internal access and sharing, including provisions for appropriate protection of the data. For example, an acceptable data management statement might say: 
+    <ul>
+    <p><li>(i) the data and any derivatives will be stored only on password-protected servers where access is restricted to the applicant or their supervisees using Unix group permissions; 
+    <p><li>(ii) any copies of the data or derivatives of it will be accompanied by a clear README.txt file stating the researcher must be contacted prior to any further re-distribution; 
+    <p><li>(iii) on request the researcher will provide the AAS governance committee a list of names and email addresses for anyone who has had access to the dataset; 
+    <p><li>(iv) the researcher will refer any requests for the data (outside their own supervisees) to the governance committee.
+    </ul>
+  </ul>
+
+<p><li> Part 2. A copy of a research protocol from the applicant that has been submitted to the applicant’s Institutional Review Board for review and either approved or designated as exempt from IRB review according to U.S. federal regulations, including a copy of the relevant IRB documentation. For research to be conducted outside the U.S., an equivalent letter from a research ethics board, IRB equivalent, ministry of health, etc., or permission from the research site will be evaluated by the governance committee on a case by case basis, with the expectation that proposed research will meet U.S. IRB standards as well as any relevant local laws and cultural sensitivities. (Applicants may want to be aware that the U.S. Department of Health and Human Services provides an annually updated <A HREF="https://www.hhs.gov/ohrp/international/index.html">resource to identify federally assured international research sites</A>.)
+
+</ul>  
+
+<HR>
+<font size=-1>
+Return to <A HREF="http://umiacs.umd.edu/~resnik/">Philip Resnik's home page</A><br>
+</font>
+
+</BODY>
+</HTML>

@@ -1,0 +1,38 @@
+<HTML>
+<HEADER>
+<meta http-equiv="pragma" content="no-cache">
+<TITLE>Modeling framing using machine teaching</TITLE>
+</HEADER>
+
+<BODY bgcolor="#ffffff">
+<h1>Modeling framing using machine teaching</h1>
+<P>
+<A HREF="http://umiacs.umd.edu/~resnik/">Philip Resnik</A>, <em>joint work with <A HREF="http://www.umiacs.umd.edu/~nhf/index.html">Naomi Feldman</A> and <A HREF="http://ling.umd.edu/people/person/jackie-nelligan/">Jackie Nelligan</A></em>
+<P>
+
+Machine learning has gotten a lot of public attention recently --  programs learn to play superhuman chess by analyzing zillions of games, to label photos automatically by analyzing captions and descriptions people have given to their own pictures, or to drive cars by analyzing what human drivers do.  One of the basic problems in machine learning is, if you have data to learn from that's labeled with correct answers, <em>how do you train the machine to predict good answers</em> for data it's never seen before? 
+<P>
+<A HREF="http://pages.cs.wisc.edu/~jerryzhu/pub/MachineTeachingAAAI15.pdf">Machine teaching</A> turns that problem on its head. The question is, if you already know what you want the machine to learn, and you also have some model of how learning takes place, <em>how do you pick which data to give the machine</em> so that it learns what you want it to learn?
+<P>
+This is a topic that Naomi's been <A HREF="http://www.umiacs.umd.edu/~nhf/papers/IDS.pdf">researching</A> in the context of how children learn language. It's a computational modeling approach connected to a fascinating literature that suggests that, when kids acquire their first language, it's not just because they're really well equipped to analyze what people are saying --- it may also be because their parents fine-tune how they talk to kids, to make the language-acquisition process easier. Early papers, for example, talk about "motherese" having an exaggerated speech melody, simpler sentences, being highly repetitive, etc.  Has nature fine-tuned the way moms (and dads!) speak to their kids so the kids can learn language more easily? How do we describe that mathematically?
+<P>
+Now add Jackie and me to the mix. Jackie, studying here on a <A HREF="http://ling.umd.edu/baggett/">Baggett Post-baccalaureate Fellowship</A>,  is a fantastic budding researcher who is interested in language and also very well equipped to tackle sophisticated mathematical problems. I'm another computational linguist who's interested in computational modeling of learning, and also particularly interested in problems related to social science. 
+<P>
+When you put the three of us together, it turns out that you get an interesting technical question, plus an interesting social science application.
+<P>
+The technical question is this: what's a good way to build a mathematical model for machine teaching, if you're using vector space models to represent what's inside the head of the learner? 
+<P>
+A vector space model is, basically, just a way of representing information as points in some space. For example, if you analyze a large collection of text (a "corpus") to determine which words are similar to each other, you can automatically discover that words like <em>horrible</em>, <em>foul</em>, <em>awful</em>, and <em>disgusting</em> all occupy a similar semantic "region", and words like <em>charming</em>, <em>handsome</em>, and <em>elegant</em> are near each other but in a different region, as visualized here in a 2-dimensional space. (The image is grabbed from <A HREF="http://www.jmlr.org/proceedings/papers/v37/yogatama15.pdf">this paper</A>. The colors aren't relevant for my discussion here.)
+<P>
+<center>
+<img width="30%" src="./semantic_space.png"</img>
+</center>
+<P>
+So here's a really interesting research question. Suppose that what the learner knows is represented as a "space" like this one -- for example, the learner represented by the above picture "knows" that unattractive and ordinary are similar in meaning, because they're close to each other in the semantic space.  And now suppose you wanted to give the learner new knowledge of the same kind; for example, maybe you'd like it to learn that <A HREF="https://en.wikipedia.org/wiki/Tesg%C3%BCino"><em>tesguino</em></A> should be considered similar to <em>beer</em> and <em>wine</em>, because it's an alcoholic beverage, and it's also similar to <em>peyote</em>, because both are considered sacred in cultures that consume them. What should you give the learner to read in order to come away with that knowledge?  Previous mathematical models of machine teaching haven't really spent that much time looking at knowledge that's represented in this way, so Jackie has the potential to break some interesting new ground in computational modeling for machine teaching.
+<P>
+The second part is the social science application. People who look at political science and political communication talk about "framing", which basically means how something is talked about in relation to a particular point of view.  As a very simple example, death tax and estate tax are two different ways of framing exactly the same thing. The first phrase (conservative) frames this tax as intrusive or overreaching -- "the government already taxes too much, and now you're taxing me for <em>dying</em>?!!"  The second one (liberal) frames this tax as applying only the very wealthy -- after all, what sorts of people own <em>estates</em>?? Framing can have a huge influence on people's opinions, with really far-reaching consequences. For example, if the U.S. government had framed the 9/11 attacks as a crime, rather than as an act of war, events over the last fifteen years might have unfolded very differently. (See <A HREF="https://terpconnect.umd.edu/~jklumpp/comm461/lectures/terrorism.html#choices">this useful discussion</A> I just stumbled across from a course in our Dept of Communication.)
+<P>
+I've worked with collaborators on computational models of framing (e.g. <A HREF="http://www.aclweb.org/anthology/P15-1139">here</A> and <A HREF="http://www.umiacs.umd.edu/~jbg/docs/2013_shlda.pdf">here</A>), and the work that Jackie is doing with Naomi and me has a potential application in that arena.  What if we were to use vector space models (like the picture above) to describe the framing that people come way with in response to political input like speeches, debates, blogs, tweets, etc.?  If you wanted people to come away with a particular framing -- for example, encouraging that <em>immigrant</em> and <em>criminal</em> should be close to each other in semantic space, or creating an outcome where <em>marijuana</em> is closer to <em>medicine</em> than to <em>drug dealer</em> -- what would you say to them? By modeling this computationally, using the mathematical methods Jackie's developing, we're hoping to get a clearer understanding of the ways that political speech influences public opinion. Stay tuned for word on how the research is progressing!
+<P>
+<hr>
+

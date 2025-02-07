@@ -1,0 +1,75 @@
+<html>
+<h1>GIT cheat sheet</h1> 
+
+Cheat sheets
+<ul>
+<li> <A HREF="http://www.git-tower.com/files/cheatsheet/Git_Cheat_Sheet_grey.pdf">Good cheat sheet</A>
+</ul>
+
+Some useful commands
+<ul>
+
+<p><li>Sequence to do updates
+<pre>
+git pull -makes sure you are up to date (gotta do this before any commit)
+git add - any new files
+git commit - stages whatever changes you want to push
+git push - sends the commit package to the repo
+
+To add files that have been modified but not untracked files:
+  git add `git status | grep modified | sed 's/\(.*modified:\s*\)//'`
+</pre>
+
+<p><li>If you can't pull because there are changes made but not committed:
+<pre>
+git stash
+git pull --rebase
+git stash pop
+</pre>
+
+<p><li> See all local commits that have not yet been pushed
+<pre>
+git log --branches --not --remotes
+</pre>
+
+<p><li>Defaults.  Git's defaults are hateful and difficult. Copy this and put it into your ~/.gitconfig
+<pre>
+[alias]
+    tag = tag -a
+    st = status -s -b
+    sl = stash list
+    ci = commit
+    co = checkout
+    br = branch
+    pb = push -u origin --tags
+    f = fetch --all
+    pull = pull --rebase
+    r = remote -v
+    b = branch -a
+    info = remote show origin
+    ll = log --stat --format=format:'"%C(yellow)%h %C(cyan)%an %C(blue)(%cn) %C(cyan)%ad%d\n%C(green)%s\n%b%N"'
+[color]
+    branch = auto
+    diff = auto
+    interactive = auto
+    status = auto
+[color "status"]
+    added = green
+    changed = yellow
+    untracked = cyan
+[rebase]
+    autosquash = true
+[branch "master"]
+    remote = origin
+    merge = refs/heads/master
+[github]
+    user =  psresnik
+[branch]
+    autosetuprebase = always
+[push]
+    default = current
+</pre>
+
+</ul>
+
+</html>

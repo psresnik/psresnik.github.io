@@ -1,0 +1,58 @@
+<HTML>
+<HEADER>
+<TITLE>The N Commandments for using the Internet Archive </TITLE>
+</HEADER>
+
+<BODY bgcolor="#ffffff">
+
+<H1>
+The N Commandments for using the Internet Archive
+</H1>
+
+Our group has 
+<A HREF="http://www.archive.org/web/researcher/proposal.php">
+researcher access</A> to the <A HREF="http://www.archive.org">Internet
+Archive</A>, which permits us to work on the Archive's cluster.
+<P>
+Over the past several years, we have evolved some rules of good
+citizenship that help to avoid problematic situations,
+e.g. accidentally taking over a large chunk of the internal bandwidth
+on their network.  This Web page attempts to institutionalize some of
+that knowledge.  It's titled "The N Commandments" because, like the
+Archive itself, the list is likely to need updating.
+<P>
+(List initially contributed by Michael Subotin.)
+<P>
+
+<OL>
+ <LI>  Be sure not to run a big job before you've learned how to monitor and 
+   kill it
+ <LI>  Avoid running processes on homeserver (an automatic check in the 
+   scripts might be useful)
+ <LI>  Avoid jobs that have multiple hosts read or write large amounts of data 
+   to /home (use /tmp/your_username directories instead)
+ <LI>  Avoid heavy I/O activity on /home in general
+ <LI>  Be careful not to run one p2 job inside another (an automatic check 
+   in the scripts might be useful)
+ <LI> When you use ctrl-C to kill a p2 job, it leaves pipe files in
+   the /tmp (or /tmp/your_username?) directory (extension .p2tmp), and 
+   if you kill a sort process,
+   it may leave behind a temporary file there.  Please check to clean
+   these up once in a while.
+ <LI>  Be careful about exceeding disk quota on any of the disks at run time
+ <LI>  Be sure to nice your processes
+ <LI>  Be sure not to leave any processes running invadvertently (check the 
+   hosts you've been working with before logging off)
+ <LI>  Be sure to clean up the files you've placed 
+       in /tmp/your_username directories on all hosts (particularly large files)
+ <LI>  For the sake of your own sanity, if a job seems to be running forever, 
+  check to see if an I/O or ssh breakdown on some host isn't holding it back
+</OL>
+<P>
+<HR>
+Questions?  Contact Philip Resnik at <em>lastname</em> _AT_ umd.edu.
+
+
+</BODY>
+</HTML>
+

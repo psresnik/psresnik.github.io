@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<BASE  HREF="http://umiacs.umd.edu/~resnik/bah.html">
+<title>Exercise: Discovering terms using word association</title>
+<body bgcolor="#ffffff">
+
+
+<HR>
+<h1>Exercise: Discovering terms using word association</h1>
+<HR>
+
+<P>
+In this exercise, you will get some hands-on experience using
+association scores to identify interesting terms in a corpus.
+
+<h2>The corpus</h2>
+
+In this exercise, we'll work with the <A
+HREf="http://www.cs.cornell.edu/home/llee/data/convote.html">congressional
+speech corpus</A>, created by Matt Thomas, Bo Pang, and Lillian Lee.
+It contains speeches made by politicians in the U.S. House of
+Representatives during debates over legislation.
+<P>
+You should begin by downloading the <A
+HREF="http://www.cs.cornell.edu/home/llee/data/convote/convote_v1.1.tar.gz">convote
+dataset v1.1</A> (9.8 Mb, tar.gz format). There are several different
+versions of the data in this archive; we are concerned only with the
+data_stage_three directory.  For those with limited disk space, a way
+to extract just the directory of interest is:
+<code>
+  gunzip < convote_v1.1.tar.gz | tar xvf - data_stage_three
+</code>
+<P>
+Each file in the data_stage_three directory contains a speech by a legislator.
+The filenames contain information about each speech.  In the filename template,
+<code>###_@@@@@@_%%%%$$$_PMV</code>:
+<ul>
+  <li> the first three characters ### identify the bill under discussion
+  <li> the six digits @@@@@@ uniquely identify the speaker
+  <li> the character in position P indicates the speaker's party: D (Democrat), R (Republican), or X (unknown).
+  <li> the character in position V indicates whether the speaker eventually voted yes (Y) or no (N).
+  <li> for our purposes we can ignore the other parts of the template.
+</ul>
+
+<h2>The task</h2>
+
+The idea here is to use what we've discussed to answer some
+interesting questions about this corpus:
+
+<ol>
+<li> What are some strong bigram collocations in this corpus,
+     according to at least two measures of association?  (Measures you might
+     use could include, for example, frequency, log-likelihood value, 
+     chisquare test, mutual information...)   
+<P>
+<li> Same question, but limit your attention to speeches by Democrats.
+<P>
+<li> Same question, but limit your attention to speeches by Republicans.
+<P>
+<li> Discuss the advantages and limitations of the measures you used,
+     illustrating using the sorted lists of collocations
+     you obtained.
+<P>
+<li> Are there any interesting differences between what you found for
+     Democrats and what you found for Republicans?
+     <P>
+     Here's an example.   When I used the Democratic speeches as a corpus,
+     and sorted all non-stopword bigrams by log-likelihood value, 
+     and did the same separately for Republicans, the
+     phrase <em>middle class</em> ranked 16th for Democrats and 115th
+     for Republicans; conversely, the phrase <em>law enforcement</em>
+     ranked 28th for Republicans and 141st for Democrats.  
+     One could argue that this empirical observation is consistent
+     with at least some characterizations of the priorities
+     of the two political parties -- e.g. see discussions of
+     <A HREF="http://www.smartdecision08.com/content-2458">the role
+     that the phrase <em>middle class</em> had during the presidential debates</A>.)
+     <P>
+     Even if you're not particularly familiar with American politics,
+     identify similar contrasts and offer your thoughts on why
+     they might or might not be meaningful.
+     <P>
+<li> Finding some interesting contrasts by inspection is nice, but why
+  should we trust intuitions?  For several examples of
+  differences between Democrats and Republicans, make a statistical
+  argument that the difference you're pointing out is a genuine
+  difference supported by the data.  
+  <P>
+  To continue my example, having discovered that <em>middle class</em>
+  might be an interesting phrase, I could use a chi-square test to
+  show that the difference in the frequency of <em>middle class</em>
+  among Democrats and Republicans is statistically significant.  (Note
+  that doing a chi-square test in this way, looking at a contingency
+  table of {Democrat,Republican} x {middle_class, NOT middle_class},
+  is different from using chi-square to find an association
+  between the word <em>middle</em> and the word <em>class</em>.  Both
+  cases involve a 2x2 contingency table, i.e. looking for evidence of
+  an association between some binary variable A and a second variable
+  B, but one case is looking for a lexical association between two words,
+  and the other is looking for an association between a bigram and 
+  the party of the speaker using that bigram.
+  <P>
+  It may be helpful to be <em>very explicit</em> about the statistical
+  hypothesis testing you're doing.  For example, an explicit argument
+  would explicitly describe null hypothesis H0, identify
+  the test statistic, identify your choice for alpha (the cutoff for
+  statistical significance), give the p-value, and present an argument
+  for why someone should draw the conclusions you want to draw. 
+  <P>
+  You might want to use an on-line calculator or off-the-shelf code
+  to do the statistical calculation -- though you'll
+  learn more if you do the calculation by hand at least once. :-)
+  If you're thinking of using the chi-square test, note that there are
+  problems using it when counts are small (see Problems in
+  <A href="http://en.wikipedia.org/wiki/Pearson's_chi-square_test">the
+  chi-square test Wikipedia page</A>).  Depending on the counts, the <A
+  HREF="http://en.wikipedia.org/wiki/G-test">likelihood ratio
+  test (G-test)</A> may be a better choice.
+  <P>
+</ol>
+<P>
+
+
+<h3>One more thing to try</h3>
+<ul>
+<P>
+<li> Analyze the language for one or more individual debates, and identify
+  bigrams that are associated with Yes or with No votes for that
+  debate more often than you would expect by chance.  
+  Describe what the debate is about (based on reading some of the
+  speeches) and explain why the bigrams might be associated the way they
+  are.
+</ul>
+  
+<h2>Ways to go about it</h2>
+
+Conveniently, the corpus is already tokenized and lowercased for you,
+and the filename conventions make it very easy to identify particular
+subsets of the corpus.
+<P>
+In terms of implementation,
+<ul>
+<li> For those who like to implement everything from scratch, you
+should have all the information you need here in the exercise,
+in notes on today's discussion, and in standard references like Wikipedia.
+<P>
+<li> For those who like to take advantage of off-the-shelf tools, I would recommend starting with
+Ted Pedersen's <A HREF="http://www.d.umn.edu/~tpederse/nsp.html">Ngram
+Statistics Package</A>.  
+<P>
+</ul>
+<HR> 
+</body>
+</html>
+
