@@ -1,0 +1,118 @@
+<HTML>
+<HEAD>
+<TITLE>Ling848, Fall 2014</TITLE>
+</HEAD>
+
+<BODY bgcolor="#ffffff">
+
+<hr>
+<H1>LING848, FALL 2014.<BR>Advanced Seminar: Semantics in Computational Linguistics</H1>
+<hr>
+
+<h2>Instructor</h2>
+
+<a href="http://umiacs.umd.edu/~resnik/">Philip Resnik</A> (resnik@umd.edu)
+
+<P>
+<h2>Where/When</h2>
+
+Room 1108B, <A
+HREF="http://www.umd.edu/CampusMaps/bld_detail.cfm?bld_code=MMH">Marie Mount Hall</A>, Wednesdays 2-4:30pm.
+
+<P>
+<h2>Office hours</h2>
+
+By appointment.
+
+
+<P>
+<h2>Where to get information</h2>
+
+<li> <a href="syllabus.html">Schedule of topics</a>
+<li> <a href="https://piazza.com/umd/fall2014/ling848/home">Class info/discussions on Piazza</a>
+<!-- <li> <A HREF="http://www.ling.umd.edu/locker/?p=TBD/">PDF locker</A> (login/password given in class) -->
+
+
+<P>
+<h2>Prerequisites</h2>
+
+There are no formal prerequisites, but this is an advanced computational linguistics seminar, so students are expected to be generally comfortable with the material covered in the CMSC/Ling 723-773 graduate computational linguistics sequence.  
+
+
+<h2>Description</h2>
+
+<font color="red">Note: The content of 800-level seminars varies from
+year to year, and this seminar will <strong>not</strong> cover the
+same material as previous offerings of Ling848 (Seminar in
+Computational Linguistics).  If you have questions about the seminar, including any
+uncertainty about whether your background is appropriate in order to
+attend, please contact me.</font>
+
+<P>
+Within computational linguistics, semantics has a long and varied history.  As a branch of artificial intelligence, early natural language processing was, like early AI, deeply concerned with how to formally represent and reason about knowledge.  With the statistical revolution in the 1990s such questions largely went out of fashion, but now they are back in new  incarnations, with fascinating work taking place that brings together earlier work on formal representations with a current emphasis on what can be learned automatically using large volumes of data.
+
+<P>
+The goals of this seminar are twofold: to understand the big picture of semantics in computational linguistics, and to get a detailed understanding of the issues at play in specific instances of recent research.  By the end of the semester students should be well equipped to understand and follow current research literature on this topic.
+
+<P>
+The seminar will mainly involve readings and in-class discussion,
+helped along by participation in <a
+ href="https://piazza.com/umd/fall2014/ling848/home">discussions on
+Piazza</a>.  The class will be graded on:
+<ul>
+<li> Participation (25%), which includes both leading class
+ discussions and demonstrating, through discussion, that you have done readings thoroughly and thoughtfully;
+ <P>
+<li> Two or three short papers during the semester, which will mainly
+ involve doing some readings on topics we don't discuss in class and
+ generating summaries/commentaries (15%); and, primarily,
+ <P>
+<li> A term paper/project (60%).  I always to encourage hands-on
+ projects that involve real problems, aiming for papers suitable for
+ submission to appropriate conferences.  This means I am very open to
+ projects that are connected to students' own research.  That said,
+ however, a key criterion for a good project is, <em>does this project
+ connect well to the content of the seminar, and demonstrate that the
+ student understands the topic better than he or she did at the
+ beginning of the semester?</em>
+ <P>
+</ul>
+
+
+<hr>
+
+<!-- Javascript "include" of policies boilerplate -->
+<!-- See http://stackoverflow.com/questions/8988855/include-another-html-file-in-a-html-file -->
+<font size="-1">
+<script src="http://code.jquery.com/jquery-2.1.0.min.js"></script> 
+    <script> 
+    $(function(){
+      $("#includedContent").load("policies.html"); 
+    });
+    </script> 
+<div id="includedContent"></div>
+</font>
+
+
+
+<P>
+<HR>
+<P>
+<font size=-1>
+<PRE>
+Philip Resnik, Professor
+Department of Linguistics and Institute for Advanced Computer Studies
+
+<A HREF="http://www.ling.umd.edu">
+Department of Linguistics</A>
+1401 Marie Mount Hall            UMIACS phone: (301) 405-6760       
+University of Maryland           Linguistics phone: (301) 405-8903
+College Park, MD 20742 USA	   Fax: (301) 314-2644 / (301) 405-7104
+http://umiacs.umd.edu/~resnik	   E-mail: resnik AT umd _DOT.GOES.HERE_ edu
+</PRE>
+<P>
+</font>
+<HR>
+
+</BODY>
+</HTML>

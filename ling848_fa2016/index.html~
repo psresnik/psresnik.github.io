@@ -1,0 +1,118 @@
+<HTML>
+<HEADER>
+<TITLE>Ling848, Fall 2016</TITLE>
+</HEADER>
+
+<BODY bgcolor="#ffffff">
+
+
+<H1>LING848, FALL 2016
+<P>Seminar in Computational Linguistics: Computational Models of Human Parsing</H1>
+
+<h2>Instructor</h2>
+
+<a href="http://umiacs.umd.edu/~resnik/">Philip Resnik</A>
+
+<P>
+<h2>Where/When</h2>
+
+<A HREF="http://www.umd.edu/CampusMaps/bld_detail.cfm?bld_code=MMH">Marie
+Mount Hall</A> 1108B, Wednesdays 2-4:30pm.
+
+
+<P>
+<h2>Where to get information</h2>
+
+<ul>
+<li> <a href="syllabus.html">Schedule of topics</a>
+<li> <a href="https://piazza.com/umd/fall2016/ling848/home">Class info/discussions on Piazza</a>
+</ul>
+
+<P>
+<h2>Meetings</h2>
+
+Click here to <A HREF="http://umiacs.umd.edu/~resnik/meetings.html">arrange a meeting</A>. 
+
+
+<h2>Description</h2>
+
+How do people parse sentences in order to arrive at the structured representations necessary to construct meanings? This is one of the most fundamental questions in computational linguistics. In this seminar we will review necessary computational background and look at computational models of parsing, which necessarily connect with central questions of how syntactic structures are represented, how they are built incrementally, how ambiguities are resolved, how meaning representations are derived, and much more.
+<P>
+The seminar will be primarily concerned with parsing as a cognitive phenomenon, as opposed to an engineering problem to be solved in order to build more intelligent systems. That said, there are certainly some areas where the applications-oriented literature on parsing will be of interest.
+<P>
+This seminar is intended primarily for Linguistics grad students although people from all departments are welcome, including faculty or others who would like to sit in. Significant computational background will <em>not</em> be assumed. Nor will any significant programming be required, although we may run existing parsing tools -- I'll also aim to provide opportunities for light and even not-so-light programming for people who learn best by getting hands on and implementing things.
+<P>
+
+
+<h2>Grading</h2>
+This seminar will mainly involve readings and in-class discussion, helped along by participation in discussions on Piazza. The class will be graded as follows:
+
+<ul>
+<p><li> <strong>Reaction/discussion essays</strong> (20%).
+<P>
+Each week you'll need to do the readings and do a brief writeup that summarizes and reacts to those readings, <em>due no later than the Monday night before class</em> by posting it to the <A HREF="https://piazza.com/umd/fall2016/ling848/home">class discussion board</A>.
+
+<p><li> <strong>Participation</strong> (30%).
+This includes:
+<ul>
+<p><li> Participating on the class discussion board. The Monday due date for reaction writeups is designed so that people can get some discussion going online ahead of class, so that in class we're already ramped up.
+<p><li> Presentations/discussions in class. Everyone will do this a couple of times during the semester (and I'd like that to be true even for people who are not there for a grade).
+<p><li> Participating actively in class discussions.
+</ul>
+
+<p><li> <strong>Term paper or project</strong> (50%).
+<p>
+About a third to halfway through the semester, we will discuss possible papers or projects. <em>These projects are due December 16, 2016</em>.
+</ul>
+<P>
+<strong>'Incomplete' as a grade.</strong> Please note that I will not issue an 'incomplete' as a course grade except for serious, valid reasons, generally in the category of serious emergencies. If you are having problems of any kind, please talk to me as soon as possible. In the event that a medical issue interferes with any class requirement, you are required to let me know in advance or as quickly as can reasonably be expected, and to provide documentation signed by a health care professional.
+
+
+<H2>Other important notes</H2>
+  
+<strong>Academic integrity policy.</strong> The <A HREF="http://www.president.umd.edu/policies/docs/III-100A.pdf">Honor Code and Honor Pledge</A> prohibits students from cheating on exams, plagiarizing papers, submitting the same paper for credit in two courses without authorization, buying papers, submitting fraudulent documents, and forging signatures. On the midterm and final, you will be expected to write and sign the following pledge: <em>I pledge on my honor that I have not given or received any unauthorized assistance on this examination (or assignment).</em>
+<P>
+
+<strong>Cheating.</strong>  What you represent as your own work must be your own work. However, talking with one another to understand the material better is strongly encouraged. Recognizing the distinction between cheating and cooperation is very important. If you simply copy someone else's solution, you are cheating. If you let someone else copy your solution, you are cheating. If someone dictates a solution to you, you are cheating. Everything you hand in must be in your own words, and based on your own understanding of the solution. If someone helps you understand the problem during a high-level discussion, you are not cheating. If you work collaboratively with explicit permission from the instructor, you are not cheating. We strongly encourage students to help one another understand the material presented in class, in the readings, and general issues relevant to the assignments. Any student who is caught cheating will be given an F in the course and referred to the University Student Behavior Committee. Please don't take that chance - if you're having trouble understanding the material, or if you need some help clarifying what is ok to do and what is not, please let us know and we will be more than happy to help.
+
+<P>
+<strong>Special needs.</strong> Any student eligible for and requesting reasonable academic accommodations due to a disability is requested to provide to the instructor a letter of accommodation from the Office of Disability Support Services (<A HREF="http://www.counseling.umd.edu/DSS/">DSS</A>) within the first two weeks of the semester. You may reach them at 301-314-7682 or by visiting Susquehanna Hall on the 4th Floor.
+
+<P>
+<strong>Mental health issues.</strong> Let's face it: grad school can be <em>really</em> hard. Sometimes students don't know that they need help, or they somehow know they're in trouble but they don't know what to do about it.  What's really important for you to know is that at a big university like this one, <em>you don't need to cope with it alone</em>.  There are many people on this campus who know how to help students in all kinds of circumstances. It's their job. Some resources you can take advantage of include the <A HREF="http://www.counseling.umd.edu/">Counseling Center</A>, in the Shoemaker Building, 301-314-7651, and <A HREF="http://www.health.umd.edu/mentalhealth/about">Mental Health Services</A>, in the Health Center, 301-314-8106; the <A HREF="http://www.studentaffairs.umd.edu/">Office of Student Affairs</A>, 301-314-8430, is another place you can connect with to find help of various kinds. 
+<P>
+If you are concerned about the behavior of another student, and in particular if you are worried that they might pose a threat to themselves or others, see <A HREF="http://www.studentaffairs.umd.edu/staff-faculty/beta-team#/students-concerned-about-a-student">this page for students concerned about another student</A>.
+
+<P>
+<strong>Anti-Harassment.</strong> The open exchange of ideas, the freedom of thought and expression, and respectful scientific debate are central to the aims and goals of a this course. These require a community and an environment that recognizes the inherent worth of every person and group, that fosters dignity, understanding, and mutual respect, and that embraces diversity. Harassment and hostile behavior are unwelcome in any part of this course. This includes: speech or behavior that intimidates, creates discomfort, or interferes with a person’s participation or opportunity for participation in the conference. We aim for this course to be an environment where harassment in any form does not happen, including but not limited to: harassment based on race, gender, religion, age, color, national origin, ancestry, disability, sexual orientation, or gender identity. Harassment includes degrading verbal comments, deliberate intimidation, stalking, harassing photography or recording, inappropriate physical contact, and unwelcome sexual attention. Please contact an instructor or staff member if you have questions or if you feel you are the victim of harassment (or otherwise witness harassment of others), or see <A HREF="http://beta.umd.edu/">beta.umd.edu</A> for pointers to relevant resources.
+<P>
+<strong>Religious holidays.</strong> please send the instructor a list of all holidays you observe during the semester <em>by the end of the first week of classes</em>, so they can be taken into account in the course schedule.
+<P>
+<strong>Course evaluations.</strong> I welcome your suggestions for improving this class, so please don’t hesitate to share your thoughts during the semester! You will also be asked to give feedback using the <A HREF="http://www.courseevalum.umd.edu/">CourseEvalUM</A> system at the end of the semester. 
+<P>
+<strong>Right to change information.</strong>
+Although every effort has been made to be complete and accurate, unforeseen circumstances arising during the semester could require the adjustment of any material given here. Consequently, given due notice to students, the instructor reserves the right to change any information on this syllabus or in other course materials.
+<P>
+
+
+
+<HR>
+<P>
+<font size=-1>
+<PRE>
+Philip Resnik, Professor
+Department of Linguistics and Institute for Advanced Computer Studies
+
+<A HREF="http://www.ling.umd.edu">
+Department of Linguistics</A>
+1401 Marie Mount Hall            UMIACS phone: (301) 405-6760       
+University of Maryland           Linguistics phone: (301) 405-8903
+College Park, MD 20742 USA	   Fax: (301) 314-2644 / (301) 405-7104
+http://umiacs.umd.edu/~resnik	   E-mail: resnik AT umd _DOT.GOES.HERE_ edu
+</PRE>
+<P>
+</font>
+<HR>
+
+</BODY>
+</HTML>

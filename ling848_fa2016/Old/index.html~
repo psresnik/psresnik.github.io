@@ -1,0 +1,66 @@
+<HTML>
+<HEADER>
+<TITLE>Ling848, Fall 2016</TITLE>
+</HEADER>
+
+<BODY bgcolor="#ffffff">
+
+
+<H1>LING848, FALL 2016.<P>Seminar in Computational Linguistics: Computational Models of Human Parsing</H1>
+
+<h2>Instructor</h2>
+
+<a href="http://umiacs.umd.edu/~resnik/">Philip Resnik</A>
+
+<P>
+<h2>Where/When</h2>
+
+<A HREF="http://www.umd.edu/CampusMaps/bld_detail.cfm?bld_code=MMH">Marie
+Mount Hall</A> 1108B, Wednesdays 2-4:30pm.
+
+
+<P>
+<h2>Where to get information</h2>
+
+<ul>
+<li> <a href="syllabus.html">Schedule of topics (not yet available)</a>
+<li> <a href="https://piazza.com/umd/fall2015/ling848/home">Class info/discussions on Piazza (not yet available)</a>
+</ul>
+
+<P>
+<h2>Meetings</h2>
+
+See <A HREF="http://psr.youcanbookme.com">http://psr.youcanbookme.com</A> or e-mail me.
+
+
+<h2>Description</h2>
+
+How do people parse sentences in order to arrive at the structured representations necessary to construct meanings? This is one of the most fundamental questions in computational linguistics. In this seminar we will review necessary computational background and look at computational models of parsing, which necessarily connect with central questions of how syntactic structures are represented, how they are built incrementally, how ambiguities are resolved, how meaning representations are derived, and much more.
+<P>
+The seminar will be primarily concerned with parsing as a cognitive phenomenon, as opposed to an engineering problem to be solved in order to build more intelligent systems. That said, there are certainly some areas where the applications-oriented literature on parsing will be of interest.
+<P>
+This seminar is intended primarily for Linguistics grad students although people from all departments are welcome, including faculty or others who would like to sit in. Significant computational background will <em>not</em> be assumed. Nor will any significant programming be required, although we may run existing parsing tools -- I'll also aim to provide opportunities for light and even not-so-light programming for people who learn best by getting hands on and implementing things.
+<P>
+The schedule of topics is still in progress, but I will aim to list some background materials on this page ahead of time so that people can do some advance reading during the summer if they like.
+<P>
+
+<HR>
+<P>
+<font size=-1>
+<PRE>
+Philip Resnik, Professor
+Department of Linguistics and Institute for Advanced Computer Studies
+
+<A HREF="http://www.ling.umd.edu">
+Department of Linguistics</A>
+1401 Marie Mount Hall            UMIACS phone: (301) 405-6760       
+University of Maryland           Linguistics phone: (301) 405-8903
+College Park, MD 20742 USA	   Fax: (301) 314-2644 / (301) 405-7104
+http://umiacs.umd.edu/~resnik	   E-mail: resnik AT umd _DOT.GOES.HERE_ edu
+</PRE>
+<P>
+</font>
+<HR>
+
+</BODY>
+</HTML>

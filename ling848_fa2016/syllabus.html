@@ -1,0 +1,378 @@
+<html>
+<BASE  HREF="http://umiacs.umd.edu/~resnik/ling848_fa2016/index.html">
+<title>Schedule of Topics</title>
+<body bgcolor="#ffffff">
+<hr>
+<h1>Schedule</h1>
+<hr>
+<P>
+
+This is the schedule for
+<A HREF="http://umiacs.umd.edu/~resnik/ling848_fa2016/index.html">
+Advanced Seminar in Computational Linguistics: Computational Models of Human Parsing, Fall 2016</A>.  
+
+<!-- ---------------- -->
+<hr>
+<strong>August 31, 2016.</strong> Thinking computationally about parsing.
+<P>
+After some administrivial and general preliminaries, we'll begin by looking at how the parsing problem is introduced in computational linguistics. In the process of looking at a textbook NLP introduction to syntactic parsing, we'll make sure everyone gets up to speed on some core computational concepts like search, time and space complexity, formal description of parsing algorithms. We'll also include discussion of computational modeling a bit more generally, assisted by Marr's levels of description.
+
+<P>
+<strong>Readings</strong>
+<ul>
+<p><li> Jurafsky and Martin, Chapter 13, Syntactic Parsing
+  <ul>
+    <p><li> You might also find the following useful
+	<ul>
+	  <p><li>Stephen Pulman, <A HREF="https://www.cs.ox.ac.uk/files/219/parsing.pdf">Basic Parsing Techniques: an introductory survey</A>, In Encyclopaedia of Language and Linguistics. Pergamon Press/ Aberdeen University Press. 1992.
+	  <p><li> Shieber et al., <A HREF="http://www.eecs.harvard.edu/shieber/Biblio/Papers/infer.pdf">Principles and Implementation of Deductive Parsing</A> (see Sections 1-3).  Incidentally, I've realized that my specific characterization of deductive parsing as "logic plus control" (the latter discussed in Section 5) was, without doing so consciously, a reference to Kowalski (1979), <A HREF="http://dl.acm.org/citation.cfm?id=359136">Algorithm = logic + control</A>.
+        </ul>
+  </ul>
+<p><li> Marr, D. (1982), Vision: A Computational Approach, San Francisco, Freeman & Co., <a
+  href="http://files.ling.umd.edu/locker/ComputationsOfLanguage/Marr_Chapter1.pdf">Introduction and Chapter 1</a>
+<p><li> Omaki (2009), <A HREF="http://ling.umd.edu//~omaki/teaching/Ling499A_spring09/slides_L1_Marr_CompVsPerform.pdf">Levels of Description in Linguistics</A> (slides)
+</ul>
+<P>
+
+<P>
+<strong>Optional homework</strong>
+<P>
+<blockquote>
+To really solidify your understanding of top down and bottom up parsing, I recommend you work your way through the top-down example on pages 7-9 of Shieber et al., and then 
+see if you can understand the bottom-up shift-reduce parser and work through the example on pages 10-11 without first looking at the answer.
+<P>
+If you want to get hands on, a good starting point would be <A HREF="http://www.nltk.org/book/ch08.html">Chapter 8, Analyzing Sentence Structure</A> from the <A HREF="http://www.nltk.org/book/">NLTK (Natural Language Toolkit) book</A>. NLTK is a suite of open source Python modules, data sets and tutorials supporting research and development in natural language processing and it can be very useful for (self-)learning.
+</blockquote>
+
+<P>
+<strong>Optional background</strong>
+<P>
+<blockquote>
+There is, of course, a voluminous literature in psycholinguistics discussing parsing from a computational angle, albeit not computational modeling <em>per se</em>. An early review touching on many of the major issues from a psycholinguistic perspective is
+<ul>
+  <p><li>Frazier, Lyn (1987), <A href="http://www.cnbc.cmu.edu/~plaut/IntroPDP/papers/Frazier87.sentProcRev.pdf">"Sentence processing: A tutorial review"</A>, in Coltheart, M., Attention and Performance XII: The Psychology of Reading, Lawrence Erlbaum Associates,
+</ul>
+and a more current example reviewing some relevant issues, focused on comprehension of relative clauses, is 
+<ul>
+  <p><li> P. Gordon and M. Lowder, <A HREF="http://www.unc.edu/~pcg/personal/documents/GordonLowder%20Language%20and%20Linguistic%20Compass%202012.pdf">"Complex Sentence Processing: A Review of Theoretical Perspectives on the Comprehension of Relative Clauses"</A>, Language and Linguistics Compass 6/7 (2012): 403–415, 10.1002/lnc3.347.
+</ul>
+</blockquote>
+
+<!-- 
+Thoughts...
+
+What's a computational model? https://en.wikipedia.org/wiki/Computational_model
+
+
+  - Mathematical model using computational resources to study the behavior of a complex system by computer simulation
+     - Crucially, simulation is always simulation OF something taking place in real-world space and time
+     - Think about Turing test as a measure of success: goal is to simulate the appropriate input/output behavior
+  - Contrasts with deriving an analytic solution to the problem
+  - Contrasts with intensional characterization (cf. T-diagram characterization of a generative system)
+  - Contrasts with hypothesis testing - probes system to test predictions which may or may not have associated simulation
+
+  Experimentation with a model is done by adjusting the parameters of the system in the computer, and studying the differences in the outcome of the experiments.
+
+  Operation theories of the model can be derived/deduced from these computational experiments.
+
+Read: "It's Made of Meat"
+
+Inductive bias, e.g. We're only going to consider grammars that have no more than 12 nonterminal symbols
+
+Stealing from 1-23-13 psychosem lecture by Paul (http://files.ling.umd.edu/locker/Psychosemantics/):
+  Lewis: Language and Languages
+  lambda(x)|x - 1| vs. lambda(x) sqrt|x^2 - 2x + 1| [give examples of O() for time and space] <-- misleading?
+  extensional description as a set = computational level (input/output relation)
+  intensional description: theorist has to write down a procedure to characterize unbounded set
+  object itself can be described in many ways
+  but for computational description, you need to talk about specific representations and a specific algorithms
+  (which themselves can be realized/implemented in many ways)
+  Chomsky: object to study is the procedure for "calculating English" - what do we mean by "procedure"?
+  when studying human parsing, we're talking about the alg/rep level description for a procedure that is implemented in realtime comprehension
+
+What's presupposed and/or taken as given?
+  We assume there is a grammar - questions of what is a grammar from a computational perspective?
+  We take as given that parsing takes place in real time
+  Input: for the most part we'll assume sequences of words (broader issue of what the "signal" is)
+  Output: for the most part we'll assume this means a structural description (n.b. distinguish output of derivation from derivation itself; cf. XTAG)
+  Goal: identifying structure is a part of the construction of interpretations (bigger issue of what meanings/interpretations are)
+
+Example: Furniture assembly (contrasting generative perspective vs. "in space and time" perspective) [Marr level 1]
+  Abstract procedure: f:Diagram,Instructions -> Valid set of instructions
+     "TIME INDEPENDENT recursive specification" to define possible languages (inductive bias in learning mechanism) = grammar
+  "Generation": f:Diagram -> Instructions
+  "Comprehension": f:Instructions -> Diagram
+
+Marr and hypothesis spaces
+  extensional characterization of what you're trying to compute (embeds many assumptions, e.g. competence/performance distinction)
+  algorithmic - many intensional ways of computing each extension (e.g. |x-1| vs. sqrt|x^2 - 2x + 1|)
+  implemented - many ways of implementing each computation (e.g. silicon vs. meat)
+
+Notion of a "procedure"
+  Turing machine an abstraction of the typewriter
+  "Algorithm" is just as "abstract" as the set-theoretic extension itself
+  But characterozomg human parsing involves steps that take place in space and time
+
+Competence and performance
+  Chomsky's logic of looking for conditions when system breaks, and when certain signals don't occur
+  Here: interested not just in the fact that something is ungrammatical, but what people do when they try to process it
+
+But, human system heavily DRIVEN by what actually occurs, even if constrained by a system that also characterizes what doesn't occur
+-->
+
+
+<!-- ---------------- -->
+<hr>
+<strong>September 7, 2016.</strong> Parsing and memory requirements
+<P>
+
+<strong>Readings</strong>
+<ul>
+
+  <p><li> If you've never read Marr before, read Marr, D. (1982), Vision: A Computational Approach, San Francisco, Freeman & Co., 
+      <a href="http://files.ling.umd.edu/locker/ComputationsOfLanguage/Marr_Chapter1.pdf">Introduction and Chapter 1</a>. 
+
+  <p><li> Stephen G. Pulman, <A HREF="https://courses.cit.cornell.edu/ling7710/readings/Pulman86.pdf">Grammars, Parsers, and Memory Limitations</A>, Language and Cognitive Processes 1(3), pp. 197-225, 1986.
+  <ul>
+    <p><li> If you're short on time, the following conference paper is a substitute that will get you the basics:  Stephen G. Pulman, <A HREF="http://www.aclweb.org/anthology/E85-1019">A Parser that Doesn't</A> (more readable version <A HREF="https://www.cs.ox.ac.uk/files/215/acl85.pdf">here</A>, 
+  </ul>
+
+  <p><li> Steve Abney and Mark Johnson (1991),  <A HREF="http://files.ling.umd.edu/locker/Psycholinguistics/Papers/Abney_Johnson91_MemoryRequirementsAndLocalAmbiguiesOfParsingStrategies.pdf">Memory Requirements and Local Ambiguities of Parsing Strategies</A>. (Larger-text version available <a href="http://comp.mq.edu.au/~mjohnson/papers/AbneyJohnson90ParsingStrategies.pdf">here</A>.)
+
+  <p><li>Philip Resnik (1992), <A HREF="http://www.aclweb.org/anthology/C/C92/C92-1032.pdf">Left-Corner Parsing and Psychological Plausibility</A>, COLING.
+
+</ul>
+
+
+<!-- ---------------- -->
+<hr>
+<strong>September 14, 2016.</strong> Syntactic ambiguity
+<P>
+
+<strong>Readings</strong>
+<ul>
+  <p><li> Stuart Shieber (1983), <A HREF="http://www.aclweb.org/anthology/P83-1017">Sentence Disambiguation by a Shift-Reduce Parsing Technique</A>
+  <p><li> Jurafsky and Martin, Chapter 14, Statistical Parsing
+  <p><li> Thorsten Brants and Matthew Crocker (2010), <A HREF="https://aclweb.org/anthology/C/C00/C00-1017.pdf">Probabilistic Parsing and Psychological Plausibility</A>
+</ul>
+
+
+<!-- ---------------- -->
+<hr>
+<strong>September 21, 2016.</strong> Syntactic ambiguity (cont'd)
+<P>
+
+<strong>Readings</strong>
+<ul>
+  <p><li> James Henderson (2004), <A HREF="http://www.aclweb.org/anthology/W04-0305">Lookahead in Deterministic Left-Corner Parsing</A>
+  <p><li> Dan Jurafsky (1996), <A HREF="https://www.semanticscholar.org/paper/A-Probabilistic-Model-of-Lexical-and-Syntactic-Jurafsky/">A Probabilistic Model of Lexical and Syntactic Access and Disambiguation</A>
+</ul>
+
+<p>
+Not about ambiguity but it's come up a number of times so let's have it on the reading list somewhere!
+<ul>
+<p><li> Stuart Shieber (1983), <A HREF=" https://www.eecs.harvard.edu/shieber/Biblio/Papers/shieber85.pdf">Evidence against the context-freeness of natural language</A>
+</ul>
+
+<!-- ---------------- -->
+<hr>
+<strong>September 28, 2016.</strong> Probabilistic modeling: performance and competence
+<P>
+
+<strong>Readings</strong>
+<ul>
+  <p><li> Dan Jurafsky (1996), <A HREF="https://www.semanticscholar.org/paper/A-Probabilistic-Model-of-Lexical-and-Syntactic-Jurafsky/">A Probabilistic Model of Lexical and Syntactic Access and Disambiguation</A>
+  <p><li> Steve Abney (1996), <A HREF="http://www.vinartus.net/spa/95c.pdf">Statistical Methods and Linguistics</A> 
+</ul>
+
+
+<!-- ---------------- -->
+<hr>
+<strong>October 5, 2016.</strong>  Modeling working memory in parsing
+<P>
+
+<strong>Readings</strong>
+<ul>
+  <p><li> Marten van Schijndel and William Schuler (2013), <A HREF="http://www.aclweb.org/old_anthology/N/N13/N13-1010.pdf">An Analysis of Frequency- and Memory-Based Processing Costs</A>
+  <p><li> William Schuler, Samir AbdelRahman, Tim Miller, and Lane Schwartz (2010), <A HREF="http://www.mitpressjournals.org/doi/pdf/10.1162/coli.2010.36.1.36100">Broad-Coverage Parsing Using Human-Like Memory Constraints</A>
+</ul>
+
+Also of interest
+<ul>
+  <p><li> Van Schijndel, Marten, Luan Nguyen, and William Schuler. <A HREF="http://anthology.aclweb.org/W/W13/W13-26.pdf#page=47">"An analysis of memory-based processing costs using incremental deep syntactic dependency parsing."</A> Proceedings of CMCL (2013).
+  <p><li>van Schijndel, Marten, Brian Murphy, and William Schuler. <A HREF="http://www.aclweb.org/anthology/W15-1109">"Evidence of syntactic working memory usage in MEG data."</A>. Proceedings of CMCL (2015): 79-88.
+</ul>
+
+
+
+<!-- ---------------- -->
+<hr>
+<strong>October 12, 2016.</strong>
+<P>
+
+<font color="red">No class: Yom Kippur</font>
+
+
+
+<!-- ---------------- -->
+<hr>
+<strong>October 19, 2016.</strong> Incrementality, connectedness, and prediction
+<P>
+
+<strong>Readings</strong>
+<ul>
+  <p><li> Continue: William Schuler, Samir AbdelRahman, Tim Miller, and Lane Schwartz (2010), <A HREF="http://www.mitpressjournals.org/doi/pdf/10.1162/coli.2010.36.1.36100">Broad-Coverage Parsing Using Human-Like Memory Constraints</A>
+  <p><li> Frank Keller (2010), <A HREF="http://www.aclweb.org/anthology/P10-2012">Cognitively plausible models of human language processing</A>
+</ul>
+
+
+Also of interest
+<ul>
+  <p><li> Colin Phillips (2002), <A HREF="http://ling.umd.edu/~colin/research/papers/phillips_constituency2002.pdf">Linear Order and Constituency</A>
+</ul>
+
+
+
+<!-- ---------------- -->
+<hr>
+<strong>October 26, 2016.</strong> Incrementality, connectedness, and prediction (cont'd)
+<P>
+
+<strong>Readings</strong>
+<ul>
+  <p><li> Eugene Charniak (2010), <A HREF="http://www.aclweb.org/anthology/D10-1066.pdf">Top-Down Nearly-Context-Sensitive Parsing</A>
+  <p><li> Vera Demberg, Frank Keller, and Alexander Koller (2013), <A HREF="http://homepages.inf.ed.ac.uk/keller/publications/cl13.pdf">Incremental, Predictive Parsing with Psycholinguistically Motivated Tree-Adjoining Grammar</A>
+</ul>
+
+
+<!-- ---------------- -->
+<hr>
+<strong>November 2, 2016.</strong>
+<P>
+
+Project discussions
+
+
+<!-- ---------------- -->
+<hr>
+<strong>November 9, 2016.</strong> 
+<P>
+
+<font color="red">Note late-breaking change to this week's reading</font>
+<P>
+<strong>Readings</strong>
+<ul>
+  <p><li> Richard L. Lewis and Shravan Vasishth (2005), <A HREF="http://onlinelibrary.wiley.com/store/10.1207/s15516709cog0000_25/asset/s15516709cog0000_25.pdf">An Activation-Based Model of Sentence Processing as Skilled Memory Retrieval</A>
+</ul>
+
+<p>
+Also of interest:
+<ul>
+  <p><li> Jonides et al. (2008) <A HREF="http://ling.umd.edu/~ellenlau/courses/nacs642/Jonides_2007.pdf">The Mind and Brain of Short-Term Memory</A>. A very nice discussion arguing for unitary-store models that combine short-term and long-term memory.
+  <p><li> Whitehill (2013), <A HREF="https://arxiv.org/pdf/1306.0125v1.pdf">Understanding ACT-R – an Outsider’s Perspective</A>. A brief and useful overview. 
+  <p><li> <A HREF="https://github.com/felixengelmann">ACT-R parser code</A>
+</ul>
+
+<!-- ---------------- -->
+<hr>
+<strong>November 16, 2016.</strong> Minimalism and parsing
+<P>
+
+<font color="red">Class will only go until 3:30pm today so that everyone can attend the first <A HREF="http://ling.umd.edu/events/archive/999/">Baggett lecture</A></font>. 
+<P>
+We are covering this topic spread out over two class sessions. Today's session is a ramping-up, and then on November 30th we'll look at Stabler 2013 in depth.
+<P>
+<p>
+<strong>Readings</strong>
+<ul>
+  <p><li> Kobele (2006), <A HREF="http://esslli2009.labri.fr/documents/Kobele06-2.pdf">Syntax and Semantics in Minimalist Grammars</A> Section 1. If you have time and inclination, it could be useful to look over Section 2.1 also.
+  <p><li> Tim Hunter and Chris Dyer (2013), <A HREF="http://www.linguistics.ucla.edu/people/hunter/mgs/pmg.pdf">Distributions on Minimalist Grammar Derivations</A>, Section 2.
+</ul>
+
+<!-- ---------------- -->
+<hr>
+<strong>November 23, 2016.</strong>
+<P>
+
+<font color="red">No class. Happy Thanksgiving!</font>
+
+<!-- ---------------- -->
+<hr>
+<strong>November 30, 2016.</strong>  Minimalism and parsing, continued.
+
+<P>
+<strong>Reading</strong>
+<ul>
+  <p><li> Edward Stabler (2013), <A HREF="http://onlinelibrary.wiley.com/doi/10.1111/tops.12031/epdf">Two models of minimalist, incremental syntactic analysis</A>
+</ul>
+
+Also of interest (particularly the first one):
+<ul>
+  <p><li> Tim Hunter and commentators (2013), <A HREF="http://facultyoflanguage.blogspot.com/2013/07/guest-post-tim-hunter-on-minimalist.html">Guest Post: Tim Hunter on Minimalist Grammars and Stats</A>. (Make sure to read the entire comment thread.)
+  <p><li> Thomas Graf et al. (2015), <A HREF="https://aclweb.org/anthology/W/W15/W15-2301.pdf">A Refined Notion of Memory Usage for Minimalist Parsing
+  <p><li> Mark Johnson (2013), <A HREF="http://web.science.mq.edu.au/~mjohnson/papers/Johnson12ICLtalk.pdf">Language Acquisition as Statistical Inference</A> (slides, <A HREF="https://mediaserver.unige.ch/play/80084">video</A>). Mainly focused on acquisition/statistical inference, but there's a section discussing probabilistic minimalist grammars related to Hunter and Dyer (2013).
+</ul>
+
+Optional background:
+    <ul>
+    <p><li> Stabler (1997), <A HREF="http://www.linguistics.ucla.edu/people/stabler/eps-lacl.pdf">Derivational Minimalism</A>
+    <p><li> Stabler (2010), <A HREF="http://www.linguistics.ucla.edu/people/stabler/Stabler10-Min.pdf">Computational perspectives on minimalism</A>
+    </ul>
+
+
+</A>
+</ul>
+
+
+
+<!-- ---------------- -->
+<hr>
+<strong>December 7, 2016.</strong> Neural network language processing
+<P>
+
+This week we'll be doing more of an introduction to a class of methods, rather than a deep dive into a specific piece of research about computational modeling of human parsing.
+<P>
+Plan:
+<ul>
+<p><li> Philip will do a more lecture-style discussion of Yoav Goldberg, <A HREF="http://u.cs.biu.ac.il/~yogo/nnlp.pdf">A Primer on Neural Network Models for Natural Language Processing</A> sections 10-12. Earlier sections of this primer may be useful background in order to get core ideas and understand notation.
+<p><li> We'll probably zoom in on LSTMs in particular, for which Colah, <A HREF="http://colah.github.io/posts/2015-08-Understanding-LSTMs/">Understanding LSTM Networks</A> would be worth looking at.
+<p><li> Please look over Linzen et al., <A HREF="http://tallinzen.net/media/papers/linzen_dupoux_goldberg_2016_tacl.pdf">Assessing the ability of LSTMs to learn syntax-sensitive dependencies</A>. 
+</ul>
+
+<P>
+Of related interest
+<ul>
+  <p><li> Here is a <a href="https://ayearofai.com/rohan-4-the-vanishing-gradient-problem-ec68f76ffb9b#.8z8afu62l"><em>really</em> nice, understandable discussion of the vanishing gradient problem</A>, motivating rectified linear units (ReLU)  by Rohan Kapur.
+  <p><li> Schuler, William. <A HREF="http://anthology.aclweb.org/W/W14/W14-20.pdf#page=29">"Sentence processing in a vectorial model of working memory."</A> ACL 2014 (2014): 19.
+  <p><li> Chris Dyer, Adhiguna Kuncoro, Miguel Ballesteros, and Noah A. Smith, <A HREF="https://arxiv.org/pdf/1602.07776v2.pdf">Recurrent neural network grammars</A>
+</ul>
+
+
+
+
+
+
+<P>
+<HR>
+<P>
+<font size=-1>
+<PRE>
+Philip Resnik, Associate Professor
+Department of Linguistics and Institute for Advanced Computer Studies
+
+<A HREF="http://www.ling.umd.edu">
+Department of Linguistics</A>
+1401 Marie Mount Hall            UMIACS phone: (301) 405-6760       
+University of Maryland           Linguistics phone: (301) 405-8903
+College Park, MD 20742 USA	   Fax: (301) 314-2644 / (301) 405-7104
+http://umiacs.umd.edu/~resnik	   E-mail: resnik AT umd _DOT.GOES.HERE_ edu
+</PRE>
+<P>
+</font>
+<HR>
+
+</BODY>
+</HTML>
+
+
+

@@ -1,0 +1,457 @@
+<html>
+<BASE  HREF="http://umiacs.umd.edu/~resnik/ling848_fa2014/index.html">
+<title>Schedule of Topics</title>
+<body bgcolor="#ffffff">
+<hr>
+<h1>Readings</h1>
+<hr>
+<P>
+
+This is the schedule for
+<A HREF="http://umiacs.umd.edu/~resnik/ling848_fa2014/index.html">
+Advanced Seminar in Computational Linguistics: Computational Social Science, Fall 2014</A>.  
+
+<P>
+<font color="red">THIS SCHEDULE IS A WORK IN PROGRESS!  <BR>
+In addition, some topic areas may take longer than expected, so keep
+an eye on the class mailing list or e-mail me for "official"
+dates.</font>
+<P>
+Students are expected to:
+<ul>
+<li> Read the asterisked papers in advance,
+<li> Contribute a comment and/or questions to the <A HREF="https://piazza.com/umd/fall2014/ling848/home">class discussion board</A> in time for people to read it the morning of class, and
+<li> Participate actively in the discussion.
+</ul>
+
+<hr>
+<strong><font color="gray">Sep 3</font></strong>.
+
+
+<ul>
+<p><li>  What is "meaning" and how are problems of semantics approached in computational linguistics?
+</ul>
+
+
+<hr>
+<strong><font color="gray">Sep 10</font></strong>.
+
+<h1>Representations of Meaning</h1>
+
+<h2>Logical Representations</h2>
+
+For someone taking a computational angle on logical form, the Hobbs paper does a very nice job introducing key concepts, including, among other things, neo-Davidsonian event-centered representations, <em>de re</em> and <em>de dicto</em> belief reports, and intensional contexts, all with an eye toward "real sentences in English discourse".  (For a highly accessible, albeit perhaps a little dated, introduction to Montague-style model theoretic semantics for a general audience, I recommend Emmon Bach's <A href="http://www.amazon.com/Informal-Lectures-Formal-Semantics-Linguistics/dp/0887067727">Informal Lectures on Formal Semantics</A>.)  In their recent short paper, Rudinger and Van Durme use Hobbs' representation to provide a qualitative discussion of the dependency representation scheme produced by the widely used <A HREF="http://nlp.stanford.edu/software/lex-parser.shtml">Stanford Parser</A>.
+<P>
+In terms of actually building up logical representations, combinatory categorial grammar (CCG) provides a very nice example of a direct correspondence between syntactic and semantic structure.  Steedman's short introduction is enough to get the basics of how CCG works, Bos et al. utilize the lambda calculus in building (again neo-Davidsonian) semantic representations from a large-scale CCG parser, and the paper by Zettlemoyer and Collins describe probabilistic CCGs and show how to learn a probabilistic CCG from a training set of
+sentences labeled with expressions in the lambda calculus.  
+<P>
+Steedman and Baldridge's <A href="https://78462f86-a-471025c8-s-sites.googlegroups.com/a/jasonbaldridge.com/www/papers/SteedmanBaldridgeNTSyntax.pdf?attachauth=ANoY7coc8AH-g6cgU1m35ltnF1mj5wWmUMAWkI2ZsVxuSlxtJRz3uqXiLj5DJ34uQd4qpuC91Xxq6Gb_vurXMZHa7g6RuDRotuZ_V7v12ghmglru5XG8i3jRzAS3EnTXpQYlTbwF26n8bKhaIh5lNQk1T6VPPqSU_m9QvrtQ4E4amcN1eeznfauobNzD8vWjOsZgOYjJd5-HNnpxILquwN2_wcRvGXQPPDdA7ESmI9VjqWljOv1oB-8%3D&attredirects=0">Combinatory Categorial Grammar</A> provides a more in-depth summary of CCG, and for a different take on rule-to-rule correspondence see  Shieber and Schabes <a href="http://www.eecs.harvard.edu/~shieber/Biblio/Papers/synch-tags.pdf">Synchronous Tree-Adjoining Grammars</A>.  Incidentally, for those interested in speech, Steedman has argued for a similar take on intonational structure; see, e.g., this <A href="http://homepages.inf.ed.ac.uk/steedman/papers/prosody/language2014.pdf">recent paper</A>.
+
+<ul>
+<p><li> *Hobbs, <a href="http://www.isi.edu/~hobbs/op-acl85.pdf">Ontological Promiscuity</A>
+<p><li> *Rachel Rudinger and Benjamin Van Durme. <A href="http://www.aclweb.org/anthology/W/W14/W14-2908.pdf">Is the Stanford Dependency Representation Semantic?</A>. ACL Workshop: EVENTS. 2014.
+  
+</ul>
+<ul>
+<p><li> *Steedman, <A HREF="http://www.inf.ed.ac.uk/teaching/courses/nlg/readings/ccgintro.pdf">A Very Short Introduction to CCG</A>
+<p><li> *Bos et al., <A HREF="http://sydney.edu.au/engineering/it/~james/pubs/pdf/coling04sem.pdf">Wide-Coverage Semantic Representations from a CCG Parser</A>
+<p><li> *Zettlemoyer and Collins, <A href="http://homes.cs.washington.edu/~lsz/papers/zc-uai05.pdf">Learning to Map Sentences to Logical Form: Structured Classification with Probabilistic Categorial Grammars</A>
+</ul>
+
+<hr>
+<strong><font color="gray">Sep 17</font></strong>.
+
+
+
+<h2>Semantics in Machine Translation</h2>
+
+One would think that machine translation --- the task of taking a meaning in one language and conveying it in another -- would be among the most natural places to find work on semantics in computational linguistics.  Indeed, semantic transfer rules have been part of MT for a long time.  The idea of <em>interlingual</em> machine translation goes a step further, being based on the idea of translating from the source into a language-independent meaning representation, and then out to the target language.
+<P>
+We'll start with Bonnie Dorr's work, which is probably the best known attempt at a truly interlingual approach to MT; it also provides a nice introduction to a number of core ideas in lexical semantics.  
+<P>
+Work along these lines, and in fact the idea of explicit semantic representations, was largely abandoned in MT as a part of the statistical revolution in NLP in the 1990s, and the fundamental idea that replaced it was the idea of <em>decoding</em>, i.e. search through the space of possible outputs guided by some optimization criterion. Although early statistical MT (notably the IBM models) aimed at optimizing likelihood, MT was revolutionized yet again by the introduction of optimization using shallow but fully automatic meaning-similarity metrics, starting with <A href="http://www.aclweb.org/anthology/P02-1040.pdf">BLEU</A> and exploding into a cottage industry including, among many others, <a href="http://www.aclweb.org/anthology-new/W/W05/W05-09.pdf#page=75">METEOR</A>, <A href="http://mt-archive.info/AMTA-2006-Snover.pdf">TER</A>, and <A href="http://link.springer.com/content/pdf/10.1007%2Fs10590-009-9062-9.pdf">TERp</A>.
+<P>
+More recently, as the pendulum swings back, semantics has been making a resurgence in the definition of evaluation/optimization criteria, and things are heading back in the direction of it finding its way back into MT systems, as well.  We'll look at recent work on semantically informed measures of meaning-equivalence in MT, and at the recent movement in the direction of Abstract Meaning Representation (AMR).  (Bridging the two, optionally look at <a href="http://www.isi.edu/natural-language/amr/smatch-13.pdf">smatch</A>, a metric for AMR similarity; also see <a href="http://www.cs.cmu.edu/~jmflanig/flanigan+etal.acl2014.pdf">Flanigan et al.</A> in connection with last week's discussion of semantic parsing.)
+
+<P>
+Semantic representations
+<ul>
+  <p><li> *Bonnie Dorr, <A href="http://link.springer.com/article/10.1007%2FBF00402510">The use of lexical semantics in interlingual machine translation</A>
+  <p><li> *Banarescu et al., <A href="http://amr.isi.edu/a.pdf">Abstract Meaning Representation for Sembanking</A>
+  <p><li> *Xue et al., <A href="http://www.lrec-conf.org/proceedings/lrec2014/pdf/384_Paper.pdf">Not an Interlingua, But Close: Comparison of English AMRs to Chinese and Czech</A>
+</ul>
+
+Measuring meaning equivalence
+<ul>
+  <p><li> *Cer et al., <A href="http://web.stanford.edu/~jurafsky/N10-1080.pdf">The Best Lexical Metric for Phrase-Based Statistical MT System Optimization</A> (leaders: refer back to the BLEU, METEOR, and TER papers as appropriate)
+  <p><li> *Dreyer and Marcu (2012), <A href="http://www.aclweb.org/anthology/N12-1017">HyTER: Meaning-Equivalent Semantics for Translation Evaluation</A>
+  <p><li> Optional: Dekai Wu: MEANT, HMEANT, XMEANT (refs at http://www.cs.ust.hk/~dekai/)
+</ul>
+
+
+
+<hr>
+<strong><font color="gray">Sep 24</font></strong>.
+
+
+<h2>Network Representations</h2>
+
+Network or graph representations have long been used to represent semantic and conceptual knowledge.  Early work on "semantic networks" laid the foundation for representations in which concepts appear as nodes, and relations among concepts appear as links; optional background readings here include classic work by Collins and Quillian that argued for the role of semantic networks as a model for human memory.  The "read and report" assignment on Rosch's prototype theory concerns another extremely influential view  conceptual categories and how they are taxonomically organized, including both Rosch's seminal paper and an interesting and very recent computational application of its key ideas.
+<P>
+The classic paper by Bill Woods provides important context (and cautions) when it comes to how we think about semantic network representations.  WordNet, despite originally having been conceived as more of a tool for human use, has become central as a resource for computational modeling.  
+<P>
+When it comes to real-world use of ontologies, the medical domain is one of the most successful, in part because of a medical tradition of taxonomizing knowledge that goes back to <A href="http://en.wikipedia.org/wiki/Linnaean_taxonomy">Linneus</A>, and in part because informaticians in medicine have actually devoted enormous effort to creating knowledge resources with sufficient coverage to actually be useful.  In class this week we will have two guests, <A HREF="https://www.linkedin.com/pub/tony-davis/0/7a6/729">Tony Davis</A> and <A HREF="https://www.linkedin.com/pub/andrew-wetta/12/336/a60">Andy Wetta</A> of 3M Health Information Systems, who will be talking with us about applications of ontologies in the healthcare domain.  They have pointed to the reading about the Foundational Model of Anatomy (FMA) as useful background for what they'll cover, and as optional reading they also recommend
+(a) <A HREF="https://framenet2.icsi.berkeley.edu/docs/r1.5/book.pdf"</a>the Framenet book</A> (first 25 pages or so), 
+(b) the <A HREF="http://lingo.stanford.edu/sag/papers/copestake.pdf">Copestake et al. introduction to minimal recursion semantics</a>,
+(c) the <a href="https://en.wikipedia.org/wiki/SNOMED_CT">Wikipedia article on SNOMED-CT</A>, and
+(d) Rector, Brandt, and Schneider, <A href="http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3128394/">Getting the foot out of the pelvis</A>, a critique of some of SNOMED-CT's decisions (see also <a href="http://ontology.buffalo.edu/medo/SNOMED_Smith.html">other papers</A> by Barry Smith et al. about SNOMED).
+
+<P>
+Classic older  background on network representations (optional):
+<ul>
+<p><li>      Quillian, MR (1967). "Word concepts. A theory and simulation of some basic semantic capabilities". Behavioral Science 12 (5): 410–430. doi:10.1002/bs.3830120511.
+<p><li>      Collins and Quillian (1969), Retrieval time from semantic memory, http://matt.colorado.edu/teaching/categories/cq69.pdf
+<p><li>      Allan M. Collins, Allan M.; Elizabeth F. Loftus (1975). "A spreading-activation theory of semantic processing". Psychological Review 82 (6): 407–428. doi:10.1037/0033-295X.82.6.407
+      <!-- Swinney (1979) ,  Lexical access during sentence comprehension: (Re) consideration of context effects.  http://lcnl.ucsd.edu/LCNL_main_page/Publications_PDF/1979_Swinney.pdf -->
+</ul>
+
+Readings:
+<ul>
+<p><li>     *William A. Woods, <A href="http://www.dtic.mil/dtic/tr/fulltext/u2/a022584.pdf">What's in a Link: Foundations for Semantic Networks</A>
+<p><li>     *George A. Miller et al., <A href="http://wordnetcode.princeton.edu/5papers.pdf">Introduction to WordNet: An On-line Lexical Database</A>
+<p><li>     *Modern semantic networks: medical ontologies
+<P>
+  <ul>
+  <li> <A HREF="http://sigpubs.biostr.washington.edu/archive/00000204/01/FMA_Chapter_final.pdf">*The Foundational Model of Anatomy Ontology</A>, Sections 4.1-4.4.2 inclusive and Section 4.5 (from the bottom of p. 95 to p. 101). 
+  </ul>
+
+</ul>
+
+
+<h2>Read-and-report: Prototypes and Categories</h2> 
+<ul>
+<p><li>    *Rosch, E., Mervis, C.B., Gray, W., Johnson, D., & Boyes-Braem, P., "Basic Objects in Natural Categories", Cognitive Psychology, Vol.8, No.3, (July 1976), pp. 382–439.
+<p><li>    *Vicente Ordonez, Jia Deng, Yejin Choi, Alexander C. Berg, Tamara L. Berg (2013), From Large Scale Image Categorization to Entry-Level Categories, http://www.cs.unc.edu/~vicente/entrylevel/
+</ul>
+
+<!--
+<hr>
+<strong><font color="gray">Oct 1</font></strong>.
+
+
+<h2>Frame Semantics</h2>
+<ul>
+<p><li>  *Fillmore, Frame Semantics, http://brenocon.com/Fillmore%201982_2up.pdf  
+<p><li>  *A Agarwal, D Bauer, O Rambow, Using Frame Semantics in Natural Language Processing, http://acl2014.org/acl2014/W14-30/pdf/W14-3008.pdf
+<p><li>  *PropBank overview
+<p><li>  Petruck, Frame Semantics, http://www.princeton.edu/~adele/LIN_106__UCB_files/Miriam-Petruck-frames.pdf
+<p><li>  Framenet bibliography, https://framenet.icsi.berkeley.edu/fndrupal/fnbibliography/author/42
+<p><li>  Boas syllabus, http://www.utexas.edu/cola/files/380728
+<p><li>  Overview of thematic roles
+</ul>
+
+
+<h2>Read-and-report 2: Discourse Representation Theory</h2>
+<ul>
+<p><li>  Kamp et al., http://www.ims.uni-stuttgart.de/institut/mitarbeiter/uwe/Papers/DRT.pdf
+<p><li>  Bos (2008), Wide-Coverage Semantic Analysis with Boxer, http://www.meaningfactory.com/bos/pubs/Bos2008STEP2.pdf
+<p><li>  Tools: http://svn.ask.it.usyd.edu.au/trac/candc/wiki/boxer
+</ul>
+
+-->
+
+<hr>
+<strong><font color="gray">Oct 1</font></strong>.
+
+<h1>Grounding Meaning</h1>
+
+The essence of semantics is characterizing a relationship between forms and meanings -- as the Wikipedia entry on <a href="http://en.wikipedia.org/wiki/Semantics">Semantics</A> puts it, "the relation between signifiers, like words, phrases, signs, and symbols, and what they stand for, their denotation."  But if denotations are themselves characterized using other symbols, e.g. a formal logic, or entries in a dictionary, how can meaning ultimately be "grounded out"? Recall that last week we discussed how Miller, in his <A href="http://wordnetcode.princeton.edu/5papers.pdf">Introduction to WordNet</A>, explicitly disavows the idea of attempting to create a definitional grounding for WordNet's semantics, instead explicitly characterizing its semantics as "differential" in the sense of distinguishing among concepts that its users are already assumed to possess.  Meaning in WordNet is therefore intended to be parasitic, so to speak, depending on concepts we already have.
+<p>
+In this next section of the course, we look at different potential ways of "grounding" meaning in computational linguistics.  We begin with Harnad's classic paper on the symbol grounding problem, to set context.  This week we also read a foundational paper on <a href="http://en.wikipedia.org/wiki/Latent_semantic_analysis">Latent Semantic Analysis</A> (LSA), which has for some time was a cornerstone of work on distributed representations and dimensionality reduction for text, although <a href="http://en.wikipedia.org/wiki/Latent_Dirichlet_allocation">Latent Dirichlet Allocation</A> (LDA) has overtaken it in popularity in many text analysis settings. (We do not explicitly cover LDA in this course because it is introduced in our Computational Linguistics series (e.g. see the December 2 lecture on Topic Models in <a href="https://piazza.com/umd/fall2014/cmsc723/home">Computational Linguistics I</A>.)
+<p>
+Although the term "LSA" is usually associated specifically with a particular form of dimensionality optimization using singular value decomposition (SVD), and although one usually thinks of it largely as a technical method originated in information retrieval (hence "latent semantic indexing", or LSI), the 1997 Psychological Review article by Landauer and Dumais sets LSA in a far broader context.  Interestingly, Landauer and Dumais's discussion anticipates recent developments in representation learning using deep and/or recursive neural networks, as, for example, discussed in the paper by Mikolov.
+<p>
+
+<h2>  Background</h2>
+<ul>
+<p><li> *Harnad (1990), <A href="http://cogprints.org/3106/1/sgproblem1.html">The Symbol Grounding Problem</A>  
+<p>
+Optionally as an interesting discussion see Luc Steels, <A HREF="http://www.csl.sony.fr/downloads/papers/2008/steels-08d.pdf">The symbol grounding problem has been solved, so what’s next?</A>
+</ul>
+
+<h2>"Grounding" meaning in text: distributed representations</h2>
+
+<h3>Word/Document Semantics</h3>
+<ul>
+<p><li>    *Landauer, Thomas K.; Dumais, Susan T.,  <A href="http://www.stat.cmu.edu/~cshalizi/350/2008/readings/Landauer-Dumais.pdf">A solution to Plato's problem: The latent semantic analysis theory of acquisition, induction, and representation of knowledge</A> 
+  </ul>
+<!--
+  <p><li>    Schuetze,  Word Space; Concept Space
+  <p><li>    LDA overview
+-->
+</ul>
+
+<hr>
+<strong><font color="gray">Oct 8</font></strong>.
+
+<h3>Compositional Semantics</h3>
+
+In the previous session we discussed the symbol grounding problem, and we looked at the argument by Landauer and Dumais that dimensionality reduction via LSA can provide an alternative approach to "grounding" symbols, one in which vector space word representations emerge through a holistic analysis of co-occurrence relationships rather than necessarily connecting back to sensory stimuli.
+<P>
+The essence of the LSA proposal is to learn representations through a large-scale, inductive process, an idea that they point out is related to earlier neural network approaches, and which has seen a renaissance over the last several years in representation learning using deep neural networks.
+<P>
+In this session we will look at representation learning, beginning with a quick look at Bengio's nice overview and then Mikolov et al.'s analysis of how recursive neural network (RNN) distributed word representations capture syntactic and semantic regularities.  We'll then look at some examples of other work that attempts to go a step further by inducing representations of word meaning that <em>compose</em> to produce larger-grained representations of phrasal meaning.
+<P>
+
+  <!--  See also http://www.socher.org/ for other interesting work -->
+
+<ul>
+
+<p><li>    *As background, read through the nice overview of representation learning in sections 1-4 of Bengio et al. <A HREF="http://arxiv.org/pdf/1206.5538v2.pdf">Representation Learning: A Review and New Perspectives</A>.
+  <ul>
+    <p><li> Further optional background: Bengio, <A HREF="http://cogcomp.cs.illinois.edu/words2actions/talks/YBengioInvitedTalk.pdf">Learning to Represent Semantics</A> (slides)
+  </ul>
+<p><li>    *Mikolov et al., <A href="http://research.microsoft.com/pubs/189726/rvecs.pdf">Linguistic Regularities in Continuous Space Word Representations</A> <!-- Distributed Representations of Words and Phrases and their Compositionality -->
+  <ul>
+  <p><li>Optional reading also of interest: the skip-gram approach in <A HREF="https://code.google.com/p/word2vec/">word2vec</A> found in Mikolov et al., <A HREF="http://arxiv.org/pdf/1310.4546.pdf">Distributed Representations of Words and Phrases and their Compositionality</A>.  Background on Mikolov et al.'s Linguistic Regularities paper is in Mikolov et al. <A HREF="http://www.fit.vutbr.cz/research/groups/speech/publi/2010/mikolov_interspeech2010_IS100722.pdf">Recurrent neural network based language model</A>.
+  </ul>
+<P>
+<p><li> *Mitchell and Lapata on their framework for vector-based semantic composition using addition and multiplication operations.  The official reading is the 2008 conference publication: <A href="http://aclweb.org/anthology/P/P08/P08-1028.pdf">Vector-based Models of Semantic Composition</A>.  However, if you have time, I recommend at least taking a look at their 2009 journal article, <A href="http://onlinelibrary.wiley.com/doi/10.1111/j.1551-6709.2010.01106.x/pdf">Composition in Distributional Models of Semantics</A>. You can also find extensive presentation slides <A HREF="http://www.cl.uni-heidelberg.de/colloquium/docs/lapata_slides.pdf">here</A>.
+<p><li>    *<A href="http://nlp.stanford.edu/~socherr/EMNLP2013_RNTN.pdf">Recursive Deep Models for Semantic Compositionality Over a Sentiment Treebank</A>, Richard Socher, Alex Perelygin, Jean Wu, Jason Chuang, Chris Manning, Andrew Ng and Chris Potts. Conference on Empirical Methods in Natural Language Processing (EMNLP 2013, Oral). 
+  <ul>
+  <p><li>  Optionally for an interesting variation of this same idea, see Mohit Iyyer, Peter Enns, Jordan Boyd-Graber, and Philip Resnik, <a href="http://www.cs.colorado.edu/~jbg/docs/2014_acl_rnn_ideology.pdf">Political Ideology Detection Using Recursive Neural Networks</a>. 
+  </ul>
+</ul>
+
+<hr>
+<strong><font color="gray">Oct 15</font></strong>.
+
+<h2>"Grounding" meaning in text: machine reading </h2>
+
+In the previous class or two, we looked at the idea of "grounding" text in text itself -- the corpus, essentially, as a proxy for the world.  Up to this point, however, we have looked at distributed representations derived from text in a way that is for the most part divorced from higher level questions of reasoning.  In contrast "machine reading" attempts to <em>extract knowledge</em> from text, with an interest not just in representations but in the ability to reason with those representations.
+<P>
+The overall goals for this process have existed for decades --- for example, the early work of Bill Woods (see class September 24), and the semantic network representations he discussed, were largely motivated by the desire to have computers acquire knowledge by reading, inspired by what people do, and then reason about it, answer questions, etc.  (Hence a lot of the discussion we saw, and had, about representing factual assertions about instances like <em>Mary's dog</em> (OWNS(p,d) AND NAME-OF(d,"Fido")) rather than general facts about categories (IS-A(DOG,MAMMAL)).  However, it is largely in the last 5-10 years that we have seen real critical mass for machine reading approaches.  
+<P>
+Today's trio of papers looks at this pursuit from three angles: IBM's Watson (DeepQA), which adopted the  interesting strategy of stimulating progress by working on a very public, very clearly defined task with only moderate domain-level constraints; Etzioni and colleagues' "open information extraction" approach, which minimizes prior domain knowledge requirements and focuses on quantity and correctness of learned facts rather than a specific task; and  DARPA's Machine Reading program, where the goal is not to capture all the knowledge in a corpus but to focus on reasoning tasks where knowledge in unstructured text is one essential piece of the puzzle, encouraging adaptability via a series of reading tasks that progress from one to domain to the next.
+
+
+<ul>
+<p><li>    *Ferruci et al., <A href="http://aaaipress.org/ojs/index.php/aimagazine/article/viewFile/2303/2165">Building Watson, an overview of the DeepQA project</A>, AI Magazine, Fall 2010.
+<p><li>    *Etzioni et al., <A HREF="http://turing.cs.washington.edu/papers/aaai06.pdf">Machine Reading</A>, AAAI 2006.
+  <ul>
+  <li> For a broader overview, see Etzioni et al., <A href="http://homes.cs.washington.edu/~weld/papers/etzioni-cacm08.pdf">Open 
+Information Extraction from the Web</A>, CACM, December 2008, and for real depth see <A HREF="http://turing.cs.washington.edu/papers/banko-thesis.pdf">Michele Banko's dissertation</a>.
+  </ul>
+<p><li>    *Strassel et al (2010), <A href="https://www.ldc.upenn.edu/sites/www.ldc.upenn.edu/files/lrec2010-darpa-mr-program.pdf">The DARPA Machine Reading Program - Encouraging Linguistic and Reasoning Research with a Series of Reading Tasks</A>, LREC 2010.
+</ul>
+
+Some other things on this topic that are worth looking at include:
+<ul>
+<p><li>    Richardson et al., <A HREF="http://research.microsoft.com/en-us/um/people/cburges/papers/MCTest-EMNLP13.pdf">MCTest: A Challenge Dataset for the Open-Domain Machine Comprehension of Text</A>, Proceedings of the 2013 Conference on Empirical Methods in Natural Language Processing, pages 193–203,Seattle, Washington, USA, 18-21 October 2013. 
+<p><li>    Callan, <A href="http://boston.lti.cs.cmu.edu/classes/11-682/Lectures/08-QA.pdf">Open domain question answering (slides)</A>
+</ul>  
+
+<hr>
+<strong><font color="gray">Oct 22</font></strong>.
+
+
+<h2>Grounding meaning in restricted worlds</h2>
+
+One could argue that in the previous class or two discussing grounding, we weren't <em>really</em> talking about <em>grounding</em> -- after all, the work we discussed was about creating representations of meaning from text, not connecting text to meaning in the sense of actual things in the real world.
+<P>
+This week we start discussing approaches that more explicitly connect language to the world.  We begin with approaches that start small, in the sense of working with highly restricted subsets of the world, rather than the world at large.  This idea dates back to the very early days of artificial intelligence, when Minsky and Papert suggested that AI research should start with artificial "micro-worlds", of which perhaps the most famous example is <a href="http://en.wikipedia.org/wiki/SHRDLU">Winograd's blocks world</A>.
+<P>
+In its modern incarnation, work along these lines falls under the general heading of "grounded language learning" (see a nice <a href="http://videolectures.net/aaai2013_mooney_language_learning/">overview talk on grounded language learning</A> by Ray Mooney at AAAI 2013).  Some examples of restricted domains where this has been explored include
+<a href="http://www.jair.org/papers/paper2962.html">simulated robotic soccer games</A> (see a <a href="https://www.youtube.com/watch?v=4B_sB0q4IDU">fun video</A> for the non-simulated version), 
+<a href="http://arxiv.org/pdf/1206.6423v1.pdf">simple visual worlds</A> (much like blocks world),
+<a href="http://people.csail.mit.edu/regina/my_papers/gen-msa.ps">mathematical proofs</A>,
+and <a href="http://www.aclweb.org/anthology/P09-1#page=133">weather forecasts</A>. 
+
+Today's class will be done in lecture mode without expecting detailed reading-ahead, but here are primary references I'm drawing on, in addition to the nice overview I mentioned in <A HREF="http://videolectures.net/aaai2013_mooney_language_learning/">Ray Mooney's AAAI-2013 keynote</A>:
+<ul>
+<p><li> <A href="http://www.aaai.org/Papers/JAIR/Vol37/JAIR-3710.pdf">Chen, David L., Joohyun Kim, and Raymond J. Mooney. "Training a multilingual sportscaster: Using perceptual context to learn language." Journal of Artificial Intelligence Research 37.1 (2010): 397-436.</A>
+<p><li> <A href="http://www.aclweb.org/anthology/P09-1#page=133">Liang, Percy, Michael I. Jordan, and Dan Klein. "Learning semantic correspondences with less supervision." Proceedings of the Joint Conference of the 47th Annual Meeting of the ACL and the 4th International Joint Conference on Natural Language Processing of the AFNLP: Volume 1-Volume 1. Association for Computational Linguistics, 2009.</A>
+</ul>
+
+
+<hr>
+<strong><font color="gray">Oct 29</font></strong>.
+
+<h2>Grounding meaning in non- (or at least less-)restricted electronic worlds</h2>
+
+Last class was about using controlled or restricted worlds as a sandbox for exploring computational models connecting language with the world. But, although much of that work does develop foundational ideas and methods, who wants to spend all their time in a sandbox?  
+<P>
+Recently there has been quite a bit of very interesting work exploring the grounding of language in less restricted settings, using what I think of as an expanded notion of "real world". If you think about it, we're spending so much of our time online that the lines between the virtual universe and the physical universe are getting blurry. We now have unprecedented access to the "digital traces" of individual behavior (see <A HREF="http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2745217/">Lazer et al. 2009</A> for nice discussion), including, for example, records of our personal thoughts and feelings, our social interactions, and even our locations. At the same time, "world knowledge" -- always the Achilles heel of artificial intelligence -- is now being aggregated online in semi-structured forms like Wikipedia and more structured forms like Freebase.
+<P>
+Today we will start with the latter category, work that can be seen as grounding language in online information that does not come from a "micro" version of the world.  
+
+
+<P>
+<ul>
+<p><li>  *<strong>Connecting language to Wikipedia.</strong> <A href="http://www.aclweb.org/anthology/D13-1184">X Cheng, D Roth, Relational Inference for Wikification, EMNLP 2014</A>.
+  <ul>
+  <p><li> An interesting and widely cited earlier paper worth looking at is <A HREF="http://www.aclweb.org/anthology/P11-1138.pdf">Ratinov, Lev, Dan Roth, Doug Downey, and Mike Anderson. "Local and global algorithms for disambiguation to wikipedia." In Proceedings of the 49th Annual Meeting of the Association for Computational Linguistics: Human Language Technologies-Volume 1, pp. 1375-1384. Association for Computational Linguistics, 2011</A>.  
+  <p><li> Also, good background on wikification in general can be found in the tutorial slides at <A HREF="http://nlp.cs.rpi.edu/paper/wikificationtutorial.pdf">Dan Roth, Heng Ji, Ming-Wei Chang and Taylor Cassidy. 2014. Wikification and Beyond: The Challenges of Entity and Concept Grounding. Tutorial at the 52nd Annual Meeting of the Association for Computational Linguistics (ACL2014).</A>  </ul>
+
+<p><li>  *<strong>Connecting language to Freebase.</strong> <A HREF="http://www.aclweb.org/anthology/D13-1160">Berant, Jonathan, Andrew Chou, Roy Frostig, and Percy Liang. "Semantic Parsing on Freebase from Question-Answer Pairs." In EMNLP, pp. 1533-1544. 2013.</A>
+
+<p><li>  *<strong>Connecting language to Web services (Siri).</strong> Read <A HREF="https://www.aaai.org/Papers/Symposia/Spring/2007/SS-07-04/SS07-04-009.pdf">Guzzoni, Didier, Charles Baur, and Adam Cheyer. "Modeling Human-Agent Interaction with Active Ontologies." In AAAI Spring Symposium: Interaction Challenges for Intelligent Assistants, pp. 52-59. 2007</A> and also read through <a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.70.5385&rep=rep1&type=pdf">Hodjat, Babak, Horacio Franco, Harry Bratt, Kristin Precoda, Andreas Stolcke, Anand Venkataraman, Dimitra Vergyri, and Jing Zheng. "Iterative statistical language model generation for use with an agent-oriented natural language interface." In 10th International Conference on Human-Computer Interaction. 2003</A> (the latter paper is very short).
+    <ul>
+    <p><li> These papers are recommended by <A href="https://www.linkedin.com/in/colinhevans">Colin Evans</A>, who worked at SRI on the CALO project, in a <A href="https://news.ycombinator.com/item?id=3111742">hacker news</A> posting.  He describes the Guzzoni et al. paper as "probably the closest you'll come to a public explanation of how SIRI works". (If you go to Google Scholar to look for <A href="http://scholar.google.com/scholar?cites=13839522331300776211&as_sdt=20000005&sciodt=0,21&hl=en">papers citing Guzzoni et al.</A>, what you find is literally <em>dozens</em> of Apple patents.)
+  He also recommends reading about Adam Cheyer's work on the <a href="http://www.ai.sri.com/~oaa/">Open Agent Architecture</A>, e.g. <A href="http://link.springer.com/article/10.1023%2FA%3A1010091302035?LI=true#page-1">Cheyer, Adam, and David Martin. "The open agent architecture." Autonomous Agents and Multi-Agent Systems 4, no. 1 (2001): 143-148.</A>
+    <p><li> There's also a nice <a href="http://www.novaspivack.com/technology/how-hisiri-works-interview-with-tom-gruber-cto-of-siri">interview with Tom Gruber</A> from 2010 that is intended for techies but is reader-friendly.
+    </ul>
+
+<p><li>  *<strong>Connecting language to geographic location.</strong> <A href="http://ceur-ws.org/Vol-620/paper5.pdf">Speriosu, Michael, Travis Brown, Taesun Moon, Jason Baldridge, and Katrin Erk, "Connecting language and geography with region-topic models." 1st Workshop on Computational Models of Spatial Language Interpretation. 2010, pages 33-40 (pages 42-49 in PDF)</A>. 
+  <ul>
+  <p><li> For a really neat application of this work to literary studies, see <A href="http://www.jasonbaldridge.com/papers/brown_etal_tsll2012.pdf">Brown, Travis, Jason Baldridge, Maria Esteva, and Weijia Xu. "The substantial words are in the ground and sea: Computationally linking text and geography." Texas Studies in Literature & Language 54, no. 3 (2012): 324-339.</A> 
+  <p><li> For a full description of the TextGrounder system, see <A href="http://repositories.lib.utexas.edu/handle/2152/21303">Michael Speriosu's dissertation</A>, and for a recent discriminative classification approach see <A href="http://emnlp2014.org/papers/pdf/EMNLP2014039.pdf">Wing and Baldridge, EMNLP 2014</A>.
+  <p><li> For a journal length article on tweet-based geolocation, which includes nice background and a different approach, see <A HREF="http://www.jair.org/media/4200/live-4200-7781-jair.pdf">Han, Bo, Paul Cook, and Timothy Baldwin. "Text-Based Twitter User Geolocation Prediction." J. Artif. Intell. Res.(JAIR) 49 (2014): 451-500.</A> 
+  </ul>
+
+</ul>
+
+<h2>Read-and-report 3: The Semantic Web</h2>
+<ul>
+<p><li>  Berners-Lee et al. 2001, The Semantic Web, http://www.cs.umd.edu/~golbeck/LBSC690/SemanticWeb.html
+<p><li>  Shadbolt et al. 2006, The Semantic Web revisited, http://eprints.soton.ac.uk/262614/1/Semantic_Web_Revisted.pdf  
+<p><li>  Halevy et al. The Unreasonable Effectiveness of Data, http://static.googleusercontent.com/media/research.google.com/en/us/pubs/archive/35179.pdf
+</ul>
+
+<hr>
+<strong><font color="gray">Nov 5</font></strong>.
+
+<h2>Grounding in visual input</h2>
+
+Last class, we talked about grounding language in the electronic world of Web services and online knowledge, and we took a step toward the physical world by looking at connections between language and geographical location in the form of electronic geolocation information.  Today we move more firmly to grounding of language in the real, physical world by looking at work on grounding language in visual input.
+<P>
+The short paper by Deb Roy in <em>Trends in Cognitive Sciences</em> provides a bit of context-setting.  Then we move to some recent deep learning work on computational semantics connecting language with images.  Finally, we'll talk about a very interesting then-and-now pair of papers: one by Jeff Siskind in 1990 and another by Siskind and his student Haonan Yu, showing where his thinking and work have gotten to more than two decades later.  (The latter won an ACL best paper award.) 
+
+<ul>
+<p><li>  *<A href="http://www.media.mit.edu/cogmac/publications/Roy_TICS_2005.pdf">Roy, Deb. "Grounding words in perception and action: computational insights." Trends in Cognitive Sciences 9.8 (2005): 389-396.</A>
+<P>
+<p><li>  *<A href="http://nlp.stanford.edu/~socherr/SocherKarpathyLeManningNg_TACL2013.pdf">Richard Socher, Andrej Karpathy, Quoc V. Le, Christopher D. Manning, Andrew Y. Ng, Grounded Compositional Semantics for Finding and Describing Images with Sentences,   Transactions of the Association for Computational Linguistics (TACL 2014), Presented at ACL 2014.</a> 
+<P>
+<p><li>  *<A href="http://www.aclweb.org/anthology-new/P/P90/P90-1019.pdf">Siskind, Jeffrey Mark. "Acquiring core meanings of words, represented as Jackendoff-style conceptual structures, from correlated streams of linguistic and non-linguistic input." In Proceedings of the 28th annual meeting on Association for Computational Linguistics, pp. 143-156. Association for Computational Linguistics, 1990.</A>
+<p><li>  *<A HREF="http://www.aclweb.org/anthology/P/P13/P13-1006.pdf">Yu, H. and Siskind, J.M., `Grounded Language Learning from Video Described with Sentences,' Proceedings of the Fifty First Annual Meeting of the Association for Computational Linguistics (ACL), pp. 56-63, Sofia, Bulgaria, 4-9 August 2013.</A>
+<P>
+</ul>
+
+
+
+<hr>
+<strong><font color="gray">Nov 12</font></strong>.
+
+<h1>Modeling human acquisition of semantics</h1>
+
+
+The heading here  is, of course, impossibly broad.  But today we'll look at some work related to the most amazing of computational devices for learning meaning: the human child.  Siskind's 1990 paper from last week fits into that category:  he was expressly interested in computational modeling that would make "only linguistically and cognitively plausible assumptions".  
+<P>
+Today we begin with Deb Roy -- his TED talk provides a nice, high-level overview of some remarkable work he did on instrumentation for gathering relevant data, and it also articulates the connection between that work and practical applications, which led to the creation of Bluefin Labs (acquired in February 2013 by Twitter). We'll also discuss his Cogsci 2012 paper, as an example of the kind of analysis he's done with the collected data.  (See his <A href="http://web.media.mit.edu/~dkroy/papers/pdf/roy_2002_b.pdf">2002 article in <em>Computer Speech and Language</em>, "Learning visually grounded words and syntax for a scene description task"</A>, for representative earlier work.)
+<P>
+We then move to a different aspect of acquisition, the ability to connect words in the input to their semantic roles.  This problem is intimately connected to the problem of verb learning --- that is, identifying the particular verb concept to which a word refers --- and that question is itself closely tied to the question of how verb semantics is represented.  (If that makes you think about earlier readings we did from Bonnie Dorr and Jeff Siskind, that's good.) Those not already familiar with work in that area might want to consider reading over the short (6 page) <a href="http://babylab.berkeley.edu/SylviaYuan/papers/Fisher_etal_2010.pdf">overview of syntactic bootstrapping</A> by Fisher et al. 2010, and if you had the time I would also recommend the M&agrave;rquez et al. <A href="http://eprints.pascal-network.org/archive/00004514/01/J08-2001.pdf">overview of semantic role labeling</A>
+
+<P>
+<ul>
+<p><li>  *Deb Roy, <A HREF="http://www.ted.com/talks/deb_roy_the_birth_of_a_word?language=en">The Birth of a Word</a>, TED2011 (about 20 minutes long).  If you prefer to read rather than watch, here's a link to the <a href="http://www.ted.com/talks/deb_roy_the_birth_of_a_word/transcript?language=en">transcript</a>.
+<p><li>  *<A HREF="http://web.media.mit.edu/~bcroy/papers/cogsci2012_RFR.pdf">Roy, Brandon C., Michael C. Frank, and Deb Roy. "Relating activity contexts to early word learning in dense longitudinal data." In Proceedings of the 34th Annual Cognitive Science Conference. 2012.</A>
+</ul>
+<P>
+<ul>
+<p><li> *<A href="http://cogcomp.cs.illinois.edu/papers/ConnorFiRo12.pdf">Connor, Michael, Cynthia Fisher, and Dan Roth. "Starting from scratch in semantic role labeling: Early indirect supervision." In Cognitive aspects of computational language acquisition, pp. 257-296. Springer Berlin Heidelberg, 2013.</A>
+ <ul>
+ <p><li>  If folks are interested, we might consider reading <A HREF="http://psych.stanford.edu/~jlm/pdfs/ChangDellBock06.pdf">Chang, Franklin, Gary S. Dell, and Kathryn Bock. "Becoming syntactic." Psychological review 113, no. 2 (2006): 234</A>, referred to by Connor et al., which offers a distributional learning model for linking syntax and semantics without a predefined semantic representation, in the spirit of semantic bootstrapping.
+ <p><li> As another possibility worth considering, Connor et al. have a 2011 IJCAI paper,  <A HREF="http://cogcomp.cs.illinois.edu/papers/ConnorFiRo11.pdf">Online Latent Structure Training for Language Acquisition</a>,  formalizing the syntax/semantics acquisition problem as a joint learning task, showing "it is possible to train a semantic role classifier jointly with a simplified latent syntactic structure based solely on semantic feedback and simple linguistic constraints".
+.  
+ </ul> 
+<p><li> *<A HREF="http://digital.library.adelaide.edu.au/dspace/bitstream/2440/59239/1/hdl_59239.pdf">Perfors, Amy, Joshua B. Tenenbaum, and Elizabeth Wonnacott. "Variability, negative evidence, and the acquisition of verb argument constructions." Journal of Child Language 37, no. 03 (2010): 607-642.</A>
+</ul>
+<P>
+
+Because Connor et al. and Perfors et al. are long, I don't think we can squeeze in another reading for today.  If we were going to, however, the ones I'd recommend would be: 
+<ul>
+<p><li> <A HREF="http://www.coli.uni-saarland.de/~afra/papers/LCP2010-Alishahi-Stevenson.pdf">Alishahi, Afra, and Suzanne Stevenson. "A computational model of learning semantic roles from child-directed language." Language and Cognitive Processes 25, no. 1 (2010): 50-93.</A>
+<p><li> <A HREF="http://verbs.colorado.edu/~kipper/Papers/lrec-journal.pdf">Kipper, Karin, Anna Korhonen, Neville Ryant, and Martha Palmer. "A large-scale classification of English verbs." Language Resources and Evaluation 42, no. 1 (2008): 21-40.</A>
+<p><li> <A HREF="http://eprints.pascal-network.org/archive/00004514/01/J08-2001.pdf">Gildea and Jurafsky (2002), Automatic Labeling of Semantic Roles</A> 
+</ul>  
+
+<hr>
+<strong><font color="gray">Nov 19</font></strong>.
+
+<P>
+Continuation of previous class.
+<P>
+
+<!--
+<h2>Learning to map to logical form (semantic parsing)</h2>
+<ul>
+<p><li>  Zelle and Mooney (1996), Learning to Parse Database Queries Using Inductive Logic Programming http://www.cs.utexas.edu/~ml/papers/chill-aaai-96.pdf
+<p><li>  Clarke et al. (2010), Driving Semantic Parsing from the World’s Response, http://l2r.cs.uiuc.edu/~danr/Papers/CGCR10.pdf
+<p><li>  Another paper TBD
+</ul>
+-->
+
+<hr>
+<strong><font color="gray">Nov 26</font></strong>.
+
+<P>
+<font color="red">No class -- have a great Thanksgiving!</font>
+<P>
+
+<hr>
+<strong><font color="gray">Dec 3</font></strong>.
+
+<h2>Beyond Denotations: Pragmatic inferences in language understanding</h2>
+
+
+This semester we have been looking primarily at the relationship between language and the underlying meaning expressed by that language.  Today we look more broadly at "meaning", going beyond  literal meanings or denotations  to things that are "meant" in a broader sense, even if the meaning is not fully carried by the utterance itself.  Hobbs's theory of interpretation as abduction is a classic computational approach that talks about the construction of meaning as a process of reasoning (hence including world knowledge) to obtain the best explanation for an utterance.  We also look at implicature, with one reading providing broad background, and then examining in particular the treatment of opinion implicatures proposed in work in progress by Wiebe and Deng.
+
+
+<P>
+  <ul>
+  <p><li> *Jerry Hobbs, <A HREF="handbook-pragmatics-short.ps">Abduction in Natural Language Understanding</A>.   This is a fuller treatment of Hobbs's classic paper <A HREF="http://www.aclweb.org/anthology/P88-1012">Interpretation as Abduction</A>.  I strongly recommend also looking at the critique of abductive interpretation by Norvig and Wilensky in <A HREF="http://norvig.com/abduction.pdf">A Critical Evaluation of Commensurable Abduction Models 
+for Semantic Interpretation</A>.
+  <p><li> *<A HREF="http://plato.stanford.edu/entries/implicature/">Implicature</A> (Stanford Encyclopedia of Philosophy).
+  <p><li> *Wiebe and Deng, <A HREF="http://arxiv.org/pdf/1404.6491.pdf"> An Account of Opinion Implicatures</A>.  If you're skimping on reading (shame on you!) please make sure to at least read the short paper by Wiebe and Deng, <A HREF="http://acl2014.org/acl2014/W14-26/pdf/W14-2625.pdf ">A Conceptual Framework for Inferring Implicatures</A>.  This work was partly motivated by Greene and Resnik (2009), <A HREF="http://www.aclweb.org/anthology/N09-1057">More than Words: Syntactic Packaging and Implicit Sentiment</A>; that's also worth a look if you have time although I can summarize it pretty easily in class.
+  </ul>
+
+
+<P>
+Although we probably won't have time to discuss it in this class, if you're interested in pragmatic inferences you should look at the problem of recognizing textual entailment.  Here is a comprehensive treatment of the topic (full book). 
+<ul>
+  <p><li> Dagan et al. (2013), Recognizing Textual Entailment: Models and Applications, http://www.morganclaypool.com/doi/abs/10.2200/S00509ED1V01Y201305HLT023
+</ul>
+
+
+
+<hr>
+<strong><font color="gray">Dec 10</font></strong>.
+
+<ul>
+<li> Project discussions and class wrap-up
+</ul>
+
+<P>
+<HR>
+<P>
+<font size=-1>
+<PRE>
+Philip Resnik, Professor
+Department of Linguistics and Institute for Advanced Computer Studies
+
+<A HREF="http://www.ling.umd.edu">
+Department of Linguistics</A>
+1401 Marie Mount Hall            UMIACS phone: (301) 405-6760       
+University of Maryland           Linguistics phone: (301) 405-8903
+College Park, MD 20742 USA	   Fax: (301) 314-2644 / (301) 405-7104
+http://umiacs.umd.edu/~resnik	   E-mail: resnik AT umd _DOT.GOES.HERE_ edu
+</PRE>
+<P>
+</font>
+<HR>
+
+</BODY>
+</HTML>
+
+
+

@@ -1,0 +1,200 @@
+<html>
+<BASE  HREF="http://umiacs.umd.edu/~resnik/ling848_fa2010/index.html">
+<title>Schedule of Topics</title>
+<body bgcolor="#ffffff">
+<hr>
+<h1>Schedule of Topics</h1>
+<hr>
+<P>
+
+
+This is the schedule of topics for 
+<A HREF="http://umiacs.umd.edu/~resnik/ling848_fa2010/index.html">
+Seminar on Computational Modeling of Language, Fall 2010</A>.  
+
+<P>
+<font color="red">THIS SCHEDULE IS A WORK IN PROGRESS!  <BR>
+In addition, some topic areas may take longer than expected, so keep
+an eye on the class mailing list or e-mail me for "official"
+dates.</font>
+<P>
+
+
+
+<UL>
+
+ <LI> <strong> September 1.</strong> Administrivia, group collaboration and discussion tools, 
+      overview of course.  What is a "computational model of language" from the perspective this class?
+ <P> 
+ <UL>
+ <LI>  Recommended: <a href="http://www.thisviewoflife.org/references/papers/Can%20We%20Know%20the%20Universe%20-%20Sagan1979.pdf">Sagan 
+       (1979), Can we Know the Universe?</a> 
+ <LI>  Recommended: Resnik (1992), <A href="http://umiacs.umd.edu/~resnik/pubs/left-corner.ps">Left-Corner 
+       Parsing and Psychological Plausibility</A>, Proceedings of the Fourteenth International 
+       Conference on Computational Linguistics (COLING '92), Nantes, France, 1992. 
+ </UL>
+ <P>
+
+ <LI> <strong> September 8.</strong> Information theoretic modeling: surprisal, search, and syntax
+ <P>
+ <UL>
+ <LI> Recommended: Sections 1-2 of Hale, J. (to appear), <A href="http://courses.cit.cornell.edu/jth99/whatrational-ms.pdf">What 
+      a rational parser would do</A>. To appear in Cognitive Science. 
+ <LI> Hale, J. <A HREF="http://acl.ldc.upenn.edu/N/N01/N01-1021.pdf">A Probabilistic Earley Parser 
+      as a Psycholinguistic Model</A>. In Proceedings of the Second Meeting of the North American 
+      Chapter of the Asssociation for Computational Linguistics. 
+ <LI> Boston, M. F., Hale, J., Kliegl, R., Patil, U. & Vasishth, S. (2008). 
+      <A HREF="http://www.jemr.org/online/2/1/1">Parsing costs as predictors of reading difficulty: 
+      An evaluation using the Potsdam Sentence Corpus</A>. Journal of Eye Movement Research, 2(1):1, 1-12.
+ </UL>
+ <P>
+
+ <LI><strong> September 15.</strong> Guest: Roger Levy.  Information theoretic modeling.
+ <P>
+       <font color="">Note: Roger will also be giving a talk at 11am in AV Williams 2120 in 
+       the <A HREF="http://www.umiacs.umd.edu/research/CLIP/colloq/">Computational Linguistics Colloquium Series</A>, and he will be available
+       for meetings on both  Tuesday and Wednesday.  Contact me if you'd like to meet with him.  (The two discussions will
+       be related, but each will be accessible without attending the other.) </font>
+ <ul>
+ <LI> Levy, R. (EMNLP 2008), <A HREF="http://idiom.ucsd.edu/~rlevy/papers.html#levy:2008emnlp">A noisy-channel model of rational human sentence comprehension under uncertain input</A>
+ <LI> Bicknell & Levy, (ACL 2010), <A HREF="http://idiom.ucsd.edu/~rlevy/papers.html#bicknell-levy:2010acl">A Rational Model of Eye Movement Control in Reading</A>. A  reinforcement-learning approach to modeling eye-movement control.
+ <LI> Optional: Levy, Bicknell, Slattery, & Rayner (PNAS 2009), 
+<A HREF="http://idiom.ucsd.edu/~rlevy/papers.html#levy-bicknell-slattery-rayner:2009">Eye movement evidence that readers maintain and act on uncertainty about past linguistic input</A>.   This presents an eye-tracking experiment whose results validate predictions of the uncertain-input model in the EMNLP 2008 reading.  Roger comments that reading this and the EMNLP paper together provides a good picture of his approach to presenting the same research program to both computational linguistics audiences and psycholinguists/cognitive scientists.
+ </ul>
+ <P>
+
+ <LI><strong> September 22</strong> Information theoretic modeling: uniform information density
+ <P>
+ <ul>
+ <LI> Frank, A. and Jaeger, T.F.  2008. <A HREF="http://www.bcs.rochester.edu/people/fjaeger/papers/FrankJaeger08cogsci.pdf">Speaking Rationally: Uniform Information Density as an Optimal Strategy for Language Production.  The 30th Annual Meeting of the Cognitive Science Society (CogSci08), 933-938.</A>
+ <LI> Jaeger, T.F. 2010. <A HREF="http://dx.doi.org/10.1016/j.cogpsych.2010.02.002">Redundancy and reduction: Speakers manage syntactic information density</A>. Cognitive Psychology 61(1), 23-62. 
+ </ul>
+ <P>
+
+ <LI><strong>September 29</strong> Non-parametric Bayesian models<br>
+ <P>
+ <ul> 
+ <li> Optional (review of parametric modeling concepts and inference via sampling): Philip Resnik and Eric Hardisty, <A HREF="http://hdl.handle.net/1903/10058">Gibbs Sampling for the Uninitiated</A>. Technical report, April 2010. University of Maryland techreport numbers CS-TR-4956, UMIACS-TR-2010-04, LAMP-153.
+ <li> Sam Gershman and Dave Blei: <A href="http://www.princeton.edu/~sjgershm/npbayes.pdf">Bayesian Nonparametric Models: A Tutorial</A>.  (This is the updated version, revising prior to publication in Journal of Mathematical Psychology.  Comments for the authors are welcome.)
+ <li> S. Williamson, C. Wang, K. Heller, and D. Blei.     <A href="http://www.cs.princeton.edu/~blei/papers/WilliamsonWangHellerBlei2010.pdf">The IBP compound Dirichlet process and its application to focused topic modeling</A>.  International Conference on Machine Learning, 2010.  
+ </ul>
+ <P>
+
+
+
+ <LI><strong>October 6</strong> More nonparametrics: Hierarchical Dirichlet Processes<br>
+ <P>
+ <ul> 
+ <li> S. Williamson, C. Wang, K. Heller, and D. Blei.     <A href="http://www.cs.princeton.edu/~blei/papers/WilliamsonWangHellerBlei2010.pdf">The IBP compound Dirichlet process and its application to focused topic modeling</A>.  International Conference on Machine Learning, 2010.  
+ <li> Griffiths et al., <a href="http://cocosci.berkeley.edu/tom/papers/hdp.pdf">Unifying Rational Models of Categorization via the Hierarchical Dirichlet Process</A>
+<!-- <li> (Optional? Good motivations from the cognitive side:) Thomas Griffiths, <A HREF="http://cocosci.berkeley.edu/tom/papers/humanhdp.pdf">Modeling transfer learning in human categorization with the hierarchical Dirichlet process</A> -->
+ <li>  Optional (details on HDP, recommend at least looking this over): Teh, Jordan, Beal, and Blei, <A HREF="http://www.cse.buffalo.edu/faculty/mbeal/papers/hdp.pdf">Hierarchical Dirichlet Processes</A>.
+<!--  <li> (Possible additional or optional paper:) Teh, <A href="http://www.gatsby.ucl.ac.uk/~ywteh/research/compling/acl2006.pdf"</A>Hierarchical Bayesian Language Model based on Pitman-Yor Processes</A> -->
+ </ul>
+ <P>
+
+
+ <LI><strong>October 13</strong> Guest: Jordan Boyd-Graber. Adaptor Grammars.<br>
+ <P>
+ <ul>
+ <li>  Mark Johnson and Thomas Griffiths, <A HREF="http://cocosci.berkeley.edu/tom/papers/adaptornips.pdf">Adaptor Grammars: A Framework for Specifying Compositional Nonparametric Bayesian Models</A>.
+ <li> Mark Johnson, <A href="http://www.aclweb.org/anthology/P/P10/P10-1117.pdf">PCFGs, Topic Models, Adaptor Grammars and Learning Topical Collocations and the Structure of Proper Names</A>
+ <li>  Optional: Eric Hardisty, Jordan Boyd-Graber, and Philip Resnik. <a href="http://www.umiacs.umd.edu/~jbg/docs/adapted_naive_bayes.pdf">Modeling Perspective using Adaptor Grammars</A>. Empirical Methods in Natural Language Processing, 2010.
+ </ul>
+ <P>
+
+
+ <LI><strong>October 13</strong> Structured models
+ <P>
+ <ul> 
+ <li> Kevin Knight, <A href="http://www.isi.edu/natural-language/people/bayes-with-tears.pdf">Bayesian Inference with Tears:
+       a tutorial workbook for natural language researchers</A>, September 2009.
+ <li> Mark Johnson, Thomas L. Griffiths and Sharon Goldwater (2007), <A HREF="http://acl.ldc.upenn.edu/N/N07/N07-1018.pdf">Bayesian Inference for PCFGs via Markov Chain Monte Carlo</A>,  
+      Human Language Technologies 2007: The Conference of the North American Chapter of the Association for 
+      Computational Linguistics; Proceedings of the Main Conference, pages 139-146. 
+ </ul>
+ <P>
+
+
+ <LI><strong>October 27</strong> Guest: Hal Daumé
+ <P>
+ <ul>
+ <li>  Hal Daumé III and Lyle Campbell, <A HREF="http://hal3.name/docs/daume07implication.pdf">A Bayesian Model for Discovering Typological Implications</A>,    Conference of the Association for Computational Linguistics (ACL), 2007.
+ <li> Adam R. Teichert and Hal Daumé III, <A HREF=" http://hal3.name/docs/daume09typpos.pdf">Unsupervised Part of Speech Tagging Without a Lexicon</A>
+ </ul>
+ <P>
+
+ <LI><strong>November 3</strong> LDA+
+ <P>
+ <ul>
+ <li> Limin Yao, David Mimno and Andrew McCallum. <A href="http://www.cs.umass.edu/%7Emimno/papers/fast-topic-model.pdf">Efficient Methods for Topic Model Inference on Streaming Document Collections</A>.  Conference on Knowledge Discovery and Data Mining (KDD), 2009, Paris, France. 
+ <li> Michael Paul and Roxana Girju. <A href="http://cs.jhu.edu/~mpaul/files/aaai-tam.pdf">A Two-Dimensional Topic-Aspect Model for Discovering Multi-Faceted Topics</A>. In proceedings of the 24th AAAI Conference on Artificial Intelligence (AAAI-10), Atlanta, Georgia. July 2010.  
+ <li> <strong>Optional</strong>:  Michael J. Paul, ChengXiang Zhai and Roxana Girju. <A href="http://cs.jhu.edu/~mpaul/files/emnlp2010.viewpoints.pdf">Summarizing Contrastive Viewpoints In Opinionated Text</A>.  Proceedings of the 2010 Conference on Empirical Methods in Natural Language Processing (EMNLP 2010), MIT, Cambridge, Massachusetts. October 2010.  
+ </ul>
+
+ <P>
+
+ <LI><strong>November 10</strong> Guest: Bob Carpenter.
+ <P>
+ <ul>
+ <li> Bob Carpenter, <A
+   HREF="http://lingpipe.files.wordpress.com/2009/01/anno-bayes-entities-09.pdf">A
+   Multilevel Bayesian Model of Categorical Data Annotation</A>, unpublished manuscript, 2009.
+   <P>
+ <li> Additional readings worth looking at:
+    <ul>
+    <li> Widely cited early paper on this topic:
+      A. P. Dawid, and A. M. Skene, <A href=" http://links.jstor.org/sici?sici=0035-9254%281979%2928%3A1%3C20%3AMLEOOE%3E2.0.CO%3B2-0">Maximum 
+      Likelihood Estimation of Observer Error-Rates Using the EM Algorithm</A>,
+      Applied Statistics, Vol. 28, Nr. 1 (1979), p. 20--28. 
+    <li> Brief but relevant background discussion and pointers 
+      on  <A HREF="http://behind-the-enemy-lines.blogspot.com/2008/03/mechanical-turk-foundations.html">Panos Ipeirotis's blog</A>,
+      focused in particular on these ideas as applied to quality control on Mechanical Turk.
+    <li> More discussion and background at the end of 
+      Bob's <A HREF="http://lingpipe.files.wordpress.com/2008/04/malta-2010-slides.pdf">LREC tutorial slides</A>.
+    <li> Bob's analyses of more data sets with a wider range of
+      models and extensive references can be found in 
+      <A href="http://lingpipe.files.wordpress.com/2008/11/carp-bayesian-multilevel-annotation.pdf">his tech report</A>.
+    </ul>
+ </ul>
+ <P>
+
+ <LI><strong>November 17</strong> Project discussion
+ <P>
+ Each person or team should spend, say, 20 minutes or so describing
+ and dicussing their project.  Informally is fine -- no need for
+ slides.  (If someone wants to present slides, let me know in advance
+ so I can make sure there's a projector.)  Presentations should
+ include the basic elements you gave me in the project proposal (basic
+ goals/motivations, data you're using, evaluation plan, etc.) and a
+ status report together with any obstacles, challenges, or worries.
+ (I'm hoping if you're hitting any real obstacles, you'll be telling
+ me sooner rather than later!)  I'm hoping that this will lead to
+ discussion that is useful to everyone, sharing of ideas, etc.
+ Presenters can decide if they want to take interruptions, or
+ clarification questions only for the first half followed by a
+ question and discussion period. I have no objections if this leads to
+ sharing of data and/or code, as long as everyone's contributions are
+ clearly identified in project writeups.
+ <P>
+ <strong>To turn in</strong>: A brief summary of everyone else's
+ projects.  For each one, include:
+ <ul>
+ <li> The people doing the project.
+ <li> Your own brief summary of what the project is about.
+ <li> What you think the likelihood of an interesting outcome is, and why.
+ <li> What you think the most important challenges or difficulties are, and why.
+ <li> Any other comments for me or the people doing the project.
+ </ul>
+ <P>
+
+ <LI><strong>November 24</strong>:  <font color="red">No class. Have a great Thanksgiving!</font>
+ <P>
+
+ <LI><strong>December 1</strong> Guest: Naomi Feldman
+ <P>
+
+ <LI><strong>December 8</strong> Project presentations
+ <P>
+
+</UL>

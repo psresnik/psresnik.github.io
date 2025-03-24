@@ -1,0 +1,40 @@
+Sep 10  Logical Representations						     
+
+Sep 17	Network Representations						     
+
+Sep 24	Frame Semantics							     
+
+Oct 1	Semantics in Machine Translation				     
+
+Oct 8	"Grounding" meaning in text: Word/Document Semantics		     
+
+Oct 15	"Grounding" meaning in text: Compositional semantics		     
+
+Oct 22	"Grounding" meaning in text: machine reading 			     
+
+Oct 29	Grounding meaning in controlled worlds				     
+
+Nov 5	Grounding meaning in other ways					     
+
+Nov 12	Learning and visual input					     
+
+Nov 19	Learning and predicate-argument structure			     
+
+Nov 26	Learning to map to logical form (semantic parsing)		     
+
+Dec 3	Beyond denotations: pragmatic inferences and inferring private states
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

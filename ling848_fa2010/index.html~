@@ -1,0 +1,110 @@
+<HTML>
+<HEADER>
+<TITLE>Ling848, Fall 2009</TITLE>
+</HEADER>
+
+<BODY bgcolor="#ffffff">
+
+
+<H1>LING848, FALL 2009. Seminar: Corpus-Based Social Science</H1>
+
+<h2>Instructor</h2>
+
+<a href="http://umiacs.umd.edu/~resnik/">Philip Resnik</A>
+
+<P>
+<h2>Where/When</h2>
+
+1108B <A HREF="http://www.umd.edu/CampusMaps/bld_detail.cfm?bld_code=MMH">Marie
+Mount Hall</A>, Wednesdays 1:30-4pm.
+
+
+<P>
+<h2>Where to get information</h2>
+
+<li> <a href="syllabus.html">Schedule of topics</a>
+<li> <A HREF="http://groups.google.com/group/umd-ling848-fall09">Class discussion board</A>
+<!-- <li> <A HREF="http://www.ling.umd.edu/locker/?p=TBD/">PDF locker</A> (login/password given in class) -->
+<li> <A HREF="http://lists.umiacs.umd.edu/mailman/listinfo/ling848">Class mailing list</A>
+
+<h2>Description</h2>
+
+<font color="red">Note: The content of 800-level seminars varies from
+year to year, and this seminar will <strong>not</strong> cover the
+same material as previous offerings of Ling848 (Seminar in
+Computational Linguistics).  If you have questions about the seminar,
+including any uncertainty about whether your background is appropriate
+in order to attend, please contact the instructor.</font>
+
+<P>
+Over the last five years or so, the relationship between language and
+opinions/sentiments has emerged as a hot topic for computational
+linguistics research, and <A
+HREF="http://languagelog.ldc.upenn.edu/nll/?p=1650">Mark Liberman has
+recently argued</A> that "corpus based social science" is poised to go
+mainstream, despite a general historical tendency toward "linguistic
+anemia" in the social sciences.  As computational linguists, we have
+known for the past several decades that language use in corpora can
+serve as a useful proxy for world knowledge.  With so much of people's
+lives going online, we can now start imagining technology that will
+exploit large-scale language use as evidence for people's individual
+behaviors and social interactions, as well.
+<P>
+Now, "social science" is an unmanageably huge topic.  The <A
+HREF="http://en.wikipedia.org/wiki/Social_sciences">Wikipedia page on
+Social Sciences</A> includes disciplines ranging from archaeology to
+social work.  In this seminar, we'll narrow the field somewhat,
+focusing mainly on studies involving sentiment and perspective,
+topical focus of attention, and the connection of linguistic variables
+with social variables.  In so doing, perhaps we can begin to help find
+a cure for linguistic anemia.  
+<P>
+This seminar will mainly involve readings and discussion, helped along
+by participation in an <A
+HREF="http://groups.google.com/group/umd-ling848-fall09"> online
+discussion group</A>.  The class will be graded on participation (10%)
+and term paper/project (90%), and I hope to encourage hands-on
+projects engaging multidisciplinary teams tackling real problems,
+aiming for papers suitable for submission to appropriate conferences.
+<P>
+Some resources that are likely to be useful:
+<UL>
+<LI> Bo Pang and Lillian Lee's <A
+  HREF="http://www.cs.cornell.edu/home/llee/opinion-mining-sentiment-analysis-survey.html">Sentiment
+  analysis survey</A>
+<LI> Jan Wiebe's <A
+  HREF="http://www.cs.pitt.edu/~wiebe/subjectivityBib.html">subjectivity
+  bibliography</A>
+</UL>
+
+
+<!--
+"Private state" is a cover term used to refer to mental and emotional
+states that are not directly observable or verifiable (Quirk et al.,
+1985).  These would include, for example, opinions or sentiments,
+evaluations, emotions, speculations, and intentions.  
+-->
+
+
+
+<P>
+<HR>
+<P>
+<font size=-1>
+<PRE>
+Philip Resnik, Associate Professor
+Department of Linguistics and Institute for Advanced Computer Studies
+
+<A HREF="http://www.ling.umd.edu">
+Department of Linguistics</A>
+1401 Marie Mount Hall            UMIACS phone: (301) 405-6760       
+University of Maryland           Linguistics phone: (301) 405-8903
+College Park, MD 20742 USA	   Fax: (301) 314-2644 / (301) 405-7104
+http://umiacs.umd.edu/~resnik	   E-mail: resnik AT umd _DOT.GOES.HERE_ edu
+</PRE>
+<P>
+</font>
+<HR>
+
+</BODY>
+</HTML>

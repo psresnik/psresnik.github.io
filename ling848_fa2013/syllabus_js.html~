@@ -1,0 +1,410 @@
+<html>
+<BASE  HREF="http://umiacs.umd.edu/~resnik/ling848_fa2013/index.html">
+<title>Schedule of Topics</title>
+<body bgcolor="#ffffff">
+<hr>
+<h1>Readings</h1>
+<hr>
+<P>
+
+This is the schedule for
+<A HREF="http://umiacs.umd.edu/~resnik/ling848_fa2013/index.html">
+Advanced Seminar in Computational Linguistics: Computational Social Science, Fall 2013</A>.  
+
+<P>
+<font color="red">THIS SCHEDULE IS A WORK IN PROGRESS!  <BR>
+In addition, some topic areas may take longer than expected, so keep
+an eye on the class mailing list or e-mail me for "official"
+dates.</font>
+<P>
+
+
+<hr>
+<strong><font color="gray">Sep 4</font></strong>.
+
+<p>
+Administrivia, class overview.
+<p>
+
+
+<hr>
+<strong><font color="gray">Sep 11</font></strong>.  
+
+<h2>Computational Analysis of Perspective</h2>
+
+<h3>Sentiment analysis background</h3>
+<ul>
+
+<P><LI> Bo Pang and Lillian Lee, <A HREF="http://www.cs.cornell.edu/home/llee/opinion-mining-sentiment-analysis-survey.html">Opinion mining and sentiment analysis</A>, Foundations and Trends in Information Retrieval 2(1-2), pp. 1-135, July 2008.  For our purposes focus on content from the beginning through Section 3.
+<ul>
+  <P><LI> Optional but also useful as background:  Bing Liu, <A HREF="http://www.cs.uic.edu/%7Eliub/FBS/NLP-handbook-sentiment-analysis.pdf">Sentiment Analysis and Subjectivity, to appear in  Handbook of Natural Language Processing, Second Edition, (editors: N. Indurkhya and F. J. Damerau), 2010. (Completed on April 10, 2009)</A>. Read up through Section 2 (pp. 1-16).
+</ul>
+
+<p><li> Theresa Wilson and Jan Wiebe, <A HREF="http://www.cs.pitt.edu/~wiebe/pubs/papers/sigdial03FixedLater.pdf">Annotating Opinions in the World Press</A> (SIGDIAL 2003).  This is the very early Wiebe and Wilson paper describing the original structure of the MPQA annotation back in 2003, including how to compute interannotator agreement in this context.
+
+<p><li> Ron Artstein and Massimo Poesio. 2008. <A HREF="http://aclweb.org/anthology/J/J08/J08-4004.pdf">Inter-Coder Agreement for Computational Linguistics</A>, Computational Linguistics 34, 4 (December 2008), 555-596. DOI=10.1162/coli.07-034-R2 http://dx.doi.org/10.1162/coli.07-034-R2.
+
+<p><li> Matt Thomas, Bo Pang, and Lillian Lee, <A HREF="http://www.cs.cornell.edu/home/llee/papers/tpl-convote.home.html">Get out the vote: Determining support or opposition from Congressional floor-debate transcripts</A>, Proceedings of EMNLP, pp. 327--335, 2006.
+
+<p><li> Related reading:
+     <ul>
+     <p><li> Bob Carpenter, <A HREF="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.174.1374&rep=rep1&type=pdf">Multilevel Bayesian models of categorical data annotation</A>. Unpublished manuscript (2008).  Bayesian modeling of the coding process.
+     <p><li> Bob Carpenter, <A HREF="http://lingpipe-blog.com/2012/03/12/cross-validation-vs-inter-annotator-agreement-2/">Cross-Validation vs. Inter-Annotator Agreement</A>.  Interesting blog discussion on the real-world coding process and whether you even need inter-annotator agreement if you've got a system that's doing well against a gold standard.
+     <p><li> <A HREF="http://stats.stackexchange.com/questions/tagged/inter-rater?sort=votes&pageSize=15">Discussions of inter-rater reliability</A> on <A HREF="http://stats.stackexchange.com/">Cross Validated</A>, "a question and answer site for statisticians, data analysts, data miners and data visualization experts."
+     </ul>
+
+</ul>
+
+
+<hr>
+<strong><font color="gray">Sep 18</font></strong>.  
+
+<h3>Linguistically informed analysis</h3>
+
+<ul>
+
+ <p><li> Sayeed, A. B., Boyd-Graber, J., Rusk, B., & Weinberg, A. (2012, June). <A HREF="http://dl.acm.org/citation.cfm?id=2382140">Grammatical structures for word-level sentiment detection.</A> In Proceedings of the 2012 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (pp. 667-676). Association for Computational Linguistics.
+
+ <p><li> Richard Socher, Alex Perelygin, Jean Wu, Jason Chuang, Christopher Manning, Andrew Ng and Christopher Potts, <A HREF="http://nlp.stanford.edu/sentiment/">Recursive Deep Models for Semantic Compositionality Over a Sentiment Treebank</A>, Conference on Empirical Methods in Natural Language Processing, EMNLP 2013.
+
+ <p><li> Marta Recasens, Cristian Danescu-Niculescu-Mizil, and Dan Jurafsky. 2013. <A HREF="http://www.stanford.edu/~jurafsky/pubs/neutrality.pdf">Linguistic Models for Analyzing and Detecting Biased Language.</A> 2013. Proceedings of ACL 2013.
+
+ <p><li> Stephan Greene and Philip Resnik, <A HREF="http://umiacs.umd.edu/~resnik/pubs/greene_resnik_naacl2009.pdf">More Than Words: Syntactic Packaging and Implicit Sentiment</A>, NAACL 2009, Boulder, CO, May 31 - June 5, 2009. (See also: Greene (2007) <A HREF="http://www.umiacs.umd.edu/~sgreene/">Spin: Lexical Semantics, Transitivity, and the Identification of Implicit Sentiment</A>, unpublished doctoral dissertation.)
+
+ <p><li>Possibly worth looking at: 
+ <ul>
+    <p><li> Ali Darwish, <A HREF="http://books.google.com/books?id=lziSy2QJPjYC&lpg=PA142&ots=mY-PWSoRwf&dq=%22syntactic%20framing%22&pg=PP1#v=onepage&q=%22syntactic%20framing%22&f=false">A Journalist's Guide to Live Direct and Unbiased News Translation<A>, 2010.
+  </ul>  
+
+</ul>  
+
+
+<hr>
+<strong><font color="gray">Sep 25</font></strong>.  Note: Philip is out of town.  Also note that the Linguistics Dept has a projector that can be borrowed, which might be particularly useful for this class.
+
+<h3>The mechanics of gathering relevant data: hands-on session</h3>
+
+<ul>
+<li> Using Amazon Mechanical Turk
+<li> Using Crowdflower
+<li> Using the Twitter API
+<li> Creating a Facebook app
+</ul>
+
+
+
+<hr>
+<strong><font color="gray">Oct 2</font></strong>.
+
+<h2>Computational political science</H2>
+
+<H3>Background</h3>
+<ul>
+
+  <p><li> Dietram A. Scheufele1 and David Tewksbury, <A HREF="http://onlinelibrary.wiley.com/doi/10.1111/j.0021-9916.2007.00326.x/abstract">Framing, Agenda Setting, and Priming: The Evolution of Three Media Effects Models</A>, Journal of Communication, Volume 57, Issue 1, pages 9–20, March 2007.
+
+  <p><li>Chong, Dennis, and James N. Druckman. <A HREF=" http://faculty.wcas.northwestern.edu/~jnd260/pub/Chong%20Druckman%20Annual%20Review%202007.pdf">"Framing theory"</A>. Annu. Rev. Polit. Sci. 10 (2007): 103-126.
+ 
+  <p><li> Justin Grimmer and Brandon Stewart, <A HREF="http://stanford.edu/~jgrimmer/tad2.pdf">Text as Data: The Promise and Pitfalls of Automatic Content Analysis Methods for Political Texts</A>, Political Analysis, 2013. 21 (3), 267--297.  Excellent recent survey designed for political scientists.
+
+  <p><li> Brendan O'Connor, David Bamman, and Noah A. Smith. <A HREF="http://www.cs.cmu.edu/~nasmith/papers/oconnor+bamman+smith.nips-ws11.pdf">Computational Text Analysis for Social Science: Model Complexity and Assumptions.</A> In Proceedings of the NIPS Workshop on Comptuational Social Science and the Wisdom of Crowds, Sierra Nevada, Spain, December 2011.
+
+  <p><li> Related reading:
+  <ul>
+    <p><li> <A HREF="http://www.umiacs.umd.edu/~resnik/ling848_fa2009/agendas.txt">Brief overview of agenda setting/framing from my 2009 computational social science seminar</A> by Sergei Golitsinsky.
+    <p><li> Highly recommended book on agenda setting from the political science perspective (as distinct from the communications perspective):
+            Baumgartner and Jones <A HREF="http://www.amazon.com/Agendas-Instability-American-Politics-Edition/dp/0226039498">Agendas and Instability in American Politics</A>.
+    <p><li> D. A. Scheufele, <A HREF="http://www3.interscience.wiley.com/journal/119063558/abstract">Framing as a theory of media effects</A>, Journal of Communication, Volume 49 Issue 1, Pages 103-122.
+    <p><li> Robert Entman, <A HREF="http://www3.interscience.wiley.com/journal/119293052/abstract">Framing: Toward Clarification of a Fractured Paradigm</A>, Journal of Communication, Volume 43 Issue 4, Pages 51 - 58, 1993.
+    <p><li> <A HREF="http://en.wikipedia.org/wiki/Agenda-setting_theory">Agenda-setting theory</A>, Wikipedia.
+    <p><li> Cardie and Wilkerson, eds., Special issue on Text Annotation for Political Science Research, Journal of Information Technology and Politics, 5:1, 2008.
+    <p><li> Monroe and Schrodt, <A HREF="http://pan.oxfordjournals.org/content/16/4/351.full.pdf">Introduction to the Special Issue: The Statistical Analysis of Political Text</A>, Political Analysis (2008) 16:351–355, doi:10.1093/pan/mpn017.
+
+</ul>
+
+</ul>
+
+<hr>
+
+<strong><font color="gray">Oct 9</font></strong>.
+<h3>Agenda setting</h3>
+<ul>
+<p><li> Groseclose, Tim; Milyo, Jeffrey (2005). "A Measure of Media Bias". The Quarterly Journal of Economics (President and Fellows of Harvard College and the Massachusetts Institute of Technology) CXX (4): 1191–1237. (<A HREF="http://itre.cis.upenn.edu/~myl/GrosecloseMilyo.pdf">2003 version</A>)
+<ul>
+<p><li> Liberman, Mark (2005-12-22). <A HREF="http://itre.cis.upenn.edu/~myl/languagelog/archives/002723.html">"Linguistics, politics, mathematics"</A>. Language Log. 
+<p><li> Liberman, Mark (2005-12-23). <A HREF="http://itre.cis.upenn.edu/~myl/languagelog/archives/002724.html">"Multiplying ideologies considered harmful"</A>. Language Log. 
+</ul>
+
+ <p><li> Gentzkow and Shapiro, 2007: <A HREF="http://faculty.chicagobooth.edu/jesse.shapiro/research/biasmeas.pdf">What drives media slant? Evidence from U.S. daily newspapers</A>
+
+<p><li> Leskovec et al., <a href="http://www.cs.cornell.edu/home/kleinber/kdd09-quotes.pdf">Meme-tracking and the dynamics of the news cycle</a>,
+  Proc. 15th ACM SIGKDD Intl. Conf. on Knowledge Discovery and Data Mining, 2009.  (See also the 
+  <a href="http://memetracker.org">MemeTracker</a> site, which uses the ideas in this paper to visualize the news cycle.)
+
+<p><li> Heath, Chip, Chris Bell, and Emily Steinberg. <A HREF="http://synapse.princeton.edu/~sam/heath_sternberg2001_jpersonalityandsocialpsych.pdf ">Emotional selection in memes: The case of urban legends.</A> Journal of Personality 81 (6): 1028-1041.
+</ul>
+
+<blockquote>
+<font color="red">Also note that Brendan O'Connor (CMU) will be giving a Computational Linguistics Colloquium talk at 11am in A.V. Williams 3258 that is likely to be relevant to people in this class.</A></font>
+</blockquote>
+
+<hr>
+
+<strong><font color="gray">Oct 16</font></strong>.
+<h3>Politicians' agendas</h3>
+<ul>
+
+<p><li> Background: Wikipedia page on <A HREF="http://en.wikipedia.org/wiki/Variational_Bayesian_methods">variational Bayesian methods</A>, which is very well written (thanks largely to Jordan Boyd-Graber, as I understand it!)
+
+<p><li> Justin Grimmer, <A HREF="http://stanford.edu/~jgrimmer/VariationalFinal.pdf">An Introduction to Bayesian Inference via Variational Approximations</A>. Political Analysis, 2011. 19 (1) 32-47.  <em>Variational inference, explained using political science research as the context for applications.</em>
+
+
+<p>Aspirational:
+<ul>
+<p><li> Justin Grimmer, <A HREF="http://pan.oxfordjournals.org/content/18/1/1.full.pdf">A Bayesian Hierarchical Topic Model for Political Texts: Measuring Expressed Agendas in Senate Press Releases</A>, Political Analysis, 2010.
+<p><li> Tae Yano, Dani Yogatama, and Noah A. Smith. <A HREF="http://www.cs.cmu.edu/~nasmith/papers/yano+yogatama+smith.icwsm13.pdf">A Penny for your Tweets: Campaign Contributions and Capitol Hill Microblogs.</A> In Proceedings of the International AAAI Conference on Weblogs and Social Media (ICWSM 2013), Boston, MA, July 2013.
+</ul>
+
+
+</ul>  
+
+<hr>
+<strong><font color="gray">Oct 23</font></strong>.
+
+<h3>Agendas in political debates</h3>
+<ul>
+
+<p><li>Amber E. Boydstun, Rebecca A. Glazier, and Claire Phillips, <A HREF="http://apr.sagepub.com/content/41/5/863">Agenda Control in the 2008 Presidential Debates</A>. American Politics Research, September 2013 vol. 41 no. 5 863-899.
+
+<p><li> Viet-An Nguyen, Jordan Boyd-Graber, Philip Resnik, Deborah Cai, Jennifer Midberry, Yuanxin Wang, <A HREF="http://www.umiacs.umd.edu/~jbg/docs/mlj_2013_influencer.pdf">"I Want to Talk About, Again, My Record On Energy ...": Modeling Topic Control in Conversations using Speaker-centric Nonparametric Topic Models</A>, Machine Learning Journal, to appear.
+
+<p><li> Amber Boydstun, Rebecca Glazier, Matt Pietryka, and Philip Resnik, "Real-Time Reactions to a 2012 Presidential Debate: How the Message, the Messenger, and the Audience Shape Debate Engagement Effects", under review.
+
+</ul>  
+
+
+
+<hr>
+<strong><font color="gray">Oct 30</font></strong>.
+<h3>Framing and bias</h3>
+<ul>
+
+  <p><li> Tae Yano, Philip Resnik, and Noah A. Smith. 2010. <A HREF="http://dl.acm.org/citation.cfm?id=1866719">Shedding (a thousand points of) light on biased language</A>. In Proceedings of the NAACL HLT 2010 Workshop on Creating Speech and Language Data with Amazon's Mechanical Turk (CSLDAMT '10). Association for Computational Linguistics, Stroudsburg, PA, USA, 152-158.
+
+  <p><li> Justin Gross et al., <A HREF="http://hello.yanchuan.sg/assets/papers/gross2013apsa.pdf">Testing the Etch-a-Sketch Hypothesis: Measuring Ideological Signaling via Candidates’ Use of Key Phrases</A>.  APSA 2013. (Sister paper to Sim et al. targeting a political science audience.)
+
+  <p><li> Yanchuan Sim et al., <A HREF="http://www.aclweb.org/anthology/D/D13/D13-1010.pdf">Measuring Ideological Proportions in Political Speeches</A>, EMNLP 2013. (CL-focused sister paper to Gross et al.) (See also <A HREF="http://aclweb.org/supplementals/D/D13/D13-1010.Attachment.pdf">supplementary material to the paper</A>.)
+
+  <p><li> Related reading:
+  <ul>
+    <p><li> Monroe, Colaresi, and Quinn, 2009: <A HREF="http://www.law.berkeley.edu/files/MonroeColaresiQuinn.pdf">Fightin' words: Lexical feature selection and evaluation for identifying the content of political conflict</A>
+    <p><li> Graeme Hirst, Yaroslav Riabinin, Jory Graham, <A HREF="ftp://learning.cs.toronto.edu/dist/gh/Hirst-etal-2010-JADT.pdf">Party status as a confound in the automatic classification of political speech by ideology</A>, in Statistical Analysis of Textual Data Proceedings of 10th International Conference Journées d’Analyse statistique des Données Textuelles 9-11 June 2010 - Sapienza University of Rome.
+    <p><li> Eric Hardisty, Jordan Boyd-Graber, and Philip Resnik. <A HREF="http://umiacs.umd.edu/~resnik/www.aclweb.org/anthology/D/D10/D10-1028.pdf">Modeling Perspective using Adaptor Grammars</A>. Empirical Methods in Natural Language Processing, Cambridge, MA, October 2010.
+  </ul>
+</ul>
+
+
+<hr>
+<strong><font color="gray">Nov 6</font></strong>.  
+<h3>Bridge: All Politics is <Del>Local</del> Psychological </h3>
+
+<ul>
+
+  <p><li>Amos Tversky and Daniel Kahneman. <A HREF="http://psych.hanover.edu/classes/cognition/papers/tversky81.pdf ">The Framing of Decisions and the Psychology of Choice</A>. Science, New Series, Vol. 211, No. 4481. (Jan. 30, 1981), pp. 453-458.
+
+  <p><li> Boydstun and Ledgerwood.  <A HREF="http://web.ebscohost.com/ehost/detail?vid=4&sid=64ad9dc9-e64c-42a2-90fa-c643f86d41e5%40sessionmgr10&hid=1&bdata=JnNpdGU9ZWhvc3QtbGl2ZQ%3d%3d#db=pdh&AN=2013-09988-001">Sticky Prospects: Loss Frames Are Cognitively Stickier Than Gain Frames</A>, Journal of Experimental Psychology: General. [This link might only be available from UMD IP addresses]
+
+  <p><li> Cristian Danescu-Niculescu-Mizil, Lillian Lee, Bo Pang, and Jon Kleinberg. 2012. <A HREF="http://dl.acm.org/citation.cfm?id=2187931">Echoes of power: language effects and power differences in social interaction.</A> In Proceedings of the 21st international conference on World Wide Web (WWW '12). ACM, New York, NY, USA, 699-708. http://doi.acm.org/10.1145/2187836.2187931 
+
+ <p><li>Possibly interesting related reading:
+  <ul>
+    <p><li> Emir Kamenica and Matthew Gentzkow. <A HREf="http://faculty.chicagobooth.edu/matthew.gentzkow/research/BayesianPersuasion.pdf ">Bayesian Persuasion</A>, American Economic Review 101 (October 2011): 2590–2615.  http://www.aeaweb.org/articles.php?doi=10.1257/aer.101.6.2590.  
+    <p><li> Stefano DellaVigna and Matthew Gentzkow, <A HREF="http://www.nber.org/papers/w15298">Persuasion: Empirical Evidence</A>, NBER Working Paper No. 15298, 
+August 2009.
+   </ul>
+
+ </ul>  
+
+
+<hr>
+<strong><font color="gray">Nov 13</font></strong>.
+
+<h2>Text-driven computational models in psychology</h2>
+
+<h3>Language use,  personality, and behavior</h3>
+
+  <ul>
+  <p><li> Tausczik, Y., & Pennebaker, J.W. (2010). <A HREF="http://homepage.psy.utexas.edu/HomePage/Faculty/Pennebaker/Reprints/Tausczik&Pennebaker2010.pdf">The psychological meaning of words: LIWC and computerized text analysis methods.</A>.  Journal of Language and Social Psychology.
+
+  <p><li>  F. Mairesse and M. Walker, <A HREF="http://csjarchive.cogsci.rpi.edu/Proceedings/2006/docs/p543.pdf">Words Mark the Nerds: Computational Models of Personality Recognition through Language</A>, Proceedings of the 28th Annual Conference of the Cognitive Science Society, pp. 543-548. 2006.
+  <ul>
+    <p><li> If you'd like to read a more in-depth discussion of this line of work, see F. Mairesse, M. Walker, M. Mehl, and R. Moore. 2007. <A HREF="http://users.soe.ucsc.edu/~maw/papers/personality_jair07.pdf">Using linguistic cues for the automatic recognition of personality in conversation and text</A>. Journal of Artificial Intelligence Research (JAIR), 30:457-500. 
+    <p><li> For a neat application of this work to natural language generation, see François Mairesse and Marilyn Walker, <A HREF="http://users.soe.ucsc.edu/~maw/papers/cl2011.pdf">Controlling User Perceptions of Linguistic Style: Trainable Generation of Personality Traits.</A>. Computational Linguistics, 2011.
+  </ul>
+
+  <p><li> P. Resnik, A. Garron, and R. Resnik, <A HREF="http://aclweb.org/anthology/D/D13/D13-1133.pdf">Using Topic Modeling to Improve Prediction of Neuroticism and Depression in College Students</A>, Poster, EMNLP, October 2013.
+
+  <p><li> Atkins, David C., Timothy N. Rubin, Mark Steyvers, Michelle A. Doeden, Brian R. Baucom, and Andrew Christensen. <A HREF="http://psiexp.ss.uci.edu/research/papers/Atkinsetal_2012.pdf">"Topic models: A novel method for modeling couple and family text data"</A>. Journal of Family Psychology 26, no. 5 (2012): 816.
+ 
+
+
+  <p><li> Related reading:
+  <ul>
+    <p><li> Pennebaker, J. W., Chung, C. K., Ireland, M., Gonzales, A. L., & Booth, R. J. (2007). <A HREF="http://homepage.psy.utexas.edu/homepage/students/Chung/Publications_files/PennebakerChungIrelandGonzales&Booth3007_LIWC.pdf">The development and psychometric properties of LIWC2007. Austin, TX: LIWC.net.</A>
+    <p><li> Pennebaker, J. W., & Chung, C. K. (2008).  <A HREF="http://homepage.psy.utexas.edu/homepage/students/Chung/Publications_files/Pennebaker&Chung2008_Al-Qaeda.pdf"> Computerized text analysis of al-Qaeda statements.</A> In K. Krippendorff and M. Bock (Eds.), A content analysis reader (pp. 453-466). Thousand Oaks, CA: Sage.  </font>
+    <p><li> Rude, S., Gortner, E.M., and Pennebaker, J.. 2004. Language use of depressed and depression-vulnerable college students. Cognition & Emotion 18:8, 1121-1133; S Stirman and J W Pennebaker. 2001. Word Use in the Poetry of Suicidal and Nonsuicidal Poets. Psychosomatic Medicine 63:517-522).
+    <p><li> Argamon, S., Koppel, M., Pennebaker, J. W., and Schler, J. 2009. <A HREF="http://doi.acm.org/10.1145/1461928.1461959">Automatically profiling the author of an anonymous text.</A>, Commun. ACM 52, 2 (Feb. 2009), 119-123. DOI= http://doi.acm.org/10.1145/1461928.1461959.   [<A HREF="http://u.cs.biu.ac.il/~koppel/papers/AuthorshipProfiling-cacm-final.pdf">Alternative PDF version</A>]
+  </ul>  
+</ul>
+
+
+<hr>
+<strong><font color="gray">Nov 20</font></strong>.    
+
+<h3>Clinical conditions</h3>
+
+
+<ul>
+
+<p><li> Emily T. Prud’hommeaux, Brian Roark, Lois M. Black, and Jan van Santen, <A HREF="http://www.aclweb.org/anthology/W11-0610">Classification of atypical language in autism</A>, Proceedings of the 2nd Workshop on Cognitive Modeling and Computational Linguistics, 2011.
+
+<p><li> De Choudhury, M., Counts, S., & Horvitz, E. (2013).  <A HREF="http://research.microsoft.com/en-us/um/people/munmund/pubs/chi_13.pdf">Predicting Postpartum Changes in Emotion and Behavior via Social Media</A>, CHI’13, Paris, France,
+
+<p><li> Pakhomov S, Chacon D, Wicklund M, Gundel J., <A HREF="http://rxinformatics.umn.edu/downloads/CLAS/pakhomov_BRM_2011.pdf"> Computerized assessment of syntactic complexity in Alzheimer's disease: a case study of Iris Murdoch's writing,</A> Behav Res Methods. 2011 Mar;43(1):136-44.
+
+<p><li>Maider Lehr, Izhak Shafran, Emily Prud'hommeaux and Brian Roark. 2013. <A HREF="http://www.cs.rochester.edu/u/emilypx/LehrEtAl2013-NAACL.pdf">Discriminative joint modeling of lexical variation and acoustic confusion for automated narrative retelling assessment</A>.  Proceedings of the Human Language Technology Conference of the North American Chapter of the Association for Computational Linguistics (NAACL-HLT).
+
+
+<p><li> Related reading:
+<ul>
+  <p><li> Masoud Rouhizadeh, Emily Prud'hommeaux, Brian Roark and Jan van Santen. 2013. <A HREF="http://www.cs.rochester.edu/u/emilypx/RouhizadehEtAl2013-NAACL.pdf">Distributional semantic models for the evaluation of disordered language</A>.  Proceedings of the Human Language Technology Conference of the North American Chapter of the Association for Computational Linguistics (NAACL-HLT).
+
+
+  <p><li> Maider Lehr, Emily Prud’hommeaux, Izhak Shafran and Brian Roark, <A HREF="http://www.cslu.ogi.edu/~zak/ispeech12-wlm.pdf">Fully Automated Neuropsychological Assessment for Detecting Mild Cognitive Impairment</A>, InterSpeech 2012.
+
+
+</ul>
+
+
+
+<p><li>Related reading:
+  <ul>
+  <p><li> Neuman Y, Cohen Y, Assaf D, Kedma G., <A HREF="http://www.ncbi.nlm.nih.gov/pubmed/22771201"> Proactive screening for depression through metaphorical and automatic text analysis.<A> Artif Intell Med. 2012 Sep;56(1):19-25,
+  </ul>
+
+</ul>  
+
+
+
+
+<hr>
+<strong><font color="gray">Nov 27</font></strong>.  
+<p>
+No class.  Happy Thanksgiving!
+<p>
+
+
+
+<hr>
+<strong><font color="gray">Dec 4 </font></strong>.  
+
+<h3>Interpersonal Relationships</h3>
+
+
+
+<ul>
+<p><li> McFarland, Daniel A., Dan Jurafsky, and Craig M. Rawlings. 2013. <A HREF="http://www.funginstitute.berkeley.edu/sites/default/files/2013%20McFarland%20et%20al_Making%20the%20Connection_Social%20Bonding%20in%20Courtship%20Situations.pdf">"Making the Connection: Social Bonding in Courtship Situations"</A>. American Journal of Sociology Vol. 118, No. 6, 1596-1649.
+
+<p><li> Rajesh Ranganath, Dan Jurafsky, and Daniel A. McFarland. 2013. <A HREF="http://www.stanford.edu/~jurafsky/pubs/ranganath2013.pdf">Detecting friendly, ﬂirtatious, awkward, and assertive speech in speed-dates</A>, Computer Speech and Language. 27:1, 89-115. 
+
+<p><li> Ireland, Molly E., Richard B. Slatcher, Paul W. Eastwick, Lauren E. Scissors, Eli J. Finkel, and James W. Pennebaker. 2011. <A HREF="http://homepage.psy.utexas.edu/HomePage/Faculty/Pennebaker/Reprints/Ireland_et.al_LSM&relationships.pdf">Language style matching predicts relationship initiation and stability.</A> Psychological Science 22 (1): 39-44.
+
+<p><li> Philip Bramsen, Martha Escobar-Molano, Ami Patel, and Rafael Alonso. 2011. <A HREF="http://dl.acm.org/citation.cfm?id=2002570">Extracting social power relationships from natural language.</A> In Proceedings of the 49th Annual Meeting of the Association for Computational Linguistics: Human Language Technologies - Volume 1 (HLT '11), Vol. 1. Association for Computational Linguistics, Stroudsburg, PA, USA, 773-782.
+
+</ul>
+
+
+
+Related reading:<ul>
+
+<p><li>Panayiotis G. Georgiou, Matthew P. Black, and Shrikanth S. Narayanan. 2011. <A HREF="http://dl.acm.org/citation.cfm?id=2072576">Behavioral signal processing for understanding (distressed) dyadic interactions: some recent developments</A>. In Proceedings of the 2011 joint ACM workshop on Human gesture and behavior understanding (J-HGBU '11). ACM, New York, NY, USA, 7-12. DOI=10.1145/2072572.2072576 http://doi.acm.org/10.1145/2072572.2072576
+
+<p><li> Danescu-Niculescu-Mizil, Cristian, Michael Gamon, and Susan Dumais. Mark my words! Linguistic style accommodation in social media. Proceedings of WWW (2011).
+
+<p><li> Girju, Roxana. 2010. Toward social causality: An analysis of interpersonal relationships in online blogs and forums. Proceedings of ICWSM, pp. 66--73.
+
+<p><li> Gottman?
+
+</ul>  
+
+
+
+<hr>
+<strong><font color="gray">Dec 11</font></strong>
+
+Last class!  Discussion of people's projects.
+
+
+
+
+<hr>
+<h2>Miscellaneous list of other papers that are potentially of interest</h2>
+
+<ul>
+
+<p><li> Jurka, Timothy P., Loren Collingwood, Amber E. Boydstun, Emiliano Grossman, and Wouter van Atteveldt. 2013. <A HREF="http://rtexttools.com">RTextTools: A Supervised Learning Package for Text Classification.</A> The R Journal, 5(1): 6-12. 
+
+<P><LI> Tim Hawes, <A HREF="http://umiacs.umd.edu/~twhawes/thesis/hawes_thesis_last_draft.pdf">Computational Analysis of the Conversational Dynamics of the United States Supreme Court</A>, UMD Master's thesis. Chapters 1, 2, 4, 6 (Chs 1,6 are very short intro/conclusion), Chapter 5 and Chapter 3 optional (in that order of priority). 
+
+<p><li> Vasileios Hatzivassiloglou; Kathleen R. McKeown, <A HREF="http://acl.ldc.upenn.edu/P/P97/P97-1023.pdf">Predicting the Semantic Orientation of Adjectives</A> (ACL 1997).  Important early paper on acquiring what we would now call a sentiment lexicon.
+
+<P><LI> Turney, P.D. (2002), <A HREF="http://arxiv.org/pdf/cs.LG/0212032">Thumbs up or thumbs down?  Semantic orientation applied to unsupervised classification of reviews</A>, Proceedings of the 40th Annual Meeting of the Association for Computational Linguistics (ACL'02), Philadelphia, Pennsylvania, 417-424.  (Optionally, for a more extensive discussion and related work, see also Turney, P.D., and Littman, M.L. (2003), <A HREF="http://arxiv.org/ftp/cs/papers/0309/0309034.pdf">Measuring praise and criticism: Inference of semantic orientation from association</A>, ACM Transactions on Information Systems (TOIS), 21 (4), 315-346.)  Important early work on sentiment classification of reviews.
+
+<p><li> Wei-Hao Lin, Theresa Wilson, Janyce Wiebe, and Alexander Hauptmann <A HREF="http://homepages.inf.ed.ac.uk/twilson/pubs/conll06.pdf"> Which Side are You on? Identifying Perspectives at the Document and Sentence Levels</A>, The Tenth Conference on Natural Language Learning (CoNLL), 2006.
+
+ <p><li> Optional: Wei-Hao Lin, <A HREF="http://weihaolinatcmu.googlepages.com/thesis.pdf">Identifying Ideological Perspectives in Text and Video</A>, Ph.D. thesis, Language Technologies Institute, School of Computer Science, Carnegie Mellon University, CMU-LTI-08-008, 2008.  [<A HREF="http://weihaolinatcmu.googlepages.com/thesis_defense_slides.pdf">Slides</A>] (More generally, see <A HREF="http://weihaolinatcmu.googlepages.com/wei-haolin%27spublications">Lin's publications page</A> for a variety of interesting work on identifying ideological perspectives.)
+
+<p><li> <A HREF="http://portal.acm.org/citation.cfm?id=1620824#">Predicting response to political blog posts with topic models.</A> In Proceedings of Human Language Technologies: the 2009 Annual Conference of the North American Chapter of the Association For Computational Linguistics (Boulder, Colorado, May 31 - June 05, 2009). Human Language Technology Conference. Association for Computational Linguistics, Morristown, NJ, 477-485.
+
+<p><li> Possibly: something on coordination of linguistic style? (http://www.mpi-sws.org/~cristian/) -- and see http://www.cs.cornell.edu/courses/cs6742/2011sp/ Natural Language Processing and Social Interaction
+
+<p><li> D. Hopkins and G. King, <A HREF="http://gking.harvard.edu/files/words.pdf">A method of automated nonparametric content analysis for 
+     social science</A>. American Journal of Political Science, Vol. 54, No. 1, January 2010, Pp. 229–247.
+  <ul>
+  <font color="gray">
+  <p><li> Of related interest, including software and data: 
+       G. King, <A HREF="http://gking.harvard.edu/projects/text.shtml">Content analysis project page</A> 
+  </font>
+  </ul>
+
+<p><li> Brendan O'Connor, Brandon Stewart, and Noah A. Smith. <A HREF="http://brenocon.com/oconnor+stewart+smith.irevents.acl2013.pdf ">Learning to Extract International Relations from Political Context</A>. In Proceedings of the Annual Meeting of the Association for Computational Linguistics (ACL 2013), Sofia, Bulgaria, August 2013.
+
+
+</ul>
+
+
+
+<P>
+<HR>
+<P>
+<font size=-1>
+<PRE>
+Philip Resnik, Associate Professor
+Department of Linguistics and Institute for Advanced Computer Studies
+
+<A HREF="http://www.ling.umd.edu">
+Department of Linguistics</A>
+1401 Marie Mount Hall            UMIACS phone: (301) 405-6760       
+University of Maryland           Linguistics phone: (301) 405-8903
+College Park, MD 20742 USA	   Fax: (301) 314-2644 / (301) 405-7104
+http://umiacs.umd.edu/~resnik	   E-mail: resnik AT umd _DOT.GOES.HERE_ edu
+</PRE>
+<P>
+</font>
+<HR>
+
+</BODY>
+</HTML>
+
+
+

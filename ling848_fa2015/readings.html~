@@ -1,0 +1,440 @@
+<html>
+<title>Schedule of Topics</title>
+<body bgcolor="#ffffff">
+<hr>
+<h1>Readings</h1>
+<hr>
+<P>
+
+
+This is the schedule for <A HREF="http://umiacs.umd.edu/~resnik/ling848_fa2015/index.html"> Advanced Seminar in Computational Linguistics: Computational Social Science, Fall 2015</A>.
+
+<P> <font color="red">THIS SCHEDULE IS A WORK IN PROGRESS!  <BR> In addition, some topic areas may take longer than expected, so keep an eye on the class mailing list or e-mail me for "official" dates.</font> <P>
+<p>
+<P> <font color="red">Also note that some links point to pay-for-access publishers, but the links are accessible for free from UMD IP addresses.</font>
+<P>
+
+<hr>
+<font size=-1>
+<ul>
+<li> <A HREF="#overview">Sep 2: Class overview</A>
+<li> <A HREF="#tensions">Sep 9: Big picture questions about computational social science: scientific and social tensions</A>
+<li> <A HREF="#scotus">Sep 16: Ideal point models and the Supreme Court </A>
+<li> <A HREF="#scotus2">Sep 23: More on ideal point models</A>
+<li> <A HREF="#agendas">Sep 30: Agenda setting and framing</A>
+<li> <A HREF="#conversations">Oct 7: Agendas and influence in debates and other conversations</A>
+<li> <A HREF="#ideological_bias">Oct 14: Ideological bias</A>
+<li> <A HREF="#bridge">Oct 21: Bridge: All Politics is <Del>Local</del> Psychological  </A>
+<li> <A HREF="#personality">Oct 28: Personality</A>
+<li> <A HREF="#depression">Nov 4: Social media analysis: depression </A>
+<li> <A HREF="#clinical">Nov 11: Clinical assessments of patient language</A>
+<li> <A HREF="#interpersonal">Nov 18: More on clinical assessments of patient language</A>
+<li> <A HREF="https://en.wikipedia.org/wiki/Thanksgiving">Nov 25: No class - Happy Thanksgiving!</A>
+<li> <A HREF="#interpersonal">Dec 2: Interpersonal Relationships</A>
+<li> <A HREF="https://en.wikipedia.org/wiki/Project">Dec 9: Project presentations/discussion</A>
+</ul>
+</font>
+<!--
+<li> <A HREF="https://en.wikipedia.org/wiki/Float_(project_management)">Topic left open for slack</A>
+-->
+<hr>
+
+<strong><font color="gray">Sep 2</font></strong>.</A>
+<a name="overview">
+<p>
+
+<ul>
+<p><li> Administrivia, introductions
+<p><li> Language and underlying mental state: motivations and overview
+</ul>
+
+
+<hr>
+<a name="tensions">
+<strong><font color="gray">Sep 9</font></strong>.
+
+
+<h3>Big picture questions about computational social science: scientific and social tensions</h3>
+
+Before delving into particular <em>methods</em> for computational social science, let's start with a few of the big picture questions. There are two fundamental tensions that arise repeatedly when people talk about computational social science.  The first is a scientific tension connected with the idea of using analysis of large, naturally occurring datasets to do science, as contrasted with more traditional theoretical and experimental methods.  The second is a social tension connected with the idea that machine learning and statistical modeling can be misleading or, worse, can further institutionalize existing societal biases in the automated infrastructure of the future.
+<p>
+I've organized this week's readings into two groups: readings that we can use to structure the discussion and readings that will inform the discussion.  
+There are a lot of readings listed in the latter group, but none of them have any technical complexity (not even the emotional contagion paper) and most of them are quite short, so please at least look them over.
+<p>
+Readings to structure the discussion
+<p>
+<ul>
+<p><li> Halevy et al. 2009. <A href="http://static.googleusercontent.com/media/research.google.com/en/us/pubs/archive/35179.pdf">The unreasonable effectiveness of data</A>
+<p><li> Boyd and Crawford 2012, <A HREF="http://www.tandfonline.com/doi/pdf/10.1080/1369118X.2012.678878">Critical questions for big data</A>
+<p><li> Hanna Wallach 2014, <A href="https://medium.com/@hannawallach/big-data-machine-learning-and-the-social-sciences-927a8e20460d">Big Data, Machine Learning, and the Social Sciences: Fairness, Accountability, and Transparency</A>, talk at NIPS 2014 workshop on “Fairness, Accountability, and Transparency in Machine Learning.
+<p><li> Justin Grimmer and Brandon Stewart 2013, <A HREF="http://stanford.edu/~jgrimmer/tad2.pdf">Text as Data: The Promise and Pitfalls of Automatic Content Analysis Methods for Political Texts</A>, Political Analysis, 2013. 21 (3), 267--297. 
+
+</ul>
+<p>
+Readings that should also inform the discussion
+<ul>
+  <p><li> Lazer et al. 2009. <A HREF="http://gking.harvard.edu/files/LazPenAda09.pdf">Computational Social Science</A>. Science.
+  <p><li> Peter Norvig, <A href="http://norvig.com/chomsky.html">On Chomsky and the Two Cultures of Statistical Learning</a>
+  <p><li> Shah et al., <A HREF="http://ann.sagepub.com/content/659/1/6.full">Big Data, Digital Media, and Computational Social Science: Possibilities and Perils</A>
+  <p>
+  <p><li> Guillory and Hancock (2014), <a href="http://www.pnas.org/content/111/24/8788.full">“Experimental evidence of massive-scale emotional contagion through social networks”</a>
+  <p><li> Jason Baldridge, <a href="https://bcomposes.wordpress.com/2014/07/15/emotional-contagion-contextualizing-the-controversy/">Emotional Contagion: Contextualizing the Controversy</A>, blog post, July 15, 2014.
+  <p><li> Jason Baldridge, <a href="http://techcrunch.com/2015/08/02/machine-learning-and-human-bias-an-uneasy-pair/">Machine Learning And Human Bias: An Uneasy Pair</A>, TechCrunch, August 2, 2015.
+  <p><li> Mark Bergen, <A HREF="http://recode.net/2015/06/30/machine-learning-is-hard-google-photos-has-egregious-facial-recognition-error/">‘Machine Learning Is Hard’:   Google Photos Has Egregious Facial Recognition Error</A>
+  <p><li> Also of interest: <a href="http://www.fatml.org/">Workshop on Fairness, Accountability, and Transparency in Machine Learning</A>  
+</ul>
+
+
+
+<hr>
+<a name="scotus">
+<strong><font color="gray">Sep 16</font></strong>.
+
+
+<h3>Ideal point models and the Supreme Court</h3>
+
+The Supreme Court is a fascinating domain of study for computational social science. From a social perspective, Supreme Court decisions literally have the power to shape the future of society. From a scientific perspective, there is a long tradition of research in political science asking fundamental questions about the role of the Supreme Court and the nature of its decision making -- as just one example, do amicus ("friend of the court") briefs actually influence justices' decisions?
+<p>
+With regard to computational social science, the Supreme Court is a great area of study. There are large, available sources of data that include voluminous language of various types (e.g. merits briefs, amicus briefs, majority and minority opinions, oral arguments), along with tons of metadata (vote data, age, party of the appointing president, etc.).
+<p>
+And from the perspective of this seminar, the Supreme Court is a fascinating area of study because in this setting the connection between language and mental state is paramount. What can language tell us about the underlying opinion or ideology of justices or the people arguing the case? To what extent do we see linguistic evidence of influence or persuasion?  What approach do opposing sides take to framing the same issue? How might power relationships be reflected in language use?
+<p>
+Appetizers
+<ul>
+<p><li>Oliver Roeder, <A href="http://fivethirtyeight.com/features/why-the-best-supreme-court-predictor-in-the-world-is-some-random-guy-in-queens/">Why the best Supreme Court predictor in the world is some random guy in Queens</A>, FiveThirtyEight, November 17, 2014.
+<p><li>Sarah Kliff, <A href="http://www.vox.com/2015/6/11/8767423/supreme-court-predictions-robots">Robots are better than humans at predicting Supreme Court decisions</A>, Vox, June 11, 2015.
+<p><li> Oliver Roeder, <A href="http://fivethirtyeight.com/datalab/uh-robots-arent-better-than-humans-at-predicting-supreme-court-decisions/">Uh, ‘Robots’ Aren’t Better Than Humans At Predicting Supreme Court Decisions</A>, FiveThirtyEight, June 11, 2015.
+<p><li> Jess Bravin's WSJ article about John Roberts's use of "friend"
+<p><li> Gibbs sampling plays an important role in the papers we're going to cover. If you need a refresher, see <A HREF="http://drum.lib.umd.edu/handle/1903/10058">Gibbs Sampling for the Uninitiated</A>.
+</ul>
+
+<p>
+Main course
+<ul>
+<p><li> Andrew D. Martin and Kevin M. Quinn. 2002. <A HREF="http://epstein.wustl.edu/research/MartinQuinn.pdf">"Dynamic Ideal Point Estimation via Markov Chain Monte Carlo for the U.S. Supreme Court, 1953-1999."</A> Political Analysis. 10: 134-153.
+  <ul>
+    <p><li> Also of interest: Martin, Quinn, and Epstein (2005), <A HREF="http://epstein.wustl.edu/research/medianjustice.html">The median justice on the U.S. Supreme Court</A>
+    <p><li> Gerrish and Blei (2012), <A HREF="http://www.cs.columbia.edu/~blei/papers/GerrishBlei2012.pdf">How They Vote: Issue-Adjusted Models of Legislative Behavior</A> (<A HREF="https://github.com/seangerrish/Issue-adjusted-model">authors' software</A>; see also <A HREF="https://sites.google.com/site/bicoastaldatafest/projects/extracting-lawmakers-ideologies-from-text">this project)
+  </ul>
+<p><li> Yano, Smith, and Wilkerson, 2012, <A HREF="http://projects.iq.harvard.edu/ptr/files/yanosmithwilkersonbillsurvival.pdf">Textual predictors of bill survival in congressional committees</A> (focuses on a closely related vote prediction task)
+</ul>
+
+
+<p>
+Some additional notes on ideal point models
+<blockquote>
+<p>
+For those who are helped a lot by understanding the intuitive basis for the model, the first section of Sim et al. (2015) has a nice summary of previous ideas (see next week's readings). See also Section 1 of Bafumi et al. http://www.stat.columbia.edu/~gelman/research/published/171.pdf, which has a nice explanation of what this kind of model is doing.
+<p> 
+For those who want to see the mathematical discussion in a little more detail, Clinton et al. http://politics.as.nyu.edu/docs/IO/4756/jackman_nemp.pdf (Section 3) fleshes out the discussion in Martin and Quinn Section 3.1 where they formalize the justice's decision process. See also Clinton et al. (2004), http://www.cs.princeton.edu/courses/archive/fall09/cos597A/papers/ClintonJackmanRivers2004.pdf.  
+<p>
+Ideal point models in political science are related to item response theory (IRT), which is discussed in the educational assessment literature: probability of a yes/no vote as related to ideological point, in politics, is analogous to the probability of giving a correct answer on a test as related to your ability. There is a nice discussion of IRT at Partchev (2004), https://www.metheval.uni-jena.de/irt/VisualIRT.pdf; see in particular the 2PL model (Section 5). Slides 22-23 at http://jonathantemplin.com/files/irt/irt11icpsr/irt11icpsr_lecture14.pdf derive the form of the model we're looking at from the 2PL IRT model.
+<p>
+</blockquote>
+
+<p>
+Data resources
+<p>
+<blockquote>
+We have access to pretty much anything one could ask for with regard to the Supreme Court: judge-case-level metadata, case-level metadata, processed opinion content, merits briefs, amicus briefs, transcripts of oral arguments. Here are a few useful links.
+<p>
+<ul>
+<p><a href="http://supremecourtdatabase.org/">Supreme Court Database</A>. 
+<p><a href="http://supremecourtdatabase.org/documentation.php">Supreme Court Database (SCDB) metadata documentation</A>
+<p><A href="https://confluence.cornell.edu/display/llresearch/Supreme+Court+Dialogs+Corpus">Supreme Court Dialogs Corpus</A>
+</ul>
+<p>
+More generally, there are lots of really interesting sources out there for code and data. One nice compendium I've found is from <A HREF="https://sites.google.com/site/bicoastaldatafest/home">Bicoastal Datafest: analyzing money's influence on politics</A>, which includes a nice <A HREF="https://sites.google.com/site/bicoastaldatafest/ideas-1">list of well defined project ideas</A> as well as <A HREF="https://sites.google.com/site/bicoastaldatafest/projects">pointers to projects that were done</A>, along with great lists of <A HREF="https://sites.google.com/site/bicoastaldatafest/data">data</A> and <A HREF="https://sites.google.com/site/bicoastaldatafest/tools">tools</A>.
+</blockquote>
+
+<hr>
+<a name="scotus2">
+<strong><font color="gray">Sep 23</font></strong>.
+
+
+<h3>More on ideal point models and the Supreme Court</h3>
+
+This week we will continue with last week's topic, the Supreme Court.
+<ul>
+  <p><li> Lauderdale and Clark, <A href="http://benjaminlauderdale.net/downloads/LauderdaleClarkLDAIRT.pdf">Scaling Politically Meaningful Dimensions Using Texts and Votes</A>
+<p><li> Sim et al. 2015, <A HREF="https://scholar.google.com/scholar?btnG=Search%2BScholar&as_q=%22The%2BUtility%2Bof%2BText%3A%2BThe%2BCase%2Bof%2BAmicus%2BBriefs%2Band%2Bthe%2BSupreme%2BCourt%22&as_sauthors=Sim&as_occt=any&as_epq=&as_oq=&as_eq=&as_publication=&as_ylo=&as_yhi=&as_sdtAAP=1&as_sdtp=1">The utility of text: The case of Amicus briefs and the Supreme Court</A>
+</ul>
+
+
+<hr>
+<a name="agendas">
+<strong><font color="gray">Sep 30</font></strong>.
+
+
+<h3>Agenda setting and framing</h3>
+
+Two central concepts in the study of communications, particularly political communication, are <em>agenda setting</em> and <em>framing</em>. Roughly speaking, agenda setting is about <em>what</em> content gets brought to public attention, traditionally with a focus on political elites and the media as communicators; the classic quote from Cohen (1963) reads that the press  the press "may not be successful much of the time in telling people what to think, but it is stunningly successful in telling its readers what to think <em>about</em>. The world will look different to different people depending on the map that is drawn for them by writers, editors, and publishers of the paper they read."  
+<p>
+Framing, on the other hand, is not about <em>what</em> gets talked about but <em>how</em>; Entman (1993) writes that framing "framing essentially involves selection and salience.  To frame is to select some aspects of a perceived reality and make them more salient in a communicating text, in such a way as to promote a particular problem definition, causal interpretation, moral evaluation, and/or treatment recommendation for the item described."  
+<p>
+There is a truly extensive literature on both of these topics -- enough for an entire course in itself. This week we will get familiar with one widely cited discussion, Sheufele's article considering these concepts from the perspective of cognitive effects.  Then we'll look at two computational papers related to these concepts. Related to agenda setting, we discuss Leskovec et al., which was a very innovative development in understanding how "memes" get on the radar in news and blogs. Related to framing, we cover Nguyen et al., who develop a model extending the idea of using topic models to define ideal point dimensions (cf. Lauderdale and Clark, last week) to a <em>hierarchical</em> topic model inspired by the treatment of framing as <a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.473.4056&rep=rep1&type=pdf">second level agenda setting</A>.
+
+<p>
+Readings
+<p>
+<ul>
+<p><li> Dietram A. Scheufele (2000), <A HREF="http://www.tandfonline.com/doi/pdf/10.1207/S15327825MCS0323_07">Agenda-Setting, Priming, and Framing Revisited: Another Look at Cognitive Effects of Political Communication</A>, Mass Communication and Society, 3:2-3, 297-316, DOI: 10.1207/S15327825MCS0323_07.
+<p><li> Leskovec et al., <a href="http://www.cs.cornell.edu/home/kleinber/kdd09-quotes.pdf">Meme-tracking and the dynamics of the news cycle</a>,
+    Proc. 15th ACM SIGKDD Intl. Conf. on Knowledge Discovery and Data Mining, 2009.  (See also the 
+    <a href="http://memetracker.org">MemeTracker</a> site, which uses the ideas in this paper to visualize the news cycle.)
+<p><li> Viet-An Nguyen, Jordan Boyd-Graber, Philip Resnik, and Kristina Miler, <A HREF="http://www.cs.colorado.edu/~jbg/docs/2015_acl_teaparty.pdf">Tea Party in the House: A Hierarchical Ideal Point Topic Model and Its Application to Republican Legislators in the 112th Congress</A>, ACL 2015. (I may circulate a pre-publication manuscript extending this paper to journal length.)
+</ul>
+<p>
+
+Also of interest:
+<ul>
+
+  Agenda setting
+  <p><li> Baumgartner and Jones <A HREF="http://www.amazon.com/Agendas-Instability-American-Politics-Edition/dp/0226039498">Agendas and Instability in American Politics</A>.
+  <p><li> Dietram A. Scheufele and David Tewksbury, <A HREF="http://onlinelibrary.wiley.com/doi/10.1111/j.0021-9916.2007.00326.x/abstract">Framing, Agenda Setting, and Priming: The Evolution of Three Media Effects Models</A>, Journal of Communication, Volume 57, Issue 1, pages 9–20, March 2007.
+  <p><li> Groseclose, Tim; Milyo, Jeffrey (2005). "A Measure of Media Bias". The Quarterly Journal of Economics (President and Fellows of Harvard College and the Massachusetts Institute of Technology) CXX (4): 1191–1237. (<A HREF="http://itre.cis.upenn.edu/~myl/GrosecloseMilyo.pdf">2003 version</A>)
+    <ul>
+    <p><li> Liberman, Mark (2005-12-22). <A HREF="http://itre.cis.upenn.edu/~myl/languagelog/archives/002723.html">"Linguistics, politics, mathematics"</A>. Language Log. 
+    <p><li> Liberman, Mark (2005-12-23). <A HREF="http://itre.cis.upenn.edu/~myl/languagelog/archives/002724.html">"Multiplying ideologies considered harmful"</A>. Language Log.
+  </ul>
+  <p><li> Gentzkow and Shapiro, 2007: <A HREF="http://web.stanford.edu/~gentzkow/research/biasmeas.pdf">What drives media slant? Evidence from U.S. daily newspapers</A>
+  <p><li> Puglisi, Riccardo and Snyder, James, (2011), <a href="http://EconPapers.repec.org/RePEc:nbr:nberwo:17263">The Balanced U.S. Press</a>, No 17263, NBER Working Papers, National Bureau of Economic Research, Inc.
+  <p><li> Justin Grimmer, <A HREF="http://pan.oxfordjournals.org/content/18/1/1.full.pdf">A Bayesian Hierarchical Topic Model for Political Texts: Measuring Expressed Agendas in Senate Press Releases</A>, Political Analysis, 2010
+  <p><li> Amber E. Boydstun, Anne Hardy, and Stefaan Walgrave, <A HREF="http://psfaculty.ucdavis.edu/boydstun/CV_and_Research_files/Boydstun_Hardy_Walgrave_2014_Two_Faces_of_Media_Attention.pdf">Two Faces of Media Attention: Media Storm Versus Non-Storm Coverage</A>, Political Communication, 31:509–531, 2014.
+
+  <p>
+  Framing
+  <p><li> Chong and Druckman (2007), <A HREF="http://www.annualreviews.org/doi/pdf/10.1146/annurev.polisci.10.072805.103054">Framing Theory</A>, Annu. Rev. Polit. Sci. 2007. 10:103–26.
+  <p><li> Dallas Card, Amber E. Boydstun, Justin H. Gross, Philip Resnik, and Noah A. Smith.. <A HREF="http://homes.cs.washington.edu/~nasmith/papers/card+boydstun+gross+resnik+smith.acl15.pdf">The Media Frames Corpus: Annotations of Frames Across Issues</A>.  In Proceedings of the Annual Meeting of the Association for Computational Linguistics (ACL 2015), Beijing, China, July 2015.
+  <p><li> Boydstun, Card, Gross, Resnik, and Smith, <A HREF="http://homes.cs.washington.edu/~nasmith/papers/boydstun+card+gross+resnik+smith.apsa14.pdf">Tracking the Development of Media Frames within and across Policy Issues</A>
+</ul>
+
+
+
+<hr>
+<a name="conversations">
+<strong><font color="gray">October 7</font></strong>.
+<h3>Agendas and influence in debates and other conversations</h3>
+
+
+
+<ul>
+<p><li> Prabhakaran, Vinodkumar, Ashima Arora, and Owen Rambow. <A HREF="http://acl2014.org/acl2014/W14-27/W14-27-2014.pdf#page=89">Power of confidence: How poll scores impact topic dynamics in political debates</A>, ACL 2014 (2014): 49.
+<ul>
+  <p><li> Also of interest: The SITS model in Viet-An Nguyen, Jordan Boyd-Graber, Philip Resnik, Deborah Cai, Jennifer Midberry, Yuanxin Wang, <A HREF="http://www.umiacs.umd.edu/~jbg/docs/mlj_2013_influencer.pdf">"I Want to Talk About, Again, My Record On Energy ...": Modeling Topic Control in Conversations using Speaker-centric Nonparametric Topic Models</A>, Machine Learning Journal. (<A HREF="https://github.com/vietansegan/sits">code</A>)  For fuller discussion see <A HREF="http://drum.lib.umd.edu/handle/1903/16600">Viet-An Nguyen's 2015 dissertation</A>.
+</ul>
+
+  <p><li> Danescu-Niculescu-Mizil et al., <A HREF="http://projects.iq.harvard.edu/files/ptr/files/echoes_of_power.pdf">Echoes of power: Language effects and power differences in social interaction</A> 
+
+  <p><li> Tim Hawes,  <A HREF="http://drum.lib.umd.edu/bitstream/1903/9999/1/Hawes_umd_0117N_10974.pdf">Computational Analysis of the Conversational Dynamics of the United States Supreme Court</A>. (Quickly take a look at Chapter 3, or read the published version in Timothy Hawes, Jimmy Lin, and Philip Resnik, <A HREF="http://onlinelibrary.wiley.com/doi/10.1002/asi.21087/abstract">Elements of a computational model for multi-party discourse: The turn-taking behavior of Supreme Court justices</A>. JASIST 60(8), 2009. [<A HREF="https://confluence.cornell.edu/display/llresearch/Supreme+Court+Dialogs+Corpus">corpus</A>]  The interesting material is in Chapters 4 and 5.
+</ul>
+
+<p>
+Also of interest
+</p>
+<ul>
+
+<p><li>Amber E. Boydstun, Rebecca A. Glazier, and Claire Phillips, <A HREF="http://apr.sagepub.com/content/41/5/863">Agenda Control in the 2008 Presidential Debates</A>. American Politics Research, September 2013 vol. 41 no. 5 863-899.
+
+<p><li> Amber Boydstun, Rebecca Glazier, Matt Pietryka, and Philip Resnik, <A HREF="http://poq.oxfordjournals.org/cgi/reprint/78/S1/330">Real-Time Reactions to a 2012 Presidential Debate: A Method for Understanding Which Messages Matter</A>, Public Opinion Quarterly, January 1, 2014 78: 330-343.
+  
+<p><li><a href="http://www.washingtonpost.com/news/post-politics/wp/2015/08/06/annotated-transcript-the-aug-6-gop-debate/">Annotated transcript of the August 6, 2015 Republican primary debate</A>, with commentary from Washington Post reporters and readers.
+
+</ul>
+
+
+<hr>
+<A name="ideological_bias">
+<strong><font color="gray">October 14</font></strong>.
+<h3>Ideological bias</h3>
+
+
+<p>
+Readings
+<p>
+<ul>
+<p><li> Sim, Yanchuan, Brice DL Acree, Justin H. Gross, and Noah A. Smith. <A HREF="http://homes.cs.washington.edu/~nasmith/papers/sim+acree+gross+smith.emnlp13.pdf">Measuring ideological proportions in political speeches.</A> In Proceedings of EMNLP. 2013.
+<p><li> Iyyer, Mohit, Peter Enns, Jordan Boyd-Graber, and Philip Resnik. <A HREF="http://www.anthology.aclweb.org/P/P14/P14-1105.pdf">Political ideology detection using recursive neural networks</A>. In Association for Computational Linguistics. 2014.  
+</ul>
+
+</html>
+
+
+
+
+<hr>
+<A name="bridge">
+<strong><font color="gray">Oct 21</font></strong>.  
+<h3>Bridge: All Politics is <Del>Local</del> Psychological </h3>
+
+
+<ul>
+  <p><li>Amos Tversky and Daniel Kahneman, <A HREF="http://psych.hanover.edu/classes/cognition/papers/tversky81.pdf ">The Framing of Decisions and the Psychology of Choice</A>. Science, New Series, Vol. 211, No. 4481. (Jan. 30, 1981), pp. 453-458.
+  <ul> 
+  <p><li> When you have the chance, I very strongly recommend reading Daniel Kahneman's book, <A HREF="https://en.wikipedia.org/wiki/Thinking,_Fast_and_Slow">Thinking, Fast and Slow</A>. As a substitution, this <A HREF="https://erikreads.files.wordpress.com/2014/04/thinking-fast-and-slow-book-summary.pdf">book summary</A> is of course inferior to the original but does get the basic ideas across.
+  </ul> 
+
+  <p><li> Chong and Druckman (2007), <A HREF="http://www.annualreviews.org/doi/pdf/10.1146/annurev.polisci.10.072805.103054">Framing Theory</A>, Annu. Rev. Polit. Sci. 2007. 10:103–26.
+
+  <p><li> Boydstun and Ledgerwood.  <A HREF="http://web.ebscohost.com/ehost/detail?vid=4&sid=64ad9dc9-e64c-42a2-90fa-c643f86d41e5%40sessionmgr10&hid=1&bdata=JnNpdGU9ZWhvc3QtbGl2ZQ%3d%3d#db=pdh&AN=2013-09988-001">Sticky Prospects: Loss Frames Are Cognitively Stickier Than Gain Frames</A>, Journal of Experimental Psychology: General. [This link might only be available from UMD IP addresses]
+
+
+ <p><li>Possibly interesting related reading:
+  <ul>
+    <p><li> Emir Kamenica and Matthew Gentzkow. <A HREf="http://faculty.chicagobooth.edu/matthew.gentzkow/research/BayesianPersuasion.pdf ">Bayesian Persuasion</A>, American Economic Review 101 (October 2011): 2590–2615.  http://www.aeaweb.org/articles.php?doi=10.1257/aer.101.6.2590.  
+    <p><li> Stefano DellaVigna and Matthew Gentzkow, <A HREF="http://www.nber.org/papers/w15298">Persuasion: Empirical Evidence</A>, NBER Working Paper No. 15298, 
+August 2009.
+   </ul>
+
+ </ul>  
+
+
+<hr>
+<A name="Personality">
+<strong><font color="gray">Oct 28</font></strong>.  
+<h3>Personality</h3>
+
+
+One of the better studied applications of language analysis to psychology is the assessment of personality.
+<P>
+
+<ul>
+  <p><li> Tausczik, Y., & Pennebaker, J.W. (2010). <A HREF="http://homepage.psy.utexas.edu/HomePage/Faculty/Pennebaker/Reprints/Tausczik&Pennebaker2010.pdf">The psychological meaning of words: LIWC and computerized text analysis methods.</A>.  Journal of Language and Social Psychology.
+
+  <p><li>  F. Mairesse and M. Walker, <A HREF="http://csjarchive.cogsci.rpi.edu/Proceedings/2006/docs/p543.pdf">Words Mark the Nerds: Computational Models of Personality Recognition through Language</A>, Proceedings of the 28th Annual Conference of the Cognitive Science Society, pp. 543-548. 2006.
+  <ul>
+    <p><li> If you'd like to read a more in-depth discussion of this line of work, see F. Mairesse, M. Walker, M. Mehl, and R. Moore. 2007. <A HREF="http://users.soe.ucsc.edu/~maw/papers/personality_jair07.pdf">Using linguistic cues for the automatic recognition of personality in conversation and text</A>. Journal of Artificial Intelligence Research (JAIR), 30:457-500. 
+    <p><li> For a neat application of this work to natural language generation, see François Mairesse and Marilyn Walker, <A HREF="http://users.soe.ucsc.edu/~maw/papers/cl2011.pdf">Controlling User Perceptions of Linguistic Style: Trainable Generation of Personality Traits.</A>. Computational Linguistics, 2011.
+  </ul>
+
+
+ <p><li> Park, G., Schwartz, H. A., Eichstaedt, J. C., Kern, M. L., Kosinski, M., Stillwell, D. J., Ungar, L.
+H., & Seligman, M. E. P. (2014, November 3). <A HREF="http://www.researchgate.net/profile/Johannes_Eichstaedt/publication/267753920_Automatic_Personality_Assessment_Through_Social_Media_Language/links/553aa17e0cf2c415bb08e7f1.pdf">Automatic Personality Assessment Through Social Media Language.</A> Journal of Personality and Social Psychology. Advance online publication. http://dx.doi.org/10.1037/pspp0000020
+</ul>
+
+Also of interest
+<ul>
+  <p><li> Dietrich, Bryce J., Scott Lasley, Jeffery J. Mondak, Megan L. Remmel, and Joel Turner. <A HREF="http://onlinelibrary.wiley.com/store/10.1111/j.1467-9221.2012.00870.x/asset/j.1467-9221.2012.00870.x.pdf">Personality and legislative politics: The Big Five trait dimensions among US state legislators.</A> Political Psychology 33, no. 2 (2012): 195-210. 
+
+  <p><li> P. Resnik, A. Garron, and R. Resnik, <A HREF="http://aclweb.org/anthology/D/D13/D13-1133.pdf">Using Topic Modeling to Improve Prediction of Neuroticism and Depression in College Students</A>, Poster, EMNLP, October 2013.
+
+ <p><li> Pennebaker, J.W., & Chung, C.K., <A HREF="http://homepage.psy.utexas.edu/homepage/students/Chung/Publications_files/Pennebaker&Chung2008_Al-Qaeda.pdf">Computerized text analysis of Al-Qaeda transcripts.</A> In K. Krippendorff & M. Bock (Eds.), A Content Analysis Reader. 
+
+</ul>
+</ul>
+
+
+<hr>
+<A name="depression">
+<strong><font color="gray">Nov 4</font></strong>.  
+<h3>Social media analysis: depression</h3>
+
+
+Mental health problems are among the most pressing challenges we face. The numbers in the U.S. alone are staggering: to cite just a few, between 1996 and 2011, annual expenditures on mental disorders rose from $35.2B to $113B, some 25 million American adults will have an episode of major depression this year, suicide is the third leading cause of death for people between 10 and 24 years old, and 89.3 million Americans live in federally-designated Mental Health Professional Shortage Areas. 
+<P>
+The papers this week look at the ability to identify depression based on people's behavior in social media. Issues to watch for... How is ground truth being defined? What signals are being included as potential features? How does the experimental setting relate to what one would actually need to accomplish for this to be useful in the real world?
+<P>
+
+<ul>
+
+<p><li> De Choudhury, Munmun, Scott Counts, Eric J. Horvitz, and Aaron Hoff. <A HREF="http://www.munmund.net/pubs/cscw_14_1.pdf">"Characterizing and predicting postpartum depression from shared facebook data."</A> In Proceedings of the 17th ACM conference on Computer supported cooperative work & social computing, pp. 626-638. ACM, 2014.
+
+<p><li> De Choudhury, Munmun, Michael Gamon, Scott Counts, and Eric Horvitz. <A HREF="http://course.duruofei.com/wp-content/uploads/2015/05/Choudhury_Predicting-Depression-via-Social-Media_ICWSM13.pdf">"Predicting Depression via Social Media."</A> In ICWSM. 2013.
+
+<p><li> Resnik, Philip, William Armstrong, Leonardo Claudino, Thang Nguyen, Viet-An Nguyen, and Jordan Boyd-Graber. <A HREF="http://m-mitchell.com/clpsych2015/pdf/CLPsych12.pdf">"Beyond LDA: Exploring Supervised Topic Modeling for Depression-Related Language in Twitter."</A> In Proceedings of the 2nd Workshop on Computational Linguistics and Clinical Psychology (CLPsych). 2015.
+<ul>
+<p><li> UMD group's shared task paper (updated nuts-and-bolts description plus official shared task results, worth at least skimming): Resnik, Philip, et al. <A HREF="http://m-mitchell.com/clpsych2015/pdf/CLPsych07.pdf">"The University of Maryland CLPsych 2015 shared task system."</A> Proceedings of the Workshop on Computational Linguistics and Clinical Psychology: From Linguistic Signal to Clinical Reality, Denver, Colorado, USA, June. North American Chapter of the Association for Computational Linguistics. 2015.
+</A>
+</ul>
+</ul>
+
+Also of interest:
+<ul>
+<p><li> Overview of the CLPsych 2015 shared task: Coppersmith et al., <A HREF="http://www.cs.jhu.edu/~mdredze/publications/clpsych15_shared_task.pdf">CLPsych 2015 Shared Task: Depression and PTSD on Twitter</A>, Proceedings of the 2nd Workshop on Computational Linguistics and Clinical Psychology: From Linguistic Signal to Clinical Reality, pages 31–39,Denver, Colorado, June 5, 2015.
+<p><li>Using LIWC to predict depression: Stephanie S. Rude, Eva-Maria Gortner, and James W.  Pennebaker. 2004. <A HREF="http://homepage.psy.utexas.edu/HomePage/Faculty/pennebaker/Reprints/Rude.pdf">Language use of depressed and depression-vulnerable college students.</A>. Cognition & Emotion, 18(8):1121–1133.
+<p><li> An avatar-based intervention, which could be a setting where NLP could play a role: Pinto, Melissa D., Amy M. Greenblatt, Ronald L. Hickman, Heather M. Rice, Tami L. Thomas, and John M. Clochesy. <A HREF="http://onlinelibrary.wiley.com/doi/10.1111/ppc.12112/abstract">"Assessing the Critical Parameters of eSMART‐MH: A Promising Avatar‐Based Digital Therapeutic Intervention to Reduce Depressive Symptoms."</A> Perspectives in psychiatric care (2015).
+</ul>
+
+
+</ul>
+
+
+
+
+<hr>
+<A name="clinical">
+<strong><font color="gray">Nov 11</font></strong>.  
+<h3>Clinical assessments of patient language</h3>
+
+Last week we focused on social media analysis and what it can tell us about people's mental state, particularly with respect to depression. This week we shift to the analysis of language collected in clinical settings, such as therapist-patient sessions, cognitive assessment tasks, and patient interviews.
+<P>
+Clinician-patient interactions
+<ul>
+<p><li>Imel, Z. E., Steyvers, M., & Atkins, D. C. (2014, May 26). <A href="http://psiexp.ss.uci.edu/research/papers/Imel_Atkins_Steyvers_2014.pdf">Computational Psychotherapy Research: Scaling up the Evaluation of Patient–Provider Interactions.</a> Psychotherapy. Advance online publication. http://dx.doi.org/10.1037/a0036841
+<p>Also of interest:
+<ul>
+<p><li> Atkins, David C., Mark Steyvers, Zac E. Imel, and Padhraic Smyth. <a href="http://www.implementationscience.com/content/pdf/1748-5908-9-49.pdf">"Scaling up the evaluation of psychotherapy: evaluating motivational interviewing fidelity via statistical text classification."</A> Implementation Science 9, no. 1 (2014): 49.
+<p><li> Tanana, Michael, Kevin Hallgren, Zac Imel, David Atkins, Padhraic Smyth, and Vivek Srikumar. <A href="http://m-mitchell.com/clpsych2015/pdf/CLPsych09.pdf">"Recursive Neural Networks for Coding Therapist and Patient Behavior in Motivational Interviewing."</A>. Proceedings of the 2nd Workshop on Computational Linguistics and Clinical Psychology: From Linguistic Signal to Clinical Reality, pages 71–79, Denver, Colorado, June 5, 2015. 
+</ul>
+</ul>
+
+
+Psychosis
+<ul>
+<p><li> 
+Bedi, Gillinder et al., <A href="http://www.nature.com/articles/npjschz201530">Automated analysis of free speech predicts psychosis onset in high-risk youths</A>, NPJ Schizophrenia, 2015. <p>
+<em><strong>Editorial Summary</strong>: Diagnostics: Automated speech analysis predicts later psychosis. A computer program that analyses natural speech could help predict the onset of psychosis in young people at risk. People with schizophrenia have subtle disorganization in speech, even before they first develop psychosis. In a collaboration between IBM, Columbia University Medical Center, and researchers in South America, an automated program that simulates how the human brain understands language was used to analyze interview transcripts from 34 ‘at risk’ youths. Decrease in the flow of meaning from one spoken phrase to the next, and grammatical markers of speech complexity, identified the five individuals who later developed psychosis. The computer program outperformed clinical assessments in predicting psychosis. While numbers are small in this proof-of-principle study, the authors suggest automated analysis could lay the foundation for a simple clinical test of emerging schizophrenia, which would inform early intervention.</em>
+</ul>
+
+
+
+<hr>
+<A name="clinical2">
+<strong><font color="gray">Nov 18</font></strong>.  
+<h3>More on clinical assessments of patient language</h3>
+
+
+Given interests from last week we'll talk more about clinical assessments. 
+<P>
+More on psychosis
+<ul>
+<p><li>Kuperberg, G., & Caplan, D. A. V. I. D. (2003). <A href="http://www.nmr.mgh.harvard.edu/kuperberglab/publications/chapters/Kuperberg&Caplan_Neuropsych_2003.pdf">Language dysfunction in schizophrenia</A>. Neuropsychiatry. Lippincott Williams and Wilkins, Philadelphia, 444-466.
+</ul>
+
+<P>
+Cognitive assessments
+<ul>
+<p><li> Emily Prud’hommeaux and Brian Roark, <A href="http://www.mitpressjournals.org/doi/pdf/10.1162/COLI_a_00232">Graph-based word alignment for clinical language evaluation</A>, Computational Linguistics, to appear.
+<p>Also of interest:
+<ul>
+<p><li> Lehr, Maider, Emily Tucker Prud'hommeaux, Izhak Shafran, and Brian Roark. <A href="Lehr, Maider, Emily Tucker Prud'hommeaux, Izhak Shafran, and Brian Roark. "Fully Automated Neuropsychological Assessment for Detecting Mild Cognitive Impairment." In INTERSPEECH. 2012.">"Fully Automated Neuropsychological Assessment for Detecting Mild Cognitive Impairment."</A> In INTERSPEECH. 2012.
+</ul>
+</ul>
+
+
+</ul>
+
+<hr>
+<h3>Remaining readings TBD</h3>
+
+
+<A name="interpersonal">
+
+<hr>
+
+
+
+
+<!--
+<hr>
+<h3>Notes for later</h3>
+Amy Zhang and Scott Counts (CHI 2015), 
+Modeling Ideology and Predicting Policy Change with Social Media: Case of Same-Sex Marriage,
+http://people.csail.mit.edu/axz/papers/msr-publicpolicy.pdf
+<p>
+D. A. Scheufele, <A HREF="http://www3.interscience.wiley.com/journal/119063558/abstract">Framing as a theory of media effects</A>, Journal of Communication, Volume 49 Issue 1, Pages 103-122.
+<p>
+Boydstun, Amber E., Justin H. Gross, Philip Resnik, and Noah A. Smith. "Identifying media frames and frame dynamics within and across policy issues." In New Directions in Analyzing Text as Data Workshop, London. 2013.
+<p>
+Aaron Schein, Juston Moore, and Hanna Wallach. Inferring Multilateral Relations from Dynamic Pairwise Interactions. http://arxiv.org/pdf/1311.3982.pdf
+-->
