@@ -1,0 +1,752 @@
+<html>
+<BASE  HREF="http://umiacs.umd.edu/~resnik/ling773_sp2013/index.html">
+<title>Schedule of Topics</title>
+<body bgcolor="#ffffff">
+<FONT FACE="Arial, Helvetica, Geneva" SIZE=-1>
+<hr>
+<h1>Schedule of Topics</h1>
+<hr>
+<P>
+
+<!-- <A HREF="midterm_guidance.html">Guidance for midterm studying</A> -->
+
+This is the schedule of topics for
+<A HREF="http://umiacs.umd.edu/~resnik/ling773_sp2013/index.html">
+Computational Linguistics II, Spring 2013</A>.
+<P>
+In readings, "M&S" refers to
+Christopher D. Manning and Hinrich Schuetze,
+<A HREF="http://cognet.mit.edu/library/books/view?isbn=0262133601">Foundations
+of Statistical Natural Language Processing</A>.
+The "other" column has optional links pointing either
+to material you should already know (but might want to review), or to
+related material you might be interested in.
+Make sure to do your reading <strong>before</strong> the class where it is listed!<P>
+<P>
+
+
+<font color="red" size=>THIS SCHEDULE IS A WORK IN PROGRESS!  <BR>
+In addition, some topic areas may take longer than expected, so keep
+an eye on the online class discussions for "official"
+dates.</font>
+
+<center>
+<table  border=1 cellpadding=4 bgcolor=white>
+<tr>
+ <th>Class</th>
+ <th>Topic<BR></th>
+ <th>Readings<A HREF="#readings">*</A></th>
+ <th>Assignments</th>
+ <th>Other</th>
+</tr>
+
+<tr>
+<td>Jan 23</td>
+<td>Course administrivia, semester plan; some statistical NLP fundamentals<BR>
+</td>
+<td>M&S Ch 1, 2.1.[1-9] (for review)<BR>
+<em>
+  <!--COVER Historical overview; Zipf's law; Probability spaces; finite-state and Markov models; Bayes' Rule; Bayesian updating; conjugate priors-->
+  <!-- Word counts; tokenization; frequency and Zipf's law; concordances -->
+</em>
+</td>
+<td>
+  <A HREF="http://umiacs.umd.edu/~resnik/ling773_sp2013/assignments/assignment1.html">Assignment 1</A>
+</td>
+<td>
+<A HREF="http://languagelog.ldc.upenn.edu/">Language Log</A> (<em>the</em> linguistics blog),
+<A href="http://nlpers.blogspot.com/">Hal Daum&eacute;'s NLP blog</A> (excellent blog, often technical machine learning stuff, but just
+  as often more general interest)
+  <!-- <A HREF="http://www.economist.com/science/displayStory.cfm?story_id=3576374">Corpus Colossal</A> (The Economist, 20 Jan 2005);
+  <A HREF="http://umiacs.umd.edu/~resnik/temp/lsedemo_for_class.pdf">
+  Resnik and Elkiss (DRAFT)</A>;  <A HREF="http://lse.umiacs.umd.edu/">Linguist's Search Engine</A> -->
+</td>
+</tr>
+
+<tr>
+<td>Jan 30</td>
+<td>Words and lexical association<BR>
+</td>
+<td>M&S Ch 5<BR>
+<em><!--COVER Collocations;  mutual information; hypothesis testing--></em>
+</td>
+<td>
+  <A HREF="http://umiacs.umd.edu/~resnik/ling773_sp2013/assignments/assignment2.html">Assignment 2</A>
+<td> <A HREF="http://acl.ldc.upenn.edu/J/J93/J93-1003.pdf">Dunning (1993)</A> is a classic and valuable to read if you're trying to use mutual information or chi-squared and getting inflated values for low-frequency observations.
+<A HREF="http://research.microsoft.com/pubs/68957/rare-events-final-rev.pdf">Moore (2004)</A> is a less widely cited but very valuable discussion about how to judge the significance of rare events.
+<P>
+Two papers by Goodman are valuable in terms of understanding p-value and its limitations (although there are almost certainly good recent discussions, given the rise in attention to these issues) --
+  <A HREF="http://www.annals.org/cgi/pmidlookup?view=long&pmid=10383371">Goodman S (1999). "Toward evidence-based medical statistics. 1: The P value fallacy.". Ann Intern Med 130 (12): 995-1004. PMID 10383371</A> and
+  <A HREF="http://www.annals.org/cgi/pmidlookup?view=long&pmid=10383350">Goodman S (1999). "Toward evidence-based medical statistics. 2: The Bayes factor.". Ann Intern Med 130 (12): 1005-13. PMID 10383350</A>.
+  <A HREF="http://www.kilgarriff.co.uk/Publications/2005-K-lineer.pdf">Kilgarriff (2005)</A> is a fun and contrarian read regarding the use of hypothesis testing methodology in language research.
+  <!--<A HREF="http://www.linguistics.ucsb.edu/faculty/stgries/research/NHST_CLLT.pdf">Gries (2005)</A>;<BR>-->
+  <!--  <A  HREF="http://bmj.bmjjournals.com/cgi/content/full/310/6973/170">Bland and Altman (1995)</A>;<BR> -->
+
+</td>
+</tr>
+
+
+<tr>
+<td>Feb 6</td>
+<td>Information theory<BR>
+</td>
+<td>M&S Ch 2.2, M&S Ch 6<BR>
+<em><!--COVER Information theory essentials; entropy, relative entropy, mutual
+    information; noisy channel model; cross entropy and perplexity-->
+</em>
+</td>
+<td>
+<A HREF="http://umiacs.umd.edu/~resnik/ling773_sp2013/assignments/assignment3.html">Assignment 3</A>
+  <!--  <A
+    HREF="http://umiacs.umd.edu/~resnik/ling773_sp2013/assignments/info_theory.html">Assignment 2
+  -->
+  </td>
+</td>
+<td>
+<A HREF="http://www.amazon.com/Elements-Information-Theory-Telecommunications-Processing/dp/0471241954">
+Cover and Thomas (1991)</A> is a great, highly readable introduction to information theory.  The first few chapters go into all of the concepts from this lecture with greater rigor but a lot of clarity.
+</td>
+</tr>
+
+<tr>
+<td>Feb 13</td>
+<td>Cross entropy; Maximum likelihood estimation and Expectation Maximization<BR>
+</td>
+<td>Skim M&S Ch 9-10, Chapter 6 of <A HREF="http://www.umiacs.umd.edu/~jimmylin/book.html">Lin and Dyer</A>. Read
+ <A HREF="http://umiacs.umd.edu/~resnik/ling773_sp2011/readings/em_recipe.v2.only_hmm.pdf">my EM recipe discussion.</A><BR>
+<em><!--COVER Maximum likelihood estimation overview; quick review of smoothing; EM overview;
+    interpolated estimation; Katz backoff; HMM as a noisy channel model
+    HMM review; deriving forward-backward algorithm as an instance of EM; Viterbi algorithm review.-->
+</em>
+</td>
+  <!-- <td><A  HREF="http://umiacs.umd.edu/~resnik/ling773_sp2013/assignments/smoothing.html">Assignment 3 </td> -->
+
+<td><A  HREF="http://umiacs.umd.edu/~resnik/ling773_sp2013/assignments/assignment4.html">Assignment 4</A></td>
+<td>
+<!--
+ <A HREF="http://research.microsoft.com/~joshuago/tr-10-98.pdf">An
+ empirical study of smoothing techniques for language modeling</A> (Stanley
+ Chen and Joshua Goodman, Technical report TR-10-98, Harvard University,
+ August 1998); -->
+Some papers I mentioned in class are Piantadoso et al. (2011), <A HREF="http://web.mit.edu/piantado/www/papers/PNAS-2011-Piantadosi-1012551108.pdf">Word lengths are optimized for efficient communication</A>;
+Jaeger (2010), <A HREF="http://dx.doi.org/10.1016/j.cogpsych.2010.02.002">Redundancy and reduction: Speakers manage syntactic information density</A>;
+ Maurits et al. (2010), <A HREF="http://books.nips.cc/papers/files/nips23/NIPS2010_0369.pdf">Why are some word orders more common than
+others? A uniform information density account</A>.  See also the syllabus for a 2009 seminar taught by Dan Jurafsky and Michael Ramscar, <A HREF="http://www.stanford.edu/class/psych227/">Information-Theoretic Models of Language and Cognition</A>, which looks as if it was awesome.
+  <BR>
+</td>
+</tr>
+
+<tr>
+<td>Feb 20</td>
+<td>EM continued; probabilistic grammars and parsing<BR>
+</td>
+<td>
+Read M&S Ch 11. Skim Ch 12 with an emphasis on 12.1.4.
+<!-- M&S Ch 11-12, <A HREF="http://citeseer.ist.psu.edu/abney96statistical.html">Abney (1996)</A> [<A HREF="http://www.vinartus.net/spa/95c.pdf">alternative link</A>],
+ <A HREF="http://umiacs.umd.edu/~resnik/ling773_sp2011/readings/em_recipe.v2.only_hmm.pdf">my EM recipe discussion</A>, and
+-->
+<BR>
+<em>
+</em>
+</td>
+<td><A HREF="assignments/hmm_sp2013.html">Assignment 5</A></td>
+<td>
+Strongly recommended: re-read <A HREF="http://umiacs.umd.edu/~resnik/ling773_sp2011/readings/em_recipe.v2.only_hmm.pdf">my EM recipe discussion</A> from last week.
+<P>
+Two helpful (but optional) companions to this week's readings:
+the <A HREF="http://crow.ee.washington.edu/people/bulyko/papers/em.pdf">Bilmes (1998) EM tutorial</A>, especially useful if you want to see the formal way to derive EM update equations using Q functions and optimization in the M step using Lagrange multipliers, and
+Chris Dyer's nice
+<A HREF="http://umiacs.umd.edu/~resnik/ling773_sp2011/readings/dyer-inside-outside.pdf">notes</A> on using my EM recipe to derive the inside-outside algorithm for PCFGs.  If you just haven't gotten enough of the formal underpinnings for EM, another nice intro discussion is in Sections 1-3 of <A HREF="http://faculty.washington.edu/fxia/courses/LING572/EM_collins97.pdf">Collins (1997)</A>.
+<P>
+Optional, but well worth reading <em>sometime</em> this semester: <A HREF="http://www.vinartus.net/spa/95c.pdf">Abney (1996)</A> on statistical methods and linguistics.
+<P>
+Note for the future: M&S Section 12.1.8 will be relevant when we talk about evaluation later in the semester.
+</td>
+
+<!-- , <A HREF="http://citeseer.ist.psu.edu/abney96statistical.html">Abney (1996)</A> [
+
+ <!--COVER Parsing as inference; distinction between logic and control;
+ Memoization and dynamic programming;
+ brief review of CKY,  PCKY (inside probabilities), Viterbi CKY; revisiting EM: the
+ inside-outside algorithm. CFG extensions;
+ syntactic dependency trees.-->
+
+  <!--
+      <P>
+      <Strong>Extra credit (10%):</strong> <a
+      href="http://www.dyna.org/Download">Download</a> and <a
+      href="http://www.dyna.org/Install">install</a> the <a
+      href="http://www.dyna.org">Dyna programming language</a>, run
+      the example in <em>demos/cky</em>, and briefly explain in plain English each of
+      the three lines in the core program <em>cky.dyna</em> (i.e. the
+      two <em>constit</em> lines and the <em>goal</em>).  You will
+      probably find <a
+      href="http://www.dyna.org/Examples#Context-free_parsing_.28CKY_algorithm.29">the
+      CKY example</A> and the documentation of <A
+      href="http://www.dyna.org/Inference_rule">inference rules</A>
+      useful.
+   -->
+ </td>
+<!--
+<td>
+Jason Eisner's great <A
+HREF="http://cs.jhu.edu/~jason/fun/grammar-and-the-sentence/">parsing song</A>;
+<A HREF="http://rsta.royalsocietypublishing.org/content/358/1769/1239.full.pdf+html">Pereira
+  (2000)</A>; Detlef Prescher,
+  <A
+  HREF="http://arxiv.org/abs/cs/0412015">
+  A Tutorial on the Expectation-Maximization Algorithm Including
+  Maximum-Likelihood Estimation and EM Training of Probabilistic
+  Context-Free Grammars</A>;
+  <A
+  HREF="http://www.cog.brown.edu/~mj/papers/naacl06-self-train.pdf">McClosky,
+  Charniak, and Johnson (2006), Effective Self-Training for Parsing</A>
+</td>
+-->
+</tr>
+
+<!--
+<tr>
+<td>Feb 27</td>
+<td>Advanced topic: on Parsing and psychological plausibility<BR>
+Guest presenter/facilitator: Kristy Hollingshead</td>
+<td>
+Stolcke (1995), <A HREF="http://acl.ldc.upenn.edu/J/J95/J95-2002.pdf">An Efficient Probabilistic Context-Free Parsing Algorithm that Computes Prefix Probabilities</A>,
+(through section 4.4) for the Earley algorithm;
+Resnik (1992), <A HREF="http://www.aclweb.org/anthology/C/C92/C92-1032.pdf">Left-Corner Parsing and Psychological Plausibility</A><BR>
+<em>Left-corner parsing; Earley's algorithm; using parsing as a diagnostic tool for Alzheimer's (and, to a lesser extent, autism)</em>
+</td>
+<td></td>
+<td>Roark et al. (2007), <A HREF="http://www.aclweb.org/anthology-new/W/W07/W07-1001.pdf">Syntactic complexity measures for detecting Mild Cognitive Impairment</A>
+ </td>
+</tr>
+-->
+
+
+<tr>
+<td>Feb 27</td>
+<td>Probabilistic grammars and parsing<BR>
+</td>
+<td>Same as last week.</td>
+<td><A HREF="assignments/assignment6.html">Assignment 6</A></td>
+<td>
+Optional, but I'm likely to discuss at least parts of these this week, so worth skimming over if you have time:
+Matsuzaki et al. (2005), <A HREF="http://aclweb.org/anthology-new/P/P05/P05-1010.pdf">Probabilistic CFG with latent annotations</A> and
+Petrov et al. (2006), <A HREF="http://acl.ldc.upenn.edu/P/P06/P06-1055.pdf">Learning Accurate, Compact, and Interpretable Tree Annotation</A>.
+</td>
+</tr>
+
+
+
+<tr>
+<td>Mar 6</td>
+<td><font color="red">Cancelled -- snow day!</font><BR>
+</td>
+<td></td>
+<td></td>
+<td>
+</td>
+</tr>
+
+
+<tr>
+<td>Mar 13</td>
+<td>Supervised classification<BR></td>
+<td>M&S Ch 16 <em>except</em> 16.2.1;
+Hearst et al. 1998 <A HREF="http://www.svms.org/tutorials/Hearst-etal1998.pdf">Support Vector Machines</A> (cleaner copy  <A HREF="http://1024.ii.uni.wroc.pl/~aba/teach/SSNiS/CKpaper2.pdf">here</A>)
+ <BR>
+  <em>
+   <!--COVER Supervised learning -- k-nearest neighbor classification;
+   naive Bayes; decision lists; decision trees; transformation-based
+   learning (Sec 10.4); linear classifiers; the kernel trick;
+   perceptrons; SVM basics. -->
+</em>
+</td>
+<td>Assignment 7</td>
+<td>
+I picked Hearst et al. (1998) as the SVM reading because it's the clearest, shortest possible introduction.  There are many other good things to read at <A HREF="http://www.svms.org/">svms.org</A>, including a "best tutorials" section, broken out by introductory, intermediate, and advanced, under <A HREF="http://www.svms.org/tutorials/">Tutorials</A>.   Feel free to go with one of the other tutorials (the ones I've seen used most often are <A HREF="">Burges 1998</A> and <A HREF="">Smola et al. (1999)</A>)) instead of Hearst if you want a meatier introduction.
+<P>
+Optional: Ratnaparkhi (1996), <A HREF="http://acl.ldc.upenn.edu/W/W96/W96-0213.pdf">A Maximum Entropy Model for Part of Speech Tagging</A>, or, if you want a little more detail, Ratnaparkhi (1997), <A HREF="http://repository.upenn.edu/cgi/viewcontent.cgi?article=1083&context=ircs_reports">A Simple Introduction to Maximum Entropy Models for Natural Language Processing</A>.  Ratnaparkhi 1996 began the popularization of maxent in NLP.  Noah Smith's (2004) <A HREF="http://www.cs.cmu.edu/~nasmith/papers/smith.tut04.pdf">Log-Linear Models</a> is a nice alternative introduction  expressed in a vocabulary that is more consistent with current work.
+<P>
+</tr>
+
+<tr>
+<td>Mar 20</td>
+<td><font color="red">Spring Break</font> <BR>
+</td>
+<td></td>
+<td>Have fun!</td>
+<td></td>
+</tr>
+
+
+<tr>
+<td>Mar 27</td>
+<td>Structured learning<BR>Guest lecture: Wu Ke</td>
+</td>
+<td>
+<a href="seq-label.pdf">Lecture notes</a>
+</td>
+<td><font color="red">Take-home midterm handed out</font></td>
+<td>
+Optional papers originating key ideas:
+<ul>
+<li> The <a href="http://www.cis.upenn.edu/~pereira/papers/crf.pdf">original CRF paper</a> by John Lafferty et al.
+<li> Sha Fei and Fernando Pereira's <a href="http://www.aclweb.org/anthology-new/N/N03/N03-1028.pdf">paper</a> on chunking with CRF.
+<li> Michael Collins' <a href="http://acl.ldc.upenn.edu/W/W02/W02-1001.pdf">paper</a> that introduced the structured perceptron.
+</ul>
+Other optional material: 
+<ul>
+<li> Charles Sutton and Andrew McCallum's <a href="http://homepages.inf.ed.ac.uk/csutton/publications/crftut-fnt.pdf">CRF tutorial</a> in Foundations and Trends of Machine Learning.
+<li> Ben Taskar et al.'s <a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.101.6014&rep=rep1&type=pdf">dissertation</a> on large margin training of structured prediction models.
+<li> <a href="http://luthuli.cs.uiuc.edu/~daf/courses/learning/StructureLearning/tsochantaridis05a.pdf">Another paper</a> by Ioannis Tsochantaridis et al. on the same topic with a different approach.
+<li> A nice <a href="http://www.chokkan.org/software/crfsuite/benchmark.html">benchmark comparison</a> of several algorithms for training CRFs and structured perceptrons.
+</ul>
+</td>
+</tr>
+
+
+
+<!--
+<tr>
+<td>March 27</td>
+<td>More on supervised learning: maximum entropy models and conditional random fields <font color="red">[Guest lecturer TBA]</font><BR>
+</td>
+<td>
+  <A HREF="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.63.2111">
+   Using maximum entropy for text classification (Kamal Nigam, John Lafferty, Andrew McCallum)</A>;
+  <A HREF="http://www.aclweb.org/anthology/N/N03/N03-1028.pdf">
+   Shallow Parsing with Conditional Random Fields (Fei Sha and Fernando Pereira)</A>
+<BR>
+ <em>The maximum entropy principle;
+     maxent classifiers (for predicting a single variable);
+      CRFs (for predicting interacting variables);
+      L2 regularization.
+  </td>
+<td></td>
+</td>
+<td>
+   Optionally, some good introductory material appears in
+   <A  HREF="http://www-2.cs.cmu.edu/afs/cs/user/aberger/www/html/tutorial/tutorial.html">
+   Adam Berger's maxent tutorial</A>,
+   Dan Klein and Chris Manning's
+   <A HREF="http://www.cs.berkeley.edu/~klein/papers/maxent-tutorial-slides.pdf">
+   Maxent Models, Conditional Estimation, and Optimization, without the Magic</A>, and
+   Noah Smith's  <A HREF="http://umiacs.umd.edu/~resnik/ling848_fa2004/slides/loglinear_handout.pdf">
+   notes on loglinear models</A> (which provides explicit details for a lot of the math).
+   Another useful reading, focused on estimating the parameters of maxent models, is
+   <A HREF="http://bulba.sdsu.edu/~malouf/papers/conll02.pdf">A comparison of algorithms for maximum
+   entropy parameter estimation (Rob Malouf)</A>.
+   Also, Manning and Schuetze section 16.2 can be read as supplementary material.
+   Of historical interest:
+   Adwait Ratnaparkhi's <A
+   HREF="ftp://ftp.cis.upenn.edu/pub/ircs/tr/97-08.ps.Z">A Simple
+   Introduction to Maximum Entropy Models for Natural Language
+   Processing</A> (1997).
+</td>
+</tr>
+-->
+
+<tr>
+<td>April 3</td>
+<td>Evaluation in NLP</td>
+<td>Lin and Resnik, <A HREF="http://www.umiacs.umd.edu/~jbg/teaching/CMSC_773_2012/reading/evaluation.pdf">Evaluation of NLP Systems</A>, Ch 11 of
+  Alex Clark, Chris Fox and Shalom Lappin, eds., Blackwell Computational Linguistics and Natural
+  Language Processing Handbook.<BR>
+  <em><!--COVER Evaluation paradigms for NLP; parser evaluation --></em></td>
+<td><A HREF="TBD">Assignment 8</A></td>
+<td></td>
+</tr>
+
+
+
+<tr>
+<td>Apr 10</td>
+<td>Bayesian inference and modeling<BR>
+</td>
+<td>Philip Resnik and Eric Hardisty, <A HREF="http://umiacs.umd.edu/~resnik/pubs/gibbs.pdf">Gibbs Sampling for the Uninitiated</A>
+  (new version to be linked shortly); M. Steyvers and T. Griffiths (2007), <A HREF="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.80.9625&rep=rep1&type=pdf">Latent Semantic Analysis: A Road to Meaning</A>
+<BR>
+<em>
+  <!--COVER [tentative]
+  Graphical model representations of generative models; MLE, MAP, and Bayesian inference; Markov Chain Monte Carlo (MCMC)and Gibbs Sampling;
+  Latent Dirichlet Allocation (LDA)-->
+</em>
+</td>
+<td><font color="red">Final exam project begins</font></td>
+<td>Blei, Ng, and Jordan (2003), <A HREF="http://www.cs.princeton.edu/~blei/papers/BleiNgJordan2003.pdf">Latent Dirichlet Allocation</A>
+</td>
+</tr>
+
+
+<tr>
+<td>April 17</td>
+<td>Gibbs sampling and LDA</td>
+<td>Same as last week</td>
+<td>None.</td>
+<td></td>
+</tr>
+
+
+
+<!--
+<tr>
+<td>Apr 22
+<td>Information retrieval; guest lecture (Smaranda Muresan) on graph-based methods in NLP<BR>
+</td>
+<td>
+(a) Rada Mihalcea and Paul Tarau, <A
+HREF="http://www.cs.unt.edu/~rada/papers/mihalcea.emnlp04.pdf">TextRank:
+Bringing Order into Texts</A>, in Proceedings of the Conference on
+Empirical Methods in Natural Language Processing (EMNLP 2004),
+Barcelona, Spain, July 2004.;
+(b) Rada Mihalcea, <A
+HREF="http://www.cs.unt.edu/~rada/papers/mihalcea.acl2004.pdf">Graph-based
+Ranking Algorithms for Sentence Extraction, Applied to Text
+Summarization</A>, in Proceedings of the 42nd Annual Meeting of the
+Association for Computational Linguistics, companion volume (ACL
+2004), Barcelona, Spain, July 2004;
+(c) Paper/data of Pang and Lee on <A
+HREF="http://www.cs.cornell.edu/home/llee/papers/cutsent.home.html">sentiment
+analysis with min-cuts</A>
+<P>
+<em>PageRank and variants; HITS; min-cuts</em>
+</td>
+<td> <A HREF="slides/jimmy_ir_lecture.ppt">IR lecture slides</A>,<BR>
+     <A HREF="slides/graph_based_methods.ppt">Graph-methods lecture
+     slides</A>.
+</td>
+<td>
+Optional readings of interest:
+(a) Christopher D. Manning, Prabhakar Raghavan and Hinrich Schutze,
+<A HREF="http://www-csli.stanford.edu/~schuetze/information-retrieval-book.html">Introduction to Information Retrieval, Cambridge University Press</A>:
+<A HREF="http://nlp.stanford.edu/IR-book/pdf/chapter21-linkanalysis.pdf">
+Chapter 21 "Link Analysis"</A>;
+(b) <A HREF="http://dbpubs.stanford.edu:8090/pub/1999-66">Page L. et. al Page Rank Citation Ranking: Bringing Order to the Web</A>;
+(c) <A HREF="http://www.cs.cornell.edu/home/kleinber/auth.pdf">Jon Kleinberg  Authoritative sources in a hyperlinked environment, in proceedings of SODA 1998</A>
+(d) Kurt Bryan and Tanya Leise, <A  HREF="http://www.rose-hulman.edu/~bryan/google.html">The $25,000,000,000 Eigenvector: The Linear Algebra Behind Google</A> (SIAM Review 48(3), 2006, pp. 569-581)
+<td>
+-->
+
+<!--
+<tr>
+<td>Apr 17</td>
+<td>Word sense disambiguation<BR>
+</td>
+<td>Ch 8.5, 15.{1,2,4}<BR>
+<em>
+ Semantic similarity; relatedness; synonymy; polysemy; homonymy; entailment; ontology-based similarity measures; vector
+ representations and similarity measures; sketch of LSA.
+ Characterizing the WSD problem; WSD as a  supervised classification problem. Lesk algorithm;
+ semi-supervised learning and Yarowsky's algorithm;
+ WSD in applications; WSD evaluation.
+</em>
+</td>
+<td></td>
+<td>
+Optional:  Adam Kilgarriff (1997) <A HREF="http://www.kilgarriff.co.uk/Publications/1997-K-CHum-believe.pdf">I don't believe in word senses</A> Computers and the Humanities 31(2), pp. 91-113;
+Philip Resnik (2006), <A HREF="http://www.springerlink.com/content/j227415g22v74686/">WSD in NLP Applications</A> (<A HREF="http://books.google.com/books?id=GLck75U20pAC&lpg=PA299&ots=M3uAfkLHxb&dq=resnik%20wsd%20in%20nlp%20applications&pg=PA299#v=onepage&q=resnik%20wsd%20in%20nlp%20applications&f=false">Google Books</A>)
+  </td>
+</tr>
+-->
+
+
+<tr>
+<td>Apr 24</td>
+<td>Machine translation<BR>
+</td>
+<td>Ch 13 and Adam Lopez, <A HREF="http://homepages.inf.ed.ac.uk/alopez/papers/survey.pdf">Statistical Machine Translation</A>,
+In  ACM Computing Surveys  40(3), Article 8, pages 149, August 2008.<BR>
+  <P>
+  <em><!--COVER Historical view of MT approaches; noisy channel for SMT; IBM
+  models 1 and 4; HMM distortion model; going beyond word-level
+  models --></em>
+</td>
+<!-- <A HREF="assignments/parallel_text.html">Assignment</A> or Team
+     Project 2 -->
+<td>None.</td>
+<td>
+  Also potentially useful or of interest:
+  <UL>
+  <LI> Kevin Knight, <A HREF="http://www.isi.edu/natural-language/mt/wkbk.rtf">A Statistical MT Tutorial Workbook</A>;
+  <LI> Philipp Koehn, <A
+  HREF="http://www.isi.edu/licensed-sw/pharaoh/manual-v1.2.ps">PHARAOH: A
+  Beam Search Decoder for Phrase-Based Statistical Machine
+  Translation</A>
+  <LI> Philipp Koehn (2004) <A HREF="http://www.iccs.informatics.ed.ac.uk/~pkoehn/publications/pharaoh-amta2004-slides.pdf">presentation on PHARAOH decoder</A>
+  </UL>
+  <!--  <BR>
+  <A HREF="http://www.cs.unt.edu/~rada/papers/mihalcea.wpt03.pdf">
+  Mihalcea and Pedersen (2003)</A>;
+  <BR>
+  Philip Resnik, <A HREF="http://umiacs.umd.edu/~resnik/pubs/cicling2004.ps">
+  Exploiting Hidden Meanings: Using Bilingual Text for
+  Monolingual Annotation</A>. In Alexander Gelbukh (ed.),  Lecture Notes
+  in Computer Science 2945: Computational Linguistics and Intelligent
+  Text Processing, Springer, 2004, pp. 283-299.
+  -->
+</td>
+</tr>
+
+
+
+<tr>
+<td>May 1</td>
+<td>Machine translation continued<br>(First hour or so is a guest lecture by Hal Daum&eacute;)</td>
+<td>
+  <!-- <font color="red">This material may be folded into the previous class
+  in order to make room for a different topic.</font><p>
+  Papineni, Roukos, Ward and Zhu. 2001.
+  <A HREF="http://www1.cs.columbia.edu/nlp/sgd/bleu.pdf">BLEU: A Method for Automatic Evaluation
+  of Machine Translation</A>
+  -->
+  Reading from Hal distributed on Piazza.
+  <P>
+  <em><!--COVER Components of a phrase-based system: language modeling,
+  translation modeling; sentence alignment, word
+  alignment, phrase extraction, parameter tuning, decoding, rescoring,
+  evaluation. --></em>
+  </td>
+<td>None.</td>
+<!--<td> <A HREF="assignments/phrase_based_mt.html">Assignment 6</A><
+  or continue Team Project 2   </td> -->
+<td>
+Hal Daumé III and Jagadeesh Jagarlamudi,
+<A HREF="http://hal3.name/docs/daume11lexicaladapt.pdf">
+Domain Adaptation for Machine Translation by Mining Unseen Words</A>, ACL 2011.
+</td>
+</tr>
+
+
+
+<!--
+<tr>
+<td>Apr 30
+<td>The Web as a Corpus<BR>
+</td>
+<td>
+  (a) A. Kilgarriff and G. Grefenstette, <A
+  HREF="http://citeseer.ist.psu.edu/630648.html">Introduction to the
+  special issue on the web as corpus</A>, Computational Linguistics
+  29(3): 333-348 (2003) <BR>
+  (b) Lapata, Mirella and Frank Keller. 2004. <A
+  HREF="http://homepages.inf.ed.ac.uk/mlap/Papers/naacl04a.html">The
+  Web as a Baseline: Evaluating the Performance of Unsupervised
+  Web-based Models for a Range of NLP Tasks</A>. Proc HLT/NAACL,
+  pp. 121-128.
+  <BR>
+  (c) Lapata, Maria. 2001. <A
+  HREF="http://homepages.inf.ed.ac.uk/mlap/Papers/naacl01.html">A
+  Corpus-based Account of Regular Polysemy: The Case of
+  Context-sensitive Adjectives.</A>, Proc NAACL.
+  <BR>
+  (d) Philip Resnik, Aaron Elkiss, Ellen Lau and Heather Taylor.  <A
+  HREF="http://umiacs.umd.edu/~resnik/pubs/bls2005.pdf">
+  The Web in Theoretical Linguistics Research: Two Case Studies Using
+  the Linguist's Search Engine.</A>, Proc. 31st Meeting of the Berkeley
+  Linguistics Society, pp. 265-276, February 2005.
+  <P>
+  <em>
+  What is a corpus?; using the Web for NLP tasks; ways linguists can use the Web.
+  </em>
+</td>
+<td></td>
+<td>
+Also of possible interest:
+  <A HREF="http://lse.umiacs.umd.edu">Linguist's Search Engine</A>;
+  <BR>
+  Mirella Lapata, and Frank Keller. 2005. <A
+  HREF="http://homepages.inf.ed.ac.uk/mlap/Papers/tslp05.html">Web-based
+  Models for Natural Language Processing.<A> ACM Transactions on
+  Speech and Language Processing 2:1, 1-31. (Extends Lapata and Keller 2004);
+  <BR>
+  <A HREF="http://www.webexp.info/">WebExp</A> software for
+  Web-based psycholinguistics
+</td>
+<td>
+-->
+
+<!-- <A HREF="http://mitpress.mit.edu/journals/pdf/coli_29_3_333_0.pdf">
+Kilgarriff and Grefenstette (2003)</A>;
+<A HREF="http://homepages.inf.ed.ac.uk/keller/papers/cl03.pdf">Keller
+and Lapata (2003)</A>
+  Keller, Frank and Mirella Lapata, <A
+HREF="http://homepages.inf.ed.ac.uk/keller/papers/cl03.pdf">Using the
+Web to Obtain Frequencies for Unseen Bigrams. Computational
+Linguistics 29:3, 459-484, 2003;
+Philip Resnik and Aaron Elkiss, <A
+HREF="http://umiacs.umd.edu/~resnik/temp/lsedemo_for_class.pdf"> The
+Linguist's Search Engine: An Overview [DRAFT]</A>; others?
+-->
+</td>
+</tr>
+
+
+<tr>
+<td>May 8</td>
+<td>Guest lecture: Doug Oard <BR></td>
+
+<td>
+J. Wang and D. Oard, <A HREF="http://www.acsu.buffalo.edu/~jw254/ipm11.pdf">Matching Meaning for Cross-Language Information Retrieval</A>
+<!--
+  <em>Additional topic possibilities:
+  plagiarism detection,
+  sentiment detection,
+  paraphrase/entailment,
+  computational psycholinguistics
+  </em>
+  -->
+</td>
+<td><font color="red">Final exam project is due next Wednesday May 15 at 1pm.</font></td>
+<td></td>
+</tr>
+
+
+
+<!--
+
+<tr>
+<td> </td>
+<td>Lexical acquisition<BR>
+</td>
+<td>Ch 8 (exc 8.5)</td>
+<td>
+  <!--
+    <A
+    HREF="http://umiacs.umd.edu/~resnik/ling773_sp2013/assignment/lexical_acquisition.html">Assignment
+    </td>
+  -->
+<td></td>
+</tr>
+
+<!--
+<tr>
+<td> </td>
+<td>Compositional semantics (?)
+</td>
+<td>
+<A
+HREF="http://www.stanford.edu/class/cs224n/handouts/cl-semantics-new.pdf">Manning
+(2000; rev 2005), An Introduction to Formal Computational Semantics</A>
+</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td> </td>
+<td>Computational psycholinguistics (?)<BR>
+</td>
+<td>
+<A HREF="http://www.cs.colorado.edu/~martin/slp.html">
+Jurafsky and Martin (2000)</A>, Sections 12.5 (Human Parsing) and 13.4
+(Complexity and Human Processing);
+<A HREF="http://www.stanford.edu/~jurafsky/prob.pdf">Jurafsky
+(2003)</A> (except Sections 2.1, 2.2, 2.5, 2.6, 3.1, 3.5, 3.6).
+Connectionist modeling?
+
+(From published book: except Sections 3.2.1, 3.2.2, 3.2.5, 3.2.6, 3.3.1, 3.3.5, 3.3.6)
+
+
+
+<tr>
+<td> </td>
+<td>TBA<BR>
+</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+-->
+
+<!--
+<tr>
+<td><font color="red">FINAL DATE</font></td>
+<td><font color="red">TBD</font><BR>
+</td>
+<td>Officially cumulative but with a strong (at least 80%) emphasis
+on material after the midterm.
+</td>
+<td>Relax!</td>
+<td><A HREF="final_guidance.html">Guidance for studying</A> </td>
+</tr>
+-->
+
+
+
+<!--
+Jurafsky, Dan. 2003. Probabilistic Modeling in Psycholinguistics:
+Linguistic Comprehension and Production. In Rens Bod, Jennifer
+Hay, and Stefanie Jannedy, (Eds)., Probabilistic Linguistics.
+http://www.stanford.edu/~jurafsky/prob.pdf
+
+Rick Lewis, Computational Psycholinguistics, Encylopedia of Cognitive
+Science, Macmillan, 2000.
+www-personal.umich.edu/~rickl/Documents/Lewis-CompPsychling.pdf
+
+Crocker, Matthew W. and Frank Keller. 2005. Probabilistic Grammars as
+Models of Gradience in Language Processing. To appear in Gisbert
+Fanselow, Caroline F	ry, Ralph Vogel, and Matthias Schlesewsky,
+eds., Gradience in Grammar: Generative Perspectives. Oxford: Oxford
+University Press.
+http://homepages.inf.ed.ac.uk/keller/papers/oup05b.pdf
+
+Lewis & Vasishth on interference
+http://www.msu.edu/course/lin/875/cogsci-04-jou.pdf
+
+Levy on surprisal and German
+http://www.msu.edu/course/lin/875/surprisal-chapter.pdf
+
+Hale syllabus
+http://www.msu.edu/course/lin/875/syllabus.html
+
+Morten H. Christiansen,
+Connectionist psycholinguistics: The very idea.
+In M.H. Christiansen & N. Chater (Eds.), Connectionist
+psycholinguistics (pp.1-15). Westport, CT: Ablex.
+http://cnl.psych.cornell.edu/papers/CP-intro.pdf
+
+John Nerbonne learning bibliography
+http://www.let.rug.nl/~nerbonne/teach/learning/literature.htm
+-->
+
+
+</table>
+</center>
+</font>
+<P>
+
+
+
+
+<!--
+<A NAME="labs">
+*We may or may not add a few lab sessions, but if we do they will be
+held in room 1442 of the <A
+HREF="http://www.inform.umd.edu/CampusInfo/Facilities/Buildings/AVW/">
+     A.V. Williams building</A>.  Click the link for maps, directions, parking
+     information.  To get to Room 1442 come in the main entrance, facing
+     the elevators, turn left, and go through the glass doors.  The lab
+     will be on your right.
+-->
+<P>
+
+
+
+<A HREF="index.html">Return to course home page</A>
+<HR>
+
+<hr>
+<P>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

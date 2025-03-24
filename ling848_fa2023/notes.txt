@@ -1,0 +1,19 @@
+
+Grice
+Clark and Marshall etc., common ground
+ELIZA? Turing test? (How do we decide if an agent has "pragmatics" capabilities?)
+Interpretation as abduction (cf. Feng term paper from spring 2022?)
+Framing
+Beliefs
+Autism spectrum (Yi Ting project?)
+Predictive processing?
+
+LLM methods to use broader context, e.g. kNN
+LLM plus memory - Sims paper
+
+Clark: Hacking the predictive mind
+ YouTube - do special mtg with CS and Ling folks? Computational pragmatics?
+ (Also cf Noah Goodman - email?)
+
+Eunsol Choi - relevant publications
+  - May 3 2023 UMD talk.  E.g. "inference based on injected facts"

@@ -1,0 +1,175 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Assignment 4</TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF">
+
+<HR>
+<H1>Assignment 4</H1>
+<HR>
+
+<P>
+First, a reminder about notation.  If X is a random variable whose distribution
+is (p<sub>1</sub>,p<sub>2</sub>,...,p<sub>k</sub>) then we usually
+write H(X) for H(p<sub>1</sub>,p<sub>2</sub>,...,p<sub>k</sub>).  I will
+occasionally write H(p) instead of H(X), where p abbreviates
+p<sub>1</sub>,p<sub>2</sub>,...,p<sub>k</sub>.
+<P>
+<hr>
+
+<ol>
+
+
+<LI>
+(Manning and Schuetze exercise 2.12) Show that the KL divergence
+is not symmetric by giving an example of two distributions p and q
+for which D(p||q) is not equal to D(q||p).  Give the two distributions
+and show the explicit computation of the KL divergences. 
+<P>
+Note that <em>if you understand KL-divergence, this problem should take you no more than 5 minutes</em>, including writing it down. If it's taking you longer, go back and make sure you understand what KL-divergence is.
+<P>
+Also note that simple toy distributions (e.g. over {heads,tails}) are really boring to grade!  You can give us the boring kind of example, but you'll earn more goodwill for an example that is significantly interesting or amusing.
+<P>
+
+  
+<LI> 
+  <UL>
+  <LI> a. Consider a set of eight horses, h0-h7, that repeatedly race
+  each other. Suppose the probability distribution over horses h0-h7
+  for winning a race is p:
+     <pre>
+	       h0     h1   h2     h3     h4     h5     h6     h7
+	 p     1/2    1/4  1/8    1/16   1/64   1/64   1/64   1/64
+     </pre>
+     For any probability distribution, an optimal binary
+     representation of the events, in the sense of requiring the smallest number of bits
+     on average to communicate outcomes, can be created using <A
+     HREF="http://en.wikipedia.org/wiki/Huffman_coding">Huffman
+     coding</A>.  Here's the encoding you'd get for the above distribution:
+     <pre>
+	       h0     h1   h2     h3     h4     h5     h6     h7
+      codeP    0      10   110    1110   111100 111101 111110 111111
+     </pre>
+     <P>
+     Illustrate using codeP that the expected value of the length E<sub>p</sub>[length(h)] is equal to H(p), the
+     entropy of the distribution. You can simply do the two
+     computations numerically using codeP and confirm that you get the same number,
+     though you'll understand what's going on better if you look at the definitions
+     of E<sub>p</sub>[length(h)] and H(p) and show that one is equivalent to the other.
+      <P>
+  <LI>
+     b.  Imagine that p is the true distribution of outcomes when these
+     horses race, but that we do a terrible job of estimating the probabilities
+     and come up with the following model, q:
+     <pre>
+	       h0     h1   h2     h3     h4     h5     h6     h7
+	 q     1/8    1/8  1/8    1/8    1/8    1/8    1/8    1/8
+     </pre>
+     Since the horses all have the same probability, there's no basis
+     for distinguishing them, so obviously the best code we
+     can invent will use the same number of bits for each
+     horse.  This means that the smallest number of bits we can use is
+     log<sub>2</sub>8 = 3 bits:
+     <pre>
+	       h0     h1   h2     h3     h4     h5     h6     h7
+      codeQ   000    001  010    011    100    101    110    111
+     </pre>
+     Now imagine that we communicate lots of horse race outcomes using
+     codeQ.  Encoding winning horses using codeQ, what is
+     E<sub>p</sub>[length(h)]?
+     <P>
+  <LI> c. Use the previous two parts to this question, together with the definition
+       of relative entropy (KL divergence), to explain and illustrate
+       Manning and Schuetze's observation: "KL divergence is the
+       average number of bits that are wasted by encoding events from
+       a distribution p with a code based on a not-quite-right
+       distribution q."
+  <P>
+  </UL>
+
+<P>
+<LI> (Based very loosely on Manning and Schuetze exercise 2.10) For this problem, let's use the <A HREF="http://stateoftheunion.onetwothree.net/texts/stateoftheunion1790-2016.txt.zip">State of the Union(SOTU) addresses</A> of U.S. presidents, a collection of documents described in a previous assignment. For our purposes here, let's restrict ourselves to Presidents Bush-1 (that is, Republican president George Herbert Walker Bush), Clinton (Democrat), Bush-2 (that is, Republican president George W. Bush), and Obama (Democrat). For simplicity, you can assume that the total vocabulary is the union of all the unigrams in the various texts.
+<P>
+To answer the questions you'll need to estimate probability distributions over unigrams for each president. 
+<blockquote>
+Speeches will of course need to be tokenized, and you should
+convert all text to lowercase in order to mitigate <A HREF="http://nlp.stanford.edu/~wcmac/papers/20050421-smoothing-tutorial.pdf">sparse data problems</A>.  Note that you'll need to do something about zero
+counts.  As the simplest option, you can smooth using Laplace smoothing ("add
+one", Manning and Schuetze Section 6.2.2) to avoid zero, even though
+in practice this is not considered the state of the art. (Ok, I'm probably being overly generous. In <a href="http://nlp.stanford.edu/~wcmac/papers/20050421-smoothing-tutorial.pdf">these tutorial slides about smoothing</A> the author describes Laplace as "a horrible choice".)  Or, a bit better, you could use add-k for a different k, e.g. setting k to 1/|V| where |V| is the size of the vocabulary. That's really easy to implement, if you're programming from scratch, and it tends to work ok.  State of the art would be modified Kneser-Ney smoothing, though it would be a major distraction from the main point of the assignment for you to implement that from scratch.
+<P>
+Here's a simple observation that might help you avoid writing a lot of
+new code from scratch, allowing you to re-use work you've already done
+in the previous assignment: if you have a bigram frequency table with
+entries count(a,b), then the unigram counts are just the marginal
+counts for a and b, i.e.:
+<P>
+  count(a) = &sum;<sub>b'</sub> count(a,b')
+<P>
+  count(b) = &sum;<sub>a'</sub> count(a',b)
+<P>
+Best practice would be to smooth the bigram counts first, and then
+compute the unigram counts as above.  If you smooth unigrams and
+bigrams separately, there's no guarantee that summing over smoothed
+bigram counts to compute the marginals will give you the same number
+you get from smoothing unigrams separately. But this is a minor point
+and for this assignment I'm fine with any fairly reasonable smoothing
+as long as you say clearly what you did.
+<P>
+Speaking of implementing from scratch, you don't have to do everything completely from scratch. There are, for example, existing language modeling modules (e.g. in <A HREF="http://nltk.org">NLTK</A>) and toolkits (e.g. <A HREF="https://kheafield.com/code/kenlm/">KenLM</A> and <A HREF="http://www.speech.sri.com/projects/srilm/">SRILM</A>), and you're welcome to use those in any way you like. Just make sure to clearly identify any software that you didn't write yourself in your PDF writeup.
+<P>
+<P>
+
+</blockquote>
+<P>
+<em>If you would like to take a more advanced approach, e.g. a higher order n-gram model or a neural network language model, you are welcome to do so.</em> As usual, please just make sure to explain clearly what you've done, software you used, assumptions you made, etc.
+<P>
+Questions.
+<ul>
+  <li> a. Treating the distribution for the Obama speeches as p, the Bush-2 speeches as q, and the Clinton speeches as q', what are D(p||q) and D(p||q')?  How well does this match what you expected them to be?  Explain your answer.
+  <P>
+  <li> b. What are the top 10 terms contributing to the KL divergence in both cases? Suggest reasons these might be the top 10. (If you don't find anything interesting in the top 10, you're welcome to look at more.)
+  <P>
+  <li> c. Build two unigram language models using the Bush-1 speeches and the Clinton speeches, and evaluate those two models using the Bush-2 speeches as the language L that represents "truth". What is the perplexity of each model, and which of the two is a better model for Bush-2's speeches? Does this fit with what you would have expected? Why or why not? 
+  <P>
+</ul>
+  <P>
+
+</ol>
+
+<P>
+<h3>Extra credit (up to 10%)</h3>
+<ul>
+
+  The idea for this extra credit is to do an analysis similar in spirit to the Civis Analytics blog posting, but exercising things you've learned in class. As long as you meet that goal, if you want to do something a little different from exactly what I'm suggesting here, because of your own interests, that's fine -- make it interesting!
+  <P>
+  
+<!--
+  <P>
+<li> For the Convote corpus, analyze the language for one or more individual congressional debates, and identify
+  bigrams that are associated with Yes or with No votes for that
+  debate more often than you would expect by chance.  
+  Describe what the debate is about (based on reading some of the
+  speeches) and explain why the bigrams might be associated the way they
+  are.
+<P>
+  --> 
+<li> For all the <em>individual</em> SOTU speeches from Bush-2 to the present (inclusive), build a similarity matrix like the one in the Civis Analytics blog posting, e.g. here is the fragment for the Obama speeches:
+<P>
+  <IMG src="https://civisanalytics.com/assets/sotu_obama.png"</IMG>.
+<P>
+As your measure comparing any two speeches, use (1/2)*(D(p||q)+D(q||p)), where p and q are <strong>bigram distributions</strong> for the two speeches being compared. (Averaging the two KL-diverence values is a common way of producing a symmetric value. For related discussion see <A HREF="https://en.wikipedia.org/wiki/Jensen%E2%80%93Shannon_divergence">the Wikipedia page on Jensen-Shannon divergence</A>.)
+The result can be just a big table of numbers, if you like, though if you want to do a nice-looking <A HREF="https://www.google.com/search?q=%22matrix+heatmap%22&safe=off&tbm=isch&tbo=u&source=univ&sa=X&ved=0ahUKEwjjgPXSivPKAhUI2SYKHe2XDxoQsAQIIw&biw=1440&bih=658">matrix heatmap</A> there are many packages for that, e.g. see <A HREF="https://plot.ly/python/heatmaps/">this one</A>.
+<P>
+a. Show the table that you constructed (or the heatmap).
+<P>
+b. Does the matrix look like you would have expected? Are there any surprises, and if so, what's your explanation? (If you want to explore what's going on in a data-driven way, you could take inspiration from question 3b, above.)
+<P>
+c. How do your table and analysis compare with what's in the Civis Analytics posting? Is what you're seeing generally similar? Any interesting differences? Again, do you have any thoughts about <em>why</em> you might or might not be seeing differences?
+</ul>
+<P>
+<HR>
+<P>
+</BODY>
+</HTML>

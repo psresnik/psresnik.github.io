@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title>Exploring Topic Modeling</title>
+</head>
+
+<body>
+<h1>Exploring Topic Modeling</h1>
+
+<h2>Overview</h2>
+
+In this assignment, you'll be exploring topic modeling. You can use whatever topic modeling package you'd like; some popular ones include <A HREF="http://mallet.cs.umass.edu/">MALLET</A>, <A HREF="https://radimrehurek.com/gensim/">gensim</A>, and <A HREF="http://scikit-learn.org/stable/modules/generated/sklearn.decomposition.LatentDirichletAllocation.html">scikit-learn</A>; also see <A HREF="https://github.com/trinker/topicmodels_learning">here</A> for various pointers with a leaning toward using the R programming language. The intent is <em>not</em> for you to implement a sampler for LDA yourselves.
+<P>
+See <A HREF="./mallet_example.txt">here</A> for a quick example of how to run LDA and build a topic model using MALLET. It assumes there is a directory called <em>convote_train</em> containing .txt files one per document, where each .txt file is already whitespace-tokenized. (You can download that <A HREF="./convote_train.tar.gz">here</A>).  For example:
+<font size="-2">
+<pre>
+mr. chairman , i thank the gentleman from texas ( mr. barton )  for yielding me this time .
+the gentleman has done a magnificent job leading the committee on this new bill .
+i would just say , in america we face some great challenges with regard to formulation of our energy policy .
+the oil demand growth keeps rising due to the industrialization of the emerging world .
+china consumes 7 million barrels per day ; and if china 's rise in world prominence is similar to that of korea and japan , china will consume 20 million barrels per day in less than 10 years .
+the last big oil discovery was 30 years ago in the north sea .
+china is trying to buy oil companies in canada ; india is trying to buy oil companies in russia ; the present world production capacity is 83 million barrels a day ; and we are running an estimated 81.5 million today , which means we are in the red zone .
+the 14 largest oil fields in the world are 40 years old .
+once they are taken out to 50 percent , water and fluids need to be pumped to keep production at existing levels .
+we have some significant challenges .
+support this bill .
+</pre>
+</font>
+See MALLET documentation for an alternative input format where instead of a directory, there's a single input file with one document per line. FYI, MALLET's --output-topic-keys argument specifies a file showing the top words for each topic (i.e. the words at the top of the sorted topic-word probability distribution); the --output-doc-topics argument specifies a file where it will write the inferred document-topic distribution; and the --output-state file contains the final sampled assignment of topics to words.
+
+<h2>What to do</h2>
+
+You can use any of the following datasets, or feel free to suggest some other dataset that you'd like to use instead.
+<ul>
+<p><li> The Convote dataset from <A  HREF="http://www.umiacs.umd.edu/~resnik/ling773_sp2017/assignments/assignment2.html">Assignment 2</A>.
+<p><li> The SOTU dataset from <A  HREF="http://www.umiacs.umd.edu/~resnik/ling773_sp2017/assignments/assignment2.html">Assignment 2</A>.
+<p><li> Documents from <A HREF="./fcc_comments_text.zip">this random sample</A> extracted from <A HREF="https://sunlightfoundation.com/2014/09/02/what-can-we-learn-from-800000-public-comments-on-the-fccs-net-neutrality-plan/">a collection of 800,000 public comments on the Federal Communications Commission's net neutrality plan<A>. (There are six files and they are not equal in size; the smallest contains 1,582 comments and the largest contains 23,569.)  </ul>
+  
+<h3>Exploration 1: Trying out different numbers of topics.</h3>
+
+As we discussed, LDA is an unsupervised learning algorithm. It is, more specifically, a <em>parametric</em> unsupervised learner, which here signifies that the key modeling parameter, the number of topics, is fixed in advance. In that respect it is very much like the unsupervised HMM you may have looked at in a previous assignment: you're going to get different behavior depending on the value you choose for the parameter.
+<P>
+As Steyvers and Griffiths (2007) discuss, there are a variety of ways to choose the number of topics. One of the simplest is simply to try out different numbers -- what happens when you use 5 topics? 10? 25? 30? 50? 100? 300?  Using whichever topic modeling package you decide to work with, try a range from small to larger numbers of topics, and report on what you find.  How does the collection of topics change?  If the package you use gives you a quality measure for the model (for example (e.g. many provide the likelihood), how well does that value correspond with your subjective impression of the topics in terms of their quality, coherence, interpretability?
+<P>
+For those who are interested in learning more about evaluating topic models, a really groundbreaking paper was <A HREF="https://www.umiacs.umd.edu/~jbg/docs/nips2009-rtl.pdf">Chang et al. (2009)</A>'s "Reading Tea Leaves" paper, and an important follow-on, providing an automated approximation to Chang et al.'s procedure, is <A HREF="http://www.aclweb.org/anthology/E14-1056">Lau et al. (2014)</A>; there's code for doing that automatic evaluation <A HREF="https://github.com/jhlau/topic_interpretability">here</A>.
+
+<h3>Exploration 2: The influence of phrases</h3>
+
+Although LDA is a "bag of words" model and is often implemented using unigrams, there's good reason to think that this could potentially be suboptimal.  For example in a document with a phrase like <em>white house</em>, you probably don't want the words <em>white</em> and <em>house</em> to be treated the same as if they occurred in the sentence <em>John painted his house white</em>.
+<P>
+Recently Brendan O'Connor's group at UMass has been investigating the role of phrase detection for NLP tasks; their work can be found in Handler et al. (2016a), <A HREF="http://brenocon.com/oconnor_textasdata2016.pdf">A Little Bit of NLP Goes A Long Way: Adding Phrases to the Term-Document Matrix using Finite-State Shallow Parsing</A> and Handler (2016b), <A HREF="http://brenocon.com/handler2016phrases.pdf">Bag of What? Simple Noun Phrase Extraction for Text Analysis</A>, which includes an open-source implementation of their approach linked <A HREF="http://slanglab.cs.umass.edu/phrases/">here</A>. A key element of their argument is that shallow noun phrase detection is a good way to group phrases into tokens as a preprocessing step for many NLP tasks, including topic modeling.
+<P>
+Now, I have a conjecture: I think they may be oversimplifying by not distinguishing among two very different kinds of phrases.  Some phrases, like <em>white house</em>, <em>new york</em>, or <em>vice president</em>, are partially or mostly non-compositional. In those cases it feels to me like it makes sense to preprocess them into single tokens, because the
+"whiteness" or "houseness" of the White House is probably not relevant in terms of the topics it's mentioned in, any more than the "newness" of New York is relevant to it as a geographic location.  (For example, White House can't be paraphrased "house that is white", vice president is not the same as "president who is associated with vice", etc.)
+<P>
+On the other hand, if you have a compositionally interpreted noun phrase like <em>hardware store</em>, the very fact of its compositionality means that the meanings of the individual words are still relevant: a hardware store is a store that sells hardware, and therefore <em>store</em> and <em>hardware</em> are independently relevant parts of its meaning.
+<P>
+Operationally, my conjecture suggests the following concrete question: instead of tokenizing <em>phrases</em> in preprocessing, is it perhaps better only to tokenize <em>non-compositional</em> phrases?
+<P>
+So, for this exploration, I'd like you to explore running topic models with different forms of preprocessing. Specifically, I'd like you to try running topic models with the following forms of preprocessing:
+<P>
+<ul>
+  <li> Baseline (required): No phrases (same as Exploration 1)
+</ul>
+<P>
+At least two of the following variations:
+<ul>
+  <p><li> Tokenize only named entities, e.g. turn <em>new york</em> into <em>new_york</em>
+  <p><li> Tokenize syntactically identified noun phrases, e.g. <em>computer programmer</em> becomes <em>computer_programmer</em>. Here you might consider varying the sizes of the phrases, e.g. should <em>experienced computer programmer</em> be tokenized as a 3-word phrase, or should only 2-word phrases be allowed; if so, would a simple heuristic makes sense (e.g. take the ending bigram of a multi-word NP) or would a more sophisticated disambiguation strategy makes sense (e.g. choose bigram <em>computer programmer</em> because it's much more frequent than <em>experienced computer</em>)?
+  <p><li> Tokenize statistically highly associated bigrams, which we've seen in the past is a decent first approximation for non- (or at least incomplete) compositionality. Here you should be able to easily re-use work you've done in earlier assignments. An interesting question is how to threshold: how associated is "associated enough" to consider a bigram worth tokenizing?
+  <p><li> Combine the previous two ideas: use a syntactic method to filter down to syntactically relevant phrases, but then filter further by only considering a subset that is also highly associated and therefore (by hypothesis) less compositional.
+  <p><li> I'm open to other ideas for testing my conjecture -- feel free to suggest some!
+</ul>
+<P>
+In terms of tools, you might find <A HREF="spacy.io">spacy</A> useful since it identifies part of speech tags, noun phrases, and named entities (and even gives you dependency parses if you like).  There are various <A HREF="https://spacy.io/docs/usage/tutorials">tutorial introductions</A> that you might find useful.  Generally, I am open to people sending around pointers and helping each other out; I'm also open to people collaborating on this assignment. 
+
+<P>
+<h3>Extra credit possibilities (up to 10%)</h3>
+<ul>
+<p><li> In addition to evaluating topic model quality subjectively in the above explorations, use <A HREF="http://www.aclweb.org/anthology/E14-1056">Lau et al. (2014)</A>'s code for automatic topic quality evaluation <A HREF="https://github.com/jhlau/topic_interpretability">here</A>.
+<p><li> Explore the influence of document collection size by doing one or both explorations using different-sized collections.  For example, the FCC collection would allow you to work with both smaller and larger subsets of the corpus.
+<p><li> Explore including other kinds of syntactic relationship information as tokens, instead of just named entities and noun phrases. For example, what if you were to include verb-object (and/or other verb-argument) bigram pairs (e.g. adding a token <em>bought_house</em> given the input "he bought a big house")?
+<p><li> Do the previous bullet but also explore the same compositionality question; for example, in <em>kick (the) bucket</em>, the independent meanings of <em>kick</em> and  <em>bucket</em> are not relevant so <em>kick_bucket</em> would be a good token, but in <em>elect (the) president</em> the words make independent contributions that would be lost if you tokenized this pair.
+</ul>
+
+
+<h2>What to turn in</h2>
+
+The main product for this assignment should be a thoughtful written discussion that includes what you did, why you did it, and what you found.  Please also turn in a .tar.gz or .zip file of your code.
+<P>
+This assignment is due at the start of class on Wednesday.
+
+
+
+
+
+
+
+
+
+
+<hr>
+</body> </html>

@@ -1,0 +1,28 @@
+\section*{Question 2}
+\begin{align*}
+  P(H | E_1, E_2) & = \frac{P(H, E_1, E_2)}{P(E_1, E_2)} \\
+  & = \frac{P(E_2 | H, E_1) P(H | E_1) P(E_1)}{P(E_1, E_2)} \\
+  & = \frac{P(E_2 | H, E_1) P(H | E_1) P(E_1)}{P(E_1) P(E_2)} \\
+  & = \frac{P(E_2 | H, E_1) P(H | E_1)}{P(E_2)}
+\end{align*}
+
+Therefore,
+\begin{align*}
+  X & = P(E_2 | H, E_1) \\
+  Y & = P(E_2)
+\end{align*}
+
+\section*{Question 3}
+\begin{enumerate}[(a)]
+\item
+  \begin{description}
+  \item[Beta(1,1)] Fair coin; not very strong belief;
+  \item[Beta(2,2)] Fair coin; stronger belief than last one;
+  \item[Beta(10,10)] Fair coin; very strong belief;
+  \item[Beta(2,10)] Unfair coin; more likely to see a tail;
+  \item[Beta(10,2)] Unfair coin; more likely to see a head.
+  \end{description}
+\item If $X \sim \text{Beta}(\alpha, \beta)$, then $E(X) =
+  \frac{\alpha}{\alpha + \beta}$.
+\end{enumerate}
+

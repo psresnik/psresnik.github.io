@@ -1,0 +1,86 @@
+\documentclass[11pt]{article}
+\addtolength{\topmargin}{-0.25 in}
+\addtolength{\oddsidemargin}{-1 in}
+\addtolength{\evensidemargin}{-1 in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.5 in}
+\setlength{\parskip}{\medskipamount}
+\setlength{\parindent}{0 in}
+\begin{document}
+
+\section*{Question 1}
+
+\begin{center}
+You beeped her out of the way so we could wented to school.
+\end{center}
+
+\begin{itemize}
+\item {\bf Morphology.}
+\begin{itemize}
+\item[(a)] Morphology is the study of how words are built from their component parts.
+\item[(b)] The more obviously interesting examples of morphology in this example are \emph{beeped} and \emph{wented}.  The first of these is an example of derivational morphology, which has to do with changes to the meanings of words, often across grammatical category.  \emph{Beep} as a noun (the sound) is derivationally related to \emph{beep} as a verb.  (Linguists have various ways of arguing which one is more basic and which one is derived.)  Both of these are illustrations of inflectional morphology, which is the process of combining root forms with inflectional morphemes that indicate grammatical information, e.g. \emph{-ed} indicating the past tense in English.
+\item[(c)] \emph{Wented} is an example of a word form that a typical NLP system probably wouldn't expect -- a computational description of past tense formation in English would indicate that words can have irregular past tenses (go/went) \emph{or} regular past tenses formed using the past tense morpheme, but would probably not anticipate both.  Yet without being able to get back to the underlying \emph{go} the sentence could not be properly interpreted.
+\end{itemize}
+\item {\bf Subcategorization.}
+\begin{itemize}
+\item[(a)] Subcategorization is the association of syntactic frames with lexical items, usually verbs (although some nouns can have them, too).  Traditionally these are viewed as restrictions on the syntactic environment in which a word can appear; for example, a typical dictionary or lexicon would probably list \emph{beep} as intransitive (takes a subject but no object) and possibly also as transitive in environments where the object is the thing producing the sound (beep a horn).
+\item[(b)] Where you have verbs you have subcat frames.  So here, for example, \emph{go} (leaving aside the morphological problem of \emph{wented}) is taking a prepositional phrase complement (to school).
+\item[(c)] Traditionally, verbs of sound emission like \emph{beep} would not be thought of as having a prepositional phrase complement communicating a destination or path.  (A verb like \emph{push} would permit a subcat frame like that.)  So in this sentence you've got \emph{beep} being used in an unexpected syntactic context.  Traditional rules-based parsing would simply rule the sentence out as not being English.  A probabilistic parser would be faced with a low-probability construction.  The fact that sentences like this are perfectly interpretable -- another favorite example of mine, for you baseball fans is, \emph{The shortstop looked the runner back to second base} -- has actually been used to argue for theories of syntactic/semantic representation in which elements of meaning are carried by \emph{the subcategorization frame itself}; see e.g. Fisher, Gleitman, and Gleitman, ``On the semantic content of subcategorization frames'' (http://www.ncbi.nlm.nih.gov/pubmed/1884596) and also Construction Grammar.
+\end{itemize}
+\item {\bf Syntactic ambiguity.}
+\begin{itemize}
+\item[(a)] Syntactic ambiguity is the presence of  multiple possible syntactic analyses (parses).  Global ambiguity refers to situations where the whole sentence could have multiple parse trees, e.g. \emph{I saw the man with the telescope} has two readings, one where I have the telescope and one where the man does.  Local ambiguity refers to the situation where some part of the sentence allows multiple syntactic analyses, particularly if you're reading from start to finish, even though once the whole sentence is taken into account the ambiguity goes away.  For example \emph{The boat floated on the water sank} is locally ambiguous (is \emph{the boat floated on the water} a sentence, or is it a noun phrase meaning \emph{the boat \underline{that was} floated on the water (by someone)}?) but only the latter analysis permits you to construct a valid parse. 
+\item[(b)] This example doesn't actually have any of the obvious, classic syntactic ambiguities, e.g. prepositional phrase attachment of the prepositional phrase in \emph{I saw a man with the telescope}.  But notice that if \emph{her} is interpreted as a possessive, there's at least a possible reading where \emph{her out of the way} is a noun phrase serving as the object of \emph{beeped}.  Imagine, for example, that an ``out of the way'' is my 4-year-old's term for a car horn.  Yes, it's a stretch, but kids are funny that way.
+\item[(c)] Syntactic disambiguation often is helped by taking advantage of specific lexical items.  Unknown words like we have in this sentence could make that more difficult.
+\end{itemize}
+\item {\bf Clause.}
+\begin{itemize}
+\item[(a)] A clause is the smallest grammatical unit that can express a complete proposition.  (I originally wrote something different, but Wikipedia uses this definition and I don't think I can improve on it.)  In forming whole sentences, clauses can contain other clauses, e.g. \emph{I believe she is smart} has one clause \emph{I believe X} containing the clause \emph{she is smart}.
+\item[(b)] This sentence has two clauses conjoined by \emph{so}: \emph{You beeped her out of the way} and \emph{we could wented to school}.  Syntactically conjoining with \emph{so} creates a particular semantic relationship between the two propositions: my son was asserting that the second clause identifies the reason for the event in the first clause.
+\item[(c)]  The more clauses you have in a sentence, the more complicated things get when you're parsing.
+\end{itemize}
+\item {\bf Word sense ambiguity.}  
+\begin{itemize}
+\item[(a)] Word sense ambiguity describes the situation when a word can have multiple meanings.
+\item[(b)] In this example, like most other sentences you encounter, there's lots of ambiguity you don't even notice.  \emph{School} can mean a group of fish; \emph{out}, even just as a preposition (never mind the grammatical ambiguity, e.g. \emph{three strikes and you're out}), has a number of meanings; just look in a dictionary.  And did \emph{beep} mean I \underline{uttered} a beep (using my voice, like Road Runner) or that I used my car's horn?
+\item[(c)] Sense ambiguity is perenially a problem, this sentence being no exception.
+\end{itemize}
+\item {\bf Coreference.}
+\begin{itemize}
+\item[(a)] Coreference is the ability of multiple words to refer to the same entity in a sentence or discourse.  Pronouns are the classic example.
+\item[(b)] \emph{You}, \emph{her}, and \emph{we} are all referring to things that are salient in context but do not appear in the sentence itself.
+\item[(c)] Interpreting the sentence requires being able to track the entities that pronouns like this refer to.
+\end{itemize}
+\end{itemize}
+
+
+
+\section*{Question 2}
+\begin{eqnarray*}
+  P(H | E_1, E_2) & = \frac{P(H, E_1, E_2)}{P(E_1, E_2)} \\
+  & = \frac{P(E_2 | H, E_1) P(H | E_1) P(E_1)}{P(E_1, E_2)} \\
+  & = \frac{P(E_2 | H, E_1) P(H | E_1) P(E_1)}{P(E_1) P(E_2)} \\
+  & = \frac{P(E_2 | H, E_1) P(H | E_1)}{P(E_2)}
+\end{eqnarray*}
+
+Therefore,
+\begin{eqnarray*}
+  X & = P(E_2 | H, E_1) \\
+  Y & = P(E_2)
+\end{eqnarray*}
+
+\section*{Question 3}
+\begin{itemize}
+\item Descriptions
+  \begin{itemize}
+  \item Beta(1,1): Fair coin; not very strong belief;
+  \item Beta(2,2): Fair coin; stronger belief than last one;
+  \item Beta(10,10): Fair coin; very strong belief;
+  \item Beta(2,10): Unfair coin; more likely to see a tail;
+  \item Beta(10,2): Unfair coin; more likely to see a head.
+  \end{itemize}
+\item If $X \sim {\rm Beta}(\alpha, \beta)$, then $E(X) =
+  \frac{\alpha}{\alpha + \beta}$.
+\end{itemize}
+
+\end{document}

@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF">
+<h1>Assignment 4</h1>
+<HR>
+<P>
+
+<em>Note: I've deliberately made this week's required assignment pretty easy, and the extra credit quite high, to provide a strong incentive for you to do more than the minimum and get hands-on with one of the extra credit suggestions.</em>
+<P>
+
+Required:
+<ol>
+
+<LI> Prove that cross entropy H(p,q) = H(p) + D(p||q).  (Yes, by this I mean simply using the definitions out of Manning and Schuetze and showing that the left side and the right side are equal to each other.)
+<P> 
+Notice that since D(p||q) must be greater than or equal to 0, this establishes that cross entropy is an upper bound on entropy.  
+
+<LI> This problem makes use of the same corpora from last week's
+assignment.  Construct two n-gram language models: M_d based on the
+Democratic speeches and M_r from the Republican speeches. Treating
+Obama's speech as a test set, compare the perplexity of models M_d and
+M_r.  Which one is a better language model?
+<P>
+Using a a unigram model is fine, and last week's homework should
+already give you most of what you need.  If you're interested in being
+more realistic, a bigram or trigram model would be more interesting
+and plausible, although of course these data sets are unrealistically
+small.  If you're feeling like this assignment is too easy and you
+want to do something more challenging and real, you could try
+using <A HREF="http://www.speech.sri.com/projects/srilm/">the SRI
+language modeling toolkit
+(srilm)</A>, <A HREF="http://kheafield.com/code/kenlm/">KenLM</A>, or
+another of the language modeling toolkits widely used in NLP (or I imagine NLTK
+probably has decent LM support in python), and/or
+using different corpora that might give you interesting results.
+<P>
+</ol>
+<P>
+<HR>
+<P>
+<h2>Optional extra credit</h2>
+
+I strongly recommend that, for up to an additional <strong>50% extra credit</strong> on this assignment (i.e. a "very high pass", which would be worth 150% of a high pass), you do <em>one</em> of these three mini-projects.  
+
+<ul>
+<li> <strong>EC1</strong>.  Do the <A HREF="hmm_sp2014.html">Using a Hidden Markov Model</A> exercise.  This goes beyond HMM training and decoding as abstractions and gives you a chance to get a hands-on feel for how HMMs and EM are to use.  No programming required, although, as it says in the exercise instructions, you're also welcome to dig deeper if you'd like.
+<P>
+<li> <strong>EC2</strong>.  In class we spoke about the study by Piantadoso et al. (2011), <A HREF="http://www.pnas.org/content/108/9/3526.long">Word lengths are optimized for efficient communication</A>, showing that word length correlates better with the average amount of information conveyed by a word than it does with the word's unigram frequency.  This seems like it should be a really easy do-it-yourself experiment -- so the extra credit is to have a try at doing it yourself!  You can do this for the simple case of just bigram probabilities and just English, and you are <em>not</em> required to actually succeed in replicating their results -- that would take a lot of work, since they used fairly sizeable corpora that you probably don't have easy access to.  In fact, you're not even required to compute correlations; we'll be happy if you produce charts that look roughly like their Figure 2, no error bars required.  You'll get credit for clearly describing for us what you did, along with any simplifying choices you made and why/how you made them, and telling us what you you found.  The more thoughtful your writeup the better.
+<P>
+As one possible source of data to work with, see the <A HREF="http://nltk.github.com/nltk_data/">NLTK corpora</A>.  The <A HREF="http://www.nltk.org/nltk_data/packages/corpora/brown.zip">Brown corpus</A> would be a smallish but decent source for English (just remove POS tags and lowercase everything; it's already tokenized).  If you're feeling more ambitious, you could try the <A HREF="http://www.statmt.org/europarl/">Europarl</A> corpora for English and/or other languages (tens of millions of words per language for a lot of languages).
+<P>
+Note that we have not tried this ourselves, so, again, remember that the goal is not to "get it right", but to show you understand the ideas and that you're taking a thoughtful approach. The writeup matters.
+<P>
+<li> <strong>EC3</strong>.  
+This is another opportunity to get a little real-world practice at creating corpora from raw data and working with them.  We'll do an analysis similar to what you
+have been doing recently for political text, but using Obama's State of the Union addresses from 
+<!-- <A HREF="http://www.whitehouse.gov/the-press-office/2012/01/24/remarks-president-state-union-address">2012</A>,  -->
+<A HREF="http://www.whitehouse.gov/the-press-office/2013/02/12/remarks-president-state-union-address">2013</A>, 
+<A HREF="http://www.whitehouse.gov/the-press-office/2014/01/28/president-barack-obamas-state-union-address">2014</A>, and
+<A HREF="http://www.whitehouse.gov/the-press-office/2015/01/20/remarks-president-state-union-address-january-20-2015">2015</A>
+in order to answer the questions below.  (You're welcome to download the
+transcripts from other sites if that makes it easier to extract the
+text.) Note that we haven't actually done this specific set of comparisons, so it's possible that
+these questions will have answers that are either surprising or
+boring.  E.g. in part b, it's possible that there are no particularly
+interesting observations to make regarding similarity of one pair
+versus the other.  If that turns out to be the case, say so and
+explain why that's your conclusion.  Similarly for part c.
+<P>
+<ul>
+<li>  a. Describe the steps you took to extract the text from the State of the Union Web pages and turn it into corpora.
+<P>
+<li> b. How does Obama's speech in 2015 compare with what he said back
+      in 2014?  In 2013?  Which is it more similar to?  Choose for
+      yourself how you're going to measure "similar", and justify why
+      that's a reasonable choice.  (Don't go making up anything
+      particularly original here: use the concepts we've been working
+      with.)
+<P>
+<li>  c. What words and/or phrases illustrate contrasts among the
+      speeches, and/or progression or changes over time?  Again,
+      decide for yourself what technical choices to make in order to answer this question,
+      and justify those choices.  Feel free to draw on ideas and code from above and the previous 
+      assignment, if you'd like.
+</ul>
+
+</BODY>
+</HTML>

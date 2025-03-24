@@ -1,0 +1,63 @@
+# INSTALL MALLET
+# E.g., git clone https://github.com/mimno/Mallet.git
+
+# Below we assume shell variable M is the path to mallet bin directory:
+#  % echo $M
+#  /Users/resnik/misc/pkg/mallet/mallet-git/Mallet/bin
+
+# CREATE OUTPUT DIR
+mkdir ./workdir
+
+# IMPORT DOCUMENTS INTO MALLET
+#
+# Parameters of interest:
+# --remove-stopwords [TRUE|FALSE]
+# --extra-stopwords FILE
+#  Read whitespace-separated words from this file, and add them to the list of words to ignore.
+# --gram-sizes INTEGER,[INTEGER,...]
+#  Include among the features all n-grams of sizes specified.  For
+#  example, to get all unigrams and bigrams, use --gram-sizes 1,2.
+#  This option occurs after the removal of stop words, if removed.
+# --keep-sequence [TRUE|FALSE]
+#   If true, final data will be a FeatureSequence rather than a FeatureVector.
+# --keep-sequence-bigrams [TRUE|FALSE]
+#  If true, final data will be a FeatureSequenceWithBigrams rather than a FeatureVector.
+
+# Import document files for building topic model
+# This version uses unigram features
+$M/mallet import-dir					\
+   --input	 	convote_train			\
+   --output 	     	./workdir/convote_train.mallet 	\
+   --gram-sizes      	1			       	\
+   --remove-stopwords 				       	\
+   --keep-sequence					
+
+
+
+# TRAIN LDA TOPIC MODEL
+#
+# Parameters of interest:
+# --testing FILENAME
+#   The filename from which to read the list of instances for empirical
+#   likelihood calculation.  Use - for stdin.  The instances must be
+#   FeatureSequence or FeatureSequenceWithBigrams, not FeatureVector
+# --doc-topics-threshold DECIMAL
+#   When writing topic proportions per document with --output-doc-topics, do not 
+#   print topics with proportions less than this threshold value.
+#   Default is 0.0
+# --use-ngrams true|false
+#   Rather than using LDA, use Topical-N-Grams, which models phrases.
+#   Default is false
+# --num-iterations INTEGER
+# Use --optimize-interval 50 rather than default for better topics
+
+$M/mallet train-topics \
+  --input		  ./workdir/convote_train.mallet		\
+  --output-topic-keys 	  ./workdir/convote_train_topic_keys.txt 	\
+  --output-doc-topics	  ./workdir/convote_train_doc_topics.txt 	\
+  --output-state 	  ./workdir/convote_train_state.gz 		\
+  --num-topics		  50						\
+  --num-iterations	  500						\
+  --doc-topics-threshold  0.00001 
+
+

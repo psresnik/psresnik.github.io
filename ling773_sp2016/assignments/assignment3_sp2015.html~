@@ -1,0 +1,198 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF">
+
+<h1>Assignment 3</h1>
+
+<HR>
+<H2>Part 1: Hypothesis tests and collocations</H2>
+<HR>
+
+Let's continue exploring the <A HREf="http://www.cs.cornell.edu/home/llee/data/convote.html">congressional speech corpus</A> as in <A HREF="assignment2_sp2015.html">Assignment 2</A>.
+
+<ol>
+<li> Pick an association score based on a <em>statistical hypothesis test</em>, e.g. the chisquare test, log-likelihood, or Fisher's Exact Test. (Note that Fisher's Exact test does not scale well to large counts, but
+   <A HREF="http://research.microsoft.com/pubs/68957/rare-events-final-rev.pdf">Moore (2004)</A> gives a number of optimizations that make it practical, if you're interested in implementing them.)  Using exactly the same corpus setup as last time, what are the top 25 bigram collocations in this corpus, as measured automatically by the statistical association score you chose?
+<P>
+<li> Same question, but limit your attention to speeches by Democrats.
+<P>
+<li> Same question, but limit your attention to speeches by Republicans.
+<P>
+<li> Discuss the advantages and limitations of the measure you used. Include a comparison with the frequency and PMI scores you used last time. For full credit make sure to illustrate advantages and/or disadvantages using the sorted lists of collocations you obtained.
+<P>
+<li> Are there any interesting differences between what you found for
+     Democrats and what you found for Republicans?
+     (Just as for Assignment 2, if this is an unfamiliar topic, feel free to discuss your data with classmates or friends who know American politics better than you do.)
+     <P>
+<li> Finding some interesting contrasts by inspection is nice, but why
+  should I trust your intuitions?  For several examples of
+  differences between Democrats and Republicans, make a statistical
+  argument that the difference you're pointing out is a genuine
+  difference supported by the data.  
+  <P>
+  To use the example from last assignment, having discovered that <em>middle class</em>
+  might be an interesting phrase, I could use a chi-square test to
+  show that the difference in the frequency of <em>middle class</em>
+  among Democrats and Republicans is statistically significant.  (Note
+  that doing a chi-square test in this way, looking at a contingency
+  table of {Democrat,Republican} x {middle_class, NOT middle_class},
+  is different from using chi-square to find an association
+  between the word <em>middle</em> and the word <em>class</em>.  Both
+  cases involve a 2x2 contingency table, i.e. looking for evidence of
+  an association between some binary variable A and a second variable
+  B, but one case is looking for a lexical association between two words,
+  and the other is looking for an association between a bigram and 
+  the party of the speaker using that bigram.)
+  <P>
+  For full credit, be <em>very explicit</em> about the statistical
+  hypothesis testing you're doing.  For example, an explicit argument
+  would (at least) explicitly describe null hypothesis H0, identify
+  the test statistic, identify your choice for alpha (the cutoff for
+  statistical significance), give the p-value, and present an argument
+  for why we should draw the conclusions you want us to draw.  (It's
+  fine to use some of the same language I used in class.)
+  <P>
+  You are welcome to use an on-line calculator or off-the-shelf code
+  to do the statistical calculation if you'd like.  Though you'll
+  learn more if you do the calculation by hand at least once. :-)
+  If you're thinking of using the chi-square test, note that there are
+  problems using it when counts are small (see Problems in
+  <A href="http://en.wikipedia.org/wiki/Pearson's_chi-square_test">the
+  chi-square test Wikipedia page</A>).  Depending on the counts, the <A
+  HREF="http://en.wikipedia.org/wiki/G-test">likelihood ratio
+  test</A> may be a better choice.  The classic formulation of that
+  test for computational linguists is by  <A HREF="http://www.aclweb.org/anthology/J93-1003">Dunning (1993)</A>, 
+  but see also   <A HREF="http://research.microsoft.com/pubs/68957/rare-events-final-rev.pdf">Moore (2004)</A>
+  for some more intuitive formulations (Figure 2) and an argument for using Fisher's Exact Test
+  (typically viewed as intractable for large samples but Moore gives a number of optimizations
+  that make it practical).
+  <P>
+</ol>
+<P>
+
+
+<h3>Extra credit (receive up to +10%)</h3>
+<ul>
+<P>
+<li> Analyze the language for one or more individual debates, and identify
+  bigrams that are associated with Yes or with No votes for that
+  debate more often than you would expect by chance.  
+  Describe what the debate is about (based on reading some of the
+  speeches) and explain why the bigrams might be associated the way they
+  are.
+</ul>
+
+
+
+
+
+
+<HR>
+<H2>Part 2: Information theory </h2>
+<HR>
+
+
+<P>
+First, a couple of notes.
+<P>
+For the mathematically inclined and/or those who liked the discussion about
+deriving an information measure from a set of properties such a measure should have,
+here are <A
+HREF="http://www.mtm.ufsc.br/~taneja/book/node5.html">several derivations</A> 
+of the definition of entropy based on axioms about
+properties that a measure of uncertainty should have.  
+I particularly like the discussion in A.I. Khinchin,
+<em>Mathematical Foundations of Information Theory</em>, Dover, New
+York, 1957.
+<P>
+Also, in case you're curious, here's the pointer to the algorithm for
+creating optimal codes using <A
+HREF="http://en.wikipedia.org/wiki/Huffman_coding">Huffman coding</A>
+(see also this <A
+HREF="http://web.archive.org/web/20110518080824/http://www.huffmancoding.com/my-family/my-uncle/huffman-algorithm">interesting
+discussion by Huffman's nephew</A>).
+<P>
+Finally, a reminder about notation.  If X is a random variable whose distribution
+is (p<sub>1</sub>,p<sub>2</sub>,...,p<sub>k</sub>) then we usually
+write H(X) for H(p<sub>1</sub>,p<sub>2</sub>,...,p<sub>k</sub>).  I will
+occasionally write H(p) instead of H(X), where p abbreviates
+p<sub>1</sub>,p<sub>2</sub>,...,p<sub>k</sub>.
+<P>
+<hr>
+
+<ol>
+
+
+<LI>
+(Manning and Schuetze exercise 2.12) Show that the KL divergence
+is not symmetric by giving an example of two distributions p and q
+for which D(p||q) is not equal to D(q||p).  Give the two distributions
+and show the explicit computation of the KL divergences.
+<P>
+Note that simple toy distributions (e.g. over {heads,tails}) are
+boring to grade.  You'll earn less goodwill on this problem for the
+boring kind of example, and more goodwill for an example that is
+significantly interesting or amusing.
+<P>
+
+<LI> (Based loosely on Manning and Schuetze exercise 2.10) Compute three
+probability distributions over unigrams: one for 
+the Republican speeches in 
+<A HREF="http://www.cs.cornell.edu/home/llee/data/convote.html">the congressional
+speech corpus</A>, one for the Democrats, and one for
+<A HREF="http://umiacs.umd.edu/~resnik/723/politics2009/obama_inaugural2009.txt">Obama's inaugural address of January 20, 2009</A>.
+<P>
+Obama's address will need to be tokenized, and you should
+convert all text to lowercase in order to mitigate sparse data
+problems.  Note that you'll still need to do something about zero
+counts.  As the simplest option, you can smooth using Laplace ("add
+one", Manning and Schuetze Section 6.2.2) to avoid zero, even though
+in practice this is not considered the state of the art.  Or, slightly
+better, you could use add-k for a different k, e.g. setting k to 1/|V|
+where |V| is the size of the vocabulary. For simplicity, you can also
+assume that the total vocabulary is the union of all the unigrams in
+the three texts.
+<P>
+Here's a simple observation that might help you avoid writing a lot of
+new code from scratch, allowing you to re-use work you've already done: if you have a bigram frequency table with
+entries count(a,b), then the unigram counts are just the marginal
+counts for a and b, i.e.:
+<P>
+  count(a) = &sum;<sub>b'</sub> count(a,b')
+<P>
+  count(b) = &sum;<sub>a'</sub> count(a',b)
+<P>
+
+Best practice would be to smooth the bigram counts first, and then
+compute the unigram counts as above.  If you smooth unigrams and
+bigrams separately, there's no guarantee that summing over smoothed
+bigram counts to compute the marginals will give you the same number
+you get from smoothing unigrams separately. But this is a minor point
+and for this assignment I'm fine with any fairly reasonable smoothing
+as long as you say clearly what you did.
+<P>
+Questions.
+<ul>
+  <li> a. Treating the distribution for the Obama address distribution as p, compute
+the KL divergence against q (Democratic speeches) and q' (Republican speeches).  What are D(p||q) and D(p||q')?  How well does this match what you expected them to be?  Explain your answer.
+<P>
+  <li> b. Compute D(q||q') and D(q'||q), i.e. see what happens when you compare Republican speeches with Democratic speeches in both directions.  What are these values?  How do they compare with D(p||q) and D(q||p), where you're looking at the congressional speeches versus Obama's address?  Suggest some reasons the comparisons might be turning out the way they are.
+  <P>
+  <li> c. What are the top 10 terms contributing to D(q||q')?  Suggest reasons these might be the top 10.
+    <P>
+  <li> d. Same as (c), but for D(q'||q).
+  <P>
+</ul>
+  <P>
+
+</ol>
+
+<P>
+
+<P>
+<HR>
+<P>
+</BODY>
+</HTML>

@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Assignment 6</TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF">
+
+<HR>
+<H1>Assignment 6</H1>
+<HR>
+
+<P>
+<font color="red">This assignment is due at the start of class on Wednesday</font>.
+
+<P>
+<strong>Question 1</strong>.  Consider this HMM (which comes from the <A HREF="http://en.wikipedia.org/wiki/Hidden_Markov_model#A_concrete_example">example</em> given in the current Wikipedia page on  <A HREF="http://en.wikipedia.org/wiki/Hidden_Markov_model">HMMs</A>):
+<P>
+<center>
+<img src="http://upload.wikimedia.org/wikipedia/commons/4/43/HMMGraph.svg" alt="Wikipedia HMM example" width="500px">
+</center>
+<P>
+Here is the same HMM represented in Python rather than as an image, taken from the same Wikipedia page:
+<pre>
+states = ('Rainy', 'Sunny')
+ 
+observations = ('walk', 'shop', 'clean')
+ 
+start_probability = {'Rainy': 0.6, 'Sunny': 0.4}
+ 
+transition_probability = {
+   'Rainy' : {'Rainy': 0.7, 'Sunny': 0.3},
+   'Sunny' : {'Rainy': 0.4, 'Sunny': 0.6},
+   }
+ 
+emission_probability = {
+   'Rainy' : {'walk': 0.1, 'shop': 0.4, 'clean': 0.5},
+   'Sunny' : {'walk': 0.6, 'shop': 0.3, 'clean': 0.1},
+   }
+</pre><P>
+<strong>Question 1(a)</strong>  Create a PCFG that is equivalent to this HMM.  That is, the PCFG should generate exactly the same sequences of symbols, with exactly the same probabilities.  Briefly explain, in plain English, the strategy you took for converting an HMM to a PCFG.  (You do <em>not</em> need to give this algorithmically; just provide an explanation that is simple and easy to read.)
+
+<P>
+<strong>Question 1(b)</strong>  Show that the probabilities P(<em>shop clean</em> | this HMM) and P(<em>shop clean</em> | your PCFG) are identical, by giving the calculation for both.  (Use the Forward algorithm for the HMM, and the Inside algorithm, i.e. probabilistic CKY, for the PCFG.)
+<P>
+
+<strong>Question 2</strong>.  Someone on Piazza created <A HREF="https://piazza.com/class#spring2013/ling773cmsc773inst728c/64">a question/answer thread</A> about how one would train an HMM in an unsupervised, semi-supervised, and fully-supervised setting.  My response discussed the fully unsupervised case (use EM) and the fully supervised case (everything's observable, so count and normalize, smoothing to make sure there are no zeroes, because <em>zeroes are bad</em>).  I suggested, as a thought exercise, that you think about how you would adapt the training process using the forward-backward (a.k.a. Baum-Welch) algorithm to take advantage of a partially tagged corpus (or a tagged corpus plus an untagged corpus).
+<P>
+Well, this is too good a thought exercise to pass up, so I'm making it a real exercise, i.e. part of your homework.  Suppose you had a corpus C1, containing words with their "true" part of speech tags, and a corpus C2, containing just words, with no tags.  Obviously you could just ignore the tags in C1 and use EM, i.e. forward-backward, to train an HMM for part of speech tagging using the word sequences in both corpora, but you'd be ignoring potentially valuable information.  (Recall from last week's assignment how purely unsupervised HMM training does not always give you nicely interpretable states as POS tags.)  So, how would you take advantage of the fact that C1 gives you part of speech tags?  Give a carefully thought out, clear explanation, using equations if or where they are appropriate.
+<P>
+<HR>
+<P>
+</BODY>
+</HTML>

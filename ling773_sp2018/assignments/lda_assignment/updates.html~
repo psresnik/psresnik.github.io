@@ -1,0 +1,11 @@
+<html>
+<h1>Helpful hints for LDA assignment</h1>
+
+<h2>wget</h2>
+
+If you are using a system that doesn't have wget and you don't want to install it, you most likely can download datasets by using curl, e.g.:
+<pre>
+curl -O http://ai.stanford.edu/~amaas/data/sentiment/aclImdb_v1.tar.gz
+</pre>
+
+</html>

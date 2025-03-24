@@ -1,0 +1,622 @@
+<html>
+<head>
+<title>Project: Supervised Classification for Sentiment Analysis</title>
+</head>
+
+<body>
+<hr>
+<h1>Project: Supervised Classification for Sentiment Analysis</h1>
+<hr>
+
+<h2>Overview</h2>
+
+"Sentiment classification" and related topics ("opinion detection",
+"subjectivity analysis", "perspective classification") are a hot topic in natural language
+processing right now.  A <A
+HREF="http://www.cs.cornell.edu/home/llee/opinion-mining-sentiment-analysis-survey.html">recent
+monograph by Pang and Lee</A> provides a nice overview of what's going
+on in this area, and a <A
+HREF="http://cacm.acm.org/magazines/2009/4/22946-our-sentiments-exactly/fulltext">brief
+article in Communications of the ACM</A> points out that a number of
+new companies are starting to commercialize relevant pieces of the
+technology, and this <A
+HREF="http://www.intelligententerprise.com/blog/archives/2009/04/the_acm_looks_a.html">interview
+with a DC-based text analytics consultant, Seth Grimes</A>, goes into a bit more detail.  You don't
+need to read these, but they're there if you want useful background.
+<P>
+Pang and Lee point out quite a few variations on the theme, but the
+central premise underlying most of this work is that spans of text
+often convey <em>internal state</em>, such as a positive or negative
+opinion, an emotional reaction, or an author's perspective on a topic,
+and that such a state can be thought of as a label for the text.  The
+simplest example (and probably the best researched) would be opinion
+detection in movie or product reviews: if the text says "I thought
+this movie was terrible!", we have overt information that a subjective
+statement is being made (<em>I thought</em>) as well as overt
+information about the polarity of an opinion (<em>terrible</em>).
+Significantly more challenging are scenarios where the goal is to
+label an underlying state in texts that are not overtly subjective,
+e.g. in a marital counseling session, "The dishwasher broke yesterday"
+and "My husband broke the dishwasher yesterday" are both statements of fact,
+but they convey vastly different underlying perspectives on the event.  Sometimes
+the underlying state we're interested in is not positive or negative,
+but is instead a contrast based on group membership or ideology; for example, a
+posting on someone's blog might be labeled liberal or conservative.
+<P>
+In this project, your team will do a piece of end-to-end research on
+this kind of labeling.  This will
+involve preprocessing corpora, making choices about features to
+include in text representations, training classifiers, evaluating
+performance, and writing a project summary.
+<P>
+Note that this project is designed so that good results might actually
+be publishable in a workshop or even conference paper.  What you're
+being given here is not a textbook problem; rather, it's part of the
+very much open problem of how to do better sentiment analysis.  That
+has advantages and disadvantages.  On the positive side, it's more
+fun.  On the negative side, this is open territory and it's possible
+that unforeseen problems will crop up with the assignment -- either in
+how it's formulated, or with the materials I give you, or in system
+issues.  If that happens, let me know and we'll adjust accordingly.
+
+<h2>Corpora</h2>
+
+The following corpora constitute separate problems to solve.  I would
+like your team to experiment with <em>at least two</em> of these,
+ideally more, in order to assess the extent to which an approach that
+looks promising in one case might or might not work well on a
+different kind of data.
+<P>
+<UL>
+<!--
+  <LI><strong>Labeling movie reviews as positive or negative</strong>.  A <A
+HREF="http://trust.mindswap.org/cgi-bin/FilmTrust/fullFoaf.cgi">set of
+movie reviews</A> has kindly been provided by Prof. Jen Golbeck of the
+iSchool.  The reviews are accompanied by ratings on a 0 to 4 scale.
+For our purposes, we will convert this to a binary labeling problem: a
+score &gt; 2.5 will constitute a positive opinion label, and otherwise
+a review will be considered to have a negative opinion label.  Notice
+that in this dataset, the writing is done with the deliberate
+intention of expressing an opinion, or at least of supporting an
+opinion rating.
+  -->
+<P>
+<LI><strong>Labeling movie reviews as positive or negative</strong>.  
+Here is a link to <A
+HREF="http://www.cs.cornell.edu/people/pabo/movie-review-data/">
+relevant movie review data</A> kindly made available to the community
+by Bo Pang and Lillian Lee.  Notice that this corpus also includes
+sentence-level subjectivity data (is a sentence subjective or not?),
+which might be useful or interesting to play with rather than just
+dealing with things at the document level.
+<P>
+<LI><strong>Labeling documents with author's perspective on the death
+penalty</strong>.  We will be using <A HREF="http://www.umiacs.umd.edu/~resnik/dp/index.html">this corpus of
+documents from pro- and anti-death-penalty Web sites</A> created by <A
+HREF="http://www.umiacs.umd.edu/~sgreene/">Stephan Greene</A> in order
+to investigate the way that syntactic framing affects perceptions of
+sentiment, as in the "dishwasher" example discussed above; see <A
+HREF="http://umiacs.umd.edu/~resnik/pubs/greene_resnik_naacl2009.pdf">Greene
+and Resnik, More than Words: Syntactic Packaging and Implicit
+Sentiment, NAACL 2009</A>.  Individual documents are
+organized into PRO and ANTI subsets, and, in addition, the data are
+already grouped into "folds" for 4-fold cross validation.  (The folds
+separate out documents by the Web sites they came from, so that in
+each fold a single site's documents are used in either training or
+test but not both.  See Greene and Resnik (2009) for why.)  Notice
+that documents in this dataset may not be as explicit as movie reviews
+in telling other people what the author thinks about the death penalty
+("I think the death penalty is great because...").
+<P>
+Note that I have stored the corpus in a really inefficient way:
+documents are duplicated across the train/test split in each fold.
+This keeps the structure of the directories really simple but hugely
+wastes space.  It would make a lot more sense to keep just one copy of
+each document and then define train/test splits with pointers
+(e.g. symbolic links) to the actual documents.
+<P>
+<LI><strong>Labeling legislative speakers as Democrats or
+Republicans</strong>.  This is the <A
+HREF="http://www.cs.cornell.edu/home/llee/data/convote.html">Congressional
+Speech (convote)</A> dataset we have worked with in previous class
+assignments.  Each document is a statement connected with an argument
+to vote for or against a bill under consideration.  The labeling
+problem I propose you work on is labeling the turn as Democratic or
+Republican.  (One could also imagine labeling the turn as leading to a
+"yes" vote or a "no" vote; the problem is that what gets learned from
+one debate seems unlikely to generalize to other bills.  Consider this
+an optional possibility to play around with if you think there's
+something interesting to explore there.)
+<P>
+<LI><strong>Labeling an essay as coming from the Israeli or
+Palestinian perspective</strong>.  The <A
+HREF="http://perspective.informedia.cs.cmu.edu/data/bt.1.0.zip">Bitter
+Lemons</A> collection created by <A
+HREF="http://homepages.inf.ed.ac.uk/twilson/pubs/conll06.pdf">Lin et
+al. (2006)</A> contains documents from <A
+HREF="http://www.bitterlemons.org">bitterlemons.org </A>, a Web site
+that fosters dialogue about the Israeli-Palestinian conflict by
+publishing essays on the same topic from both perspectives.  In the
+<em>docs</em> directory you'll find cleaned-up versions of the files,
+where the filename indicates whether the essay is from the Palestinian
+(pal) or Israeli (is) perspective.  (There are 297 essays from each.)
+<P>
+<LI>  <strong>Labeling a political blog post as coming from a liberal
+or conservative blog</strong>.  An example corpus is <A
+HREF="http://www.ark.cs.cmu.edu/blog-data/">Noah Smith's political
+blog corpus</A>, although I have a copy of a more recent corpus from Noah (6
+blogs for 2008, so right during election season) that I should be able
+to give you to use, within the next few days.
+</ul>
+
+<P>
+
+
+<h2>Classifiers</h2>
+
+This project is not about programming up machine learning algorithms.
+I recommend that you pick a machine learning toolkit that allows you
+to try out different algorithms, or a set of such toolkits.  
+Some obvious choices to consider include the following:
+<P>
+<strong>WEKA</strong>.  The <A
+HREF="http://www.cs.waikato.ac.nz/ml/weka/">Weka toolkit</A> is one of
+the best known and most widely available machine learning packages.
+It supports a wide range of supervised learning techniques, including
+most of the ones we have discussed in class.  Weka comes with both a
+graphical user interface and a command-line interface, as well as a
+java API.  The basic idea, in using Weka, is to represent your
+learning problem using an <A
+HREF="http://weka.wiki.sourceforge.net/ARFF">.arff</A> file, within
+which each instance is represented as a feature vector.  (The header
+of the file identifies the types of the features as well as the
+feature that constitutes the class being predicted.)  Once you've got
+your data into the .arff format, it's very easy to try out different
+learning algorithms and/or different parameters for the same
+algorithm.
+<P>
+As a quick and easy starting point, you might want to try out Carolyn
+Rose's <A HREF="http://www.cs.cmu.edu/~cprose/TagHelper.html">TagHelper</A> package.  TagHelper is a wrapper
+around Weka (with its own GUI and command-line interfaces) that builds
+in many of the most common feature extraction choices commonly used in
+text processing, e.g. tokenization, lowercasing, unigrams, bigrams,
+stemming, part-of-speech tags, etc.  The basics are incredibly simple:
+you put your data into a two-column spreadsheet where the first column
+is Code (i.e. label) and the second column is Text (i.e. the text
+being classified), you tell it which feature extraction options you
+want to use (or just use its defaults), and then you run it.  It will
+do feature extraction (creating .arrf files for you) and, by default,
+will do evaluation on your dataset via (IIRC) 10-fold
+cross-validation.  It's also possible to use separate training and
+test sets.   HOWEVER, be warned that in the past some people have had
+some trouble with TagHelper's scalability. 
+<P>
+<strong>MALLET</strong>.  The <A HREF="http://mallet.cs.umass.edu/">MALLET</A> toolkit is
+another very nice package.  It's not as well documented as Weka, but
+it has some decent "quick start" Web pages with useful examples,
+fairly readable java source code (or so I'm told), and an online
+discussion group that is fairly active monitored by MALLET team
+members who actually seem to be pretty responsive.  MALLET overlaps
+with Weka a bit, but it also supports sequence modeling (conditional
+random fields, a.k.a. CRFs) and unsupervised topic modeling (Latent
+Dirichlet Allocation, a.k.a. LDA).  And again, you can get your data
+into a fairly standard format and play with different
+parameterizations for learning, there's a java API, etc. (But no GUI.)
+<P>
+<strong>Others</strong>.  There are a variety of other toolkits out
+there for specific approaches such as maximum entropy modeling,
+support vector machines, and decision tree learning, and I know <A
+HREF="http://alias-i.com/lingpipe/">LingPipe</A> implements <A
+HREF="http://alias-i.com/lingpipe/demos/tutorial/sentiment/read-me.html">subjectivity
+and sentiment analysis</A>.  It also appears that <A
+HREF="http://www.nltk.org/">NLTK</A> offers useful machine learning
+toolkit functionality (decision tree, maximum entropy, naive Bayes
+clasifiers, and an interface to Weka) although I'm not particularly
+familiar with it.  There are various other lists of machine learning
+toolkits out there; probably one of the best too look at would be <A
+HREF="http://www.cs.utah.edu/~hal/courses/2008F_ML/">Hal Daume's list
+of useful machine learning links and software</A>.
+
+<P>
+Discussion of machine learning packages is welcome on the class forum,
+and I'm happy to inquire with my students and former students about
+their experiences with packages you're considering using.
+</ul>
+<P>
+
+<h3>Bayesian Modeling</h3>
+
+Finally, let me observe that there are some interesting <em>Bayesian
+modeling</em> approaches out there, which might be interesting to try
+if you're particularly ambitious and want to go beyond existing off
+the shelf classifiers.  In class a lecture or two from now we'll be
+covering Bayesian modeling; a good reading for this is a manuscript
+called "Gibbs Sampling for the Uninitiated" that Eric and I are
+writing -- there's an earlier
+version of this linked from my home page but Eric's latest version is
+much better.  (That updated version will probably be on the reading
+list for Jordan Boyd-Graber's guest lecture.)
+
+<UL>
+<LI> A while back Ted Pedersen and Rebecca Bruce had <A
+HREF="http://www.aaai.org/Papers/AAAI/1998/AAAI98-113.pdf">an
+interesting paper on Naive Bayes modeling for word sense
+disambiguation</A>, where he used Gibbs sampling to estimate model
+parameters for hidden classes rather than observing feature/class
+co-occurrences.  (The structure of the problem here is pretty much
+identical: just replace senses with sentiment labels and replace word
+contexts with the text you're trying to classify, and it's the same
+problem.)  He worked in an unsupervised setting, but it is quite
+straightforward to modify a Gibbs sampling approach for partial or
+full availability of training data: if you know an instance has binary
+label L, you just force the sampler to assign L instead of doing a
+Bernoulli trial.  Sampling is just done for the unknown labels.
+<P>
+Why bother doing this instead of just doing a standard Naive Bayes
+model (like you can find in Weka and other toolkits)?  Well, Pedersen
+and Bruce -- and practically everyone else who uses Gibbs sampling, it
+would appear -- adopt a uniform prior for the word distributions.
+Remember how the Beta(1,1) distribution is just a uniform distribution
+for a coin-flip parameter?  For distributions over a vocabulary of
+words, the natural uninformative prior is a Dirichlet(1,1,...,1)
+distribution, where the width of the vector is the size |V| of the
+vocabulary.  It's the same idea as the Beta(1,1) prior, just going
+from 2 alternatives to |V| alternatives: this prior introduces no bias
+at all regarding which words start out as more likely.  I conjecture
+that you can do better by using an <em>informed</em> prior,
+specifically by using a Dirichlet prior informed by a <A
+HREF="URL">subjectivity lexicon</A> (see below).  For example, the
+prior distribution for the NEGATIVE label could give lower weight to
+words in the lexicon like <em>good</em> or <em>adore</em> that are
+associated with positive sentiments.
+<P>
+<!-- <LI> The <A
+HREF="http://homepages.inf.ed.ac.uk/twilson/pubs/conll06.pdf">Latent
+Sentence Perspective Model of Lin et al. (2006)</A> takes the naive
+Bayes idea a step further: it introduces a hidden binary variable for
+each sentence, which is intended to be 0 if the sentence is not
+particularly perspective-bearing (e.g. "This movie stars Bruce
+Willis") and 1 if the sentence carries sentiment (e.g. "Bruce Willis
+is awesome in this great movie").  My Gibbs sampling manuscript,
+mentioned above, discusses this model, and goes into how to implement
+the sampler for it in considerable detail.  I think it would be very
+interesting indeed for someone to replicate the results of Lin et
+al. (who experimented on the Bitter Lemons corpus) and then see if the
+idea about informative priors above helps.
+-->
+<LI>  In his lecture, Jordan will be covering Latent Dirichlet
+Allocation (LDA), which automatically identifies topics in a test
+collection -- you tell it you want K topics, and it will create a
+K-dimensional topic vector for each document. This topic vector could
+be considered a vector of features, which could be added to whatever
+features you're already extracting from the document.
+(By the way, the MALLET toolkit implements LDA, but, again, only with
+non-informative priors.  It would be very interesting if someone
+wanted to modify MALLET to handle informative priors, so that you
+could "seed" its unsupervised creation of topics in a way that biases
+it in favor of things you think make sense <em>a priori</em>.)
+<P>
+<LI>  For either of the above two models, it would be quite
+	interesting add the syntax-based features of Greene and Resnik
+	(2009) to the feature set.  
+<P>
+</UL>
+
+<h2>Other Resources</h2>
+
+The core of this project involves trying out different features and
+seeing what might or might help for (subsets of) the tasks laid out
+above.  Feature extraction will undoubtedly require coding on your
+part, but here are some things that might potentially be useful to
+you.
+<UL>
+<LI> <A HREF="http://www.cs.cmu.edu/~cprose/TagHelper.html">TagHelper</A>.
+        See discussion above.  Even if you
+	don't care about it as an interface to Weka, you could
+	potentially just use it for purposes of feature extraction.
+	(Converting the Weka .arff format into other formats shouldn't
+	be too difficult, after all.)
+<P>
+<LI> <A HREF="http://www.d.umn.edu/~tpederse/nsp.html">Pedersen's N-gram statistics package (NSP)</A>.
+	Many of you hve used this already.  It could potentially
+	useful, for example, for extracting n-grams, filtering
+	stopwords, etc.
+<P>
+<LI> <A HREF="http://nlp.stanford.edu/software/lex-parser.shtml">The Stanford Parser</A>.  For syntax-based
+	features, the Stanford Parser may provide the fastest ramp-up
+	in terms of part of speech tagging or creating constituency
+	and/or dependency parse trees from text.  
+<P>
+<LI> <A HREF="http://alias-i.com/lingpipe/">LingPipe</A> also provides a nice set of useful
+	language analysis tools including part of speech tagging,
+	named entity extraction, and coreference resolution.
+<P>
+<LI> An online <A HREF="http://www.cs.pitt.edu/mpqa/">subjectivity lexicon</A> contains
+        "subjectivity clues" used by Theresa Wilson, Janyce Wiebe and Paul
+        Hoffmann (2005), "Recognizing Contextual Polarity in Phrase-Level
+        Sentiment Analysis", Proceedings of HLT/EMNLP 2005.  It will tell you,
+	for example, that the word <em>abuse</em> is strongly
+	subjective, and that, at least out of context, it reflects
+	negative polarity.
+<P>
+<LI> <A HREF="http://sentiwordnet.isti.cnr.it/">SentiWordNet</A> contains WordNet word senses
+	annotated with sentiment information.
+<P>
+<LI> If you are interested in the syntax-based feature extraction from
+     Greene and Resnik (2009), ask me about code that you can probably use.
+<P>
+</UL>
+<P>
+
+<P>
+<h2>Features</h2>
+
+There are a whole lot of features you might consider using.  Certainly
+unigrams and bigrams (and variations, e.g. stemming them) have been
+used before; see Greene and Resnik (2009) and <A
+HREF="http://www.umiacs.umd.edu/~sgreene/SGreeneDissertationFinalDist.pdf">Stephan
+Greene's dissertation</A>, for example.
+<P>
+The syntactic features introduced by Greene and Resnik would also be
+something to consider including, especially since I can provide code
+to extract them.  The basic idea here is that the syntactic form of a
+sentence carries information about the semantic "framing" being
+adopted by the author, which can be connected to underlying sentiment.
+For example, "My husband broke the dishwasher" would give rise to features
+including <em>break-TRANS</em> and <em>obj-dishwasher</em>, indicating
+respectively that <em>break</em> was used transitively and that
+<em>dishwasher</em> appears as an object.  (We didn't use triples like
+<em>break-obj-dishwasher</em> because of data sparseness issues.)  In
+contrast, "The dishwasher broke" would give rise to, among others, the
+feature <em>break-NOOBJ</em>, indicating that the verb break was used
+without an overt direct object.  Because syntactic transitivity is
+associated with some highly relevant semantic properties
+(e.g. causation, intended action, and change-of-state in the object),
+the transitivity-indicating feature encourages an interpretation
+of the event that foregrounds the husband's causal role, the fact that
+the dishwasher was strongly affected by the event, etc.  If breaking
+the dishwasher is an undesirable outcome, then the transitive
+statement encourages an interpretation of the event connected with 
+negativity toward the husband; the inchoative version (no object)
+de-emphasizes the properties associated with that interpretation.
+<P>
+What are some possible extensions of this idea?  Well, Greene and I
+did not use any external knowledge about the verb.  We left it to the
+machine learning to figure out which features would push the label in
+which directions; e.g. one might expect <em>break-TRANS</em> to show
+up more in one kind of document and the same feature with a more
+positive verb, say <em>rescue-TRANS</em> to show up in the opposite
+kind of document.  But I think it would be interesting to explore
+whether the subjectivity lexicon could be used in conjunction with
+these syntactic features in some way in order to capture
+generalizations based on verb types (perhaps adding features like
+<em>negativepolarity-TRANS</em>, <em>positivepolarity-TRANS</em>,
+etc. in addition to the verb-specific features?).  
+<P>
+As another thought, it might be interesting to look at the extent to
+which the author's choice of syntactic frame for the verb differs from
+its most conventional use. For example, if <em>break</em> is used
+in an active transitive 5 times as frequently as the passive,
+based on syntactic analysis in some reference corpus (Penn Treebank?),
+then its use in the passive seems like it should receive strong
+weight, while a transitive use might not be telling us anything
+particularly significant about how the author is framing the
+situation.  I really think this ought to help in identifying places
+where "spin" is taking place using syntactic structures.
+<P>
+Those are just some pet ideas I've been thinking about.  Yes, I think
+it would be very cool to see some of you guys try them out.  But I'm
+also very open to creative thinking on your part about other features
+that might be useful for one or more of the classification problems.
+
+<h2>Evaluation</h2>
+
+The logical paradigm for evaluation here would be k-fold cross
+validation. Choosing k is as much art as science, probably with k=10
+being most common, but for smallish datasets it would not be uncommon
+to see k=5.  (See notes above under "Corpora" for special treatment of
+cross-validation for the death penalty corpus.)
+<P>
+In terms of evaluation measure, one would generally use simple
+accuracy: did the classifier's label on the test item match the
+"ground truth" for that item?
+<P>
+That said, an important part of the evaluation is going beyond the
+numbers to an analysis of why things turned out the way they did.
+(And a good analysis can be as important as a positive result, in
+terms of good research, even if it makes it harder to get a paper
+accepted.)   One form of analysis might be an error analysis for an
+individual classifier/featureset combination, trying to identify
+generalizations about what it does well or what it does poorly.
+Another form of analysis might break the errors into false positives
+and false negatives, or into other buckets, in order to seek insight
+into what's working, what's not, and how it could be improved.
+
+
+<h2>Optional Related Reading</h2>
+
+There's a lot out there, but here are three authors in particular whose work
+covers a whole lot of the most recent and interesting research.
+<ul>
+<li> <A HREF="http://jodange.com/resources.html">Publications</A> by
+  Claire Cardie and colleagues that describe the technology underlying <A
+  HREF="http://jodange.com">jodange.com</A>.
+<p>
+<li> <A
+ HREF="http://www.cs.cornell.edu/home/llee/papers.html#sent">Publications</A> by
+ Lillian Lee and colleagues (particularly Bo Pang) on sentiment
+ analysis.
+<p>
+<li> <A
+  href="http://www.cs.pitt.edu/~wiebe/pubs/pub1.html">Publications</A>
+  by Jan Wiebe and colleagues on subjectivity analysis.
+</ul>
+<p>
+
+<h2>What the Team Should Turn In</h2>
+
+Here's what I expect to be turned in by each group.
+
+<ol>
+<LI> A tarball/zipfile of your source code, including enough
+     information for someone to run it.
+<P>
+
+<LI> A writeup including the elements below.  Please stick with this
+	main structure, though you can add sections if you need to.  (Also,
+	look at some of the referenced conference
+	papers to get a general feeling for how research descriptions
+	tend to be structured in this particular space.)
+<P>
+  <UL>
+  <LI> The datasets you chose to work with, along with preprocessing
+	    details.  I expect experiments with at least two
+	    datasets.  Comparing the same new ideas across datasets
+	    would be nice but is not a requirement.  (E.g. you might
+	    try one set of new features on movie reviews, and a
+	    different set on the congressional votes corpus.  Or, you
+	    might try the same new features on both.  I have a mild
+	    bias in favor of the latter but it's just that, a bias,
+	    because I want to leave you more free to explore.)
+  <P>
+  <LI> Which classifier types you used.  You do not need to
+	    regurgitate descriptions of the classification algorithms,
+	    though it would be helpful if you commented on why you
+	    made the particular choices you made.  I'm ok with you
+	    using just one kind of classifier, though for many of
+	    these packages it's just as easy to try two or three and
+	    if you do so, it gives you the opportunity to see a
+	    general pattern of results across classifiers.
+  <P>
+  <LI> What features you used in "baseline" classifiers.
+  <P>
+  <LI> What features you introduced (and why).  This is primarily where I am
+	    looking for thought, creativity, exploration, etc.  That
+	    said, I have absolutely nothing against your implementing
+	    some of the creative ideas I've suggested above!
+  <P>
+  <LI> How evaluation was done, e.g. cross-validation details.  
+  <P>
+  <LI> A table or tables of results, showing performance for the
+       baseline(s), and for one or more other feature combinations (either
+       augmenting or replacing baseline features).  For corpora where
+       you're working with exactly the same dataset as previous researchers,
+       please also include previous best results in the table.
+       (Beating previous results would be cool, but it is not a requirement
+       for success on this project!)
+  <P>
+  <LI> A section (or sections) discussing the results, e.g. error
+	    analysis, etc.  This is the other main place where I'm looking
+	    for thought, effort, insight.
+  <P>
+  <LI>  A section discussing any particular difficulties or hurdles you
+	      encountered.  Please feel free to include ways in which
+	      this assignment could be made better.  (The fact that
+	      we're working with small datasets is a response to
+	      comments in the previous two years, where large-data
+	      problems made it difficult for students to try out
+	      everything they wanted to try.)
+  <P>
+  </UL>
+<LI>  Separately, by e-mail, each person should send me ratings for their
+	team members as described under "Grading", below.  Please put
+	"COMPLING2 RATINGS" in the subject line so these messages are
+	easy to spot.
+<P>
+
+</ol>
+
+
+<h2>Grading</h2>
+
+The group will receive a grade-in-common out of 75 points.  By now I
+think you have a decent sense of my criteria.  I want to see that
+you've understood the experimental paradigm
+
+
+<P>
+For the remaining 25 points, each team member should anonymously rate
+each other team member as follows -- <em>making sure to look at the
+definitions below to see what the numeric scales are supposed to mean</em>.
+<P>
+<ul>
+<li> Name of person being evaluated 
+<li> Collaboration: scale from 1 to 10 where 10 is highest 
+<li> Contribution to success of the project: scale from 1 to 10 where 10 is highest
+<li> Effort: scale from 1 to 5 where 5 is highest
+</ul>
+<P>
+<strong>Collaboration</strong>: 10 means that this person was great to
+collaborate with and you'd be eager to collaborate with them again,
+and 1 means you definitely would avoid collaborating with this person
+again.  Give 5 as an <em>average</em> rating for someone who was fine
+as a collaborator, but for whom you wouldn't feel strongly about
+either seeking them out of avoiding them as a collaborator in the
+future.
+<P>
+<strong>Contribution</strong>: 10 means that this person did their
+part and more, over and above the call of duty.  1 means that this
+person really did not contribute what they were supposed to.  Give 5
+as an average, <em>they did what they were expected to</em> rating.
+Note that this is a subjective rating relative to what a person was
+expected to contribute.  If five people were contributors and each did
+a fantastic job on their pieces, then all five could conceivably get a
+rating of 10; you would not slice up the pie 5 ways and give each
+person a 2 because they each did 20% of the work!  It is your job as a
+group to work out what the expected contributions will be, to make
+sure everyone is comfortable with the relative sizes of the
+contributions, and to recalibrate expectations if you discover you
+need to.  Try to keep things as equitable as possible, but if one
+person's skills mean they could do a total of 10% of the work compared
+to another person's 15%, and everyone is ok with this, then both
+contributors can certainly get a score of higher than 5 if they both
+do their parts and do them well.  If you need help breaking up tasks,
+agreeing on expectations, etc., I would be happy to meet with the
+group to assist in working these things out.
+<P>
+<strong>Effort</strong>: A rating of 3 should be average, with 5 as
+<em>superior effort</em> (whether or not they succeeded) and 1 as
+<em>didn't put in the effort</em>.  A rating below 3 would not be
+expected if the person's contribution was 5 or better.  If a person
+just didn't manage to contribute what they were expected to, but you
+think they did everything in their power to make it happen, you could
+give them a top rating for effort even while giving them a low
+contribution score.
+<P>
+
+<h2>A Final Note</h2>
+
+This project is ambitious.  It attempts to give you an experience
+doing something real, not just a textbook exercise.  I have not run
+all facets of this task end-to-end before, particularly for some of
+the new features I'm suggesting you explore.  That means that there
+might be unanticipated problems, situations where people do not
+receive inputs they need to get their part done, intra-team politics,
+interpersonal issues, and who knows what else -- just like in the real
+world.  It also means that something new and interesting might come
+out of it, which is pretty cool.
+<P>
+Unlike the real world, which is not very forgiving, this is a
+controlled setting that involves the guidance of an instructor, who
+<em>can</em> be very forgiving.  Remember that the activity is, first
+and foremost, a collaborative learning activity, with the emphasis on
+<em>learning</em>. If there are problems or issues of any kind, let me
+know sooner rather than later, and I will help to get them worked out.
+Also feel free to use the mailing list or discussion forum: the
+presence of multiple teams does <em>not</em> mean that you are
+competing with each other.  (I considered adding extra credit for the
+team with the best results, but I specifically decided against
+it because I would much rather see a spirit of collaboration not only
+within teams but at the level of the entire class.)
+
+
+
+
+
+
+
+<hr>
+</body>
+
+
+</html>

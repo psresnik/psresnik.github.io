@@ -1,0 +1,293 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<title>Assignment 2</title>
+<body bgcolor="#ffffff">
+
+
+<HR>
+<h1>Assignment 2</h1>
+<HR>
+
+<P>
+
+In class, we talked a bit about what collocations are. In this assignment, we will get some hands-on experience discovering them in a corpus, building on the work you did in the last assignment.  Although the work in this assignment is relatively straightforward from an NLP point of view, it's pretty close to what some real political scientists have done, even recently, in text analysis; for example, see Monroe et al., <A HREF="http://languagelog.ldc.upenn.edu/myl/Monroe.pdf">Fightin’ Words: Lexical Feature Selection and Evaluation for Identifying the Content of Political Conﬂict</A>, Political Analysis, 2008 16(4):372-403, and also this <A HREF="https://civisanalytics.com/blog/data-science/2016/01/15/data-science-on-state-of-the-union-addresses/">analysis of State of the Union addresses</A> and references therein.
+(Although I haven't looked at it closely enough to judge its quality, you can find a python implementation of the Monroe et al. approach <A HREF="https://gist.github.com/thiagomarzagao/ff45fd59b2f5a831b121">here</A>.)
+
+<h2>Bigram Association Scores</h2> 
+
+Here is a summary of three bigram association scores you might choose to use in assignment, with pointers to the discussions in the reading. There are some others discussed in the readings also but you are fine if you just look at these three.
+<P>
+<strong>Frequency</strong>. As discussed by Manning and Schuetze in Section 5.1, the frequency with which you see a bigram can be thought of as a score that is a first rough indicator of whether that bigram might be a collocation. (They also point out that high frequency gives you a lot of uninteresting word pairs that are not collocations, e.g. <em>in the</em>, although you can get more interesting and useful results out of frequency by limiting your attention to adject-noun and noun-noun patterns.)
+<P>
+<strong>Chi-squared</strong>. In class, we briefly discussed the chi-squared test statistic, which can be used in experiments where you're interested in the question of whether one binary variable (e.g. Male vs Female) affects another binary variable (e.g. whether a person earns more than $100K/year or not). In Manning and Schuetze, Section 5.3.3, Table 5.8 illustrates how the same idea can be applied to discovering collocations. In this example, the first binary variable is "the first word in a bigram is (or isn't) the word <em>new</em>", and the second variable is "the second word in a bigram is (or isn't) the word <em>companies</em>". Section 5.3.3 (specifically equation 5.7) shows how to calculate the chi-squared test statistic for a 2x2 table like Table 5.8; note that
+O<sub>1</sub><sub>1</sub>,
+O<sub>1</sub><sub>2</sub>,
+O<sub>2</sub><sub>1</sub>, and
+O<sub>2</sub><sub>2</sub>
+refer to the cells in the upper left, upper right, lower left, and lower right of the 2x2 table, respectively. As you'll see in that discussion, the more extreme the chi-squared value, the less probable it is that this table (i.e. the counts related to this bigram) came about by chance, and therefore the more confidence we can have in rejecting the null hypothesis. So for any bigram, you can (a) construct a table like the one in Table 5.8, and then (b) compute chi-squared as in equation 5.7, and now you've got different score that you can interpret as indicating the extent to which the words in the bigram "go together" more than you'd expect by chance.
+<P>
+<strong>Pointwise Mutual Information (PMI)</strong>. Manning and Schuetze's Section 5.4 shows you another very common way of analyzing bigrams to discover collocations.  The intuition here is really simple. In the numerator is the observed probability that the two words occur together. In the denominator is the probability that they <em>would</em> occur together if the null hypothesis were true, i.e. that they were independent of each other, namely the product of their separate probabilities. This gives you a ratio of what you did observe in the corpus to what you would have observed (based on the unigram probabilities) if the null hypothesis were true. PMI is just the log of that ratio, so PMI > 0 means that the two words occur together more often than you'd expect by chance.
+<P>
+
+<h2>Corpora</h2> 
+
+<P>
+<strong>Congressional speeches</strong>. The <A HREf="http://www.cs.cornell.edu/home/llee/data/convote.html">congressional speech corpus</A> was  created by Matt Thomas, Bo Pang, and Lillian Lee.  It contains speeches made by politicians in the U.S. House of Representatives during debates over legislation and has been used in a variety of research papers.  Conveniently, the corpus is already tokenized and lowercased for you, and the filename conventions make it very easy to identify particular subsets of the corpus. When you download the <A HREF="http://www.cs.cornell.edu/home/llee/data/convote/convote_v1.1.tar.gz">convote dataset v1.1</A> (9.8 Mb, tar.gz format) you will see that there are several different versions of the data in this archive; we are concerned only with the data_stage_three directory.  For those with limited disk space, a way to extract just the directory of interest is:
+<code>
+  gunzip < convote_v1.1.tar.gz | tar xvf - convote_v1.1/data_stage_three
+</code>
+<P>
+Each file in the data_stage_three directory contains a speech by a legislator.  The filenames contain information about each speech.  In the filename template,
+<code>###_@@@@@@_%%%%$$$_PMV</code>:
+<ul>
+  <li> the first three characters ### identify the bill under discussion
+  <li> the six digits @@@@@@ uniquely identify the speaker
+  <li> the character in position P indicates the speaker's party: D (Democrat), R (Republican), I (independent), or X (unknown).
+  <li> the character in position V indicates whether the speaker eventually voted yes (Y) or no (N).
+  <li> for our purposes we can ignore the other parts of the template.
+</ul>
+Please use all the data available under the 3 directories ("development_set", "test_set" and "training_set").
+
+<P>
+<strong>State of the Union</strong>. 
+Another interesting dataset is the set of <A HREF="http://stateoftheunion.onetwothree.net/texts/stateoftheunion1790-2016.txt.zip">State of the Union(SOTU) addresses</A> of U.S. presidents. (Recall that in a Jan 15, 2016 blog post, Michael Heilman at Civis Analytics presented a <A HREF="https://civisanalytics.com/blog/data-science/2016/01/15/data-science-on-state-of-the-union-addresses/">simple analysis of State of the Union addresses</A> primarily based on word frequencies. That posting contains a pointer to some other text-analytics research on the topic.)  For our purposes here, let's restrict ourselves to the post-Reagan presidencies, i.e. Presidents Bush 1 (Republican), Clinton (Democrat), Bush 2 (Republican), and Obama (Democrat).
+
+<h2>The task</h2>
+
+The idea here is to use what we've learned in class (and what you've read about in M&amp;S Chapter 5) to answer some interesting questions. Pick <em>one</em> of the two corpora above and answer the following:
+
+<ol>
+<li> Very briefly, what approach did you take in terms of implementation? (Coding from scratch, using an existing toolkit; how you tokenized, stemming or lemmatization, etc.)
+<P>  
+<li> What are the top 25 bigram collocations in this corpus, as measured automatically
+     by frequency plus at least two other measures of association?  It's fine to use chi-squared value and PMI as discussed above; however you are also welcome to try others like the t-test discussed by Manning and Schuetze, or the (log-)likelihood ratio (Section 5.3.4). In practice I'd say the two most common are either Positive PMI, which is just PMI but replacing any negative PMI with 0, or the log-likelihood ratio. A really good argument is made for the latter in <A HREF="http://aclweb.org/anthology/J93-1003">Dunning 1993</A>, which is one of my top several papers in computational linguistics as a great example of clear, well motivated, well argued, and empirically well demonstrated research.
+<P>
+<li> Same question, but limit your attention to speeches by Democrats.
+<P>
+<li> Same question, but limit your attention to speeches by Republicans.
+<P>
+<li> Discuss the advantages and limitations of the measures you used, illustrating
+using the sorted lists of collocations you obtained.
+<P>
+<li> Are there any interesting differences between what you found for
+     Democrats and what you found for Republicans?
+     <P>
+     Here's an example.   When I used the Democratic congressional speeches as a corpus,
+     and sorted all non-<A HREF="http://en.wikipedia.org/wiki/Stop_words">stopword</A> bigrams by log-likelihood value, 
+     and did the same separately for Republicans, the
+     phrase <em>middle class</em> ranked 16th for Democrats and 115th
+     for Republicans; conversely, the phrase <em>law enforcement</em>
+     ranked 28th for Republicans and 141st for Democrats.  
+     One could argue that this empirical observation is consistent
+     with at least some characterizations of the priorities
+     of the two political parties -- e.g. see 
+     <!-- <A HREF="http://www.smartdecision08.com/content-2458"> -->
+     <A HREF="http://www.google.com/search?hl=en&q=2008+debate+mccain+mentioning+the+middle+class&aq=f&aqi=&oq=">
+     discussions of the role that the phrase <em>middle class</em> had during the 2008 presidential debates</A>,
+     like 
+     <A HREF="http://www.huffingtonpost.com/2008/10/07/mccain-makes-no-mention-o_n_132822.html">this one</A>.
+     <P>
+     Identify contrasts of this kind and offer your thoughts on why
+     they might or might not be meaningful.
+     (If you're not particularly familiar with American politics -- or even if you are -- I recommend you talk with someone who is.
+     Discussing your output with someone outside your technical specialty can be a really useful experience.)
+     <P>
+<li> Finding some interesting contrasts by inspection is nice, but why
+  should I trust your intuitions?  For several examples of
+  differences between Democrats and Republicans, make a <em>statistical
+  argument</em> that the difference you're pointing out is a genuine
+  difference supported by the data.  
+  <P>
+  For example, continuing the example above: having discovered that <em>middle class</em>
+  might be an interesting phrase, I could use a chi-square test to
+  show that the difference in the frequency of <em>middle class</em>
+  among Democrats and Republicans is statistically significant.  (Note
+  that doing a chi-square test in this way, looking at a contingency
+  table of {Democrat,Republican} x {middle_class, NOT middle_class},
+  is different from using chi-square to find an association
+  between the word <em>middle</em> and the word <em>class</em>.  Both
+  cases involve a 2x2 contingency table, i.e. looking for evidence of
+  an association between some binary variable A and a second variable
+  B, but one case is looking for a lexical association between two words,
+  and the other is looking for an association between a bigram and 
+  the party of the speaker using that bigram.)
+  <P>
+  For full credit, be <em>very explicit</em> about the statistical
+  hypothesis testing you're doing.  For example, an explicit argument
+  would (at least) explicitly describe null hypothesis H0, identify
+  the test statistic, identify your choice for alpha (the cutoff for
+  statistical significance), give the p-value, and present an argument
+  for why we should draw the conclusions you want us to draw.  (It's
+  fine to use some of the same language I used in class.)
+  <P>
+  You are welcome to use an on-line calculator or off-the-shelf code
+  to do the statistical calculation if you'd like.  Though you'll
+  learn more if you do the calculation by hand at least once. :-)
+  If you're thinking of using the chi-square test, note that there are
+  problems using it when counts are small (see Problems in
+  <A href="http://en.wikipedia.org/wiki/Pearson's_chi-square_test">the
+  chi-square test Wikipedia page</A>).  Depending on the counts, the <A
+  HREF="http://en.wikipedia.org/wiki/G-test">likelihood ratio
+  test</A> may be a better choice.  The classic formulation of that
+  test for computational linguists is by  <A HREF="http://aclweb.org/anthology/J93-1003">Dunning (1993)</A>, 
+  but see also   <A HREF="http://research.microsoft.com/pubs/68957/rare-events-final-rev.pdf">Moore (2004)</A>
+  for some more intuitive formulations (Figure 2) and an argument for using Fisher's Exact Test
+  (typically viewed as intractable for large samples but Moore gives a number of optimizations
+  that make it practical).
+  <P>
+</ol>
+<P>
+
+<!--
+<h3>Extra credit (up to 10%)</h3>
+Do <em>one</em> of the following:
+<ul>
+<P>
+<li> For the Convote corpus, analyze the language for one or more individual congressional debates, and identify
+  bigrams that are associated with Yes or with No votes for that
+  debate more often than you would expect by chance.  
+  Describe what the debate is about (based on reading some of the
+  speeches) and explain why the bigrams might be associated the way they
+  are.
+<P>  
+<li> For SOTU speeches, build a similarity matrix like the one in the Civis Analytics blog posting, e.g.
+<P>
+  <IMG src="https://civisanalytics.com/assets/sotu_obama.png"</IMG>
+<P>
+but for all the post-Reagan speeches, using bags of words-<em>plus</em>-bigrams rather than just a bag of words. This can be just a big table, if you like, though if you want to do a matrix heatmap there are many packages for that, e.g. see <A HREF="https://plot.ly/python/heatmaps/">this one</A>.
+</ul>
+-->
+  
+<h2>Ways to go about it</h2>
+
+<P>
+In terms of implementation,
+<ul>
+<li> For those of you who like to implement everything from scratch, you
+should have all the information you need here in the assignment,
+in the book, and in standard references like Wikipedia.  
+<P>
+<li> For those who like Python, 
+  you might want to look at <A HREF="https://web.archive.org/web/20150213083326/http://www.umiacs.umd.edu/~jimmylin/CMSC723-2009-Fall/readings/crossroads.pdf">
+  this nice discussion by Nitin Madnani</A>, and here's a <A HREF="http://billchambers.me/tutorials/2015/01/14/python-nlp-cheatsheet-nltk-scikit-learn.html">cheat sheet</A> that includes useful info.
+<P>
+<li> For those who like to take advantage of more fully off-the-shelf tools,
+that's fine with me.  If you do that, you might like
+Ted Pedersen's <A HREF="http://www.d.umn.edu/~tpederse/nsp.html">Ngram
+Statistics Package</A>.  
+<P>
+</ul>
+<P>
+<strong>You are welcome to work together.</strong> If you do so, turn
+in separate assignments (since the discussion parts will be
+different), even if you're turning in the same code, but identify who
+you worked with and who contributed what.
+<P>
+
+<h2>What to turn in</h2>
+<P>
+
+Recall from the course home page that the address for turning in assignments is ling773.sp2018@gmail.com, with "Assignment N" at the start of the subject line. Turn in assignments in PDF format, with assignment_N_firstname.lastname.zip (or .tar.gz) as the file name. (In this case N=2.) <em>We will deduct 5% for not following these instructions.</em> If you have any questions let us know.
+<P>
+Include:
+<ul>
+<li> A PDF file (portrait 8.5x11 format) with your answers. The writeup is what's being graded, so please make sure you leave yourself sufficient time to do it well and thoughtfully.
+  <P>
+<li> A subdirectory <em>code</em> containing your code along with a README file that explains how to run it.  You should <em>not</em> include a copy of the corpus -- ideally the README should identify filename arguments or configuration options, or, worst case, say where to change hardwired strings.
+</ul>
+<strong>Again, note that <em>you are being graded on your writeup, not on the quality of your code</em>.</strong>  Yes, all other things being equal, clean and easily runnable code would be nice.  But if you have the choice between spending more time experimenting with and thinking about the data you're looking at, versus more time making your code pretty and easy to run, please focus on the former and not the latter!
+
+<P>
+And, again, <em>I strongly encourage you to talk to each other in person and/or on the class
+discussion board.</em> 
+
+<h2>Extra credit (up to 10% of this assignment)</h2>
+<P>
+
+<em>For people who find the above assignment relatively easy, I strongly recommend doing the extra credit.</em>
+<P>
+Bigram statistics are, of course, just one way to identify expressions that might be useful or interesting. Consider some others.
+
+<ol>
+<p><li> Repeat steps 1-6 above (excluding the hypothesis test in question 7) using one or more <em>linguistically informed</em> ways to identify multiword expressions/terms. These could include, for example, one or both of the following:
+<ul>
+<p><li> Using frequency sorting on phrases identified using regular expressions over parts of speech, as proposed by <A HREF="https://brenocon.com/JustesonKatz1995.pdf">Justeson and Katz (1995)</A> (see Manning and Schuetze, Section 5.1 for subcases of Justeson and Katz's patterns).  Note that in their original published paper Justeson and Katz actually identified parts of speech by simple table loookup, although today it's quite straightforward to run an automatic tagger and that would be more robust in the face of unknown words in the vocabulary.  For example, in the previous two sentences, the Justeson and Katz  approach would  pull out 
+<em>frequency sorting</em>,
+<em>regular expressions</em>,
+<em>original published paper</em>,
+<em>simple table loookup</em>,
+<em>automatic tagger</em>, and
+<em>valuable thing</em>. (And yes, the misspelling of <em>loookup</em> was deliberate. A well designed part of speech tagger like the <A HREF="http://nlp.stanford.edu:8080/parser/index.jsp">Stanford tagger</A> will label <em>loookup</em> as a noun in the above context, and as a verb in the sentence <em>I decided to loookup that old algorithm</em>.)
+
+<p><li> Using verb-argument combinations obtained via a dependency parser. For example, in the previous bullet item, a good dependency parser might yield verb-object expressions like 
+<em>using sorting</em>,
+<em>identified phrases</em>,
+<em>using expressions</em>, and
+<em>run tagger</em>. (Note that I have not lemmatized words here, although I recommend doing so in order to aggregate lower-frequency expressions, e.g. for many applications you would probably want <em>identified phrase</em> and <em>identifying phrases</em> to both be treated as instances of the verb-object combination <em>identify phrase</em>.)
+</ul>
+<p>
+If you have an alternative linguistically informed approach you'd like to try, ask me.
+<P>
+For discussion of other methods for term identification see  <A HREF="http://www.ilc.cnr.it/EAGLES96/rep2/node38.html">this survey of approaches</A> from the <A HREF="http://www.ilc.cnr.it/EAGLES96/rep2/rep2.html">EAGLES Preliminary Recommendations on Semantic Encoding</A>, Sanfilippo et al. 1998. 
+
+
+<p><li> Compare and contrast what you found using the alternative technique(s) with what you found using bigram association scores (and with each other, if you tried more than one).  Did it find anything interesting? Did you find anything interesting one way that was not uncovered the other way?
+
+</ol>
+
+<!--
+Having gone through the first steps myself, I'm reasonably confident
+that this should be ample time if you use Pedersen's package and/or
+off-the-shelf code for contingency table calculations, e.g.  <A
+HREF="http://cpansearch.perl.org/src/YUNFANG/Statistics-ChisqIndep-0.1/ChisqIndep.pm">this
+chi-square test module in perl</A>.  (N.B. I haven't used this one but
+it looks like the right idea.  Might be a good idea to compare its
+output to a known example to make sure it gives you the expected
+results.  I'm sure such things exist for other programming languages.
+I encourage you to mail the class with pointers if you find useful
+stuff.)
+<P>
+-->
+
+<!--
+<ul>
+<li> In class, turn in a hardcopy with your answers and discussion. Do
+     <em>not</em> create hardcopies of code.  
+<P>
+<li> Unless your discussion is hand-written, please also e-mail Eric and me the 
+     above hardcopy (<em>PDF only</em>, no MS Word or
+     postscript) by the deadline.  
+     The filename <em>must</em> be <em>LASTNAME-FIRST_INITIAL-assignment2-writeup.pdf</em>,
+     e.g. <em>resnik-p-assignment2-writeup.pdf</em>, and the subject line <em>must</em> be
+     "CMSC773 ASSIGNMENT 2".
+<P>  
+<li> Attach (or mail separately) a <em>gzipped tar archive</em> or <em>zip
+     archive</em> with your code, with subject line "CMSC773 ASSIGNMENT 2".
+     <em>Do not include data or full output
+     listings in the archive</em> -- this should be a fairly small
+     file.  The name of the archive should be <em>LASTNAME-FIRST_INITIAL-assignment2-code.zip</em>
+     (or use a .tar.gz or .tgz extension for gzipped tar files).  The archive should include a
+     clearly written file called README.txt that contains step-by-step
+     instructions permitting someone else to run your code.  (You can
+     assume the recipient has the <em>data_stage_three</em> directory
+     and has already installed the Ngrams package, if you like.)
+</ul>
+<P>
+-->
+<!--
+If you get started on this assignment and strongly believe that I have
+miscalibrated how long it should take, send me e-mail explaining why.
+I am pretty sure my standard late-assignment policy (on the course
+page) should handle the normal case where a few people find any
+assignment particularly hard, but this is a new assignment so I am
+open to early feedback.  (Note, though, that e-mail of this kind
+received after Sunday at 9pm will be ignored; if you haven't figured
+out by Sunday evening that you're having trouble with an assignment
+due Wednesday, then you waited too long to start working on it!)
+<P>
+-->
+
+<HR> 
+</body>
+</html>
+

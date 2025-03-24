@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Assignment 3</TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF">
+
+<HR>
+<H1>Assignment 3</H1>
+<HR>
+
+<font color="red">This assignment is due as usual, at the start of next class. However, since I am giving you less time, I have scoped down the assignment and this one will be worth <strong>50% of a regular homework assignment</strong></font>.
+<P>
+First, a couple of notes to follow up on things I mentioned in class, as promised, although they're not needed for this assignment.
+<P>
+For the mathematically inclined and/or those who liked the idea of
+deriving an information measure from a set of properties such a measure should have,
+here are <A
+HREF="http://www.mtm.ufsc.br/~taneja/book/node5.html">several derivations</A> 
+of the definition of entropy based on axioms about such
+properties.
+The one I mentioned in class is from A.I. Khinchin,
+<em>Mathematical Foundations of Information Theory</em>, Dover, New
+York, 1957.
+<P>
+Also, in case you're curious, here's the pointer to an algorithm for
+creating optimal codes using <A
+HREF="http://en.wikipedia.org/wiki/Huffman_coding">Huffman coding</A>
+(see also this <A
+HREF="http://web.archive.org/web/20110518080824/http://www.huffmancoding.com/my-family/my-uncle/huffman-algorithm">interesting
+discussion by Huffman's nephew</A>).
+<hr>
+
+
+There are two different problems to choose from. <em>Choose one.</em>
+
+<ul>
+<li> <strong>Problem 1.</strong>  Do  <A HREF="hmm_sp2014.html">this Using a Hidden Markov Model exercise</A>.  Before we talk about HMM training and decoding next week this will give you a chance to get a hands-on feel for how HMMs and EM are to use in a purely unsupervised setting, i.e. with no annotated data. No programming is required, although, as it says in the exercise instructions, you're also welcome to dig deeper if you'd like. The more thought and time you spend, the more you'll get out of it. And don't forget that what we get to grade is the writeup, so take the time to make it good.
+<P>
+
+<P>
+<li> <strong>Problem 2</strong>.  Read Piantadosi et al. (2011), <A HREF="http://www.pnas.org/content/108/9/3526.long">Word lengths are optimized for efficient communication</A>, showing that word length correlates better with the average amount of information conveyed by a word in context than it does with the word's context-independent frequency or information.  (Wait, you mean you didn't <em>already</em> read it for last class?!)
+This seems like it should be a really easy do-it-yourself experiment -- so the problem is to have a try at doing it yourself!
+<P>
+You can do this for the simple case of just bigram probabilities (i.e. context C=c means "the previous word is c"), although it would certainly also be interesting to see what things look like for higher-order ngrams. If you're doing that, I recommend using an existing language modeling module (e.g. in <A HREF="http://nltk.org">NLTK</A>) or toolkit (e.g. <A HREF="https://kheafield.com/code/kenlm/">KenLM</A> and <A HREF="http://www.speech.sri.com/projects/srilm/">SRILM</A>). As usual, just make sure to clearly identify any software that you didn't write yourself in your PDF writeup.  
+<P>
+You should do your experiment for <em>English and at least one other language</em>.
+As one possible source of data to work with, see the <A HREF="http://nltk.github.com/nltk_data/">NLTK corpora</A>.  The <A HREF="http://www.nltk.org/nltk_data/packages/corpora/brown.zip">Brown corpus</A> would be a smallish but decent source for English (just remove POS tags and lowercase everything; it's already tokenized); you could also augment that with other English corpora, although be careful to make sure that your sources don't overlap, which would throw off your counts. For other languages, one source would be the NLTK samples from the Europarl corpora; if you were feeling more ambitious you could look into the  <A HREF="http://www.statmt.org/europarl/">full Europarl corpora</A>, which I believe are quite a bit larger. Or feel free to identify other sources of text. <em>The corpus processing (acquisition, cleanup, etc.) are not the point of this assignment, so I encourage people to share pointers, cleanup code, and even corpus data using Piazza. (Recall that constructive participation on Piazza contributes to your class participation grade.)</em>
+<P>
+<strong>You are <em>not</em> required to actually succeed in replicating the research results in the paper</strong> -- that would take a lot of work, since they used fairly sizeable corpora that you probably don't have easy access to.  In fact, you're not even required to compute correlations (though that would be nice); we'll be happy if you produce charts that look roughly like their Figure 2, no error bars required (though that would be nice also).<P>
+
+<strong> What you do need to do</strong> involves (a) briefly summarizing what the study is about in your own words to show that you understand it, (b) clearly describing for us what you did in your own experiment (along with any simplifying choices you made and why/how you made them), and (c) clearly showing and telling us what you you found. If your results are very different from what you would have expected, then (d) suggest some explanations why (and ideally support your explanation with data). The more thoughtful and clearly written your writeup the better.
+<P>
+Remember that the goal is not to "get it right", but to show you understand the ideas and that you're taking a thoughtful approach. The writeup matters.
+
+</body>
+</html>

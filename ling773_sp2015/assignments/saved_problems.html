@@ -1,0 +1,53 @@
+
+<LI> [10pts] Prove that cross entropy H(p,q) = H(p) + D(p||q).
+     <P> 
+     Notice that since
+     D(p||q) must be greater than or equal to 0, this establishes
+     that cross entropy is an upper bound on entropy.  
+<P>
+
+
+<LI> [10pts] Construct two n-gram language models: M_d
+based on the Democratic speeches and M_r from the
+Republican speeches. Treating Obama's speech as a test set, compare the perplexity of
+models M_d and M_r.  Which one is a better language model?
+<P>
+Using a a unigram model is fine, and the previous problem should
+already give you most of what you need.  If you're interested in being
+more realistic, a bigram or trigram model would be more interesting
+and realistic, although of course these data sets are unrealistically
+small.  If you're feeling like this assignment was too easy and you
+want to do something more challenging and real, you could try using <A
+HREF="http://www.speech.sri.com/projects/srilm/">the SRI language
+modeling toolkit (srilm)</A>, and/or using different corpora that
+might give you interesting results.
+<P>
+
+<li> <strong>Optional, for up to 10 points extra credit.</strong> Here's an oppotunity to get a little real-world
+practice at creating corpora from raw data and working with them.  We'll do an analysis similar to what you
+did above, but using <A
+HREF="http://www.whitehouse.gov/the-press-office/remarks-president-state-union-address
+">Obama's 2010 State of the Union address</A> and <A
+HREF="http://www.whitehouse.gov/the-press-office/2011/01/25/remarks-president-state-union-address">2011
+State of the Union Address</A>, in order to answer the questions below.  (You're welcome to download the
+transcripts from other sites if that makes it easier to extract the
+text.) Note that I haven't actually done this, so it's possible that
+these questions will have answers that are either surprising or
+boring.  E.g. in part b, it's possible that there are no particularly
+interesting observations to make regarding similarity of one pair
+versus the other.  If that turns out to be the case, say so and
+explain why that's your conclusion.  Similarly for part c.
+<P>
+<ul>
+<li>  a. Describe the steps you took to extract the text from the State of the Union  Web pages and turn it into corpora.
+<P>
+<li>  b. How does Obama's speech in 2011 compare with what he said back in 2010?  In 2009?  Which is it more similar to?  
+      Choose for yourself how you're going to measure "similar", and justify why that's a reasonable choice.
+<P>
+<li>  c. What words and/or phrases illustrate contrasts among the
+      speeches, and/or progression or changes over time?  Again,
+      decide for yourself what technical choices to make in order to answer this question,
+      and justify those choices.  Feel free to draw on ideas and code from the previous 
+      assignment, if you'd like.
+<P>
+<ul>

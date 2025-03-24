@@ -1,0 +1,427 @@
+<html>
+<BASE  HREF="http://umiacs.umd.edu/~resnik/ling773_sp2017/index.html">
+<title>Schedule of Topics</title>
+<body bgcolor="#ffffff">
+<FONT FACE="Arial, Helvetica, Geneva" SIZE=-1>
+<hr>
+<h1>Schedule of Topics</h1>
+<hr>
+<P>
+
+<!-- <A HREF="midterm_guidance.html">Guidance for midterm studying</A> -->
+
+This is the schedule of topics for
+<A HREF="http://umiacs.umd.edu/~resnik/ling773_sp2017/index.html">
+Computational Linguistics II, Spring 2017</A>.
+<P>
+In readings, "M&S" refers to
+Christopher D. Manning and Hinrich Schuetze,
+<A HREF="http://cognet.mit.edu/library/books/view?isbn=0262133601">Foundations
+of Statistical Natural Language Processing</A>.
+The "other" column has optional links pointing either
+to material you should already know (but might want to review), or to
+related material you might be interested in.
+Make sure to do your reading <strong>before</strong> the class where it is listed!<P>
+<P>
+
+<font color="red" size=>THIS SCHEDULE IS A WORK IN PROGRESS!  <BR>
+In addition, some topic areas may take longer than expected, so keep
+an eye on the online class discussions for "official"
+dates.</font>
+
+<P>
+See <A HREF="https://talks.cs.umd.edu/lists/7">CL Colloquium Talks</A> for possible extra credit each week.
+
+
+<center>
+<table  border=1 cellpadding=4 bgcolor=white>
+<tr>
+ <th>Class</th>
+ <th>Topic<BR></th>
+ <th>Readings<A HREF="#readings">*</A></th>
+ <th>Assignments</th>
+ <th>Other</th>
+</tr>
+
+<tr>
+<td>Jan 25</td>
+<td>Course organization, semester plan; knowledge-driven and data-driven NLP<BR>
+</td>
+<td>M&S Ch 1, 2.1.[1-9] (for review)<BR>
+<em>
+  <!--COVER Historical overview; Zipf's law; Probability spaces; finite-state and Markov models; Bayes' Rule; Bayesian updating; conjugate priors-->
+  <!-- Word counts; tokenization; frequency and Zipf's law; concordances -->
+</em>
+</td>
+<td>
+
+  <A HREF="http://umiacs.umd.edu/~resnik/ling773_sp2017/assignments/assignment1.html">Assignment 1</A>
+
+  <P>
+</td>
+<td>
+<A HREF="http://languagelog.ldc.upenn.edu/">Language Log</A> (<em>the</em> linguistics blog);
+<A href="http://nlpers.blogspot.com/">Hal Daum&eacute;'s NLP blog</A> (excellent blog, often technical machine learning stuff, but just as often more general interest, make sure to read the comment threads also because they're often excellent)
+  <!-- <A HREF="http://www.economist.com/science/displayStory.cfm?story_id=3576374">Corpus Colossal</A> (The Economist, 20 Jan 2005);
+  <A HREF="http://umiacs.umd.edu/~resnik/temp/lsedemo_for_class.pdf">
+  Resnik and Elkiss (DRAFT)</A>;  <A HREF="http://lse.umiacs.umd.edu/">Linguist's Search Engine</A> -->
+</td>
+</tr>
+
+<tr>
+<td>Feb 1</td>
+<td>Lexical association measures and hypothesis testing<BR>
+</td>
+<td>M&S Ch 5<BR>
+<em><!--COVER Collocations;  mutual information; hypothesis testing--></em>
+</td>
+<td>
+
+  <A HREF="http://umiacs.umd.edu/~resnik/ling773_sp2017/assignments/assignment2.html">Assignment 2</A>
+
+  <P>
+<td> 
+<A HREF="http://www.aclweb.org/anthology/J93-1003">Dunning (1993)</A> is a classic and valuable to read if you're trying to use mutual information or chi-squared and getting inflated values for low-frequency observations.
+<A HREF="http://research.microsoft.com/pubs/68957/rare-events-final-rev.pdf">Moore (2004)</A> is a less widely cited but very valuable discussion about how to judge the significance of rare events.
+<P>
+A really important paper by Ionnidis about problems with statistical hypothesis testing is
+<A HREF="http://www.plosmedicine.org/article/info:doi/10.1371/journal.pmed.0020124">Why Most Published Research Findings Are False</A>;
+for a very readable discussion see <A HREF="http://www.economist.com/news/briefing/21588057-scientists-think-science-self-correcting-alarming-degree-it-not-trouble">Trouble at the Lab</A>, The Economist, Oct 19, 2013 and the really great <A HREF="http://www.economist.com/blogs/graphicdetail/2013/10/daily-chart-2">accompanying video</A>. (Show that one to your friends and family!) For an interesting response, see <A HREF="http://www.edwardtufte.com/files/Study2.pdf">Most Published Research Findings Are False--But a Little Replication Goes a Long Way"</A>.
+<P>
+<A HREF="http://www.kilgarriff.co.uk/Publications/2005-K-lineer.pdf">Kilgarriff (2005)</A> is a fun and contrarian read regarding the use of hypothesis testing methodology specifically in language research.
+<P>
+<em>Named entities</em> represent another form of lexical association.  Named entity recognition is introduced in <A HREF="http://www.cs.colorado.edu/~martin/csci5417/ie-chapter.pdf">Jurafsky and Martin, Ch 22</A> and <A HREF="http://www.nltk.org/book/ch07.html">Ch 7 of the NLTK book</A>.
+
+  <!--<A HREF="http://www.linguistics.ucsb.edu/faculty/stgries/research/NHST_CLLT.pdf">Gries (2005)</A>;<BR>-->
+  <!--  <A  HREF="http://bmj.bmjjournals.com/cgi/content/full/310/6973/170">Bland and Altman (1995)</A>;<BR> -->
+</td>
+</tr>
+
+
+<tr>
+<td>Feb 8</td>
+<td>Information theory<BR>
+</td>
+<td>M&S Ch 2.2, M&S Ch 6<BR>
+<P>
+Piantadosi et al. (2011), <A HREF="http://www.pnas.org/content/108/9/3526.long">Word lengths are optimized for efficient communication</A>;
+Jaeger (2010), <A HREF="http://dx.doi.org/10.1016/j.cogpsych.2010.02.002">Redundancy and reduction: Speakers manage syntactic information density</A>
+<em><!--COVER Information theory essentials; entropy, relative entropy, mutual
+    information; noisy channel model; cross entropy and perplexity-->
+
+</em>
+</td>
+<td>
+
+<A HREF="http://umiacs.umd.edu/~resnik/ling773_sp2017/assignments/assignment3.html">Assignment 3</A>
+
+  <!--  <A
+    HREF="http://umiacs.umd.edu/~resnik/ling773_sp2017/assignments/info_theory.html">Assignment 2
+  -->
+  </td>
+</td>
+<td>
+
+<A HREF="http://www.amazon.com/Elements-Information-Theory-Telecommunications-Processing/dp/0471241954">
+Cover and Thomas (1991)</A> is a great, highly readable introduction to information theory.  The first few chapters go into many concepts from this lecture with greater rigor but a lot of clarity.<P>
+ Maurits et al. (2010), <A HREF="http://papers.nips.cc/paper/4085-why-are-some-word-orders-more-common-than-others-a-uniform-information-density-account">Why are some word orders more common than
+others? A uniform information density account</A>.  See also the syllabus for a 2009 seminar taught by Dan Jurafsky and Michael Ramscar, <A HREF="http://www.stanford.edu/class/psych227/">Information-Theoretic Models of Language and Cognition</A>, which looks as if it was awesome.
+<P>
+Roger Levy provides <A HREF="http://idiom.ucsd.edu/~rlevy/papers/proof_info_density_optimize.pdf">a formal proof that uniform information density minimizes the "difficulty" of interpreting utterances</A>. The proof assumes that, for any given word i in an utterance, the difficulty of processing it is some power k of its surprisal with k &gt; 1.
+</td>
+</tr>
+
+<tr>
+<td>Feb 15</td>
+<td>HMM review and Expectation Maximization<BR>
+</td>
+<td>Skim M&S Ch 9-10, Chapter 6 of <A HREF="http://www.umiacs.umd.edu/~jimmylin/book.html">Lin and Dyer</A>. Read
+ <A HREF="http://umiacs.umd.edu/~resnik/ling773_sp2011/readings/em_recipe.v2.only_hmm.pdf">my EM recipe discussion.</A><BR>
+<em><!--COVER Maximum likelihood estimation overview; quick review of smoothing; EM overview;
+    interpolated estimation; Katz backoff; HMM as a noisy channel model
+    HMM review; deriving forward-backward algorithm as an instance of EM; Viterbi algorithm review.-->
+</em>
+</td>
+  <!-- <td><A  HREF="http://umiacs.umd.edu/~resnik/ling773_sp2017/assignments/smoothing.html">Assignment 3 </td> -->
+
+<td>
+
+<A  HREF="http://umiacs.umd.edu/~resnik/ling773_sp2017/assignments/assignment4.html">Assignment 4</A>
+
+  <P>
+<td>
+Recommended reading (and code to look at!): Dirk Hovy's <A HREF="https://github.com/dirkhovy/emtutorial">Interactive tutorial on the Forward-Backward Expectation Maximization algorithm</A>. Note that although his <A HREF="https://github.com/dirkhovy/emtutorial/blob/master/An%20Evening%20with%20EM.ipynb">iPython notebook</A> is designed to be interactive, you can also simply read it.
+<!--
+ <A HREF="http://research.microsoft.com/~joshuago/tr-10-98.pdf">An
+ empirical study of smoothing techniques for language modeling</A> (Stanley
+ Chen and Joshua Goodman, Technical report TR-10-98, Harvard University,
+ August 1998); -->
+  <BR>
+</td>
+</tr>
+
+<tr>
+<td>Feb 22</td>
+<td>Bayesian graphical modeling, Gibbs sampling </td>
+<td>
+Philip Resnik and Eric Hardisty, <A HREF="http://umiacs.umd.edu/~resnik/pubs/gibbs.pdf">Gibbs Sampling for the Uninitiated</A>.  <P>
+M. Steyvers and T. Griffiths (2007), <A HREF="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.80.9625&rep=rep1&type=pdf">Latent Semantic Analysis: A Road to Meaning</A> <em>and/or</em> review the CL1 topic modeling lecture (<A HREF="http://www.umiacs.umd.edu/~jbg/teaching/CMSC_723_2013/lecture_10.pdf">notes</A>, <A HREF="http://youtu.be/4p9MSJy761Y">video</A>).
+<BR>
+<em>
+  <!--COVER [tentative]
+  Graphical model representations of generative models; MLE, MAP, and Bayesian inference; Markov Chain Monte Carlo (MCMC)and Gibbs Sampling;
+  Latent Dirichlet Allocation (LDA)-->
+</em>
+</td>
+<td>
+Assignment 5: Do the readings for next week, about which there will be a short in-class quiz
+</td>
+<td>
+<!--
+For a very nice and brief summary of LDA, including a really clear explanation of the corresponding Gibbs sampler (with pseudocode!), see Section 5 of Gregor Heinrich, <A HREF="http://faculty.cs.byu.edu/~ringger/CS601R/papers/Heinrich-GibbsLDA.pdf">Parameter estimation for text analysis</A>.
+<P>
+I may touch on supervised topic models; Blei and McAuliffe, <A HREF="https://www.cs.princeton.edu/~blei/papers/BleiMcAuliffe2007.pdf">Supervised Topic Models</A> (though note that we will not be talking about variational EM).  Also relevant is Nguyen, Boyd-Graber, and Resnik, <A HREF="http://www.umiacs.umd.edu/~jbg/docs/2013_shlda.pdf">Lexical and Hierarchical Topic Regression</A>.
+<P>
+If you're interested in going back to the source for LDA, see Blei, Ng, and Jordan (2003), <A HREF="http://www.cs.princeton.edu/~blei/papers/BleiNgJordan2003.pdf">Latent Dirichlet Allocation</A>.  
+-->
+</td>
+</tr>
+
+
+<tr>
+<td>March 1</td>
+<td>Topic models<P>
+</td>
+<td>
+M. Steyvers and T. Griffiths (2007), <A HREF="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.80.9625&rep=rep1&type=pdf">Latent Semantic Analysis: A Road to Meaning</A> <em>and/or</em> review the CL1 topic modeling lecture (<A HREF="http://www.umiacs.umd.edu/~jbg/teaching/CMSC_723_2013/lecture_10.pdf">notes</A>, <A HREF="http://youtu.be/4p9MSJy761Y">video</A>).
+<P>
+  </td>
+<td>
+  <A HREF="http://www.umiacs.umd.edu/~resnik/ling773_sp2017/assignments/lda_assignment">Assignment 6</A>
+  </td>
+<td>
+  </td>
+</tr>
+
+
+<tr>
+<td>March 8</td>
+<td>Context-free parsing
+</td>
+<td>
+<!--
+Supervised classification: M&S Ch 16 <em>except</em> 16.2.1;
+Hearst et al. 1998 <A HREF="http://www.svms.org/tutorials/Hearst-etal1998.pdf">Support Vector Machines</A> (cleaner copy  <A HREF="https://web.archive.org/web/20130729024316/http://1024.ii.uni.wroc.pl/~aba/teach/SSNiS/CKpaper2.pdf">here</A>)<P>
+-->
+M&amp;S Ch 11 (esp. pp. 381-388) and Ch 12 (esp. pp. 408-423, 448-455)
+ </td>
+<td>
+  <A HREF="http://www.umiacs.umd.edu/~resnik/ling773_sp2017/assignments/parsing.html">Assignment 7</A>.  This is a lighter assignment worth 50% of a regular homework.  
+ </td>
+<td>
+A really nice article introducing parsing as inference is Shieber et al., <A HREF="http://www.eecs.harvard.edu/shieber/Biblio/Papers/infer.pdf">Principles and Implementation of Deductive Parsing</A> (see Sections 1-3), with a significant advance by Joshua Goodman, <A HREF="http://dl.acm.org/citation.cfm?id=973230">Semiring Parsing</A>.
+
+<!--
+Hearst et al. (1998) is a nice  SVM reading because it's the clearest, shortest possible introduction.  There are many other good things to read at <A HREF="http://www.svms.org/">svms.org</A>, including a "best tutorials" section, broken out by introductory, intermediate, and advanced, under <A HREF="http://www.svms.org/tutorials/">Tutorials</A>.   Feel free to go with one of the other tutorials (the ones I've seen used most often are <A HREF="">Burges 1998</A> and <A HREF="">Smola et al. (1999)</A>)) instead of Hearst if you want a meatier introduction.
+-->
+</td>
+</tr>
+
+
+
+<tr>
+<td>Mar 15</td>
+<td>Guest lecture. Allyson Ettinger: Psycholinguistics for Computational Linguists <BR>
+</td>
+<td>No required readings</td>
+<td><font color="red">Take-home midterm handed out, due 11:59pm March 18</font></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Mar 22</td>
+<td><font color="red">Spring Break</font> <BR>
+</td>
+<td></td>
+<td>Have fun!</td>
+<td></td>
+</tr>
+
+<tr>
+<td>March 29 </td>
+<td>
+More on parsing; Evaluation 
+</td>
+<td>
+Lin and Resnik, <A HREF="https://web.archive.org/web/20130421055104/http://www.umiacs.umd.edu/~jbg/teaching/CMSC_773_2012/reading/evaluation.pdf">Evaluation of NLP Systems</A>, Ch 11 of Alex Clark, Chris Fox and Shalom Lappin, eds., Blackwell Computational Linguistics and Natural Language Processing Handbook. <BR>
+Cohen and Howe, <A HREF="http://www.aaai.org/ojs/index.php/aimagazine/article/viewFile/952/870">How Evaluation Guides AI Research</A>
+ </td>
+<td>
+<A HREF="assignments/assignment8.pdf">Assignment 8</A>
+</td>
+<td>
+</td>
+</tr>
+
+
+<!--
+<tr>
+<td>March 29 </td>
+<td>
+Structured prediction
+</td>
+<td>
+Resources:
+Noah Smith, <A HREF="http://www.cs.cmu.edu/~nasmith/LSP/">Linguistic structure prediction</A>;
+Joshua Goodman, <A HREF="http://dl.acm.org/citation.cfm?id=973230">Semiring Parsing</A>
+ </td>
+<td>
+Assignment?
+</td>
+<td>
+</td>
+</tr>
+-->
+
+
+<tr>
+<td>April 5</td>
+<td>Neural network models, deep learning, embeddings (tentative)<P>
+</td>
+<td>
+  Yoav Goldberg,  <A HREF="http://cs.biu.ac.il/~yogo/nnlp.pdf">A Primer on Neural Network Models for Natural Language Processing</A>. 
+  Read with an emphasis on Sections 1-4, and Section 5 (embeddings); also look over 10-11 (RNNs) and 12 (recursive NNs) and the Wikipedia page on <A HREF="https://en.wikipedia.org/wiki/Autoencoder">autoencoders</A>.
+  </td>
+<td>
+ <A HREF="">Project</A> handed out. Project plans due in one week.
+</td>
+<td>
+Recommended: Sections 1, 3 and 4 of Yoshua Bengio, <A HREF="https://wiki.eecs.yorku.ca/course_archive/2012-13/F/6328/_media/learning-deep-ai.pdf">Learning Deep Architectures for AI</A>. Also recommended: the nice overview of representation learning in sections 1-4 of Bengio et al. <A HREF="http://arxiv.org/pdf/1206.5538v2.pdf">Representation Learning: A Review and New Perspectives</A>. 
+<P>
+Other useful background reading for broader perspective:
+Lillian Lee, <A HREF="http://www.cs.cornell.edu/home/llee/papers/cf.pdf">Measures of Distributional Similarity</A>,
+Hinrich Schuetze, <A HREF="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.41.8856">Word Space</A>,
+Mikolov et al., <A HREF="http://research.microsoft.com/pubs/189726/rvecs.pdf">Linguistic Regularities in Continuous Space Word Representations</A>.
+  </td>
+</tr>
+
+<tr>
+<td>April 12</td>
+<td>Guest lecture: Han-Chin Shing, Advanced topics in vector space models
+</td>
+<td>Necessary background: Turney and Pantel (2010), <A HREF="http://jair.org/media/2934/live-2934-4846-jair.pdf">From Frequency to Meaning: Vector Space Models of Semantics</td>
+<td></td>
+<td>
+Recommended: 
+Faruqui et al. (2015), <A HREF="https://arxiv.org/pdf/1411.4166.pdf">Retrofitting Word Vectors to Semantic Lexicons</A>;
+Fyshe et al. (2015), <A HREF="http://www.aclweb.org/website/old_anthology/N/N15/N15-1004.pdf">A Compositional and Interpretable Semantic Space</A>;
+Labutov and Lipson (2013), <A HREF="https://pdfs.semanticscholar.org/b294/b61f0b755383072ab332061f45305e0c12a1.pdf">Re-embedding Words</A>
+</td>
+<!-- 
+<td>
+<A HREF="http://citeseer.ist.psu.edu/viewdoc/summary?doi=10.1.1.133.9693">Bengio et al (2003) <A>;
+<A HREF="http://www.fit.vutbr.cz/research/groups/speech/publi/2010/mikolov_interspeech2010_IS100722.pdf">Mikolov et al (2010)</A>;
+<A HREF="http://arxiv.org/abs/1301.3781">Mikolov et al. (2013)</A>
+</td>
+<td>
+Before next class, review Yogarshi's <A HREF="slides/neural_network_LM_slides.pdf">slides</A> and do the <A HREF="http://cs.biu.ac.il/~yogo/nnlp.pdf">reading</A>.
+ </td>
+<td>
+ </td>
+</tr>
+-->
+</tr>
+
+
+<tr>
+<td>April 19</td>
+<td>Machine translation<BR>
+</td>
+<td>
+
+Koehn, <A HREF="http://www.statmt.org/book/">Statistical Machine Translation</A>;
+Chiang, <A HREF="http://www.aclweb.org/anthology/P05-1033">A Hierarchical Phrase-Based Model for Statistical Machine Translation</A>; M&amp;S Ch 13 and Adam Lopez, <A HREF="http://homepages.inf.ed.ac.uk/alopez/papers/survey.pdf">Statistical Machine Translation</A>, ACM Computing Surveys  40(3), Article 8, pages 149, August 2008.
+<!--
+Noah Smith, <A HREF="http://www.cs.cmu.edu/~nasmith/LSP/">Linguistic Structure Prediction</A>, esp. Sections 3.5.2-3.7. (The book is available <A HREF="http://dx.doi.org/10.2200/S00361ED1V01Y201105HLT013">online</A> for UMD and many other university IP addresses.)  See also Noah Smith's <A HREF="http://www.cs.cmu.edu/~nasmith/slides/sp4nlp.icml09.pdf">Structured prediction for NLP</A> tutorial slides (ICML'09).
+-->
+</td>
+<td>
+<P>
+</td>
+<td>
+</td>
+</tr>
+
+<tr>
+<td>April 26</td>
+<td>More on machine translation; structured prediction<BR></td>
+<td>
+Noah Smith's (2004) <A HREF="http://www.cs.cmu.edu/~nasmith/papers/smith.tut04.pdf">Log-Linear Models</a> (selections);
+Ke Wu, <a href="../ling773_sp2013/seq-label.pdf">Discriminative Sequence Labeling</a>; 
+</td>
+<td>
+</td>
+<td>
+Historical background: Ratnaparkhi (1996), <A HREF="http://acl.ldc.upenn.edu/W/W96/W96-0213.pdf">A Maximum Entropy Model for Part of Speech Tagging</A>, or, if you want a little more detail, Ratnaparkhi (1997), <A HREF="http://repository.upenn.edu/cgi/viewcontent.cgi?article=1083&context=ircs_reports">A Simple Introduction to Maximum Entropy Models for Natural Language Processing</A>.  Ratnaparkhi 1996 began the popularization of maxent in NLP. 
+<P>
+For relevant background on semirings see Joshua Goodman, <A HREF="http://acl.ldc.upenn.edu/J/J99/J99-4004.pdf">Semiring Parsing</A>. For an example of very interesting recent work in this area particularly from an automata-theoretic angle, see Chris Dyer, <A HREF="http://ling.umd.edu/assets/publications/chris.dyer.diss.pdf">A Formal Model of Ambiguity and its Applications in Machine Translation</A>.
+<P>
+Also potentially of interest:
+<ul>
+<li> Hanna Wallach's <A HREF="http://www.inference.phy.cam.ac.uk/hmw26/papers/crf_intro.pdf">"Conditional Random Fields: An Introduction"</A>. 
+<li> Charles Sutton and Andrew McCallum's <a href="http://homepages.inf.ed.ac.uk/csutton/publications/crftut-fnt.pdf">CRF tutorial</a> in 
+Foundations and Trends of Machine Learning.
+</ul>
+<P>
+Montreal's <A HREF="http://104.131.78.120/">LISA laboratory</A> is an epicenter for work on neural machine translation.
+<!--
+<li> Ben Taskar et al.'s <a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.101.6014&rep=rep1&type=pdf">dissertation</a> on large margin training of structured prediction models.
+<li> <a href="http://luthuli.cs.uiuc.edu/~daf/courses/learning/StructureLearning/tsochantaridis05a.pdf">Another paper</a> by Ioannis Tsochantaridis et al. on the same topic with a different approach.
+<li> A nice <a href="http://www.chokkan.org/software/crfsuite/benchmark.html">benchmark comparison</a> of several algorithms for training CRFs and structured perceptrons.
+</ul>
+-->
+
+</td>
+</tr>
+
+
+<tr>
+<td>May 3</td>
+<td>Relating neural MT and structured prediction</td>
+<td>
+Kyunghyun Cho, <A HREF="./cho_nn_lecture_notes.pdf">Natural Language Understanding with Distributed Representation</A>, Chapter 6;
+Noah Smith's (2004) <A HREF="http://www.cs.cmu.edu/~nasmith/papers/smith.tut04.pdf">Log-Linear Models</a> (emphasis on model, not estimation)
+</td>
+<td>
+  </td>
+<td>
+</td>
+</tr>
+
+<tr>
+<td>May 10</td>
+<td>Text analysis in computational social science</td>
+<td>
+</td>
+<td>
+Project is due 11:59pm May 17
+</td>
+<td></td>
+</tr>
+</table>
+</center>
+
+</table>
+</center>
+
+
+<!--
+<tr>
+<td>May 13</td>
+<td>Make-up/Projects presentations? <BR></td>
+<td>May 12 is the last day of classes.  However, I am reserving this date in case we wish to use it, e.g. for a make-up class if we have snow cancellations, or for final project presentations.   </td>
+<td></td>
+<td></td>
+</tr>
+-->
+

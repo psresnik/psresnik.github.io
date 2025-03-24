@@ -1,0 +1,193 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Parsing</TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF">
+
+<HR>
+<H1>Parsing</H1>
+<HR>
+
+
+
+<ol>
+
+<p><li> Read Shieber et al.,  <A HREF="http://www.eecs.harvard.edu/shieber/Biblio/Papers/infer.pdf">Principles and Implementation of Deductive Parsing</A>, Sections 1-3 plus the beginning of Section 5, specifically the chart-based deduction procedure on page 27.
+(You can safely ignore all discussions related to proving soundness and completeness. That's not what we're interested in here.)
+
+<P>
+<!--
+<li> Notice that the paper never actually gave a full description of its left-corner parser with composition in the form of a deductive scheme in the style of Shieber et al. -- i.e. item form, axioms, goal, inference rules. Formalize the parser on paper using a schema of that kind. 
+
+<P> 
+<li> Illustrate the steps the parser would take (in the same kind of format as the derivations in Shieber et al. on pages 9, 11, and 13) for the sentence "the man laughed" assuming the grammar contains rules
+<PRE>
+S -> NP VP
+NP -> DET N
+VP -> VI
+VP -> VT NP
+VI -> laughed 
+VT -> saw
+N -> man
+N -> woman
+DET -> the
+</PRE>
+-->
+
+<!--
+<p><li> Implement the Earley parser as described in Shieber et al. in the programming language of your choice, using the agenda-driven, chart-based control structure described in Section 5 (see especially page 27). Turn in code with a README showing how to run it. <em>You do not need to make the parser efficient</em> -- if you implement a very simple strategy like depth-first search with backtracking and no redundancy-checking at all, that's ok. I don't care if your parser takes exponential time in the worst case.  Also, you can implement just a recognizer if you like, rather than doing the extra bookkeeping to recover parse trees at the end. What your parser must do, though, is show the items that are added to the chart, similar to what you see in Shieber et al. on pages 9, 11, and 13.
+<p>
+If you are having trouble with this implementation, for partial credit you may implement the more standard dynamic programming version of Earley parsing. You can find this in Jurafsky and Martin's textbook (or see the <A HREF="https://en.wikipedia.org/wiki/Earley_parser#Pseudocode">Wikipedia pseudocode</A>).
+<p>
+If even that is a problem, for (less) partial credit you can run the <A HREF="http://www.nltk.org/_modules/nltk/parse/earleychart.html">Earley parser implementation in NLTK</A> (discussion in the NLTK book is <A HREF="http://www.nltk.org/book/ch08-extras.html">here</A>; you might also find useful background in the <A HREF="http://www.nltk.org/book/ch08.html">NLTK book's parsing chapter</A>).  In particular, see the <em>demo</em> subroutine at the end of the code and this   
+<A HREF="http://www.nltk.org/howto/parse.html">example</A> (under "Unit tests for the Incremental Chart Parser class").
+-->
+
+<p><li> Consider the following grammar:
+
+<PRE>
+S     -> NP VP
+NP    -> Det N
+NP    -> NP S/NP
+S/NP  -> NP VP/NP
+VP    -> V NP
+VP/NP -> gave | thrilled 
+V     -> gave | thrilled | ride | rides
+Det   -> a | the
+NP    -> rides | Harry
+N     -> ride | rides | horse | horses | child | Harry
+</PRE>
+
+<P>
+Note that a symbol with a slash is a <em>single</em> nonterminal symbol. You can read X/Y as "an X that is missing a Y", e.g. S/NP is an S that is missing an NP. Special symbols like these don't change the context-freeness of the grammar, but they can be a convenient way of using a context-free grammar to capture non-local relationships -- for example in the noun phrase <em>rides the horse gave</em> (i.e. rides that were given by the horse), the word <em>rides</em> appears on the left of the phrase, but the semantic interpretation is the same as if it were the object of <em>gave</em>. (Nonterminals of this kind are often referred to as "slash categories".)
+<P>
+What you should do: parse the sentence <em>rides the horse gave thrilled Harry</em> according to the deductive parsing approach using Earley's algorithm (Shieber et al., Figure 5) and show the items that are added to the chart, in the same table format that you see in Shieber et al. on pages 9, 11, and 13. Note that <em>you should not show every possible item added to the chart</em>. That's a lot, even for a sentence this short. Just the show the steps that lead to a complete parse of the sentence, the same way that Shieber et al. do.  (Also, you are welcome to hand-write this if you prefer rather than typing everything in, as long as your handwriting is easy to read.)
+<!--
+<P>
+If you prefer, you can instead provide a <em>chart</em> for a completed parse.  You can see a nice explanation of how a chart gets built starting <A HREF="http://cs.union.edu/~striegnk/courses/nlp-with-prolog/html/node67.html#l9.sec.active.edges">here</A>, with a worked-through example <A HREF="http://cs.union.edu/~striegnk/courses/nlp-with-prolog/html/node71.html#l9.sec.bottomup">here</A> (although this example is for a different parser logic, not Earley's algorithm).  Your chart would therefore look something like this:
+<blockquote>
+<img src="http://cs.union.edu/~striegnk/courses/nlp-with-prolog/html/latex210.gif">
+</blockquote>
+except that you should <em>not</em> include edges that are not actually used in the successful parse of the sentence. (For example, in that figure the top arc is irrelevant for a complete parse of the sentence <em>mia danced</em> and so you wouldn't need to show it.)  
+<P>
+-->
+<P>
+Just to be 100% clear: for this question, the <em>Control</em> part of <em>Logic + Control</em> is <strong>you</strong>. There's no need to be algorithmic, just pick out the sequence of operations that will get you to the complete parse. (You will not get credit for filling in an Earley dynamic programming table following conventional non-deductive presentations of the algorithm. Nor should you simply copy all of the table entries produced by the Earley parser implementation you'll see below. The goal here is to work through it by hand.)
+
+<p><li> Use the CYK (note: not alphabetical!) deductive parsing system (Shieber et al. Figure 1) to parse the same sentence.  Once again, you only need to show the relevant items, not all of them.  (You will not get credit for filling in a CKY dynamic programming table following conventional non-deductive presentations of the algorithm.)
+
+
+<!--
+<p><li> Use the Earley parser's behavior on the sentence <em>rides the horse gave thrilled the child</em> to illustrate how the Earley parser's combined top-down/bottom-up approach can avoid some local ambiguities that are faced by a purely bottom-up parser like CKY.  (You are welcome to support your illustration by implementing, or running an implementation of, CKY on the same sentence, but that's not required. I wrote the grammar in Chomsky Normal Form just in case you want to do that.)
+-->
+
+<!--
+<p><li> Consider the following grammar:
+<PRE>
+S -> A S B
+S -> C 
+S -> X S
+S -> S Y
+A -> a
+B -> b
+C -> c
+X -> x
+Y -> y
+</PRE>
+<P>
+What is the Earley parser like, in terms of the Resnik (1992) argument about memory usage and psychological plausibility?  That is, what are the maximum memory requirements (in terms of the number of incomplete constituents stored) on
+<P>
+  <ul>
+  <li> (a) strings with left-branching structure (e.g. x, xx, xxx, etc.)?
+  <li> (b) strings with right-branching structure (e.g. y, yy, yyy, etc.)?
+  <li> (c) strings with center-embedded structure (e.g. acb, aacbb, aaacbbb, etc.)?
+  </ul>
+<P>
+<font color="red">Han-Chin: I am thinking of using Question 6 as a midterm question instead of putting it on the assignment. What do you think? (Note that they would need to answer this question without running code.)
+</font>
+-->
+
+
+<!--
+<p><li> Adam and Betty are building an app for the Amazon Echo. Adam is using the version of the CKY algorithm with dynamic programming, to handle the analysis of input sentences using a non-probabilistic context-free grammar. (Naturally the grammar is in Chomsky normal form.) Betty is writing an interpreter that takes resulting parse trees as input. (Her interpreter has no problem handling trees that come from a grammar in Chomsky normal form.) 
+<P>
+They've decided that for every sentence, Adam's code should pass Betty's interpreter a list of all the valid parses for that input sentence, instead of just one parse tree for it, because without a probabilistic grammar Adam doesn't really have a good way of identifying which parse is best, if there's more than one.
+<P>
+Caitlin is Adam and Betty's boss. She's asked Adam and Betty how much time it will take for the app to process an n-word-long sentence in the worst case. Adam answers O(n^3). Betty says it's exponential in n.
+<P>
+After thinking for a minute, Caitlin points to one of them and says, "You're right!".  
+<P>
+<ul>
+<p><li> (a) Who did Caitlin point to?
+<p><li> (b) Why was that person correct? Give an argument and you are welcome to illustrate with examples if that would be helpful.
+<p><li> (c) Why might the other person have answered the way they did?
+</ul>
+-->
+
+
+
+
+<p><li> <strong>Getting hands on.</strong>
+<P>
+We're going to use this nice <A HREF="https://github.com/lagodiuk/earley-parser-js">Earley parser demonstration in Javascript</A>. You can download the code and run it locally (by going into the earley-parser-js/demo_nlp_live directory and opening demo.html in your browser) or you can just go to <A HREF="https://jsfiddle.net/2mb3w9c1/4/embedded/result/">https://jsfiddle.net/2mb3w9c1/4/embedded/result/</A> in your browser. 
+<P>
+Either way, you're going to need to open the javascript console in your browser -- for example, see <A HREF="https://developers.google.com/web/tools/chrome-devtools/console/">how to use the console in the Chrome browser</A>. (I recommend Chrome, but other browsers have similar kinds of access to the console.)
+<P>
+Begin by copying (or typing) the grammar above into the grammar pane, replacing the grammar that's there. With the console open, type <em>Harry rides horses</em> one word at a time. With each word, look at the updated information in the console. (Depending on which browser you're using, you might or might not get proper human-readable display of the right-arrow and the dot in dotted rules, but it should be obvious where they are.) Notice how in addition to the human readable dotted rules, you're seeing the internal data structures, organized by columns (or what Earley called "states"); for easier readability, you can copy/paste javascript elements like
+<pre>
+[{"56":{"lhs":"N","rhs":["horses"],"dot":1,"left":2,"right":3,"id":56,"ref":[{"55":{"lhs":"horses","rhs":["horses"],"dot":1,"left":2,"right":3,"id":55,"ref":[{}]}}]}}]
+</pre>
+into <A HREF="http://jsbeautifier.org/">http://jsbeautifier.org/</A> to format them nicely.
+<P>
+Play around with the grammar and/or the parser to get a hands-on feel for how the parser works. Then answer the following question:
+
+Using the Earley parser's behavior on the sentence <em>rides the horse gave thrilled the child</em>, illustrate how the Earley parser's top-down approach can avoid some local ambiguities that are faced by a bottom-up parser like CKY.  (You are welcome to support your illustration by implementing, or running an implementation of, CKY on the same sentence, but that's not required. I wrote the grammar in Chomsky Normal Form just in case you want to do that.)
+
+<h2>Extra credit (up to 10%)</h2>
+
+Read <A HREF="http://aclweb.org/anthology/C/C92/C92-1032.pdf">Resnik (1992), Left-Corner Parsing and Psychological Plausibility</A>. Then:
+
+<ol> 
+<p><li>Write a brief summary of the argument the paper is making in your own words. (No more than 1-2 paragraphs. That means you need to <em>summarize</em>, not just try to repeat everything. The ability to summarize is a demonstration of your understanding.) 
+<P>
+(Although it's not particularly relevant for this assignment, note that <A HREF="https://courses.cit.cornell.edu/ling7710/readings/bates.pdf">augmented transition networks [ATNs]</A>, discussed in Section 2.2, are basically <A HREF="https://en.wikipedia.org/wiki/Recursive_transition_network">recursive transition networks</A> with the added ability to execute procedures, e.g. to build and store structure, on the arcs.) 
+<P>
+
+<p><li> Consider the following grammar:
+<PRE>
+S -> A S B
+S -> C 
+S -> X S
+S -> S Y
+A -> a
+B -> b
+C -> c
+X -> x
+Y -> y
+</PRE>
+<P>
+What is the Earley parser like, in terms of the Resnik (1992) argument about memory usage and psychological plausibility?  That is, what are the maximum memory requirements (in terms of the number of incomplete constituents stored) on
+<P>
+  <ul>
+  <li> (a) strings with right-branching structure (e.g. x, xx, xxx, etc.)?
+  <li> (b) strings with left-branching structure (e.g. y, yy, yyy, etc.)?
+  <li> (c) strings with center-embedded structure (e.g. acb, aacbb, aaacbbb, etc.)?
+  </ul>
+<P>
+You are welcome to use the javascript Earley parser above to help answer this question.
+</font>
+
+
+
+ 
+
+</ol>
+<P>
+
+<HR>
+
+
+</BODY>
+</HTML>
+

@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Entropy as a predictor of phrase boundaries</TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF">
+
+<HR>
+<H1>Entropy as a predictor of phrase boundaries</H1>
+<HR>
+
+<font color="red">This is an extra credit assignment due <strong>Friday April 2 at 5pm</strong>,
+for which full credit is worth 50% of a homework assignment.  For this extra credit
+assignment, turning the assignment in late will <em>not</em> be
+accepted.</font>
+<P>
+
+Dating back to Zellig Harris in the mid 1950s ("From Phoneme to
+Morpheme", <em>Language</em> 31(2):190-222), authors have noted that
+there is a correspondence between linguistic bounaries and positions
+of high entropy, which may be useful for doing automatic segmentation
+or phrase boundary detection.  You can find bunches of 
+references related to this by searching the Web on terms <em>Harris
+entropy segmentation</em>.  (One short example is by David Ward Powers, on <A
+HREF="http://david.wardpowers.info/Research/AI/papers/200306-PACL-ChinWordSeg.pdf">Chinese
+Word Segmentation Based on Contextual Entropy</A>.)
+<P>
+In this assignment, you will implement and explore the idea
+empirically, using corpus data that I have identified for you in an
+e-mail message to the class.  (These corpora are not publicly
+available, so please do not redistribute them or link to the file on
+the Web.)  Specifically, let's look at some data and see to what
+extent points of high entropy seem to correspond to our intuitions
+about syntactic phrase boundaries.
+
+<ol>
+  <li> Take the English training corpus (corpus.train.en)
+<!--  ideally a large corpus like <A HREF="http://www.statmt.org/europarl/">Europarl<A>, -->
+  and build an
+  n-gram language model at the word level.  If you want to get hands-on experience with
+  a tool widely used in NLP research, including speech recognition and
+  machine translation, I recomment that you use the <A
+  HREF="http://www-speech.sri.com/projects/srilm/">SRI language
+  modeling toolkit (srilm)</A>; other recommendations would include the <A
+  HREF="http://projectile.sv.cmu.edu/research/public/tools/salm/salm.htm">CMU
+  SALM (suffix array language model) toolkit</A> and the <A
+  HREF="http://sourceforge.net/projects/randlm/">software</A> for
+  Bloom filter language models (David Talbot and Miles Osborne, <A
+  HREF="http://acl.ldc.upenn.edu/D/D07/D07-1049.pdf">Smoothed Bloom
+  ﬁlter language models: Tera-Scale LMs on the Cheap</A>, EMNLP 2007).
+  Srilm is the most widely used, but the Bloom filter language models
+  are the newest and most scalable.
+  <P>
+  If you feel strongly about implementing things yourself, implement
+  an n-gram model with <em>non-trivial</em> smoothing --- let's say
+  either Witten-Bell or Kneser-Ney.  But this assignment is really
+  more about getting a state of the art toolkit to work and trying it
+  out on some real data.
+  <P>
+
+  <li> Create an output file called english.out.txt where, for each sentence in the English 
+  test corpus (corpus.test.mt03.en), you
+  show the entropy at each position, i.e. the entropy of P(Word|context)
+  according to the n-gram model.  Left-context only (i.e., conditioning on the previous n-1 words)
+  is fine, although if you read some of the background literature
+  you'll see discussion of using right-context also (i.e. building another language model
+  from the end of the sentence to the beginning).  For the output file you create, place
+  <em>token &lt;tab&gt; entropy</em> pairs on each line, i.e.
+  one token per line with the entropy for the corresponding position.
+  Separate sentences by blank lines.
+  <P>
+  <li>Answer this question:  Do spikes in entropy indeed
+  tend to correspond to natural segments according to phrase
+  structure?  (Your judgments about phrases are fine, but if you want an objective source of phrase boundaries,
+  you can run a parser on the input sentences, e.g. <A
+  HREF="http://nlp.stanford.edu:8080/parser/index.jsp">the online
+  Stanford parser</A>.)  Illustrate the answer to your question using
+  a few sentences in your output file.
+<P>
+  <li>Do the exercise again with Chinese, creating chinese.out.txt and answering 
+  the same question as above (and illustrating with a few sentences from the test corpus).
+  <p>
+  Note that for the training data,
+  the Chinese is already segmented into words. If you don't know Chinese, that's ok, 
+  you can still run your code and answer the question --
+  you can either get help from a Chinese speaker, or you can use the corresponding
+  English sentences (since corpus.test.mt03.{en,zh} are parallel translations) along
+  with an online translation tool like <A href="translate.google.com">Google Translate</A>
+  to identify what you think are natural phrases in the Chinese.  (Part of the point of this
+  exercise, for non-Chinese speakers, is to get you to play around with working with some
+  data in a language you don't understand.  This happens a fair amount in NLP research.)
+  <P>
+<!--  As an example, you could work with Chinese and tokenize using the <A
+HREF="http://nlp.stanford.edu/software/segmenter.shtml">Stanford
+Chinese segmenter</A>. 
+  <P>
+   As another alternative, you could apply the
+language model at the <em>Chinese character</em> level, i.e. use this
+approach to try to do Chinese word segmentation rather than phrase
+boundaries.  If you don't know Chinese, you could still assess how
+well this does via agreement/disagreement with the output of the Stanford Chinese
+segmenter.
+-->
+<P>
+</ol>
+<P>
+I encourage you to talk to each other, and to use the mailing list.
+As on all other homeworks, if you work together with someone, make sure to let me know,
+and make it clear who contributed what.
+<P>
+<strong>To turn in:</strong>  Send any code and scripts (with a README so we can
+run it) and writeups to Eric in the usual way, along with your {english,chinese}.out.txt files.  
+Please cc Philip.
+You can assume we have our own
+copies of any software you've downloaded (e.g. a language modeling
+package). Just make sure you tell us what you used and where you got it, 
+together with any instructions, in your README.
+
+<P>
+
+
+<P>
+<HR>
+<P>
+</BODY>
+</HTML>

@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Assignment 6</TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF">
+
+<HR>
+<H1>Assignment 6</H1>
+<HR>
+
+<P>
+<font color="red">This assignment is due at the start of class on Wednesday</font>.
+<P>
+In class we talked about the formalization of parsers as deductive systems, as discussed by Shieber et al., <A HREF="http://www.eecs.harvard.edu/shieber/Biblio/Papers/infer.pdf">Principles and Implementation of Deductive Parsing</A> (see especially Sections 1-3). We also briefly talked about differences in memory use by different kinds of parsers, and how this might relate to human sentence processing. The latter is discussed in <A HREF="http://aclweb.org/anthology/C/C92/C92-1032.pdf">Resnik (1992)</A>, which makes the argument that human parsing uses a <em>left corner</em> parser, combining elements of top-down and bottom-up parsing, along with a composition operation that helps to minimize memory load. In this assignment, you'll look at this in more depth.
+<P>
+<ol>
+
+<li> Read <A HREF="http://aclweb.org/anthology/C/C92/C92-1032.pdf">Resnik (1992), Left-Corner Parsing and Psychological Plausibility</A>. Write a brief summary of the argument it's making in your own words. (No more than 1-2 paragraphs. That means you need to <em>summarize</em>, not just try to repeat everything. The ability to summarize is a demonstration of your understanding.) <BR>
+<P>
+ (Although it's not particularly relevant for this assignment, note that <A HREF="https://courses.cit.cornell.edu/ling7710/readings/bates.pdf">augmented transition networks [ATNs]</A>, discussed in Section 2.2, are basically recursive transition networks with the added ability to execute procedures, e.g. to build and store structure, on the arcs.) 
+
+<P>
+<li> Notice that the paper never actually gave a full description of its left-corner parser with composition in the form of a deductive scheme in the style of Shieber et al. -- i.e. item form, axioms, goal, inference rules. Formalize the parser on paper using a schema of that kind. 
+
+<P> 
+<li> Illustrate the steps the parser would take (in the same kind of format as the derivations in Shieber et al. on pages 9, 11, and 13) for the sentence "the man laughed" assuming the grammar contains rules
+<PRE>
+S -> NP VP
+NP -> DET N
+VP -> VI
+VP -> VT NP
+VI -> laughed 
+VT -> saw
+N -> man
+N -> woman
+DET -> the
+</PRE>
+
+<P>
+<li> Implement the parser in the programming language of your choice, using the agenda-driven, chart-based deduction procedure described in Shieber et al. Section 5 (see especially page 27). Turn in code with a README showing how to run it. <em>You do not need to make the parser efficient</em> -- if you implement a very simple strategy like depth-first search with backtracking and no redundancy-checking at all, that's ok. I don't care if your parser takes exponential time in the worst case.  Also, you can implement just a recognizer if you like, rather than doing the extra bookkeeping to recover parse trees at the end. What your parser should do, though, is show the items that are added to the chart, similar to the derivations in Shieber et al. on pages 9, 11, and 13.
+<P>
+Note that you do not necessarily need to code from scratch. It looks like <A HREF="http://www.nltk.org/api/nltk.parse.html">the nltk.parse package</A>, in particular the <A HREF="http://www.nltk.org/api/nltk.parse.html#module-nltk.parse.chart">nltk.parse.chart</A> module, might be useful if you like python. (See also <A HREF="http://www.nltk.org/howto/parse.html">www.nltk.org/howto/parse.html</A> and <A HREF="http://www.nltk.org/book_1ed/ch08.html">Chapter 8 of the NLTK book</A>.) I also imagine that implementations of <A HREF="https://en.wikipedia.org/wiki/Earley_parser">Earley's algorithm</A> in various languages could potentially be modified, e.g. <A HREF="https://github.com/n0nick/earley_bird">this one</A> or implementations listed on the <A HREF="https://en.wikipedia.org/wiki/Earley_parser">Wikipedia Earley parser page</A>. (Note that I have not looked at any of these to see if they're any good.)
+<P>
+You might also find it useful to look at the discussion in Robert Moore (2004), <A HREF="http://www.umiacs.umd.edu/~resnik/ling723_fa2006/assignments/7/iwpt2000-rev3.pdf">Improved Left-Corner Chart Parsing for Large Context-Free Grammars</A>, particularly Section 5.  However, to avoid confusion note that there are a few different definitions of "left corner" floating around. For Resnik (1992) and purposes of this assignment, the left corner is a property of an individual <em>rule</em>; e.g. in the grammar above, the left corner of the rule <em>S -> NP VP</em> is NP. In the NLTK book and some other discussions of parsing, however, each <em>non-terminal symbol</em> has a <em>set</em> of left corners (often stored in a "left corner table" that is created ahead of parsing); e.g. for the grammar above, the left corners for VP are VI and VT. In still other discussions, the values in the left corner table are defined recursively: for example, in the grammar above, DET is a left corner of S (because DET is a left corner of NP and NP is a left corner of S). That's because (recursive) left corners can be used for filtering out edges that couln't possibly be useful before they're added to the chart. For example, if we're considering adding the dotted rule [S -> * NP VP, i, i] to the chart (where the asterisk indicates the dot), it's a waste of time if the word at position i has part-of-speech VT, since there's no possible tree rooted at S that could have a VT as its first word. So that kind of filtering can make parsing more efficient, which is the main focus of Moore's paper. But as I said, for this assignment I'm not worried about efficiency.
+<P>
+<li> Using your implemented parser with the grammar below, show the following:
+<P>
+  <ul>
+  <li> (a) On strings with left-branching structure (e.g. x, xx, xxx, etc.), the parser needs only O(1) space in terms of storing incomplete items.
+  <li> (b) On strings with right-branching structure (e.g. y, yy, yyy, etc.), the parser needs only O(1) space in terms of storing incomplete items.
+  <li> (c) On strings with center-embedded structure (e.g. acb, aacbb, aaacbbb, etc.), the parser needs O(n) space in terms of storing incomplete items, where n is the length of the input.
+  </ul>
+<P>
+<PRE>
+S -> A S B
+S -> C 
+S -> X S
+S -> S Y
+A -> a
+B -> b
+C -> c
+X -> x
+Y -> y
+</PRE>
+<P>
+<font color="red">Note: I have not actually implemented the left-corner parser with composition, so it's possible it will be harder than I expected. If implementing it is an unreasonable amount of work, please show you made a good faith effort (turn in incomplete code with a brief explanation), but you can still get the credit by supporting the arguments (a-c) on paper, rather than using your implementation.</font>
+</ol>
+<P>
+<HR>
+<strong>Extra credit: getting hands-on with data using LDA and a parser (worth up to 20% of an assignment)</strong>
+<P>
+Topic models like LDA are usually defined in terms of words, but in actuality they really treat documents as bags of <em>features</em>, not necessarily bags of words. For example, Mimno <A HREF="http://www.mimno.org/articles/phrases/">talks about using phrases as features with MALLET</A>. 
+<P>
+In class we briefly talked about the idea that topic models might benefit from features that capture predicate-argument relationships, e.g. object(cut,taxes) might be a feature derived from many different phrasings (We need to cut more taxes, Taxes should be cut, etc.).  
+<P>
+<blockquote>
+(a) Use an existing topic modeling package (e.g. <A HREF="http://programminghistorian.org/lessons/topic-modeling-and-mallet">MALLET</A>, <A HREF="https://radimrehurek.com/gensim/">gensim</A>, <A HREF="https://github.com/vietansegan/segan">Segan</A>) to run LDA (or another similar model if you prefer, e.g. LSA) on one of the corpora used in earlier assignments, e.g. Congressional speech, SOTU. (Feel free to modify the corpus, e.g. break long documents into paragraph-sized documents, if that would be useful.)  Similar to the HMM assignment, where you experimented with different numbers of latent states, experiment with a few different numbers of latent topics (e.g. 10, 30, 50) and comment on the quality of the topics. Are some of them reasonably interpretable and coherent? What is the effect of having more vs. less latent topics available?
+<P>
+(b) Use an off the shelf parser, e.g. <A HREF="http://stanfordnlp.github.io/CoreNLP/">Stanford CoreNLP</a>, to extract some syntactically relevant features that you couldn't easily get from just bigrams, such as verb-object, subject-verb. For Stanford CoreNLP you can use "enhanced (collapsed) dependencies", e.g. see below. Add these features to the documents they come from, and try LDA again as in part (a). How do the topics look now? Is there value in using the syntactic dependency relationships? 
+</blockquote>
+<P>
+The parses below were obtained using <A HREF="http://nlp.stanford.edu:8080/corenlp/process">the Stanford CoreNLP online demo</A>. Note that there is enough information here that if you wanted to, you could collapse some surface syntactic roles to improve normalization and reduce data sparsity; for example, you could map nsubjpass to dobj and nmod:agent to nsubj.
+<P>
+Although Stanford CoreNLP is the whole package, including lots more besides parsing, it looks like a smaller download of just the Stanford parser is available at <A HREF="http://nlp.stanford.edu/software/lex-parser.shtml">http://nlp.stanford.edu/software/lex-parser.shtml</A>. 
+Some other off the shelf parsers include <A HREF="http://spacy.io">spaCy</A>, <A HREF="https://github.com/emorynlp/nlp4j">EmoryNLP's nlp4j (formerly ClearNLP)</A>, and <A HREF="http://maltparser.org/">MaltParser</A>. There's also <A HREF="http://wiki.opencog.org/w/RelEx_Dependency_Relationship_Extractor">RelEx</A>, which claims to have a greater degree of semantic normalization. 
+
+<pre>
+"The taxes were cut by the Republicans"
+
+Enhanced dependencies
+
+root ( ROOT-0 , cut-4 )
+det ( taxes-2 , The-1 )
+nsubjpass ( cut-4 , taxes-2 )
+auxpass ( cut-4 , were-3 )
+case ( Republicans-6 , by-5 )
+nmod:agent ( cut-4 , Republicans-6 )
+
+
+"The Republicans cut the taxes"
+
+Enhanced dependencies
+
+root ( ROOT-0 , cut-2 )
+nsubj ( cut-2 , Republicans-1 )
+det ( taxes-4 , the-3 )
+dobj ( cut-2 , taxes-4 )
+
+</pre>
+<P>
+<P>
+<HR>
+
+</BODY>
+</HTML>
+

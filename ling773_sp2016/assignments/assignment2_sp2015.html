@@ -1,0 +1,203 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<title>Assignment 2</title>
+<body bgcolor="#ffffff">
+
+
+
+<h1>Assignment 2</h1>
+<HR>
+
+<P>
+In this assignment, you will get some hands-on experience using
+computational methods to identify interesting collocations in a
+corpus.  Although you are welcome to code up everything from scratch,
+you are welcome to use code from existing NLP toolkits or code you
+find on the Web, on condition that you clearly identify any
+pre-existing code you've used.
+
+
+
+<h2>The corpus</h2>
+
+We'll work with the <A HREF="http://www.cs.cornell.edu/home/llee/data/convote.html">congressional
+speech corpus</A>, created by Matt Thomas, Bo Pang, and Lillian Lee.
+It contains speeches made by politicians in the U.S. House of
+Representatives during debates over legislation.  Although the work in
+this assignment is relatively straightforward from an NLP point of
+view, it's pretty close to what some real political scientists have done in
+text analysis; for example, see Monroe et al., 
+<A HREF="http://pan.oxfordjournals.org/cgi/reprint/mpn018v1.pdf">Fightin’ Words: Lexical
+Feature Selection and Evaluation for Identifying the Content of
+Political Conﬂict</A>, Political Analysis, 2008 16(4):372-403.
+
+
+<P>
+You should begin by downloading the <A
+HREF="http://www.cs.cornell.edu/home/llee/data/convote/convote_v1.1.tar.gz">convote
+dataset v1.1</A> (9.8 Mb, tar.gz format). There are several different
+versions of the data in this archive; we are concerned only with the
+data_stage_three directory.  For those with limited disk space, a way
+to extract just the directory of interest is:
+<code>
+  gunzip < convote_v1.1.tar.gz | tar xvf - convote_v1.1/data_stage_three
+</code>
+<P>
+Each file in the data_stage_three directory contains a speech by a legislator.
+The filenames contain information about each speech.  In the filename template,
+<code>###_@@@@@@_%%%%$$$_PMV</code>:
+<ul>
+  <li> the first three characters ### identify the bill under discussion
+  <li> the six digits @@@@@@ uniquely identify the speaker
+  <li> the character in position P indicates the speaker's party: D (Democrat), R (Republican), I (independent), or X (unknown).
+  <li> the character in position V indicates whether the speaker eventually voted yes (Y) or no (N).
+  <li> for our purposes we can ignore the other parts of the template.
+</ul>
+Please use all the data available under the 3 directories ("development_set", "test_set" and "training_set").
+
+
+
+<h2>The task</h2>
+
+The idea here is to use what we've learned in class (and what you've
+read about in M&amp;S Chapter 5) to answer some interesting questions
+about this corpus.
+
+<ol>
+<li> What are the top 25 bigram collocations in this corpus, as measured automatically
+     by (a) <em>frequency</em> and (b) <em>pointwise mutual information (PMI)</em>?
+<P>
+<li> Same question, but limit your attention to speeches by Democrats.
+<P>
+<li> Same question, but limit your attention to speeches by Republicans.
+<P>
+<li> Discuss the advantages and limitations of frequency and PMI.
+     For full credit make sure to illustrate advantages and/or disadvantages 
+     using the sorted lists of collocations you obtained.
+<P>
+<li> Are there any interesting differences between what you found for
+     Democrats and what you found for Republicans?
+     <P>
+     Here's an example.  (In this case I actually used log-likelihood as the association score, rather than frequency or PMI, but the principle is exactly the same.)
+     When I used the Democratic speeches as a corpus,
+     and sorted all non-<A HREF="http://en.wikipedia.org/wiki/Stop_words">stopword</A> bigrams by the association score,
+     and did the same separately for Republicans, the
+     phrase <em>middle class</em> ranked 16th for Democrats and 115th
+     for Republicans; conversely, the phrase <em>law enforcement</em>
+     ranked 28th for Republicans and 141st for Democrats.  
+     One could argue that this empirical observation is consistent
+     with at least some characterizations of the priorities
+     of the two political parties -- e.g. see 
+     <!-- <A HREF="http://www.smartdecision08.com/content-2458"> -->
+     <A HREF="http://www.google.com/search?hl=en&q=2008+debate+mccain+mentioning+the+middle+class&aq=f&aqi=&oq=">
+     discussions of the role that the phrase <em>middle class</em> had during the 2008 presidential debates</A>,
+     like 
+     <A HREF="http://www.huffingtonpost.com/2008/10/07/mccain-makes-no-mention-o_n_132822.html">this one</A>.
+     <P>
+     Even if you're not particularly familiar with American politics,
+     identify similar contrasts and offer your thoughts on why
+     they might or might not be meaningful.  (If this is an unfamiliar topic, feel free to discuss your data with classmates who
+     know American politics better than you do.)
+     <P>
+</ol>
+<P>
+
+  
+<h2>Ways to go about it</h2>
+
+Conveniently, the corpus is already tokenized and lowercased for you,
+and the filename conventions make it very easy to identify particular
+subsets of the corpus.
+<P>
+In terms of implementation,
+<ul>
+<li> For those of you who like to implement everything from scratch, you
+should have all the information you need here in the assignment,
+in the book, and in standard references like Wikipedia.  
+<P>
+<li> For those who like Python and NLTK, 
+  you might want to look at <A HREF="http://umiacs.umd.edu/~jimmylin/CMSC723-2009-Fall/readings/crossroads.pdf">
+  this nice discussion by Nitin Madnani</A>.
+<P>
+<li> For those who like to take advantage of off-the-shelf tools,
+that's fine with me.  If you do that, you might like
+Ted Pedersen's <A HREF="http://www.d.umn.edu/~tpederse/nsp.html">Ngram
+Statistics Package</A>.  
+<P>
+</ul>
+<P>
+<strong>You are welcome to work together.</strong> If you do so, turn
+in separate assignments (since the discussion parts will be
+different), even if you're turning in the same code, but identify who
+you worked with.
+<P>
+
+<h2>What to turn in</h2>
+<P>
+
+Address for turning in assignments: See the course home page.  Please turn in a file named <em>firstname.lastname.tar.gz</em> or  <em>firstname.lastname.zip</em>.  Include:
+<ul>
+<li> A PDF file (portrait 8.5x11 format) with your answers
+<li> A subdirectory <em>code</em> containing your code along with a README file that explains how to run it.  You should <em>not</em> include a copy of the corpus -- ideally the README should identify filename arguments or configuration options, or, worst case, say where to change hardwired strings.
+</ul>
+<strong>Note that <em>you are not being graded on the quality of your code</em>.</strong>  Yes, all other things being equal, clean and easily runnable code would be nice.  But if you have the choice between spending more time playing with and thinking about the data you're looking at, versus more time making your code pretty and easy to run, please focus on the former and not the latter!
+
+<!--
+Having gone through the first steps myself, I'm reasonably confident
+that this should be ample time if you use Pedersen's package and/or
+off-the-shelf code for contingency table calculations, e.g.  <A
+HREF="http://cpansearch.perl.org/src/YUNFANG/Statistics-ChisqIndep-0.1/ChisqIndep.pm">this
+chi-square test module in perl</A>.  (N.B. I haven't used this one but
+it looks like the right idea.  Might be a good idea to compare its
+output to a known example to make sure it gives you the expected
+results.  I'm sure such things exist for other programming languages.
+I encourage you to mail the class with pointers if you find useful
+stuff.)
+<P>
+-->
+
+<!--
+<ul>
+<li> In class, turn in a hardcopy with your answers and discussion. Do
+     <em>not</em> create hardcopies of code.  
+<P>
+<li> Unless your discussion is hand-written, please also e-mail Eric and me the 
+     above hardcopy (<em>PDF only</em>, no MS Word or
+     postscript) by the deadline.  
+     The filename <em>must</em> be <em>LASTNAME-FIRST_INITIAL-assignment2-writeup.pdf</em>,
+     e.g. <em>resnik-p-assignment2-writeup.pdf</em>, and the subject line <em>must</em> be
+     "CMSC773 ASSIGNMENT 2".
+<P>  
+<li> Attach (or mail separately) a <em>gzipped tar archive</em> or <em>zip
+     archive</em> with your code, with subject line "CMSC773 ASSIGNMENT 2".
+     <em>Do not include data or full output
+     listings in the archive</em> -- this should be a fairly small
+     file.  The name of the archive should be <em>LASTNAME-FIRST_INITIAL-assignment2-code.zip</em>
+     (or use a .tar.gz or .tgz extension for gzipped tar files).  The archive should include a
+     clearly written file called README.txt that contains step-by-step
+     instructions permitting someone else to run your code.  (You can
+     assume the recipient has the <em>data_stage_three</em> directory
+     and has already installed the Ngrams package, if you like.)
+</ul>
+<P>
+-->
+<!--
+If you get started on this assignment and strongly believe that I have
+miscalibrated how long it should take, send me e-mail explaining why.
+I am pretty sure my standard late-assignment policy (on the course
+page) should handle the normal case where a few people find any
+assignment particularly hard, but this is a new assignment so I am
+open to early feedback.  (Note, though, that e-mail of this kind
+received after Sunday at 9pm will be ignored; if you haven't figured
+out by Sunday evening that you're having trouble with an assignment
+due Wednesday, then you waited too long to start working on it!)
+<P>
+-->
+
+<P>
+Again, <em>I strongly encourage you to talk to each other on the class
+discussion board.</em> 
+<HR> 
+</body>
+</html>
+

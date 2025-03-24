@@ -1,0 +1,224 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Information theory questions</TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF">
+
+<HR>
+<H1>Information Theory Assignment</H1>
+<HR>
+
+<P>
+
+When turning in this assignment, please use the same conventions as the previous assignment.
+
+<P>
+First, a couple of notes.
+<P>
+I'm showing point values for each question to give you an idea of its relative weight.  
+Notice that the points don't add up to 100.
+<P>
+As an aside for the mathematically inclined, 
+there are <A
+HREF="http://www.mtm.ufsc.br/~taneja/book/node5.html">several derivations</A> 
+of the definition of entropy based on axioms about
+properties that a measure of uncertainty should have.  
+One particularly readable presentation that I like a lot
+is A.I. Khinchin,
+<em>Mathematical Foundations of Information Theory</em>, Dover, New
+York, 1957.
+<P>
+Also, in case you're curious, here's the pointer to the algorithm for
+creating optimal codes using <A
+HREF="http://en.wikipedia.org/wiki/Huffman_coding">Huffman coding</A>
+(see also this <A
+HREF="http://www.huffmancoding.com/david/algorithm.html">interesting
+discussion by Huffman's nephew</A>).
+<P>
+Finally, a note about notation.  If X is a random variable whose distribution
+is (p<sub>1</sub>,p<sub>2</sub>,...,p<sub>k</sub>) then we usually
+write H(X) for H(p<sub>1</sub>,p<sub>2</sub>,...,p<sub>k</sub>).  I will
+occasionally write H(p) instead of H(X), where p abbreviates
+p<sub>1</sub>,p<sub>2</sub>,...,p<sub>k</sub>.
+<P>
+<hr>
+
+<ol>
+
+<LI> [5pts] (Manning and Schuetze exercise 2.12) Show that the KL divergence
+is not symmetric by finding an example of two distributions p and q
+for which D(p||q) is not equal to D(q||p).  Give the two distributions
+and show the explicit computation of the KL divergences.
+<P>
+Note that simple toy distributions (e.g. over {heads,tails}) are
+boring to grade.  You'll get half credit on this problem for the
+boring kind of example, and full credit for an example that is
+significantly interesting or amusing.
+<P>
+<!--
+<LI> 
+  <UL>
+  <LI> a. [5pts] Here I'm largely asking you to go again through
+       the horse race example from class, in your own words. Recall that
+       the distribution over horses h0-h7 is p:
+     <pre>
+	       h0     h1   h2     h3     h4     h5     h6     h7
+	 p     1/2    1/4  1/8    1/16   1/64   1/64   1/64   1/64
+     </pre>
+     Although I didn't mention it in class, the encoding I gave is actually an
+     <em>optimal</em> encoding for this distribution (one that
+     uses the fewest possible number of bits on average, when communicating
+     horse race outcome events).  For any distribution, an optimal binary
+     representation of the events, in the sense of the smallest number of bits
+     on average, can be created using <A
+     HREF="http://en.wikipedia.org/wiki/Huffman_coding">Huffman
+     coding</A> (see also this <A
+     HREF="http://www.huffmancoding.com/david/algorithm.html">interesting
+     discussion by Huffman's nephew</A>).  Here's the encoding from class:
+     <pre>
+	       h0     h1   h2     h3     h4     h5     h6     h7
+      codeP    0      10   110    1110   111100 111101 111110 111111
+     </pre>
+     <P>
+     Show, <em>without any numerical computations</em>, that if you
+     use codeP, the expected value E<sub>p</sub>[length(h)] (i.e. the expected
+     value of length(h) under distribution p) is equal to H(p), the
+     entropy of the distribution.  (Partial credit for doing the two
+     computations explicitly and confirming that you get the same number.)
+      <P>
+  <LI>
+     b. [5pts] Imagine that p is the true distribution of outcomes when these
+     horses race, but that we do a terrible job of estimating the probabilities
+     and come up with the following model, q:
+     <pre>
+	       h0     h1   h2     h3     h4     h5     h6     h7
+	 q     1/8    1/8  1/8    1/8    1/8    1/8    1/8    1/8
+     </pre>
+     Since the horses all have the same probability, the best code we
+     can invent will obviously use the same number of bits for each
+     horse.  This means that the smallest number of bits we can use is
+     log<sub>2</sub>8 = 3 bits:
+     <pre>
+	       h0     h1   h2     h3     h4     h5     h6     h7
+      codeQ   000    001  010    011    100    101    110    111
+     </pre>
+     Now imagine that we communicate lots of horse race outcomes using
+     codeQ.  Encoding winning horses using codeQ, what is
+     E<sub>p</sub>[length(h)]?
+     <P>
+  <LI> c. [15pts] Use the previous two parts to this question, together with the definition
+       of relative entropy (KL divergence), to explain and illustrate
+       Manning and Schuetze's observation: "KL divergence is the
+       average number of bits that are wasted by encoding events from
+       a distribution p with a code based on a not-quite-right
+       distribution q."
+  <P>
+  </UL>
+-->
+<LI> [10pts] Prove that cross entropy H(p,q) = H(p) + D(p||q).
+     <P> 
+     Notice that since
+     D(p||q) must be greater than or equal to 0, this establishes
+     that cross entropy is an upper bound on entropy.  
+<P>
+<LI> [30pts] (Based loosely on Manning and Schuetze exercise 2.10) Compute three
+probability distributions over unigrams: one for 
+the Republican speeches in 
+<A HREF="http://www.cs.cornell.edu/home/llee/data/convote.html">the congressional
+speech corpus</A>, one for the Democrats, and one for
+<A HREF="http://umiacs.umd.edu/~resnik/723/politics2009/obama_inaugural2009.txt">Obama's inaugural address of January 20, 2009</A>.
+<P>
+Obama's address will need to be tokenized, and you should
+convert all text to lowercase in order to mitigate sparse data
+problems.  Note that you'll still need to do something about zero
+counts.  As the simplest option, you can smooth using Laplace ("add
+one", Manning and Schuetze Section 6.2.2) to avoid zero, even though
+in practice this is not considered the state of the art.  Or, slightly
+better, you could use add-k for a different k, e.g. setting k to 1/|V|
+where |V| is the size of the vocabulary. For simplicity, you can also
+assume that the total vocabulary is the union of all the unigrams in
+the three texts.
+<P>
+Here's a simple observation that might help you avoid writing a lot of
+new code from scratch, allowing you to re-use work you've already done
+in the previous assignment: if you have a bigram frequency table with
+entries count(a,b), then the unigram counts are just the marginal
+counts for a and b, i.e.
+<pre>
+  count(a) = sum_{b'} count(a,b')
+  count(b) = sum_{a'} count(a',b)
+</pre>
+Best practice would be to smooth the bigram counts first, and then
+compute the unigram counts as above.  If you smooth unigrams and
+bigrams separately, there's no guarantee that summing over smoothed
+bigram counts to compute the marginals will give you the same number
+you get from smoothing unigrams separately. But this is a minor point
+and for this assignment I'm fine with any fairly reasonable smoothing
+as long as you say clearly what you did.
+<P>
+Questions.
+<ul>
+  <li> a. Treating the distribution for the Obama address distribution as p, compute
+the KL divergence against q (Democratic speeches) and q' (Republican speeches).  What are D(p||q) and D(p||q')?  How well does this match what you expected them to be?  Explain your answer.
+<P>
+  <li> b. Compute D(q||q') and D(q'||q), i.e. see what happens when you compare Republican speeches with Democratic speeches in both directions.  What are these values?  How do they compare with D(p||q) and D(q||p), where you're looking at the congressional speeches versus Obama's address?  Suggest some reasons the comparisons might be turning out the way they are.
+  <P>
+  <li> c. What are the top 10 terms contributing to D(q||q')?  Suggest reasons these might be the top 10.
+    <P>
+  <li> d. Same as (c), but for D(q'||q).
+  <P>
+</ul>
+  <P>
+<LI> [10pts] Construct two n-gram language models: M_d
+based on the Democratic speeches and M_r from the
+Republican speeches. Treating Obama's speech as a test set, compare the perplexity of
+models M_d and M_r.  Which one is a better language model?
+<P>
+Using a a unigram model is fine, and the previous problem should
+already give you most of what you need.  If you're interested in being
+more realistic, a bigram or trigram model would be more interesting
+and realistic, although of course these data sets are unrealistically
+small.  If you're feeling like this assignment was too easy and you
+want to do something more challenging and real, you could try using <A
+HREF="http://www.speech.sri.com/projects/srilm/">the SRI language
+modeling toolkit (srilm)</A>, and/or using different corpora that
+might give you interesting results.
+<P>
+<li> <strong>Optional, for up to 10 points extra credit.</strong> Here's an oppotunity to get a little real-world
+practice at creating corpora from raw data and working with them.  We'll do an analysis similar to what you
+did above, but using <A
+HREF="http://www.whitehouse.gov/the-press-office/remarks-president-state-union-address
+">Obama's 2010 State of the Union address</A> and <A
+HREF="http://www.whitehouse.gov/the-press-office/2011/01/25/remarks-president-state-union-address">2011
+State of the Union Address</A>, in order to answer the questions below.  (You're welcome to download the
+transcripts from other sites if that makes it easier to extract the
+text.) Note that I haven't actually done this, so it's possible that
+these questions will have answers that are either surprising or
+boring.  E.g. in part b, it's possible that there are no particularly
+interesting observations to make regarding similarity of one pair
+versus the other.  If that turns out to be the case, say so and
+explain why that's your conclusion.  Similarly for part c.
+<P>
+<ul>
+<li>  a. Describe the steps you took to extract the text from the State of the Union  Web pages and turn it into corpora.
+<P>
+<li>  b. How does Obama's speech in 2011 compare with what he said back in 2010?  In 2009?  Which is it more similar to?  
+      Choose for yourself how you're going to measure "similar", and justify why that's a reasonable choice.
+<P>
+<li>  c. What words and/or phrases illustrate contrasts among the
+      speeches, and/or progression or changes over time?  Again,
+      decide for yourself what technical choices to make in order to answer this question,
+      and justify those choices.  Feel free to draw on ideas and code from the previous 
+      assignment, if you'd like.
+<P>
+<ul>
+</ol>
+
+<P>
+
+<P>
+<HR>
+<P>
+</BODY>
+</HTML>
