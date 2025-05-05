@@ -278,7 +278,39 @@ Special presentation sponsored by Gerris Corp, Thematically, Converseon and Solo
         date: "2024-09-24",
         location: "Vanishing Gradients podcast", 
         keywords: ["natural language processing", "large language models", "ai ethics"],
-        abstract: "Podcast discussion with Sander Schulhoff and Denis Peskov about 'The Prompt Report', our comprehensive survey of prompting methods, and about AI and LLMs more generally."
+        abstract: `In the world of generative AI, prompt engineering is a powerful technique that complements retrieval-augmented generation (RAG) and fine-tuning. While much attention has been on fine-tuning and RAG, prompt engineering continues to be a highly effective way to guide model behavior and achieve optimal results without requiring massive model updates.
+
+​Sander Schulhoff (University of Maryland, Learn Prompting), Denis Peskoff (Princeton University), and Philip Resnik (University of Maryland) recently led the creation of The Prompt Report—a comprehensive 76-page survey analyzing over 1,500 prompting papers. This groundbreaking work categorizes prompting techniques into seven distinct areas and introduces a novel benchmarking approach on MMLU. With over 40 steps documented by expert prompt engineers, the paper provides invaluable insights into the state and future of prompt engineering.
+
+​Join Sander, Denis, Philip, and Hugo Bowne-Anderson (Vanishing Gradients) for a deep dive into prompt engineering, generative AI security, and the future directions of AI research.
+
+​Topics Covered:
+
+- The Evolution of Prompt Engineering: How prompt engineering has grown to complement fine-tuning and RAG techniques. We’ll explore its current state and where it fits in the broader generative AI landscape.
+- Taxonomy of Prompting Techniques: A detailed breakdown of prompting methods, focusing on the six-part taxonomy, including chain-of-thought and self-criticism prompting, and how they influence AI model behavior.
+- The Learn Prompting Paper: This comprehensive survey categorizes prompting techniques into seven key areas: ✏️ Text-based Prompting, 🌐 Multilingual Techniques, 🎨 Multimodal Techniques, 🤖 Agents, 📊 Evaluation, 🔒 Security, and ⚖️ Alignment. With 31 contributors and the assistance of generative AI systems, this paper presents the latest findings in prompting research and benchmarking.
+- ​Applications Beyond Text: How prompting extends beyond text generation into text-to-image, text-to-music, and text-to-video applications, and how these techniques are reshaping multiple fields.
+- Security in Generative AI: Exploring the challenges of prompt injections, hacking, and other security concerns in generative AI. We’ll discuss both technical vulnerabilities and broader implications for AI systems.
+- ​Future Directions in AI: Speculating on the future of AI research, including how prompt engineering might intersect with robotics, augmented reality (AR), and virtual reality (VR) to expand the capabilities of AI in the real world.
+
+​By the end of this session, you’ll gain practical insights on how to use prompt engineering techniques to enhance AI outputs, ensure better security, and anticipate future trends in the field.
+
+00:00:00 Introduction and Guest Backgrounds
+00:05:54 Defining Prompting and Its Importance
+00:11:33 Taxonomy of Prompting Techniques
+00:39:42 Challenges in Evaluating Prompting Techniques
+00:42:57 Few-shot Learning and Its Impact
+00:59:38 Practical Applications of Prompting
+01:06:41 Self-Criticism and Multi-Agent Systems
+01:25:29 Multimodal AI and Prompting
+01:30:25 Case Study: Suicide Risk Detection
+01:37:52 Prompting Techniques in the Case Study
+01:41:37 Comparison with Traditional Machine Learning
+01:49:26 Security Concerns in Generative AI
+01:49:50 Hacker Prompt 2.0 and Community Involvement
+01:52:09 Future of LLMs: Energy Consumption
+01:54:22 Forecasting LLMs and Prompting in 5 Years
+01:56:06 Positive Impacts and Closing Thoughts`
     },
     {
         id: 34, 
