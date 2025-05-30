@@ -4,5 +4,13 @@ To see size of what git would push to a repo:
 
   git count-objects -vH
 
+To run local web server
+
+  cd /path/to/your/folder
+  python3 -m http.server 8000
+  Open: http://localhost:8000
+
+
+
 
 

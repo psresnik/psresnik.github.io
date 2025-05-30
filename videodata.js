@@ -364,7 +364,13 @@ Special presentation sponsored by Gerris Corp, Thematically, Converseon and Solo
         date: "2025-05-01",
         location: "Keynote talk, NAACL Student Research Workshop, Albuquerque NM", 
         keywords: ["career advice", "natural language processing"], 
-        abstract: "Although it's a fact buried in the depths of history, as a grad student I led the creation of the ACL Student Sessions, which began as an experiment at ACL 1991 at Berkeley and evolved into today's Student Research Workshops at multiple *ACL conferences.  I've evolved too, since then, or at least I'd like to think so.  In this talk I'm going to offer some hopefully-useful reflections on the state of our field, especially for newly budding reseachers, and share some time-tested advice for school and beyond."
+        abstract: `Although it's a fact buried in the depths of history, as a grad student I led the creation of the ACL Student Sessions, which began as an experiment at ACL 1991 at Berkeley and evolved into today's Student Research Workshops at multiple *ACL conferences.  I've evolved too, since then, or at least I'd like to think so.  In this talk I'm going to offer some hopefully-useful reflections on the state of our field, especially for newly budding reseachers, and share some time-tested advice for school and beyond.
+	
+Up to ~17:30 - relevant personal background and a couple of top level lessons
+17:30-28:00 - reflections on research, including e.g. the distinction between problems and tasks/benchmarks
+28:00-43:00 - advice for students (and anyone)
+43:00 - 1:00:02 - reflections on NLP, including my diagnosis of why the field has gone off the rails 
+1:00:02-1:24:00 - Q&A`
     }
 ];
 
