@@ -371,6 +371,15 @@ Up to ~17:30 - relevant personal background and a couple of top level lessons
 28:00-43:00 - advice for students (and anyone)
 43:00 - 1:00:02 - reflections on NLP, including my diagnosis of why the field has gone off the rails 
 1:00:02-1:24:00 - Q&A`
+    },
+    {
+        id: 40, 
+        title: "Large Language Models Are Biased Because They Are Large Language Models",
+	url: "https://www.youtube.com/watch?v=WLSuhe7LJOY",
+        date: "2025-07-16",
+        location: 'Computational Linguistics (<A HREF="https://doi.org/10.1162/coli_a_00558">https://doi.org/10.1162/coli_a_00558</A>); ACL 2025, Vienna', 
+        keywords: ["natural language processing", "ai ethics"],
+	abstract: `This position paper’s primary goal is to provoke thoughtful discussion about the relationship between bias and fundamental properties of large language models. I do this by seeking to convince the reader that harmful biases are an inevitable consequence arising from the design of any large language model as LLMs are currently formulated. To the extent that this is true, it suggests that the problem of harmful bias cannot be properly addressed without a serious reconsideration of AI driven by LLMs, going back to the foundational assumptions underlying their design.`
     }
 ];
 
