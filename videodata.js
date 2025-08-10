@@ -380,6 +380,15 @@ Up to ~17:30 - relevant personal background and a couple of top level lessons
         location: 'Computational Linguistics (<A HREF="https://doi.org/10.1162/coli_a_00558">https://doi.org/10.1162/coli_a_00558</A>); ACL 2025, Vienna', 
         keywords: ["natural language processing", "ai ethics"],
 	abstract: `This position paper’s primary goal is to provoke thoughtful discussion about the relationship between bias and fundamental properties of large language models. I do this by seeking to convince the reader that harmful biases are an inevitable consequence arising from the design of any large language model as LLMs are currently formulated. To the extent that this is true, it suggests that the problem of harmful bias cannot be properly addressed without a serious reconsideration of AI driven by LLMs, going back to the foundational assumptions underlying their design.`
+    },
+    {
+        id: 41, 
+        title: "What Are Large Language Models Models Of?",
+	url: "https://youtu.be/Gt7IAT9lgrQ",
+        date: "2025-07-21",
+        location: 'Dagstuhl Seminar 25301, Dagstuhl, Germany', 
+        keywords: ["large language models", "psycholinguistics and neurolinguistics", "predictive processing"],
+	abstract: 'Should we be thinking of LLMs as cognitive models for human language processing?  This talk was originally given at the July 2025 Dagstuhl Seminar on "Linguistics and Language Models: What Can They Learn from Each Other?". Its goal is to go beyond the "argument from amazingness" -- that LLMs are so good at human language that they must be doing something similar to what we do -- to a more careful and critical assessment of what it means to model human language processing, and why it might or might not make sense to view LLMs as models in that sense.'
     }
 ];
 
