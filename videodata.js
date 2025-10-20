@@ -389,7 +389,17 @@ Up to ~17:30 - relevant personal background and a couple of top level lessons
         location: 'Dagstuhl Seminar 25301, Dagstuhl, Germany', 
         keywords: ["large language models", "psycholinguistics and neurolinguistics", "predictive processing"],
 	abstract: 'Should we be thinking of LLMs as cognitive models for human language processing?  This talk was originally given at the July 2025 Dagstuhl Seminar on "Linguistics and Language Models: What Can They Learn from Each Other?". Its goal is to go beyond the "argument from amazingness" -- that LLMs are so good at human language that they must be doing something similar to what we do -- to a more careful and critical assessment of what it means to model human language processing, and why it might or might not make sense to view LLMs as models in that sense.'
-    }
+    },
+    {
+    id: 42,
+    title: "Have we been forced to abandon scientific diversity in NLP research?",
+    url: "https://youtu.be/1ZPjTZg9nlg?si=dLqiXqEYT6iQpQaH",
+    date: "2025-07-28",
+    location: "ACL conference, Vienna, Austria",
+    keywords: ["natural language processing", "large language models"],
+    abstract: `The progress of a science requires the ability to investigate a diverse set of ideas. Do we still have that in natural language processing? In this short (3min) video snippet, I raise this question during a panel at the top NLP conference.`,
+    transcript: ""
+}
 ];
 
 
