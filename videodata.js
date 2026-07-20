@@ -404,7 +404,7 @@ Up to ~17:30 - relevant personal background and a couple of top level lessons
     {
     id: 43,
     title: "A New Balancing Act: Reflections on the Relationship between Computational Linguistics and AI",
-    url: "https://umiacs.umd.edu/~resnik/acl_keynote/",
+    url: "./acl2026_keynote/",
     date: "2026-07-05",
     location: "ACL 2026 Keynote, San Diego",
     keywords: ["natural language processing", "large language models"],
