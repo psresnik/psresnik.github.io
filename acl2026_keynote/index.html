@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TITLE_STUB</title>
+<style>
+  :root {
+    --bg: #f7f7f8;
+    --card-bg: #ffffff;
+    --text-primary: #1a1a1e;
+    --text-secondary: #55555c;
+    --border: #e6e6e9;
+    --accent: #2c3e50;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text-primary);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+  }
+
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.04);
+  }
+
+  .video-wrapper {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000;
+  }
+
+  .video-wrapper iframe {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .content {
+    padding: 32px 36px 36px;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 0 0 12px;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
+  }
+
+  p.description {
+    font-size: 1.02rem;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  @media (max-width: 600px) {
+    .container {
+      padding: 24px 12px 48px;
+    }
+    .content {
+      padding: 24px 20px 28px;
+    }
+    h1 {
+      font-size: 1.3rem;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="video-wrapper">
+        <iframe
+          src="https://underline.io/embed/156291-a-new-balancing-act-reflections-on-the-relationship-between-computational-linguistics-and-ai?t=0"
+          title="A New Balancing Act: Reflections on the Relationship between Computational Linguistics and AI"
+          style="border:0"
+          allowfullscreen>
+        </iframe>
+      </div>
+      <div class="content">
+	<h2><em>ACL 2026 Keynote</em><BR>A New Balancing Act: Reflections on the Relationship between Computational Linguistics and AI</h2>
+	<h3>Philip Resnik<BR>resnik@umd.edu</h3>
+        <p class="description">Beginning in the mid-1980s, a "statistical revolution" in our field redefined what it meant to work on language from a computational perspective. Steve Abney, in his essay opening <em>The Balancing Act: Combining Symbolic and Statistical Approaches to Language</em> (Klavans and Resnik, eds., MIT Press, 1996), wrote: "In the space of the last ten years, statistical methods have gone from being virtually unknown in computational linguistics to being a fundamental given". We are again caught up in revolutionary times. Except this time around, the revolution is hurtling forward even faster, and it is redefining not only the research we do, but what it means to do research in the first place, the role of research in society, and society itself. What does this mean for ACL -- what defines us as a community, what is our role, and where do we go from here?
+ </p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
