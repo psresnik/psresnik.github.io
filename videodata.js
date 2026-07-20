@@ -399,6 +399,17 @@ Up to ~17:30 - relevant personal background and a couple of top level lessons
     keywords: ["natural language processing", "large language models"],
     abstract: `The progress of a science requires the ability to investigate a diverse set of ideas. Do we still have that in natural language processing? In this short (3min) video snippet, I raise this question during a panel at the top NLP conference.`,
     transcript: ""
+    },
+
+    {
+    id: 43,
+    title: "A New Balancing Act: Reflections on the Relationship between Computational Linguistics and AI",
+    url: "https://umiacs.umd.edu/~resnik/acl_keynote/",
+    date: "2026-07-05",
+    location: "ACL 2026 Keynote, San Diego",
+    keywords: ["natural language processing", "large language models"],
+    abstract: `Beginning in the mid-1980s, a "statistical revolution" in our field redefined what it meant to work on language from a computational perspective. Steve Abney, in his essay opening The Balancing Act: Combining Symbolic and Statistical Approaches to Language (Klavans and Resnik, eds., MIT Press, 1996), wrote: "In the space of the last ten years, statistical methods have gone from being virtually unknown in computational linguistics to being a fundamental given". We are again caught up in revolutionary times. Except this time around, the revolution is hurtling forward even faster, and it is redefining not only the research we do, but what it means to do research in the first place, the role of research in society, and society itself. What does this mean for ACL -- what defines us as a community, what is our role, and where do we go from here?`,
+    transcript: "https://umiacs.umd.edu/~resnik/resnik_acl2026_keynote_text.pdf"
 }
 ];
 
