@@ -410,7 +410,21 @@ Up to ~17:30 - relevant personal background and a couple of top level lessons
     keywords: ["natural language processing", "large language models"],
     abstract: `Beginning in the mid-1980s, a "statistical revolution" in our field redefined what it meant to work on language from a computational perspective. Steve Abney, in his essay opening The Balancing Act: Combining Symbolic and Statistical Approaches to Language (Klavans and Resnik, eds., MIT Press, 1996), wrote: "In the space of the last ten years, statistical methods have gone from being virtually unknown in computational linguistics to being a fundamental given". We are again caught up in revolutionary times. Except this time around, the revolution is hurtling forward even faster, and it is redefining not only the research we do, but what it means to do research in the first place, the role of research in society, and society itself. What does this mean for ACL -- what defines us as a community, what is our role, and where do we go from here?`,
     transcript: "https://umiacs.umd.edu/~resnik/resnik_acl2026_keynote_text.pdf"
-}
+    },
+
+    {
+    id: 44,
+    title: "What does Mental Health Research Need from NLP+CSS, and Vice Versa?",
+    url: "./acl2026_nlp_css/",
+    date: "2026-07-03",
+    location: "Keynote, 7th Workshop on Natural Language Processing and Computational Social Science (NLP+CSS), San Diego",
+	keywords: ["natural language processing", "computational social science", "mental health", "suicide prevention"],
+    abstract: `Mental health is an incredibly pressing issue in terms of societal, economic, and personal impact.  Although it's natural to conceive of it as a clinical domain, it's also very much a social science domain; moreover, language is one of the most important carriers of signal about individuals' lived experiences and mental state. In this talk I'll discuss the evolving landscape and needs of computational mental health research, what folks interested in NLP+CSS can contribute, and why mental health should be attractive to NLP+CSS researchers as a space to work in.`,
+    transcript: ""
+    }
+
+
+
 ];
 
 
